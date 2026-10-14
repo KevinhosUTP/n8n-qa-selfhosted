@@ -45,5 +45,46 @@ class EngineSmokeTests(unittest.TestCase):
         self.assertGreater(len(output["nodes"]), original_count)
 
 
+    def test_security_engine_detects_secret_without_revealing_value(self):
+        workflow = dict(self.workflow)
+        workflow["nodes"] = [
+            {"id": "1", "name": "HTTP", "type": "n8n-nodes-base.httpRequest",
+             "position": [0, 0],
+             "parameters": {"headers": {"Authorization": "Bearer very_private_token_123456"}}}
+        ]
+        findings = N8nAuditOrchestrator(N8nWorkflowParser(workflow)).run_all_engines()
+        security = [f for f in findings if "Ciberseguridad" in f.engine.value]
+        self.assertTrue(any(f.severity == Severity.CRITICAL for f in security))
+        self.assertNotIn("very_private_token_123456", "\n".join(f.message for f in findings))
+
+    def test_logic_engine_flags_unconnected_if_branch(self):
+        workflow = {
+            "name": "Incomplete IF",
+            "nodes": [
+                {"id": "1", "name": "Check", "type": "n8n-nodes-base.if",
+                 "position": [0, 0], "parameters": {}},
+                {"id": "2", "name": "Done", "type": "n8n-nodes-base.noOp",
+                 "position": [200, 0], "parameters": {}},
+            ],
+            "connections": {
+                "Check": {"main": [[{"node": "Done", "type": "main", "index": 0}], []]}
+            },
+        }
+        findings = N8nAuditOrchestrator(N8nWorkflowParser(workflow)).run_all_engines()
+        self.assertTrue(any("Ruta Muerta en Nodo If" in f.rule_name for f in findings))
+
+    def test_ai_engine_flags_tool_with_missing_description(self):
+        workflow = {
+            "name": "Agent tool",
+            "nodes": [
+                {"id": "1", "name": "Tool", "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+                 "position": [0, 0], "parameters": {}}
+            ],
+            "connections": {},
+        }
+        findings = N8nAuditOrchestrator(N8nWorkflowParser(workflow)).run_all_engines()
+        self.assertTrue(any("Tool de Agente sin Descripción" in f.rule_name for f in findings))
+
+
 if __name__ == "__main__":
     unittest.main()
