@@ -1,0 +1,39 @@
+name: Frontend Next.js checks
+on:
+  push:
+    branches: [develop, main, 'feature/**']
+    paths:
+      - 'apps/web/**'
+      - '.github/workflows/frontend-checks.yml'
+  pull_request:
+    branches: [develop, main]
+    paths:
+      - 'apps/web/**'
+      - '.github/workflows/frontend-checks.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Build Next.js
+        run: npm run build
