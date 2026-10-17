@@ -16,7 +16,9 @@
     "test": "vitest run",
     "test:boundary": "node scripts/check-client-boundary.mjs",
     "smoke": "node scripts/smoke-http.mjs",
-    "security:dependencies": "npm audit --audit-level=low"
+    "security:dependencies": "node scripts/security-control.mjs dependencies",
+    "security:exposure": "node scripts/security-control.mjs exposure",
+    "security:artifact": "node scripts/security-control.mjs artifact"
   },
   "dependencies": {
     "next": "16.4.2",

@@ -33,18 +33,41 @@ Next 16.4.2 and matching React/React DOM 19.3.1 were verified in the npm registr
 Next's October 14 security notice identifies 16.4.1 as patched for its disclosed
 upstream issues; 16.4.2 is the subsequent stable release used here. This does not
 guarantee absence of future vulnerabilities. Audit the locked production and dev
-dependencies in CI, failing on any reported severity or scanner failure.
+dependencies in CI, failing on any unapproved finding at any severity or scanner failure.
 
 The executed full audit found GHSA-vfj7-8cjw-p6xm in development tooling:
 `@next/eslint-plugin-next → fast-glob → micromatch → braces@3.0.3`.
 The registry and advisory report no patched braces release as of 2026-10-17;
 the current Next plugin canary also retains fast-glob. npm's forced fix would
 downgrade the Next plugin to 14.2.35, which is not accepted blindly. SEC-PR01-01
-is an explicit merge blocker. The dependency CI job remains failing until this
-is resolved; no severity threshold change, advisory suppression, unstable upgrade
-or dependency waiver has been applied. Other CI jobs run independently so the
-remaining evidence is still available. A production-only audit is separately
-reported and never substitutes for the required full audit.
+was initially a merge blocker. The user subsequently authorized a narrowly scoped
+temporary acceptance, **not a correction**, implemented from `cc57d05` in Draft PR #4.
+`.github/security/sec-pr01-01.json` fixes the exact versions, development-only graph,
+lock hash, owner KevinhosUTP and expiry `2026-11-01T04:59:00Z` (October 31,
+23:59 America/Lima). Owner reviews: October 24 and 31; no automatic renewal.
+The full audit still runs after expiry and its raw report is disclosed. Every
+unexpected finding, malformed/inconsistent report, process/network failure or
+changed fix availability fails closed; audit severities are not disabled globally.
+
+Three separate controls verify the full audit, effective ESLint configurations
+(rejecting any `settings.next.rootDir` while retaining current recommended rules),
+and the physical prepared standalone/static artifact plus required Next traces.
+Dev dependency declarations in a copied manifest do not imply executable inclusion.
+Physical affected packages, imports, source hashes, distinctive vulnerable code or
+external/broken/cyclic/development symlinks invalidate acceptance. Safe internal
+runtime links are traversed. Missing evidence is a failure.
+
+Linux CI foundation must succeed and provide its exact Git revision and inventory
+digest to the audit job. The audit job runs even if foundation fails, but cannot
+accept the risk in that case. Each frontend job has a 15-minute limit; npm audit
+has a 120-second process limit. Structured ignored reports appear in logs and step
+summaries. A production-only audit never substitutes for physical inspection.
+Local Windows output does not attest Linux. The exception applies only to the
+authorized same-repository PR or branch, not `develop`, `main` or another PR.
+Expiry is checked on each execution, without retroactively invalidating historical
+checks or adding a scheduler. Merge/deployment still require separate approval.
+See the security backlog for residual risk, revocation and official correction
+reviews. Repeat Linux artifact verification before any authorized Coolify preparation.
 
 ESLint 10 uses the official `@next/eslint-plugin-next` recommended/core-web-vitals
 rules, compatible `typescript-eslint` and React Hooks rules. The umbrella

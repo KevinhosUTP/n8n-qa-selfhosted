@@ -1,75 +1,139 @@
 # PR01 verification evidence
 
-Date: 2026-10-17 (America/Lima). Scope: local foundation and CI proposal, not a
-frontend integration/security certification or deployment. Base commit:
-`967efe63bb6e0581f75972e44fd891840be053b6` on `develop`.
+Date: 2026-10-17 (America/Lima). Foundation base: `develop` at
+`967efe63bb6e0581f75972e44fd891840be053b6`. SEC-PR01-01 implementation starts from
+`cc57d05b48194b8ab1bff2c2041fb8db0b3843bc` on `codex/kevolint-pr01-foundation`,
+inside [Draft PR #4](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/4).
+Scope: temporary acceptance of a vulnerable development dependency; no correction,
+integration certification, merge or deployment.
 
 ## Local execution
 
 Windows, Node 22.20.0, npm 10.9.3, TypeScript 5.9.3, Next 16.4.2,
-React/React DOM 19.3.1, ESLint 10.13.0, Vitest 5.0.5.
-Python 3.12.14 in an isolated ignored `.venv`; existing requirements unchanged.
+React/React DOM 19.3.1, ESLint 10.13.0, Vitest 5.0.5. Python 3.12.14 in the
+existing ignored `.venv`; dependencies and the lockfile are unchanged.
 
 | Check | Executed result |
 | --- | --- |
-| `npm ci --no-audit --no-fund` | PASS: clean installation from package-lock.json |
-| `npm run lint` | PASS: zero errors/warnings |
-| `npm test` | PASS: 26 configuration tests |
-| `npm run test:boundary` | PASS: actual Next compiler rejects client import of server-only module; Next also rejects unreviewed public environment with generic error and no echoed synthetic value |
+| `npm ci --no-audit --no-fund` | PASS: clean installation from the approved lockfile |
+| `npm run lint` | PASS: zero errors/warnings; existing configuration unchanged |
+| `npm test` | PASS: 103 tests (26 existing configuration tests plus 77 security cases) |
+| `npm run test:boundary` | PASS: actual Next compiler rejects client import of server-only module; rejects unreviewed public environment without echoing its value |
 | `npm run typecheck` | PASS: route type generation and strict TypeScript |
-| `npm run build` | PASS: production standalone output, only `/` and framework not-found; no provider credentials/files required |
-| `npm run smoke` | PASS: actual standalone server, HTTP 200 `/`, HTTP 404 unknown path, `/app` and `/api/audits`; POST audit route absent; static scripts load locally |
-| Header checks | PASS on all smoke GET responses: nosniff, referrer policy, permissions policy, noindex; no X-Powered-By or speculative CSP |
-| Disclosure canary | PASS: synthetic server marker absent from returned HTML/scripts and generated browser/RSC artifacts |
-| Existing Python compile check | PASS: `python -m compileall -q app.py apps packages tests scripts` |
-| Existing Python tests | PASS: all 15 unittest tests |
-| Existing Streamlit smoke | PASS: initial-screen AppTest |
-| `npm audit --omit=dev --audit-level=low` | PASS at execution: zero production dependency vulnerabilities reported |
-| `npm run security:dependencies` (full audit) | **FAIL / MERGE BLOCKER**: four high findings through development dependency chain to braces@3.0.3, GHSA-vfj7-8cjw-p6xm |
-| Gitleaks 8.30.1 CLI | PASS: 27 local commits including source commit `1c40a53`; no leaks. Remote full-history job also passed |
-| Integrated browser visual check | NOT VERIFIED: localhost navigation from the in-app browser timed out. HTTP smoke passed; no visual/a11y/browser-console result claimed |
+| `npm run security:exposure` | PASS: exact installed development chain and effective lint configs; no `settings.next.rootDir`; existing recommended Next/Hooks/TypeScript rules enabled |
+| `npm run build` | PASS: credential-free standalone production build; `/` and framework not-found only |
+| `npm run smoke` | PASS: actual standalone HTTP server, root 200; unknown path, `/app`, `/api/audits` 404; POST audit endpoint absent; static scripts, headers and synthetic canary checks |
+| `npm run security:artifact` | PASS locally on the prepared physical artifact; `linuxVerified: false`. Linux evidence remains mandatory below. Missing prepared assets fail |
+| `npm run security:dependencies` | Raw full audit exits **1**, four high nodes sharing the approved advisory. Evaluator accepts only the exact temporary scope and prints owner/expiry. Local output is not technical Linux acceptance |
+| Existing Python compile / unittest / Streamlit | PASS: compileall, all 15 existing unittest tests and initial-screen AppTest |
+| Gitleaks | Final committed-history and remote results recorded below; no global suppression added |
 
-The full dependency check is deliberately not waived or configured to succeed.
-No patched braces release exists in the queried registry/advisory on this date;
-the current Next canary also retains the affected dependency. No forced downgrade
-to Next's ESLint plugin 14, ignore list or lower security threshold is applied.
-See SEC-PR01-01 in the security backlog. A production-only audit does **not** clear
-the full audit or make this draft ready to merge.
+Negative fixtures cover expiry at the exact instant and afterward; additional or
+different advisories, extra via roots/cycles, increased severity, inconsistent or
+missing counters, invalid/truncated/incomplete JSON, process errors, actual bounded
+subprocess timeout, network error and exit/report mismatch. They reject unexpected
+version/path/dev/manifest/hash/extra lock copies, unauthorized repository/PR/fork/
+branch/event/OS/revision, unsuccessful foundation or mismatched artifact evidence,
+`rootDir` presence and disabled required rule families.
 
-Initial sandbox execution blocked a Next generated directory (`EPERM`) and stalled
-Python TestClient. Those attempts were not counted as passes; the authorized
-outside-sandbox reruns produced the successful results above. Existing dependencies
-emitted a Starlette/httpx deprecation and Streamlit bare-mode warning; tests passed
-without changing backend code, requirements or tests.
+Temporary artifact tests reject nested affected packages, renamed manifests,
+original-source hashes, vulnerable static signatures, imports, external/development/
+broken/cyclic links, missing/empty directories, missing or incomplete server/route
+NFT traces and traced dev dependencies. Safe internal links are fully traversed;
+comments and copied devDependency declarations do not imply executable inclusion.
+A synthetic clean audit is labelled `sin hallazgos`, without claiming a fix.
+Next's trace includes unrelated `semver/package.json` metadata, explicitly recorded
+without classifying it as executable dev code; affected package metadata is always
+rejected. An unrelated dev implementation in a trace is also rejected.
 
-The standalone smoke starts with an allowlisted OS environment, excluding provider
-credentials and `.env.local`; no local environment files were created. The build
-has no external font download, provider initialization or API request. No live
-FastAPI, Clerk, Supabase, Sentry or Paddle call was made by this frontend.
+Local prepared build: BUILD_ID `vSJIi52FMLnqoSArkKhpx`; 1,481 inventory entries,
+five required NFT traces; inventory SHA-256
+`1e7f3faad75824c740d0e31a3f23498a06ce0325a376abf11aba0312002e8b15`.
+No affected physical package/import/source/signature or unsafe link was detected.
+This inventory belongs to the local working tree and does not attest Linux.
 
-## Published CI
+The sandbox blocked Windows test junctions (`EPERM`); the authorized outside-sandbox
+run passed all link tests. Historical Next directory/Python TestClient restrictions
+were likewise resolved by authorized reruns. Existing Starlette/httpx deprecation
+and Streamlit bare-mode warnings do not change the passing regressions.
 
-[Draft PR #4](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/4) targets
-`develop`. These completed remote results correspond to source commit
-`1c40a53ea3e44c51bc23f2c9c492295e9b7346a4`; this evidence update changes documentation only.
+## Reproduction and evidence binding
 
-| Remote job | Result and evidence |
-| --- | --- |
-| Foundation | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172892): clean npm install, lint, unit tests, negative compiler/config checks, generated types, production build and standalone HTTP smoke |
-| Secrets | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172798): official Gitleaks CLI over fetched Git history |
-| Dependencies | [FAIL](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172866): full audit; known unpatched development-tool advisory, no waiver |
-| Existing Python workflow | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009182): compilation, regression tests and Streamlit initial-screen smoke |
+Inside `apps/web`, using the declared Node/npm versions:
 
-The original Python workflow remains byte-for-byte unchanged. The current checks
-on the PR are authoritative for subsequent documentation commits or future changes.
-PR01 remains a draft and does not satisfy the full acceptance gate until
-SEC-PR01-01 is resolved. It has not been merged or deployed.
+```sh
+npm ci --no-audit --no-fund
+npm run lint
+npm test
+npm run test:boundary
+npm run typecheck
+npm run security:exposure
+npm run build
+npm run smoke
+npm run security:artifact
+npm run security:dependencies
+```
 
-## Scope review
+Boundary tests precede the normal build. Smoke prepares static/public assets before
+inspection. No credentials or `.env.local` are required. Runtime smoke starts with
+an allowlisted OS environment and contacts no providers. Physical artifact traversal
+does not mistake checkout ancestor dependency resolution for packaged code. It
+checks symlinks, packages, imports, original-source hashes, distinctive vulnerable
+signatures and required NFT traces. Generated and published assets must match;
+missing/unreadable evidence fails closed.
 
-- Selective provenance from PR #3 is listed in ADR 0001; no merge/cherry-pick of that PR.
-- FastAPI, QA engine, Streamlit, Python tests/workflow, workers and infrastructure: no diff.
-- No provider SDKs, business routes, workflow fixture uploads, production credentials,
-  brand asset modifications, DNS changes, deployment or merge.
-- Minimal React pages reviewed for semantic main/headings/link and Spanish language;
-  full responsive/accessibility/visual acceptance remains in later handoff stages.
+Ignored `.tools/security/{exposure,artifact,dependencies}.json` reports record time,
+Git revision, OS/release/architecture, Node version, lock hash, BUILD_ID, inventory
+with file hashes, trace hashes, process outcomes and evaluation results. The full
+structured reports appear in logs and GitHub step summaries. Dependency reports
+preserve raw audit output, including every severity and stderr.
+
+Linux foundation outputs its revision/inventory digest only after build, preparation,
+smoke and artifact inspection pass. Dependencies runs with `always()` after
+foundation; it executes the full audit even when foundation failed or acceptance
+expired. Risk acceptance requires foundation success plus identical artifact/audit
+Git revision and inventory digest. Both jobs validate event scope. PR runs record
+the evaluated merge-test SHA and source head SHA. Each frontend job has a 15-minute
+limit; npm audit has a 120-second limit. Windows output never attests Linux.
+
+The audit dependency inventory total must match the unchanged lockfile. SHA-256:
+`aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`.
+Exact approved chain: plugin 16.4.2 → fast-glob 3.3.1 → micromatch 4.0.8 →
+braces 3.0.3, exclusively dev. Manifest dependencies match the lockfile; only npm
+scripts change. No overrides, forced versions, patches or packages are introduced.
+
+## Published CI and acceptance gate
+
+Before these controls, [frontend run 39025112024](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025112024)
+on `cc57d05` passed foundation/secrets and failed the full audit; the
+[Python run](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025112000)
+passed. Those historical runs do **not** verify the new Linux artifact control.
+
+Current implementation: remote verification pending publication. Technical
+acceptance remains blocked until **all latest-commit GitHub checks succeed**,
+including actual Linux artifact inspection and the unchanged Python workflow.
+Final links/results will be recorded after CI execution. Local build results or a
+production-only audit cannot clear this gate.
+
+## Authorization and residual risk
+
+Owner: **KevinhosUTP**. Reviews: **2026-10-24** and **2026-10-31**. Expiry:
+**2026-10-31 23:59:00 America/Lima = 2026-11-01 04:59:00 UTC**. Every execution
+fails at/after expiry, without clock overrides, automatic renewal, scheduler or
+retroactive changes to historical checks. New findings never inherit this exception.
+Review official compatible corrections on those dates and after dependency changes;
+availability requires owner review and an approved replacement. The policy, backlog
+risk matrix and ADR define the exact authorized PR/branch and revocation conditions.
+
+The vulnerable development dependency remains installed and could exhaust lint if
+a new configuration/input route reaches it. Absent `rootDir` and verified production
+exclusion constrain this risk; they do not cure it. Affected executable production
+code is forbidden. Repeat complete Linux artifact verification before any future
+authorized Coolify deployment preparation.
+
+FastAPI, QA engine, Streamlit, Python tests/workflow, services, infrastructure,
+DNS, dependencies, lockfile and lint rules remain unchanged. PR #3 is untouched;
+no provider SDK, PR02, product UI, quotas, payments or real audits are introduced.
+ISSUE-HC-01 and integration/privacy/edge gates remain open. Prior integrated-browser
+localhost timeout leaves visual QA unverified; no new visual acceptance is claimed.
+**PR #4 remains Draft; merge and deployment are not authorized.**

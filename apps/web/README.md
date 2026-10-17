@@ -25,8 +25,10 @@ npm run lint
 npm test
 npm run test:boundary
 npm run typecheck
+npm run security:exposure
 npm run build
 npm run smoke
+npm run security:artifact
 npm run security:dependencies
 ```
 
@@ -43,6 +45,24 @@ environment and no inherited provider credentials. The server is stopped on exit
 `npm start` prepares the same static assets and runs the standalone entrypoint;
 it does not use the incompatible `next start` command for standalone output.
 No Docker/deployment configuration is introduced here.
+
+SEC-PR01-01 remains vulnerable and is temporarily accepted only under the versioned
+policy in `.github/security/sec-pr01-01.json`: owner KevinhosUTP; expires October 31,
+2026 at 23:59 America/Lima (November 1, 04:59 UTC). Review October 24 and 31.
+No dependency or lint-rule change accompanies this exception. Full audit always
+runs (including after expiry), with a 120-second timeout. Any additional finding,
+unexpected graph/hash/context or scanner failure rejects acceptance. There is no
+clock override. A clean audit is reported as `sin hallazgos`, not as a fix.
+
+`security:exposure` checks every effectively linted file, preserves recommended
+Next/Hooks/TypeScript checks and prohibits `settings.next.rootDir`. Run artifact
+inspection **after smoke**, which prepares published assets. It scans the actual
+standalone, static assets and required traces, including nested packages and links.
+Reports under ignored `.tools/security/` contain revision, OS, build ID, lock hash,
+inventory and results; GitHub also receives logs and step summaries. Local results
+are explicitly local-only. CI accepts the risk only after successful Linux
+foundation/artifact verification on the same revision. Never copy the exception
+to production code or infer deployment approval from a passing check.
 
 From the repository root, scan committed Git history with:
 

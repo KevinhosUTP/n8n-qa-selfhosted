@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "SEC-PR01-01",
+  "status": "temporarily-accepted-not-fixed",
+  "owner": "KevinhosUTP",
+  "repository": "KevinhosUTP/n8n-qa-selfhosted",
+  "pullRequest": 4,
+  "branch": "codex/kevolint-pr01-foundation",
+  "baseBranch": "develop",
+  "advisory": "GHSA-vfj7-8cjw-p6xm",
+  "cve": "CVE-2026-93687",
+  "severity": "high",
+  "chain": [
+    { "name": "@next/eslint-plugin-next", "version": "16.4.2" },
+    { "name": "fast-glob", "version": "3.3.1" },
+    { "name": "micromatch", "version": "4.0.8" },
+    { "name": "braces", "version": "3.0.3" }
+  ],
+  "lockfileSha256": "aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5",
+  "expiresAt": "2026-11-01T04:59:00Z",
+  "expiresLocal": "2026-10-31T23:59:00-05:00",
+  "timezone": "America/Lima",
+  "reviewDates": ["2026-10-24", "2026-10-31"],
+  "automaticRenewal": false,
+  "productionCodeAllowed": false,
+  "revocation": [
+    "Expiry reached; evaluated on every execution, with no historical-check invalidation or scheduler",
+    "Any unexpected advisory, dependency, severity, graph, manifest, lockfile or execution context",
+    "next.rootDir activated, affected executable code in the artifact, incomplete inspection or failed foundation/Linux verification",
+    "Official compatible correction available: owner must review and replace this acceptance before further use"
+  ]
+}
