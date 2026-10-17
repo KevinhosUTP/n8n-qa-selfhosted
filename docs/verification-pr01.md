@@ -26,7 +26,7 @@ existing ignored `.venv`; dependencies and the lockfile are unchanged.
 | `npm run security:artifact` | PASS locally on the prepared physical artifact; `linuxVerified: false`. Linux evidence remains mandatory below. Missing prepared assets fail |
 | `npm run security:dependencies` | Raw full audit exits **1**, four high nodes sharing the approved advisory. Evaluator accepts only the exact temporary scope and prints owner/expiry. Local output is not technical Linux acceptance |
 | Existing Python compile / unittest / Streamlit | PASS: compileall, all 15 existing unittest tests and initial-screen AppTest |
-| Gitleaks | Final committed-history and remote results recorded below; no global suppression added |
+| Gitleaks | PASS: official 8.30.1 over 29 locally available commits through `8d852c6`, and full remote fetched history; no global suppression added |
 
 Negative fixtures cover expiry at the exact instant and afterward; additional or
 different advisories, extra via roots/cycles, increased severity, inconsistent or
@@ -109,11 +109,32 @@ on `cc57d05` passed foundation/secrets and failed the full audit; the
 [Python run](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025112000)
 passed. Those historical runs do **not** verify the new Linux artifact control.
 
-Current implementation: remote verification pending publication. Technical
-acceptance remains blocked until **all latest-commit GitHub checks succeed**,
-including actual Linux artifact inspection and the unchanged Python workflow.
-Final links/results will be recorded after CI execution. Local build results or a
-production-only audit cannot clear this gate.
+Security implementation commit `8d852c653f32bd89a41c0eabadbe9aeec13a436d`:
+
+| Remote check | Result and evidence |
+| --- | --- |
+| Linux foundation | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39038726823/job/117413703503): clean install, lint, all 103 tests, compiler boundary, typecheck, effective exposure, credential-free build, prepared smoke and physical artifact inspection |
+| Full dependency control | [PASS with explicit temporary acceptance](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39038726823/job/117413872450): npm exits 1 with exactly four high nodes, one approved root; no finding hidden |
+| Secrets | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39038726823/job/117413703631): full-history official Gitleaks |
+| Unchanged Python workflow | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39038726789/job/117413703356): compilation, 15 unittest regressions, Streamlit smoke |
+| Authorized branch push context | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39038724471): independent foundation, secrets and full audit on the source SHA |
+
+The PR event checked merge-test revision `144f7d2031380c85c50e52f9267e00c27b68fdad`
+and recorded source head `8d852c6`. Linux artifact BUILD_ID:
+`6rsd638b1drz3gUXZmh0A`; 1,251 inventory entries; five required traces; inventory
+SHA-256 `8baa3f13c3c0862beaa42053c7dd989c7e96098a9ab9bffb9bda6a6fa2526393`.
+`linuxVerified: true`. The dependencies report confirms foundation `success`, this
+same merge-test revision and this exact inventory digest, with the approved lock
+hash. Affected packages/imports/source hashes/signatures and unsafe links were absent.
+The unrelated traced semver manifest is explicitly recorded as metadata.
+
+These links record the executed security implementation. This subsequent evidence
+publication changes documentation only and reruns the checks; the latest PR checks
+are authoritative for that publication and all future changes. Technical acceptance
+always requires **all latest-commit GitHub checks to succeed**, including Linux
+inspection and the unchanged Python workflow. Final delivery/PR description records
+the latest publication results. Local build results or a production-only audit
+cannot clear this gate. No merge or deployment is authorized by these passes.
 
 ## Authorization and residual risk
 

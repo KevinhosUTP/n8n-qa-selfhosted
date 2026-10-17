@@ -5,7 +5,7 @@ No backend, provider, DNS, deployment or production change is authorized by this
 
 | Gate | Required evidence / future stage | Current state |
 | --- | --- | --- |
-| SEC-PR01-01 / conditional security gate | Enforce the approved, expiring acceptance below, including full audit and physical Linux artifact inspection on the latest commit | Temporarily accepted, **not fixed**; acceptance remains blocked until all latest GitHub checks, including Linux inspection, succeed |
+| SEC-PR01-01 / conditional security gate | Enforce the approved, expiring acceptance below, including full audit and physical Linux artifact inspection on the latest commit | Temporarily accepted, **not fixed**; Linux controls validated on `8d852c6` (verification report); all latest GitHub checks remain mandatory |
 | ISSUE-HC-01 / D12 | Resolve destructive-button high-contrast text (reported 2.18:1) and test effective states before enabling the theme; PR02/05/14 | Open; theme not offered; approved R2/C3 + W3 assets unchanged |
 | D09 SDK follow-up | Verify exact Clerk/Sentry/Supabase/Paddle SDK compatibility when needed | No provider SDK installed |
 | D01 / D04 | Actual deployed contract, sanitized examples, errors, profiles, sync lifecycle, owned list/report/expiry APIs; PR10–12 | Only source-level synchronous API inspected; no live/OpenAPI verification |
