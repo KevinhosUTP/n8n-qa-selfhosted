@@ -11,3 +11,7 @@ coverage.xml
 .next/
 node_modules/
 .idea/
+*.tsbuildinfo
+apps/web/next-env.d.ts
+apps/web/coverage/
+.tools/
