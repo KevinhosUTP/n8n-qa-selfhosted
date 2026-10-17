@@ -1,12 +1,22 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "SEC-PR01-01",
   "status": "temporarily-accepted-not-fixed",
   "owner": "KevinhosUTP",
   "repository": "KevinhosUTP/n8n-qa-selfhosted",
-  "pullRequest": 4,
-  "branch": "codex/kevolint-pr01-foundation",
-  "baseBranch": "develop",
+  "authorizationOrigin": {
+    "pullRequest": 4,
+    "branch": "codex/kevolint-pr01-foundation"
+  },
+  "workflowPath": ".github/workflows/frontend-checks.yml",
+  "acceptanceContexts": {
+    "pushBranches": ["develop"],
+    "pullRequests": {
+      "baseBranch": "develop",
+      "sameRepositoryOnly": true,
+      "excludedHeadBranches": ["main"]
+    }
+  },
   "advisory": "GHSA-vfj7-8cjw-p6xm",
   "cve": "CVE-2026-93687",
   "severity": "high",

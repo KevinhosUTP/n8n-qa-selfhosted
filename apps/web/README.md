@@ -64,6 +64,23 @@ are explicitly local-only. CI accepts the risk only after successful Linux
 foundation/artifact verification on the same revision. Never copy the exception
 to production code or infer deployment approval from a passing check.
 
+The explicitly approved continuity policy allows only `develop` pushes and internal
+same-repository PRs to `develop`, excluding fork PRs and PRs originating from main.
+It validates the exact workflow path/ref: `frontend-checks.yml@refs/heads/develop`
+for push, or `frontend-checks.yml@refs/pull/<number>/merge` for PR, including the
+authorized repository and `.github/workflows/` prefix. Missing or contradictory
+event/PR/checkout/workflow data fails closed. There is no acceptance in other workflows.
+
+Main retains the complete pipeline, including exposure, build, smoke, physical
+artifact inspection and full audit. Scanning does not itself grant an exception;
+main's dependency check intentionally fails while vulnerable findings remain.
+A strict clean report can pass without an exception, even after the exception has
+expired; acceptance-eligible develop contexts still fail at expiry on clean reports.
+Push checks on feature/codex branches are replaced by their PR checks; PR01 remains
+Draft. Local diagnostic scope is unchanged and never grants Linux/CI acceptance.
+Dependency/hash changes and all existing anomalies revoke acceptance per execution;
+future PRs cannot silently renew it. Changes to controls require explicit review.
+
 From the repository root, scan committed Git history with:
 
 ```sh

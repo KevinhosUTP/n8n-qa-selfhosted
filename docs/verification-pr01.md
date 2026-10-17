@@ -7,7 +7,7 @@ inside [Draft PR #4](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/4).
 Scope: temporary acceptance of a vulnerable development dependency; no correction,
 integration certification, merge or deployment.
 
-## Local execution
+## Historical local execution — initial acceptance
 
 Windows, Node 22.20.0, npm 10.9.3, TypeScript 5.9.3, Next 16.4.2,
 React/React DOM 19.3.1, ESLint 10.13.0, Vitest 5.0.5. Python 3.12.14 in the
@@ -102,7 +102,7 @@ Exact approved chain: plugin 16.4.2 → fast-glob 3.3.1 → micromatch 4.0.8 →
 braces 3.0.3, exclusively dev. Manifest dependencies match the lockfile; only npm
 scripts change. No overrides, forced versions, patches or packages are introduced.
 
-## Published CI and acceptance gate
+## Historical published CI — initial acceptance
 
 Before these controls, [frontend run 39025112024](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025112024)
 on `cc57d05` passed foundation/secrets and failed the full audit; the
@@ -140,11 +140,11 @@ cannot clear this gate. No merge or deployment is authorized by these passes.
 
 Owner: **KevinhosUTP**. Reviews: **2026-10-24** and **2026-10-31**. Expiry:
 **2026-10-31 23:59:00 America/Lima = 2026-11-01 04:59:00 UTC**. Every execution
-fails at/after expiry, without clock overrides, automatic renewal, scheduler or
+eligible for acceptance fails at/after expiry, without clock overrides, automatic renewal, scheduler or
 retroactive changes to historical checks. New findings never inherit this exception.
 Review official compatible corrections on those dates and after dependency changes;
 availability requires owner review and an approved replacement. The policy, backlog
-risk matrix and ADR define the exact authorized PR/branch and revocation conditions.
+risk matrix and ADR define the exact authorized contexts and revocation conditions.
 
 The vulnerable development dependency remains installed and could exhaust lint if
 a new configuration/input route reaches it. Absent `rootDir` and verified production
@@ -158,3 +158,59 @@ no provider SDK, PR02, product UI, quotas, payments or real audits are introduce
 ISSUE-HC-01 and integration/privacy/edge gates remain open. Prior integrated-browser
 localhost timeout leaves visual QA unverified; no new visual acceptance is claimed.
 **PR #4 remains Draft; merge and deployment are not authorized.**
+
+## Current continuity adjustment — authorized from e30c006
+
+The user approved continuity exclusively in Draft PR #4, without merge/deployment.
+Schema 2 permits only pushes to `develop` and internal same-repository PRs targeting
+`develop`, excluding main-origin and fork PRs. Original PR/branch identifiers are
+retained as provenance. `GITHUB_WORKFLOW_REF` must equal the authorized repository
+and `.github/workflows/frontend-checks.yml` followed by the actual event ref:
+`@refs/heads/develop` for eligible push, `@refs/pull/<number>/merge` for PR. PR payload
+number, refs, head/base repositories, fork classification, environment refs and
+checked-out SHA must agree. Push payload ref/after/deleted are also validated.
+
+Inspection identity and risk acceptance are separate. Pushes/PRs involving main
+retain all checks, without a waiver: exposure, build, smoke, physical artifact and
+full audit. Strict main/fork scans can run after expiry; no acceptance is granted.
+The current four vulnerable findings intentionally fail strict audit there. A
+strict clean audit can pass without an exception and without claiming a fix.
+Acceptance-eligible develop contexts still fail at expiry even on a clean report.
+Invalid workflows/events/identities fail closed. Feature/codex pushes no longer
+duplicate PR checks; develop/main push and PR target triggers remain.
+
+The workflow's entire `jobs:` block is byte-equivalent (normalized LF) to approved
+`e30c006`: all steps, Linux, timeouts, `always()` audit dependency, evidence binding,
+secrets, action pins and read-only permissions remain. The script section containing
+audit/report validation, resolved graph, ESLint, artifact, traces and bounded
+subprocess execution is likewise unchanged; SHA-256:
+`2589ada6d48664eebd678b03b06b17175cee27da743c16a0742e1544c0fa1d9e`.
+The authorized lockfile hash, exact chain, severity/advisory, owner, reviews and
+expiry remain unchanged. No dependency, lint-rule or Python-workflow change.
+
+Repeated local checks:
+
+| Check | Result |
+| --- | --- |
+| Clean `npm ci --no-audit --no-fund` | PASS; original lockfile |
+| Lint / tests / compiler boundary / typecheck | PASS; **169 tests**, including 26 original configuration tests |
+| Exposure / credential-free build / HTTP smoke | PASS; effective configs remain safe; same route/header/disclosure checks |
+| Physical artifact | PASS; BUILD_ID `AFkCf2rgJhtAEtfMPszR_`, 1,481 entries, five traces; SHA-256 `ed98617a4a2d5d176cf12699d08a81c446d85a518fa57d332434d26ede04fad6`; `linuxVerified: false` |
+| Full audit | Same four high nodes/one approved root; npm exits 1. Local diagnostic explicitly reports `temporaryAcceptance: false`, not CI acceptance |
+| Python compilation / 15 unittest tests / Streamlit | PASS; unchanged tests and workflow; existing deprecation/bare-mode warnings only |
+| Secrets | Full committed-history result and Linux result recorded after publication |
+
+Added fixtures cover actual GitHub payload-to-context extraction for push and PR,
+different internal PR numbers, merge versus head SHA, exact authorized workflow/ref,
+main/foreign workflow paths and refs, external/fork head, main origin/destination,
+other push branches/tags, deployment/manual/scheduled/target/reusable events,
+missing/contradictory metadata and policy scope/expiry/dependency extensions.
+Strict main callbacks exercise both complete inspections, propagate scanner
+failures and deny acceptance of the approved vulnerable report. Existing negative
+audit, dependency, artifact/link, Linux/evidence and expiry tests are retained.
+
+Current publication: Linux CI pending. Acceptance and readiness for final merge
+review require successful checks on the latest published commit. Actual develop
+push execution can only be verified after a separately authorized future merge;
+fixtures and a PR run are not claimed as a real develop push. Main/fork behavior
+is tested with synthetic contexts, not by pushing or opening unauthorized PRs.

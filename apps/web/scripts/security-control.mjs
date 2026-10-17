@@ -22,14 +22,17 @@ const object = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 const same = (a, b) => assert.deepEqual(a, b);
 
 export function validatePolicy(policy) {
-  assert.equal(policy.schemaVersion, 1);
+  assert.equal(policy.schemaVersion, 2);
   assert.equal(policy.id, "SEC-PR01-01");
   assert.equal(policy.status, "temporarily-accepted-not-fixed");
   assert.equal(policy.owner, "KevinhosUTP");
   assert.equal(policy.repository, "KevinhosUTP/n8n-qa-selfhosted");
-  assert.equal(policy.pullRequest, 4);
-  assert.equal(policy.branch, "codex/kevolint-pr01-foundation");
-  assert.equal(policy.baseBranch, "develop");
+  same(policy.authorizationOrigin, { pullRequest: 4, branch: "codex/kevolint-pr01-foundation" });
+  assert.equal(policy.workflowPath, ".github/workflows/frontend-checks.yml");
+  same(policy.acceptanceContexts, {
+    pushBranches: ["develop"],
+    pullRequests: { baseBranch: "develop", sameRepositoryOnly: true, excludedHeadBranches: ["main"] },
+  });
   assert.equal(policy.advisory, "GHSA-vfj7-8cjw-p6xm");
   assert.equal(policy.cve, "CVE-2026-93687");
   assert.equal(policy.severity, "high");
@@ -43,28 +46,68 @@ export function validatePolicy(policy) {
   assert.equal(policy.productionCodeAllowed, false);
 }
 
-// No clock override is read by the CLI. Tests inject time into this pure evaluator only.
-export function evaluateAuthorization(policy, context, now) {
+// Inspection is distinct from risk acceptance: main/forks keep all scanners,
+// but can never inherit the temporary exception, even via an allowed workflow.
+export function validateExecutionContext(policy, context) {
   validatePolicy(policy);
-  assert.ok(Number.isFinite(now.getTime()), "Invalid clock");
-  assert.ok(now.getTime() < Date.parse(policy.expiresAt), "SEC-PR01-01 expired");
   assert.equal(context.repository, policy.repository, "Unauthorized repository");
-  assert.equal(context.branch, policy.branch, "Unauthorized branch");
   assert.match(context.revision, /^[a-f0-9]{40}$/);
   if (context.github) {
     assert.equal(context.os, "linux", "Linux verification required");
     assert.equal(context.checkedOutRevision, context.revision, "Checkout revision mismatch");
+    assert.equal(context.eventRepository, policy.repository, "Event repository mismatch");
+    assert.equal(context.workflowRef, `${policy.repository}/${policy.workflowPath}@${context.ref}`, "Unauthorized workflow or workflow ref");
     if (context.event === "pull_request") {
-      assert.equal(context.pullRequest, policy.pullRequest, "Unauthorized PR");
-      assert.equal(context.headRepository, policy.repository, "Fork PR is not authorized");
-      assert.equal(context.baseBranch, policy.baseBranch);
+      assert.ok(integer(context.pullRequest) && context.pullRequest > 0, "Missing PR number");
+      assert.equal(context.payloadPullRequest, context.pullRequest, "PR number mismatch");
+      assert.equal(context.ref, `refs/pull/${context.pullRequest}/merge`, "PR merge ref mismatch");
+      assert.equal(context.baseRepository, policy.repository, "PR base repository mismatch");
+      assert.ok(["develop", "main"].includes(context.baseBranch), "Unsupported inspection target");
+      assert.equal(context.githubBaseRef, context.baseBranch, "PR base ref mismatch");
+      assert.equal(context.githubHeadRef, context.branch, "PR head ref mismatch");
+      assert.ok(typeof context.branch === "string" && context.branch.length > 0);
+      assert.match(context.headRepository, /^[^/\s]+\/[^/\s]+$/);
+      assert.equal(typeof context.headFork, "boolean", "Missing fork classification");
+      assert.match(context.headRevision, /^[a-f0-9]{40}$/);
     } else {
       assert.equal(context.event, "push", "Unauthorized event");
-      assert.equal(context.ref, `refs/heads/${policy.branch}`);
+      assert.ok(["develop", "main"].includes(context.branch), "Unsupported inspection branch");
+      assert.equal(context.ref, `refs/heads/${context.branch}`, "Push ref mismatch");
+      assert.equal(context.eventRef, context.ref, "Push payload ref mismatch");
+      assert.equal(context.eventAfter, context.revision, "Push payload revision mismatch");
+      assert.equal(context.deleted, false, "Deleted branch event");
     }
   } else {
+    assert.equal(context.github, false);
     assert.equal(context.event, "local");
+    assert.equal(context.branch, policy.authorizationOrigin.branch, "Unauthorized local diagnostic branch");
   }
+}
+
+function temporaryScope(policy, context) {
+  if (!context.github) return true; // diagnostic only; never Linux/CI acceptance
+  if (context.event === "push") return policy.acceptanceContexts.pushBranches.includes(context.branch);
+  const pr = policy.acceptanceContexts.pullRequests;
+  return context.event === "pull_request" && context.baseBranch === pr.baseBranch &&
+    context.headRepository === policy.repository && context.headFork === false &&
+    !pr.excludedHeadBranches.includes(context.branch);
+}
+
+// No clock override is read by the CLI. Tests inject time into internal functions only.
+export function evaluateAuthorization(policy, context, now) {
+  validateExecutionContext(policy, context);
+  assert.ok(temporaryScope(policy, context), "Temporary acceptance is forbidden in this context (including main/forks)");
+  assert.ok(Number.isFinite(now.getTime()), "Invalid clock");
+  assert.ok(now.getTime() < Date.parse(policy.expiresAt), "SEC-PR01-01 expired");
+}
+
+export async function runInspection(policy, context, inspect, clock = () => new Date()) {
+  validateExecutionContext(policy, context);
+  const eligible = temporaryScope(policy, context);
+  if (eligible) evaluateAuthorization(policy, context, clock());
+  const evidence = await inspect(); // strict contexts still execute the complete inspection
+  if (eligible) evaluateAuthorization(policy, context, clock());
+  return { evidence, mode: context.github ? (eligible ? "temporary-scope-inspection" : "strict-inspection-no-exception") : "local-diagnostic" };
 }
 
 export function evaluateAudit(processResult, policy) {
@@ -390,18 +433,25 @@ async function git(args) {
   return result.stdout.trim();
 }
 
+export function githubExecutionContext(environment, event, revision, platform = process.platform) {
+  return {
+    github: true, os: platform, repository: environment.GITHUB_REPOSITORY,
+    event: environment.GITHUB_EVENT_NAME, revision: environment.GITHUB_SHA, checkedOutRevision: revision,
+    branch: event.pull_request?.head.ref ?? environment.GITHUB_REF?.replace(/^refs\/heads\//, ""),
+    pullRequest: event.number, headRepository: event.pull_request?.head.repo.full_name,
+    baseBranch: event.pull_request?.base.ref, ref: environment.GITHUB_REF,
+    headRevision: event.pull_request?.head.sha ?? revision,
+    workflowRef: environment.GITHUB_WORKFLOW_REF, eventRepository: event.repository?.full_name,
+    payloadPullRequest: event.pull_request?.number, baseRepository: event.pull_request?.base.repo.full_name,
+    headFork: event.pull_request?.head.repo.fork, githubBaseRef: environment.GITHUB_BASE_REF,
+    githubHeadRef: environment.GITHUB_HEAD_REF, eventAfter: event.after, eventRef: event.ref, deleted: event.deleted,
+  };
+}
+
 async function executionContext() {
   const revision = await git(["rev-parse", "HEAD"]);
   if (process.env.GITHUB_ACTIONS === "true") {
-    const event = await json(process.env.GITHUB_EVENT_PATH);
-    return {
-      github: true, os: process.platform, repository: process.env.GITHUB_REPOSITORY,
-      event: process.env.GITHUB_EVENT_NAME, revision: process.env.GITHUB_SHA, checkedOutRevision: revision,
-      branch: event.pull_request?.head.ref ?? process.env.GITHUB_REF?.replace(/^refs\/heads\//, ""),
-      pullRequest: event.number, headRepository: event.pull_request?.head.repo.full_name,
-      baseBranch: event.pull_request?.base.ref, ref: process.env.GITHUB_REF,
-      headRevision: event.pull_request?.head.sha ?? revision,
-    };
+    return githubExecutionContext(process.env, await json(process.env.GITHUB_EVENT_PATH), revision);
   }
   const origin = await git(["remote", "get-url", "origin"]);
   assert.ok(["https://github.com/KevinhosUTP/n8n-qa-selfhosted.git", "git@github.com:KevinhosUTP/n8n-qa-selfhosted.git"].includes(origin));
@@ -414,6 +464,21 @@ export function evaluateFoundation(context, attestation) {
     assert.equal(attestation.revision, context.revision, "Artifact and audit revisions differ");
     assert.match(attestation.inventoryHash ?? "", /^[a-f0-9]{64}$/, "Missing artifact inventory evidence");
   }
+}
+
+export function evaluateDependencyDecision(policy, context, now, audit, foundation) {
+  validateExecutionContext(policy, context);
+  evaluateFoundation(context, foundation);
+  assert.ok(["sin hallazgos", "temporarily-accepted-not-fixed"].includes(audit.status));
+  if (audit.status !== "sin hallazgos" || temporaryScope(policy, context)) {
+    evaluateAuthorization(policy, context, now);
+  }
+  return {
+    auditStatus: audit.status,
+    temporaryAcceptance: context.github && audit.status === "temporarily-accepted-not-fixed",
+    acceptanceGate: !context.github ? "local-only-not-technical-acceptance" :
+      (audit.status === "sin hallazgos" ? "strict-clean-audit" : "verified-linux-foundation"),
+  };
 }
 
 async function main() {
@@ -431,38 +496,43 @@ async function main() {
     const policy = await json(join(repository, ".github/security/sec-pr01-01.json"));
     result.policy = { id: policy.id, owner: policy.owner, expiresAt: policy.expiresAt, advisory: policy.advisory, cve: policy.cve };
     const audit = command === "dependencies" ? evaluateAudit(result.process, policy) : undefined;
-    if (audit) result.auditStatus = audit.status;
+    if (audit) result.auditStatus = audit.status === "sin hallazgos" ? audit.status : "findings-detected-no-acceptance";
     result.context = await executionContext();
-    evaluateAuthorization(policy, result.context, new Date());
+    validateExecutionContext(policy, result.context);
     if (command === "dependencies") {
       const graph = await readGraph(policy);
       assert.equal(audit.report.metadata.dependencies.total, Object.keys(graph.lock.packages).length - 1, "Audit dependency inventory differs from lockfile");
       result.lockHash = graph.lockHash;
-      result.acceptanceGate = result.context.github ? "Linux-foundation-required" : "local-only-not-technical-acceptance";
       result.foundation = {
         result: process.env.SEC_FOUNDATION_RESULT, revision: process.env.SEC_ARTIFACT_REVISION,
         inventoryHash: process.env.SEC_ARTIFACT_INVENTORY_HASH,
       };
-      evaluateFoundation(result.context, result.foundation);
+      Object.assign(result, evaluateDependencyDecision(policy, result.context, new Date(), audit, result.foundation));
       if (result.auditStatus === "temporarily-accepted-not-fixed") {
-        result.warning = `WARNING: SEC-PR01-01 TEMPORARILY ACCEPTED, NOT FIXED. Owner: ${policy.owner}. Expires: ${policy.expiresAt} (${policy.expiresLocal} America/Lima).`;
+        result.warning = `WARNING: SEC-PR01-01 ${result.context.github ? "TEMPORARILY ACCEPTED, NOT FIXED" : "LOCAL DIAGNOSTIC ONLY, NOT CI ACCEPTANCE OR A FIX"}. Owner: ${policy.owner}. Expires: ${policy.expiresAt} (${policy.expiresLocal} America/Lima).`;
         console.warn(result.warning);
       } else {
         result.warning = "sin hallazgos in this audit; this does not assert that the vulnerability has been fixed";
       }
-    } else if (command === "exposure") result.evidence = await inspectExposure(policy);
-    else {
-      result.evidence = await inspectArtifact(policy);
-      result.linuxVerified = process.platform === "linux" && result.context.github;
-      evaluateAuthorization(policy, result.context, new Date());
-      if (process.env.GITHUB_OUTPUT) {
-        assert.ok(result.linuxVerified, "Linux GitHub evidence required for job output");
-        await appendFile(process.env.GITHUB_OUTPUT, `revision=${result.context.revision}\ninventory_hash=${result.evidence.inventorySha256}\n`);
+      Object.assign(result, evaluateDependencyDecision(policy, result.context, new Date(), audit, result.foundation));
+    } else {
+      const inspection = await runInspection(policy, result.context, () =>
+        command === "exposure" ? inspectExposure(policy) : inspectArtifact(policy));
+      result.evidence = inspection.evidence;
+      result.inspectionMode = inspection.mode;
+      result.temporaryAcceptance = false; // inspections provide evidence; only the dependency decision can accept risk
+      if (command === "artifact") {
+        result.linuxVerified = process.platform === "linux" && result.context.github;
+        if (process.env.GITHUB_OUTPUT) {
+          assert.ok(result.linuxVerified, "Linux GitHub evidence required for job output");
+          await appendFile(process.env.GITHUB_OUTPUT, `revision=${result.context.revision}\ninventory_hash=${result.evidence.inventorySha256}\n`);
+        }
       }
     }
-    evaluateAuthorization(policy, result.context, new Date());
     result.status = "passed";
   } catch (error) {
+    result.temporaryAcceptance = false;
+    if (result.auditStatus === "temporarily-accepted-not-fixed") result.auditStatus = "findings-detected-no-acceptance";
     result.error = error.message;
     process.exitCode = 1;
   } finally {

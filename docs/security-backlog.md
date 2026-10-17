@@ -28,12 +28,29 @@ prevent someone adding a secret under a future public variable without review.
 
 ## SEC-PR01-01 — authorized temporary acceptance
 
-The user explicitly authorized implementation of this acceptance from `cc57d05`
-in Draft PR #4. Owner: **KevinhosUTP**. Scope: only
-`KevinhosUTP/n8n-qa-selfhosted`, same-repository PR #4 targeting `develop`, or pushes
-to `codex/kevolint-pr01-foundation`. The exception cannot follow a merge to
-`develop`/`main`, a fork or another PR. It does not authorize merge or deployment.
+The user authorized the original acceptance from `cc57d05` in Draft PR #4 and
+subsequently authorized continuity from `e30c006`. Owner: **KevinhosUTP**. Policy
+schema 2 retains PR #4/original branch as provenance, not a restriction on PR number.
 The machine-readable policy is `.github/security/sec-pr01-01.json`.
+
+Acceptance applies only in `KevinhosUTP/n8n-qa-selfhosted` through
+`.github/workflows/frontend-checks.yml`, with exact `GITHUB_WORKFLOW_REF`:
+
+| Context | Acceptance |
+| --- | --- |
+| `push` to `develop` | Eligible; workflow ref must end exactly `@refs/heads/develop`; payload ref/SHA must match checkout/event |
+| Internal `pull_request` to `develop` | Eligible only when head and base repositories match the authorized repository, fork is false and head is not `main`; workflow ref must end `@refs/pull/<number>/merge`, consistent with event/PR refs |
+| `main` push or PR targeting `main`, PR originating from `main`, fork PR | Strict scanning only; never a temporary exception |
+| Other branches' pushes, tags, deployment/manual/scheduled/target/reusable events or different workflow/repository | No acceptance; unknown/inconsistent execution identities fail closed |
+
+Working branches are checked through their PR; push triggers now cover only
+`develop` and `main`. PR triggers still cover both targets. All workflow jobs,
+steps, Linux requirements, pinned actions, permissions, secret scan and timeouts
+remain unchanged. On main, exposure and artifact inspection execute without
+granting acceptance; the full audit intentionally fails while the vulnerable
+findings remain. A strict clean audit needs no exception and claims no correction.
+Local execution remains diagnostic only on the original branch; it cannot certify
+Linux or grant CI acceptance. This scope never authorizes merge or deployment.
 
 | Risk dimension | Assessment and required evidence |
 | --- | --- |
@@ -49,8 +66,10 @@ The machine-readable policy is `.github/security/sec-pr01-01.json`.
 | Residual risk | The vulnerable development dependency is still installed. A malicious/future configuration or newly discovered input route could cause denial of service. Scanner signatures are bounded detection for the approved sources, not proof against arbitrary transformed/obfuscated code |
 
 Validity ends **2026-10-31 23:59:00 America/Lima**, exactly
-**2026-11-01 04:59:00 UTC**. At that instant and afterward every execution fails,
-including an otherwise clean audit. No CLI/environment clock override, automatic
+**2026-11-01 04:59:00 UTC**. At that instant and afterward every acceptance-eligible
+execution fails, including an otherwise clean audit. Strict main/fork inspection
+continues without an exception; vulnerable audit results still fail there.
+No CLI/environment clock override, automatic
 renewal or scheduler is provided. Previously successful checks do not change by
 themselves: rerun all checks when making a later decision.
 
@@ -71,6 +90,13 @@ The lock hash is `aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054
 Full raw audit output remains visible, including all severities; the evaluator has
 no general ignore list. An unexpected finding fails the check rather than being
 hidden. Secret scanning remains independent and enabled.
+
+Future internal PRs may pass with the exact approved dependencies and all Linux
+evidence. A dependency/lockfile change, new advisory or exposure anomaly revokes
+acceptance for that execution; it does not rewrite the policy or historical checks.
+Changes to the policy/controller/workflow require explicit review. Repository
+contributors can edit those files, so the checks are not a trust boundary against
+a contributor who also replaces the controls. No branch-protection changes are made.
 
 Affected executable code is **never permitted** in a production artifact by this
 acceptance. Before any future Coolify deployment preparation, obtain authorization

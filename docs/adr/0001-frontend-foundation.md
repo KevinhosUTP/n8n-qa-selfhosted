@@ -62,10 +62,22 @@ digest to the audit job. The audit job runs even if foundation fails, but cannot
 accept the risk in that case. Each frontend job has a 15-minute limit; npm audit
 has a 120-second process limit. Structured ignored reports appear in logs and step
 summaries. A production-only audit never substitutes for physical inspection.
-Local Windows output does not attest Linux. The exception applies only to the
-authorized same-repository PR or branch, not `develop`, `main` or another PR.
+Local Windows output does not attest Linux. Following explicit user authorization
+from `e30c006`, schema 2 permits only pushes to `develop` and internal same-repository
+PRs targeting `develop` (head cannot be `main` or a fork). PR #4 and the original
+branch remain provenance. Both event types require the exact authorized
+`GITHUB_WORKFLOW_REF`: repository/path plus `refs/heads/develop` for push, or
+`refs/pull/<number>/merge` for PR. Event repository, refs, PR numbers and checkout
+revision must agree; a different workflow or unauthorized event cannot reuse this.
+Main push/PR triggers and all workflow jobs/steps remain. Execution identity is
+validated separately from temporary acceptance, so main performs exposure/build/
+smoke/artifact checks and full audit without a waiver. Vulnerable findings fail
+intentionally; strict clean reports need no exception. Working branch pushes no
+longer duplicate PR checks. There is no change to dependency or artifact validators.
 Expiry is checked on each execution, without retroactively invalidating historical
-checks or adding a scheduler. Merge/deployment still require separate approval.
+checks or adding a scheduler. Acceptance-eligible develop contexts still fail at
+expiry even on a clean report; strict scanning on main continues without acceptance.
+Merge/deployment still require separate approval.
 See the security backlog for residual risk, revocation and official correction
 reviews. Repeat Linux artifact verification before any authorized Coolify preparation.
 

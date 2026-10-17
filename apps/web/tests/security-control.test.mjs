@@ -4,8 +4,9 @@ import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from "node:fs/promis
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import {
-  evaluateAudit, evaluateAuthorization, evaluateEslint, evaluateFoundation,
-  evaluateGraph, inspectCode, inspectTraces, inventoryTree, runProcess,
+  evaluateAudit, evaluateAuthorization, evaluateDependencyDecision, evaluateEslint, evaluateFoundation,
+  evaluateGraph, githubExecutionContext, inspectCode, inspectTraces, inventoryTree, runProcess,
+  runInspection, validateExecutionContext, validatePolicy,
 } from "../scripts/security-control.mjs";
 
 const policy = JSON.parse(await readFile(new URL("../../../.github/security/sec-pr01-01.json", import.meta.url)));
@@ -13,10 +14,21 @@ const fixture = JSON.parse(await readFile(new URL("./fixtures/security-audit.jso
 const clone = (value) => structuredClone(value);
 const result = (report = clone(fixture), overrides = {}) => ({ code: 1, signal: null, timedOut: false, stdout: JSON.stringify(report), stderr: "", ...overrides });
 const context = () => ({
-  github: true, os: "linux", repository: policy.repository, branch: policy.branch,
+  github: true, os: "linux", repository: policy.repository, branch: policy.authorizationOrigin.branch,
   event: "pull_request", pullRequest: 4, headRepository: policy.repository, baseBranch: "develop",
   revision: "a".repeat(40), checkedOutRevision: "a".repeat(40),
+  ref: "refs/pull/4/merge", payloadPullRequest: 4, headFork: false,
+  eventRepository: policy.repository, baseRepository: policy.repository, githubBaseRef: "develop",
+  githubHeadRef: policy.authorizationOrigin.branch, headRevision: "b".repeat(40),
+  workflowRef: `${policy.repository}/${policy.workflowPath}@refs/pull/4/merge`,
 });
+const pushContext = (branch = "develop") => ({
+  github: true, os: "linux", repository: policy.repository, eventRepository: policy.repository,
+  event: "push", branch, ref: `refs/heads/${branch}`, revision: "a".repeat(40),
+  checkedOutRevision: "a".repeat(40), eventAfter: "a".repeat(40), eventRef: `refs/heads/${branch}`, deleted: false,
+  workflowRef: `${policy.repository}/${policy.workflowPath}@refs/heads/${branch}`,
+});
+const foundation = () => ({ result: "success", revision: context().revision, inventoryHash: "c".repeat(64) });
 const before = () => new Date("2026-11-01T04:58:59.999Z");
 const temps = [];
 const temp = async () => { const path = await mkdtemp(join(tmpdir(), "kevolint-security-test-")); temps.push(path); return path; };
@@ -84,17 +96,148 @@ describe("full audit, exact exception and expiry", () => {
 });
 
 describe("execution scope and foundation evidence", () => {
+  const payloadFixture = (eventName = "pull_request", branch = "develop") => {
+    const pr = eventName === "pull_request";
+    const ref = pr ? "refs/pull/12/merge" : `refs/heads/${branch}`;
+    const environment = {
+      GITHUB_REPOSITORY: policy.repository, GITHUB_EVENT_NAME: eventName,
+      GITHUB_SHA: "a".repeat(40), GITHUB_REF: ref,
+      GITHUB_WORKFLOW_REF: `${policy.repository}/${policy.workflowPath}@${ref}`,
+      ...(pr ? { GITHUB_BASE_REF: branch, GITHUB_HEAD_REF: "feature/internal" } : {}),
+    };
+    const event = { repository: { full_name: policy.repository }, ...(pr ? {
+      number: 12, pull_request: { number: 12,
+        head: { ref: "feature/internal", sha: "b".repeat(40), repo: { full_name: policy.repository, fork: false } },
+        base: { ref: branch, repo: { full_name: policy.repository } },
+      },
+    } : { after: "a".repeat(40), ref, deleted: false }) };
+    return { environment, event };
+  };
+  it.each(["push", "pull_request"])("parses a GitHub %s payload and workflow ref without confusing head and merge SHA", (name) => {
+    const { environment, event } = payloadFixture(name);
+    const parsed = githubExecutionContext(environment, event, "a".repeat(40), "linux");
+    expect(() => evaluateAuthorization(policy, parsed, before())).not.toThrow();
+    expect(parsed.workflowRef).toBe(environment.GITHUB_WORKFLOW_REF);
+    expect(parsed.headRevision).toBe((name === "pull_request" ? "b" : "a").repeat(40));
+  });
+  it("cannot accept a fork by reusing the allowed PR number or branch name in raw payloads", () => {
+    const { environment, event } = payloadFixture();
+    event.pull_request.head.repo = { full_name: "external/n8n-qa-selfhosted", fork: true };
+    expect(() => evaluateAuthorization(policy, githubExecutionContext(environment, event, "a".repeat(40), "linux"), before())).toThrow(/forbidden/);
+  });
+  it.each(["push", "pull_request"])("parses main %s context for full inspection while denying the exception", (name) => {
+    const { environment, event } = payloadFixture(name, "main");
+    const parsed = githubExecutionContext(environment, event, "a".repeat(40), "linux");
+    expect(() => validateExecutionContext(policy, parsed)).not.toThrow();
+    expect(() => evaluateAuthorization(policy, parsed, before())).toThrow(/forbidden/);
+  });
   it.each([
-    { repository: "other/repo" }, { branch: "develop" }, { branch: "main" }, { pullRequest: 3 },
+    { repository: "other/repo" }, { branch: "main", githubHeadRef: "main" }, { pullRequest: 3 },
     { headRepository: "fork/repo" }, { os: "win32" }, { baseBranch: "main" },
     { checkedOutRevision: "b".repeat(40) }, { event: "workflow_dispatch" },
+    { eventRepository: "other/repo" }, { baseRepository: "other/repo" }, { headFork: true },
+    { headFork: undefined }, { headRepository: undefined }, { payloadPullRequest: 5 },
+    { pullRequest: undefined }, { pullRequest: 0 }, { pullRequest: 4.5 },
+    { ref: "refs/pull/5/merge" }, { ref: "refs/heads/develop" }, { baseBranch: "release", githubBaseRef: "release" },
+    { githubBaseRef: "main" }, { githubHeadRef: "other" }, { headRevision: "invalid" },
+    { event: "pull_request_target" }, { event: "deployment" }, { event: "deployment_status" },
+    { event: "release" }, { event: "schedule" }, { event: "workflow_call" },
+    { workflowRef: undefined },
+    { workflowRef: `${policy.repository}/.github/workflows/deploy.yml@refs/pull/4/merge` },
+    { workflowRef: `${policy.repository}/other/frontend-checks.yml@refs/pull/4/merge` },
+    { workflowRef: `other/repo/${policy.workflowPath}@refs/pull/4/merge` },
+    { workflowRef: `${policy.repository}/${policy.workflowPath}@refs/heads/develop` },
+    { workflowRef: `${policy.repository}/${policy.workflowPath}@refs/pull/5/merge` },
   ])("rejects context drift %j", (change) => {
     expect(() => evaluateAuthorization(policy, { ...context(), ...change }, before())).toThrow();
   });
-  it("allows only the authorized push ref", () => {
-    const push = { ...context(), event: "push", ref: `refs/heads/${policy.branch}` };
-    expect(() => evaluateAuthorization(policy, push, before())).not.toThrow();
-    expect(() => evaluateAuthorization(policy, { ...push, ref: "refs/heads/develop" }, before())).toThrow();
+  it("accepts a different internal PR only with coherent merge/workflow refs", () => {
+    const internal = { ...context(), branch: "feature/example", githubHeadRef: "feature/example",
+      pullRequest: 9, payloadPullRequest: 9, ref: "refs/pull/9/merge",
+      workflowRef: `${policy.repository}/${policy.workflowPath}@refs/pull/9/merge` };
+    expect(() => evaluateAuthorization(policy, internal, before())).not.toThrow();
+  });
+  it("allows develop pushes with the exact authorized workflow ref", () => {
+    expect(() => evaluateAuthorization(policy, pushContext(), before())).not.toThrow();
+  });
+  it.each(["main", "feature/example", "codex/kevolint-pr01-foundation", "release", "develop-evil"])("rejects push acceptance on %s", (branch) => {
+    expect(() => evaluateAuthorization(policy, pushContext(branch), before())).toThrow();
+  });
+  it.each([
+    { ref: "refs/tags/develop" }, { ref: "refs/heads/main" }, { eventAfter: "b".repeat(40) },
+    { eventRef: "refs/heads/main" }, { eventRef: undefined },
+    { eventAfter: undefined }, { deleted: true }, { deleted: undefined },
+    { workflowRef: `${policy.repository}/${policy.workflowPath}@refs/pull/4/merge` },
+    { workflowRef: `${policy.repository}/.github/workflows/deployment.yml@refs/heads/develop` },
+  ])("rejects contradictory push metadata %j", (change) => {
+    expect(() => evaluateAuthorization(policy, { ...pushContext(), ...change }, before())).toThrow();
+  });
+  it.each([
+    (p) => { p.acceptanceContexts.pushBranches.push("main"); },
+    (p) => { p.acceptanceContexts.pullRequests.baseBranch = "main"; },
+    (p) => { p.acceptanceContexts.pullRequests.sameRepositoryOnly = false; },
+    (p) => { p.acceptanceContexts.pullRequests.excludedHeadBranches = []; },
+    (p) => { p.workflowPath = ".github/workflows/deploy.yml"; },
+    (p) => { p.expiresAt = "2026-12-01T04:59:00Z"; },
+    (p) => { p.chain[3].version = "3.0.4"; },
+    (p) => { p.lockfileSha256 = "0".repeat(64); },
+  ])("rejects policy scope/expiry/dependency extensions", (change) => {
+    const changed = clone(policy); change(changed);
+    expect(() => validatePolicy(changed)).toThrow();
+  });
+  it("preserves local diagnostics without broadening local branch scope or claiming Linux", () => {
+    const local = { ...context(), github: false, os: "win32", event: "local" };
+    expect(() => evaluateAuthorization(policy, local, before())).not.toThrow();
+    expect(() => evaluateAuthorization(policy, { ...local, branch: "develop" }, before())).toThrow();
+    const decision = evaluateDependencyDecision(policy, local, before(), evaluateAudit(result(), policy), {});
+    expect(decision.temporaryAcceptance).toBe(false);
+    expect(decision.acceptanceGate).toBe("local-only-not-technical-acceptance");
+  });
+  it.each([pushContext("main"), { ...context(), baseBranch: "main", githubBaseRef: "main" },
+    { ...context(), headRepository: "fork/repo", headFork: true },
+    { ...context(), branch: "main", githubHeadRef: "main" },
+  ])("runs full inspections in strict context without accepting findings: %j", async (strict) => {
+    expect(() => validateExecutionContext(policy, strict)).not.toThrow();
+    const calls = [];
+    for (const command of ["exposure", "artifact"]) {
+      const scan = await runInspection(policy, strict, async () => { calls.push(command); return { command }; }, before);
+      expect(scan.mode).toBe("strict-inspection-no-exception");
+      expect(scan.evidence.command).toBe(command);
+    }
+    expect(calls).toEqual(["exposure", "artifact"]);
+    const audit = evaluateAudit(result(), policy); // full report is still evaluated
+    expect(() => evaluateDependencyDecision(policy, strict, before(), audit, foundation())).toThrow(/forbidden/);
+  });
+  it("strict main inspections propagate scanner failures and continue to run after expiry", async () => {
+    const strict = pushContext("main");
+    await expect(runInspection(policy, strict, async () => { throw Error("inspection failed"); }, before)).rejects.toThrow(/inspection failed/);
+    const scanned = await runInspection(policy, strict, async () => "scanned", () => new Date(policy.expiresAt));
+    expect(scanned.evidence).toBe("scanned");
+  });
+  it("fails an unauthorized workflow instead of reporting an unexecuted inspection as passed", async () => {
+    let called = false;
+    await expect(runInspection(policy, { ...pushContext("main"), workflowRef: "wrong" }, async () => { called = true; })).rejects.toThrow(/workflow/);
+    expect(called).toBe(false); // invalid execution identity fails; not a successful bypass
+  });
+  it("rejects an inspection that crosses expiry", async () => {
+    const times = [before(), new Date(policy.expiresAt)];
+    await expect(runInspection(policy, context(), async () => "scanned", () => times.shift())).rejects.toThrow(/expired/);
+  });
+  it("clean strict main audit succeeds without an exception; clean develop still observes expiry", () => {
+    const clean = { status: "sin hallazgos" };
+    const decision = evaluateDependencyDecision(policy, pushContext("main"), new Date(policy.expiresAt), clean, foundation());
+    expect(decision.temporaryAcceptance).toBe(false);
+    expect(decision.acceptanceGate).toBe("strict-clean-audit");
+    expect(() => evaluateDependencyDecision(policy, pushContext(), new Date(policy.expiresAt), clean, foundation())).toThrow(/expired/);
+  });
+  it.each([context(), pushContext()])("requires the Linux gate before accepting the approved root: %j", (allowed) => {
+    const audit = evaluateAudit(result(), policy);
+    const decision = evaluateDependencyDecision(policy, allowed, before(), audit, foundation());
+    expect(decision.temporaryAcceptance).toBe(true);
+    expect(decision.acceptanceGate).toBe("verified-linux-foundation");
+    expect(() => evaluateDependencyDecision(policy, allowed, before(), audit, { ...foundation(), result: "failure" })).toThrow(/Foundation/);
+    expect(() => evaluateDependencyDecision(policy, allowed, before(), audit, { ...foundation(), revision: "d".repeat(40) })).toThrow(/revisions differ/);
+    expect(() => evaluateDependencyDecision(policy, allowed, new Date(policy.expiresAt), audit, foundation())).toThrow(/expired/);
   });
   it.each(["failure", "cancelled", "skipped", undefined])("rejects unsuccessful foundation: %s", (state) => {
     expect(() => evaluateFoundation(context(), { result: state, revision: context().revision, inventoryHash: "a".repeat(64) })).toThrow();

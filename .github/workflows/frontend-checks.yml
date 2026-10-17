@@ -1,7 +1,8 @@
 name: Frontend Next.js checks
 on:
   push:
-    branches: [develop, main, 'feature/**', 'codex/**']
+    # Working branches are checked through their PR; main retains strict scanning.
+    branches: [develop, main]
     paths: ['apps/web/**', '.github/security/**', 'docs/security-backlog.md', 'docs/verification-pr01.md', 'docs/adr/0001-frontend-foundation.md', '.github/workflows/frontend-checks.yml', 'scripts/scan-secrets.mjs']
   pull_request:
     branches: [develop, main]
