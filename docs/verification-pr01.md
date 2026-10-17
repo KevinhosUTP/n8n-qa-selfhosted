@@ -198,7 +198,7 @@ Repeated local checks:
 | Physical artifact | PASS; BUILD_ID `AFkCf2rgJhtAEtfMPszR_`, 1,481 entries, five traces; SHA-256 `ed98617a4a2d5d176cf12699d08a81c446d85a518fa57d332434d26ede04fad6`; `linuxVerified: false` |
 | Full audit | Same four high nodes/one approved root; npm exits 1. Local diagnostic explicitly reports `temporaryAcceptance: false`, not CI acceptance |
 | Python compilation / 15 unittest tests / Streamlit | PASS; unchanged tests and workflow; existing deprecation/bare-mode warnings only |
-| Secrets | Full committed-history result and Linux result recorded after publication |
+| Secrets | PASS: Gitleaks 8.30.1, 31 local commits through `d0d748a`; full Linux fetched history also passes |
 
 Added fixtures cover actual GitHub payload-to-context extraction for push and PR,
 different internal PR numbers, merge versus head SHA, exact authorized workflow/ref,
@@ -209,8 +209,31 @@ Strict main callbacks exercise both complete inspections, propagate scanner
 failures and deny acceptance of the approved vulnerable report. Existing negative
 audit, dependency, artifact/link, Linux/evidence and expiry tests are retained.
 
-Current publication: Linux CI pending. Acceptance and readiness for final merge
-review require successful checks on the latest published commit. Actual develop
-push execution can only be verified after a separately authorized future merge;
-fixtures and a PR run are not claimed as a real develop push. Main/fork behavior
-is tested with synthetic contexts, not by pushing or opening unauthorized PRs.
+Continuity implementation `d0d748ab3b3d5478a8ac3002610e24f066794fbd` passed actual
+GitHub Linux execution:
+
+| Remote check | Result and evidence |
+| --- | --- |
+| Linux foundation | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39043946626/job/117428832446): clean install, lint, 169 tests, compiler boundary, typecheck, exposure, credential-free build, HTTP smoke and artifact inspection |
+| Full audit | [PASS with temporary acceptance](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39043946626/job/117429014046): raw npm exit 1, four high nodes/one root, unchanged lock hash and verified Linux foundation |
+| Secrets | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39043946626/job/117428832597): fetched full Git history |
+| Unchanged Python workflow | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39043946635/job/117428832268): compileall, all 15 regressions and Streamlit smoke |
+
+Recorded workflow ref:
+`KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/pull/4/merge`.
+Evaluated merge-test revision: `110bcad735d10049bb1b2f13c0ee3ef3e3490481` (not an
+actual merge). BUILD_ID `DBodPYiPjzWBnMIjhyxmT`; 1,251 inventory entries and five
+traces; inventory SHA-256
+`f005d4317ba3e3bc266a5673657d3ddc9a93ab40b507f2776383a85f99c78084`.
+The artifact reports `linuxVerified: true` and inspection-only
+`temporaryAcceptance: false`. The dependencies report grants acceptance only with
+foundation `success` and that exact revision/inventory hash; expiry remains
+`2026-11-01T04:59:00Z`. No affected executable code or unsafe link was detected.
+
+This subsequent evidence publication changes documentation only and reruns the
+checks; final delivery/PR description records the latest publication results.
+Acceptance and readiness for final merge review require successful checks on the
+latest published commit. Actual develop push execution can only be verified after
+a separately authorized future merge; fixtures and a PR run are not claimed as a
+real develop push. Main/fork behavior is tested with synthetic contexts, not by
+pushing or opening unauthorized PRs. PR #3 retains `b9bc4ca`; no merge or deployment.
