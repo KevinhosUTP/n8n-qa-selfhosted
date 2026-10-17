@@ -1,0 +1,52 @@
+.button {
+  --button-bg: transparent;
+  --button-text: var(--kl-color-text);
+  --button-border: transparent;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kl-spacing-8);
+  min-height: var(--kl-button-min-height);
+  width: var(--kl-button-reference-width);
+  min-width: var(--kl-button-min-height);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--kl-spacing-12) - var(--kl-button-border));
+  border: var(--kl-button-border) solid var(--button-border);
+  border-radius: var(--kl-radius-12);
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font: var(--kl-type-label-weight) var(--kl-type-label-size) / var(--kl-type-label-line) var(--kl-font-inter), sans-serif;
+  letter-spacing: var(--kl-type-label-tracking);
+  text-align: center;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  cursor: pointer;
+  transition: background-color var(--kl-button-hover-ms) ease-out, color var(--kl-button-hover-ms) ease-out, border-color var(--kl-button-hover-ms) ease-out;
+}
+.primary { --button-bg: var(--kl-color-accent); --button-text: var(--kl-color-background); }
+.secondary { --button-bg: var(--kl-color-surface); --button-border: var(--kl-color-control-border); }
+.destructive {
+  --button-bg: var(--kl-color-destructive-default);
+  --button-border: var(--kl-color-critical);
+  --button-text: var(--kl-button-destructive-text);
+}
+@media (hover: hover) and (pointer: fine) {
+  .secondary:hover:not(:disabled), .tertiary:hover:not(:disabled) { --button-bg: var(--kl-color-raised); }
+  .destructive:hover:not(:disabled) { --button-bg: var(--kl-color-destructive-hover); }
+}
+.button:active:not(:disabled) { transition-duration: var(--kl-button-pressed-ms); }
+.secondary:active:not(:disabled), .tertiary:active:not(:disabled) { --button-bg: var(--kl-color-raised); }
+.destructive:active:not(:disabled) { --button-bg: var(--kl-color-destructive-pressed); }
+/* Keep focus visible without shifting text or changing the native hit area. */
+.button:focus-visible { outline: var(--kl-button-focus) solid var(--kl-color-accent); outline-offset: var(--kl-button-focus); }
+.button:disabled { cursor: default; }
+.primary:disabled:not([data-loading]), .secondary:disabled:not([data-loading]), .tertiary:disabled:not([data-loading]) { opacity: var(--kl-button-disabled-opacity); }
+.secondary:disabled:not([data-loading]) { --button-border: var(--kl-color-border); }
+.destructive:disabled:not([data-loading]) {
+  --button-bg: var(--kl-color-raised);
+  --button-border: var(--kl-color-control-border);
+  --button-text: var(--kl-color-muted);
+}
+@media (prefers-reduced-motion: reduce) { .button { transition: none; } }

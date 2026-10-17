@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "handoffArchive": "KevoLint-Entrega-3C-Handoff.zip",
+  "archiveSha256": "6b5270ed7db44693650f79b64ed2f26d7cad31f0cfc62192974cc904378716aa",
+  "baseRevision": "d165fc4ee4f3f074de3f41b72654a59040aac941",
+  "figmaFile": "TtOBuTKdNPw6dYXVUP2nmd",
+  "sourceFiles": [
+    {
+      "filename": "assets.json",
+      "sha256": "408c2eddb1a48859ba8915c79d488dd9cdbe1033144d3c28a938491b4815df96"
+    },
+    {
+      "filename": "components.json",
+      "sha256": "fec008df65b903cc7c5f72331ea33aef98f37ee63be56653b68f2f1e6ad75ec7"
+    },
+    {
+      "filename": "contrast-checks.json",
+      "sha256": "7dc7b8add47a05be69ef957f87f1abcc27c72ccedac4314a54a19fe3f3451eca"
+    },
+    {
+      "filename": "fonts.json",
+      "sha256": "ec6e7555028a9a39cd6c62aa46df19be12839f98d5e1bdd39f5fc8183eb9a4e9"
+    },
+    {
+      "filename": "Handoff-tecnico-KevoLint.md",
+      "sha256": "56caa88e9145734efed26a22a5b9da837e40f2457478bb9f45c73fd724a698a8"
+    },
+    {
+      "filename": "README-Codex.md",
+      "sha256": "71a56d939e863f59c0fce0f4c0d9ab75d70b97c0c85c05c2c968b4ba7febeba4"
+    },
+    {
+      "filename": "SHA256SUMS.txt",
+      "sha256": "00feca036fb21b9e6e6ac62c9124000d47edfcdb7f869fdd1a23e7cde6e8ccc1"
+    },
+    {
+      "filename": "source-register.json",
+      "sha256": "cc8db267e613d4983ffb561b8948400e73d5e53dd2b7771b251214db7cea5321"
+    },
+    {
+      "filename": "tokens.json",
+      "sha256": "930a7e44eb154f839b4d82ce65c4cc0913a6c07c110a00392a46d4f47c6776ae"
+    }
+  ],
+  "originalSvgCount": 24,
+  "originalTokenCount": 61,
+  "policy": "Original source files and SVGs are byte-preserved; implementation mappings and the ISSUE-HC-01 override are separate."
+}

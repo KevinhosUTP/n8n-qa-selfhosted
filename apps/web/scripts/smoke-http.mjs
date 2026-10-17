@@ -4,6 +4,7 @@ import { once } from "node:events";
 import { readdir, readFile } from "node:fs/promises";
 import { createServer } from "node:net";
 import { dirname, join, resolve } from "node:path";
+import { createHash } from "node:crypto";
 import { setTimeout as delay } from "node:timers/promises";
 import { testEnvironment } from "./test-environment.mjs";
 import { prepareStandalone } from "./standalone-entry.mjs";
@@ -51,7 +52,7 @@ try {
   }
   assert.ok(ready, "Standalone server did not become ready.");
 
-  for (const [path, status] of [["/", 200], ["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404]]) {
+  for (const [path, status] of [["/", 200], ["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404]]) {
     const response = await fetch(`${origin}${path}`, { redirect: "manual", signal: AbortSignal.timeout(5000) });
     assert.equal(response.status, status, `Unexpected HTTP status for ${path}`);
     const body = await response.text();
@@ -63,6 +64,30 @@ try {
     assert.equal(response.headers.get("x-robots-tag"), "noindex, nofollow");
     assert.equal(response.headers.get("x-powered-by"), null);
     assert.equal(response.headers.get("content-security-policy"), null);
+
+    if (path === "/") {
+      const localFont = JSON.parse(await readFile("design-system/inter.json", "utf8"));
+      const fonts = [...body.matchAll(/<link[^>]+href="([^"]+\.woff2(?:\?[^"]*)?)"[^>]*>/g)];
+      assert.ok(fonts.length > 0, "No local font preload in production HTML");
+      for (const [, font] of fonts) {
+        const url = new URL(font, origin);
+        assert.equal(url.origin, origin, "External font request");
+        const responseFont = await fetch(url, { signal: AbortSignal.timeout(5000) });
+        assert.equal(responseFont.status, 200);
+        assert.equal(createHash("sha256").update(Buffer.from(await responseFont.arrayBuffer())).digest("hex"), localFont.fontSha256, "Production font differs from official binary");
+      }
+      assert.ok(!body.includes("data-kl-qa-theme"), "Unvalidated theme enabled on the production page");
+      const original = JSON.parse(await readFile("design-system/source/assets.json", "utf8"));
+      for (const asset of original.assets) {
+        const responseAsset = await fetch(`${origin}/brand/${asset.filename}`, { signal: AbortSignal.timeout(5000) });
+        assert.equal(responseAsset.status, 200, `Original SVG unavailable: ${asset.filename}`);
+        assert.equal(createHash("sha256").update(Buffer.from(await responseAsset.arrayBuffer())).digest("hex"), asset.sha256, "Published SVG integrity mismatch");
+      }
+      const license = await fetch(`${origin}/licenses/inter/LICENSE.txt`, { signal: AbortSignal.timeout(5000) });
+      assert.equal(license.status, 200);
+      assert.equal(createHash("sha256").update(Buffer.from(await license.arrayBuffer())).digest("hex"), localFont.licenseSha256);
+      console.log("PASS: 24 published original SVGs, local Inter binary and OFL license retain their approved hashes.");
+    }
 
     for (const [, asset] of body.matchAll(/<script[^>]+src="([^"]+)"/g)) {
       const assetUrl = new URL(asset, origin);

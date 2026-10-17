@@ -44,6 +44,8 @@ jobs:
         run: npm run lint
       - name: Unit tests
         run: npm test
+      - name: Real browser design checks (preinstalled Chrome, no package install)
+        run: npm run design:verify
       - name: Negative client/server compiler test
         run: npm run test:boundary
       - name: Typecheck generated route types

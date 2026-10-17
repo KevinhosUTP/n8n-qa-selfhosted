@@ -1,0 +1,12 @@
+{
+  "id": "ISSUE-HC-01",
+  "authorization": "PR02 formal approval: isolated destructive-button foreground correction",
+  "scope": "QA-only high-contrast context; no public theme switch or automatic activation",
+  "property": "--kl-button-destructive-text",
+  "foregroundToken": "VariableID:2:11",
+  "mode": "High contrast",
+  "replacesForegroundToken": "VariableID:2:25",
+  "reason": "The original critical foreground on white is 2.18:1; using the existing background token is 19.68:1. Validate effective rendered states and interaction separately.",
+  "globalCriticalTokenChanged": false,
+  "fullHighContrastThemeApproved": false
+}

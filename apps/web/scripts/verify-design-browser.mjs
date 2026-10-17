@@ -1,0 +1,56 @@
+import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { once } from "node:events";
+import { readFile, appendFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
+import { testEnvironment } from "./test-environment.mjs";
+import { assertNoDesignPreview } from "./check-design-build.mjs";
+
+await assertNoDesignPreview(process.cwd());
+const preview = spawn(process.execPath, ["scripts/design-preview.mjs"], {
+  env: testEnvironment({ NODE_ENV: "development" }), stdio: ["ignore", "inherit", "inherit", "ipc"], windowsHide: true,
+});
+let startupError;
+preview.once("error", (error) => { startupError = error; });
+try {
+  let ready = false;
+  for (let i = 0; i < 150; i++) {
+    assert.ok(!startupError && preview.exitCode === null, "Design preview failed to start");
+    try {
+      const response = await fetch("http://127.0.0.1:3102/pr02-design-preview", { signal: AbortSignal.timeout(1000) });
+      if (response.status === 200 && (await response.text()).includes("PR02 · Validación local")) { ready = true; break; }
+    } catch { /* startup in progress */ }
+    await delay(200);
+  }
+  assert.ok(ready, "Design preview did not become ready");
+  const check = spawn(process.execPath, ["scripts/check-design-browser.mjs"], { stdio: "inherit", windowsHide: true });
+  const limit = setTimeout(() => check.kill(), 120_000);
+  try {
+    const [code] = await once(check, "exit");
+    assert.equal(code, 0, "Real-browser design verification failed");
+  } finally { clearTimeout(limit); }
+  const report = JSON.parse(await readFile(resolve("../../.tools/pr02/browser/report.json"), "utf8"));
+  assert.equal(report.passed, true);
+  const label = report.typography.find((t) => t.role === "type-label");
+  const hc = report.states.filter((s) => s.id === "hc-destructive");
+  const summary = [
+    "## PR02 · Real browser design verification",
+    `Revision: ${report.sourceRevision}; browser: ${report.browser.product}.`,
+    `PASS: ${report.responsive.length} route/viewport samples; ${report.states.length} rendered state observations.`,
+    "PASS: native Tab/Shift+Tab, Enter, Space, disabled/loading, focus visible and reduced motion.",
+    `Local font: ${report.platformFont.fonts.map((f) => f.familyName).join(", ")}; Label ${label.size}/${label.lineHeight}, weight ${label.weight}, text width ${label.textWidth}px.`,
+    `ISSUE-HC-01: ${hc.map((s) => `${s.state} ${s.contrast.toFixed(2)}:1`).join("; ")}.`,
+    "PASS: same-origin HTTP resources, original SVG geometry and CSS zoom 200% reflow.",
+    "Not claimed: integral WCAG certification, screen-reader testing or manual browser-menu zoom.",
+  ].join("\n\n");
+  console.log(summary);
+  if (process.env.GITHUB_ACTIONS === "true" && process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
+} finally {
+  if (preview.exitCode === null && !startupError) {
+    const exited = once(preview, "exit");
+    preview.send("stop");
+    await Promise.race([exited, delay(10_000).then(() => { throw new Error("Preview cleanup did not finish"); })]);
+  }
+  await assertNoDesignPreview(process.cwd());
+}

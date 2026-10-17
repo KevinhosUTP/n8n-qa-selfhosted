@@ -1,0 +1,6 @@
+# Preserve exact approved source, SVG and license bytes across Windows/Linux.
+design-system/source/* -text whitespace=-blank-at-eof
+public/brand/*.svg -text
+public/licenses/inter/LICENSE.txt -text
+src/assets/fonts/inter/*.woff2 binary
+src/styles/tokens.generated.css text eol=lf
