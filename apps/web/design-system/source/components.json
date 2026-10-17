@@ -1,0 +1,4223 @@
+{
+  "count": 67,
+  "components": [
+    {
+      "id": "3:2",
+      "name": "Icon/workflow",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:2",
+          "Icon/workflow",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-2",
+      "reactName": "Icon_workflow",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:8",
+      "name": "Icon/upload",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:8",
+          "Icon/upload",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-8",
+      "reactName": "Icon_upload",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:11",
+      "name": "Icon/shield",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:11",
+          "Icon/shield",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-11",
+      "reactName": "Icon_shield",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:15",
+      "name": "Icon/check",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:15",
+          "Icon/check",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-15",
+      "reactName": "Icon_check",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:18",
+      "name": "Icon/alert",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:18",
+          "Icon/alert",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-18",
+      "reactName": "Icon_alert",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:22",
+      "name": "Icon/clock",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:22",
+          "Icon/clock",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-22",
+      "reactName": "Icon_clock",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:26",
+      "name": "Icon/search",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:26",
+          "Icon/search",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-26",
+      "reactName": "Icon_search",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:30",
+      "name": "Icon/menu",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:30",
+          "Icon/menu",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-30",
+      "reactName": "Icon_menu",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:33",
+      "name": "Icon/arrow",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:33",
+          "Icon/arrow",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-33",
+      "reactName": "Icon_arrow",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:36",
+      "name": "Icon/plus",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:36",
+          "Icon/plus",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-36",
+      "reactName": "Icon_plus",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:39",
+      "name": "Icon/dashboard",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:39",
+          "Icon/dashboard",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-39",
+      "reactName": "Icon_dashboard",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:45",
+      "name": "Icon/history",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:45",
+          "Icon/history",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-45",
+      "reactName": "Icon_history",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:48",
+      "name": "Icon/plans",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:48",
+          "Icon/plans",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-48",
+      "reactName": "Icon_plans",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:52",
+      "name": "Icon/settings",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:52",
+          "Icon/settings",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-52",
+      "reactName": "Icon_settings",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:56",
+      "name": "Icon/close",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:56",
+          "Icon/close",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-56",
+      "reactName": "Icon_close",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:59",
+      "name": "Icon/file",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:59",
+          "Icon/file",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-59",
+      "reactName": "Icon_file",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:63",
+      "name": "Icon/chevron",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:63",
+          "Icon/chevron",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-63",
+      "reactName": "Icon_chevron",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:66",
+      "name": "Icon/lock",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:66",
+          "Icon/lock",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-66",
+      "reactName": "Icon_lock",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:194",
+      "name": "Button",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#3:72",
+          "TEXT",
+          "Continuar",
+          null
+        ],
+        [
+          "Icon#3:73",
+          "INSTANCE_SWAP",
+          "3:33",
+          null
+        ],
+        [
+          "Show icon#3:74",
+          "BOOLEAN",
+          false,
+          null
+        ],
+        [
+          "Style",
+          "VARIANT",
+          "Primary",
+          [
+            "Primary",
+            "Secondary",
+            "Tertiary",
+            "Destructive"
+          ]
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Hover",
+            "Pressed",
+            "Focus",
+            "Disabled",
+            "Loading"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:70",
+          "Style=Primary, State=Default",
+          240,
+          44
+        ],
+        [
+          "3:75",
+          "Style=Primary, State=Hover",
+          240,
+          44
+        ],
+        [
+          "3:80",
+          "Style=Primary, State=Pressed",
+          240,
+          44
+        ],
+        [
+          "3:85",
+          "Style=Primary, State=Focus",
+          240,
+          44
+        ],
+        [
+          "3:90",
+          "Style=Primary, State=Disabled",
+          240,
+          44
+        ],
+        [
+          "3:95",
+          "Style=Primary, State=Loading",
+          240,
+          44
+        ],
+        [
+          "3:101",
+          "Style=Secondary, State=Default",
+          240,
+          44
+        ],
+        [
+          "3:106",
+          "Style=Secondary, State=Hover",
+          240,
+          44
+        ],
+        [
+          "3:111",
+          "Style=Secondary, State=Pressed",
+          240,
+          44
+        ],
+        [
+          "3:116",
+          "Style=Secondary, State=Focus",
+          240,
+          44
+        ],
+        [
+          "3:121",
+          "Style=Secondary, State=Disabled",
+          240,
+          44
+        ],
+        [
+          "3:126",
+          "Style=Secondary, State=Loading",
+          240,
+          44
+        ],
+        [
+          "3:132",
+          "Style=Tertiary, State=Default",
+          240,
+          44
+        ],
+        [
+          "3:137",
+          "Style=Tertiary, State=Hover",
+          240,
+          44
+        ],
+        [
+          "3:142",
+          "Style=Tertiary, State=Pressed",
+          240,
+          44
+        ],
+        [
+          "3:147",
+          "Style=Tertiary, State=Focus",
+          240,
+          44
+        ],
+        [
+          "3:152",
+          "Style=Tertiary, State=Disabled",
+          240,
+          44
+        ],
+        [
+          "3:157",
+          "Style=Tertiary, State=Loading",
+          240,
+          44
+        ],
+        [
+          "3:163",
+          "Style=Destructive, State=Default",
+          240,
+          44
+        ],
+        [
+          "3:168",
+          "Style=Destructive, State=Hover",
+          240,
+          44
+        ],
+        [
+          "3:173",
+          "Style=Destructive, State=Pressed",
+          240,
+          44
+        ],
+        [
+          "3:178",
+          "Style=Destructive, State=Focus",
+          240,
+          44
+        ],
+        [
+          "3:183",
+          "Style=Destructive, State=Disabled",
+          240,
+          44
+        ],
+        [
+          "3:188",
+          "Style=Destructive, State=Loading",
+          240,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-194",
+      "reactName": "Button",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:226",
+      "name": "SeverityBadge",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#3:80",
+          "TEXT",
+          "Crítico",
+          null
+        ],
+        [
+          "Tone",
+          "VARIANT",
+          "critical",
+          [
+            "critical",
+            "warning",
+            "success",
+            "accent",
+            "muted"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:195",
+          "Tone=critical",
+          79,
+          32
+        ],
+        [
+          "3:201",
+          "Tone=warning",
+          111,
+          32
+        ],
+        [
+          "3:207",
+          "Tone=success",
+          58,
+          32
+        ],
+        [
+          "3:212",
+          "Tone=accent",
+          74,
+          32
+        ],
+        [
+          "3:220",
+          "Tone=muted",
+          110,
+          32
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-226",
+      "reactName": "SeverityBadge",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:257",
+      "name": "Input",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#3:99",
+          "TEXT",
+          "Correo electrónico",
+          null
+        ],
+        [
+          "Value#3:100",
+          "TEXT",
+          "tu@correo.com",
+          null
+        ],
+        [
+          "Hint#3:101",
+          "TEXT",
+          " ",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Hover",
+            "Focus",
+            "Error",
+            "Disabled",
+            "Success"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:227",
+          "State=Default",
+          350,
+          96
+        ],
+        [
+          "3:232",
+          "State=Hover",
+          350,
+          96
+        ],
+        [
+          "3:237",
+          "State=Focus",
+          350,
+          96
+        ],
+        [
+          "3:242",
+          "State=Error",
+          350,
+          96
+        ],
+        [
+          "3:247",
+          "State=Disabled",
+          350,
+          96
+        ],
+        [
+          "3:252",
+          "State=Success",
+          350,
+          96
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-257",
+      "reactName": "Input",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:274",
+      "name": "NavItem",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Icon#3:106",
+          "INSTANCE_SWAP",
+          "3:39",
+          null
+        ],
+        [
+          "Label#3:107",
+          "TEXT",
+          "Dashboard",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Active"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:258",
+          "State=Default",
+          208,
+          44
+        ],
+        [
+          "3:266",
+          "State=Active",
+          208,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-274",
+      "reactName": "NavItem",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:275",
+      "name": "KPIStat",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Title#3:108",
+          "TEXT",
+          "Créditos disponibles",
+          null
+        ],
+        [
+          "Value#3:109",
+          "TEXT",
+          "2 / 3",
+          null
+        ],
+        [
+          "Caption#3:110",
+          "TEXT",
+          "Prueba única · sin renovación",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:275",
+          "KPIStat",
+          320,
+          148
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-275",
+      "reactName": "KpiCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:294",
+      "name": "UsageMeter",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Title#3:117",
+          "TEXT",
+          "100% de cuota utilizada",
+          null
+        ],
+        [
+          "Caption#3:118",
+          "TEXT",
+          "Periodo de ejemplo · 100 auditorías / mes",
+          null
+        ],
+        [
+          "Available#106:12",
+          "TEXT",
+          "67 de 100 disponibles",
+          null
+        ],
+        [
+          "Status#106:16",
+          "TEXT",
+          "Consumo normal",
+          null
+        ],
+        [
+          "Usage",
+          "VARIANT",
+          "33",
+          [
+            "33",
+            "80",
+            "100",
+            "0",
+            "49",
+            "50",
+            "79",
+            "0.2",
+            "1",
+            "10",
+            "33.3",
+            "66.7",
+            "Dynamic"
+          ]
+        ],
+        [
+          "Size",
+          "VARIANT",
+          "Full",
+          [
+            "Full",
+            "Compact",
+            "FullM",
+            "FullT",
+            "FullS"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:279",
+          "Usage=33, Size=Full",
+          688,
+          152
+        ],
+        [
+          "3:284",
+          "Usage=80, Size=Full",
+          688,
+          182
+        ],
+        [
+          "3:289",
+          "Usage=100, Size=Full",
+          688,
+          208
+        ],
+        [
+          "106:525",
+          "Usage=0, Size=Full",
+          688,
+          152
+        ],
+        [
+          "106:539",
+          "Usage=0, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:564",
+          "Usage=33, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:578",
+          "Usage=49, Size=Full",
+          688,
+          152
+        ],
+        [
+          "106:592",
+          "Usage=49, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:606",
+          "Usage=50, Size=Full",
+          688,
+          152
+        ],
+        [
+          "106:620",
+          "Usage=50, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:634",
+          "Usage=79, Size=Full",
+          688,
+          152
+        ],
+        [
+          "106:648",
+          "Usage=79, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:673",
+          "Usage=80, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "106:698",
+          "Usage=100, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "138:769",
+          "Usage=0.2, Size=Full",
+          688,
+          152
+        ],
+        [
+          "138:783",
+          "Usage=0.2, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "138:797",
+          "Usage=1, Size=Full",
+          688,
+          152
+        ],
+        [
+          "138:811",
+          "Usage=1, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "138:825",
+          "Usage=10, Size=Full",
+          688,
+          152
+        ],
+        [
+          "138:839",
+          "Usage=10, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "138:853",
+          "Usage=33.3, Size=Full",
+          688,
+          152
+        ],
+        [
+          "138:867",
+          "Usage=33.3, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "138:881",
+          "Usage=66.7, Size=Full",
+          688,
+          152
+        ],
+        [
+          "138:895",
+          "Usage=66.7, Size=Compact",
+          176,
+          50
+        ],
+        [
+          "192:898",
+          "Usage=Dynamic, Size=Full",
+          1136,
+          152
+        ],
+        [
+          "192:912",
+          "Usage=Dynamic, Size=Compact",
+          174,
+          50
+        ],
+        [
+          "232:536",
+          "Usage=Dynamic, Size=FullM",
+          350,
+          152
+        ],
+        [
+          "232:550",
+          "Usage=Dynamic, Size=FullT",
+          704,
+          152
+        ],
+        [
+          "232:564",
+          "Usage=Dynamic, Size=FullS",
+          288,
+          172
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-294",
+      "reactName": "UsageMeter",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:336",
+      "name": "PlanCard",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Plan",
+          "VARIANT",
+          "Starter",
+          [
+            "Starter",
+            "Pro",
+            "Power"
+          ]
+        ],
+        [
+          "Interaction",
+          "VARIANT",
+          "Rest",
+          [
+            "Rest",
+            "Hover"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:295",
+          "Plan=Starter, Interaction=Rest",
+          336,
+          416
+        ],
+        [
+          "3:310",
+          "Plan=Pro, Interaction=Rest",
+          336,
+          416
+        ],
+        [
+          "3:323",
+          "Plan=Power, Interaction=Rest",
+          336,
+          416
+        ],
+        [
+          "120:756",
+          "Plan=Starter, Interaction=Hover",
+          336,
+          416
+        ],
+        [
+          "120:771",
+          "Plan=Pro, Interaction=Hover",
+          336,
+          416
+        ],
+        [
+          "120:786",
+          "Plan=Power, Interaction=Hover",
+          336,
+          416
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-336",
+      "reactName": "PlanCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:368",
+      "name": "Alert",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Title#3:131",
+          "TEXT",
+          "Información importante",
+          null
+        ],
+        [
+          "Body#3:132",
+          "TEXT",
+          "Revisa el detalle antes de continuar.",
+          null
+        ],
+        [
+          "Tone",
+          "VARIANT",
+          "accent",
+          [
+            "accent",
+            "warning",
+            "critical",
+            "success"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:337",
+          "Tone=accent",
+          688,
+          104
+        ],
+        [
+          "3:345",
+          "Tone=warning",
+          688,
+          104
+        ],
+        [
+          "3:353",
+          "Tone=critical",
+          688,
+          104
+        ],
+        [
+          "3:361",
+          "Tone=success",
+          688,
+          104
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-368",
+      "reactName": "Alert",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:369",
+      "name": "FindingCard",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Title#3:133",
+          "TEXT",
+          "Posible secreto incrustado",
+          null
+        ],
+        [
+          "Meta#3:134",
+          "TEXT",
+          "Ciberseguridad e Integraciones · SEC-001 · Nodo: HTTP Request",
+          null
+        ],
+        [
+          "Evidence#3:135",
+          "TEXT",
+          "Evidencia: Authorization: Bearer [REDACTADO]",
+          null
+        ],
+        [
+          "Recommendation#3:136",
+          "TEXT",
+          "Mueve el valor a credenciales y rota el secreto si fue expuesto.",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:369",
+          "FindingCard",
+          1008,
+          184
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-369",
+      "reactName": "FindingCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:402",
+      "name": "AuditProgress",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:402",
+          "AuditProgress",
+          688,
+          376
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-402",
+      "reactName": "AuditProgressPanel",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:421",
+      "name": "Accordion",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Question#3:148",
+          "TEXT",
+          "¿Necesito conectar mi instancia de n8n?",
+          null
+        ],
+        [
+          "Answer#3:149",
+          "TEXT",
+          "No. Importa un JSON exportado; el análisis es estático y no ejecuta tu workflow.",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Closed",
+          [
+            "Closed",
+            "Open"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:416",
+          "State=Closed",
+          688,
+          74
+        ],
+        [
+          "3:418",
+          "State=Open",
+          688,
+          110
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-421",
+      "reactName": "Accordion",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:422",
+      "name": "EmptyState",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Title#3:151",
+          "TEXT",
+          "Tu primera auditoría empieza aquí",
+          null
+        ],
+        [
+          "Body#3:152",
+          "TEXT",
+          "Importa un workflow de ejemplo para conocer tus hallazgos.",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:422",
+          "EmptyState",
+          688,
+          276
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-422",
+      "reactName": "EmptyState",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:436",
+      "name": "Skeleton",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:436",
+          "Skeleton",
+          320,
+          148
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-436",
+      "reactName": "Skeleton",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "3:440",
+      "name": "Pagination",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:440",
+          "Pagination",
+          350,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=3-440",
+      "reactName": "Pagination",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:173",
+      "name": "PublicHeader",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Device",
+          "VARIANT",
+          "D",
+          [
+            "D",
+            "M"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          120,
+          16,
+          120
+        ],
+        "gap": 24,
+        "radius": 8,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:125",
+          "Device=D",
+          1440,
+          80
+        ],
+        [
+          "4:159",
+          "Device=M",
+          390,
+          68
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-173",
+      "reactName": "PublicHeader",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:174",
+      "name": "AppSidebar",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:174",
+          "AppSidebar",
+          240,
+          900
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-174",
+      "reactName": "AppSidebar",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:285",
+      "name": "AppTopbar",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Breadcrumb#4:1",
+          "TEXT",
+          "Espacio personal / Dashboard",
+          null
+        ],
+        [
+          "Device",
+          "VARIANT",
+          "D",
+          [
+            "D",
+            "M"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 16,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:259",
+          "Device=D",
+          1200,
+          72
+        ],
+        [
+          "4:271",
+          "Device=M",
+          390,
+          64
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-285",
+      "reactName": "AppTopbar",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:352",
+      "name": "Footer",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Device",
+          "VARIANT",
+          "D",
+          [
+            "D",
+            "M"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          48,
+          120,
+          48,
+          120
+        ],
+        "gap": 24,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:286",
+          "Device=D",
+          1440,
+          228
+        ],
+        [
+          "4:319",
+          "Device=M",
+          390,
+          420
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-352",
+      "reactName": "Footer",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:402",
+      "name": "UploadDropzone",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "State",
+          "VARIANT",
+          "Empty",
+          [
+            "Empty",
+            "Ready",
+            "Error",
+            "Loading"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:353",
+          "State=Empty",
+          688,
+          240
+        ],
+        [
+          "4:365",
+          "State=Ready",
+          688,
+          240
+        ],
+        [
+          "4:378",
+          "State=Error",
+          688,
+          240
+        ],
+        [
+          "4:390",
+          "State=Loading",
+          688,
+          240
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-402",
+      "reactName": "UploadDropzone",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:403",
+      "name": "VersionSelector",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:403",
+          "VersionSelector",
+          688,
+          112
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-403",
+      "reactName": "VersionSelector",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:517",
+      "name": "Dialog",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Kind",
+          "VARIANT",
+          "DeleteAudit",
+          [
+            "DeleteAudit",
+            "DeleteAccount",
+            "SessionExpired",
+            "VersionInfo",
+            "BetaJoined",
+            "PreferencesSaved",
+            "CancelPlan",
+            "UserMenu"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:411",
+          "Kind=DeleteAudit",
+          480,
+          300
+        ],
+        [
+          "4:426",
+          "Kind=DeleteAccount",
+          480,
+          300
+        ],
+        [
+          "4:439",
+          "Kind=SessionExpired",
+          480,
+          300
+        ],
+        [
+          "4:452",
+          "Kind=VersionInfo",
+          480,
+          300
+        ],
+        [
+          "4:465",
+          "Kind=BetaJoined",
+          480,
+          300
+        ],
+        [
+          "4:478",
+          "Kind=PreferencesSaved",
+          480,
+          300
+        ],
+        [
+          "4:491",
+          "Kind=CancelPlan",
+          480,
+          300
+        ],
+        [
+          "4:504",
+          "Kind=UserMenu",
+          480,
+          300
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-517",
+      "reactName": "Dialog",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:524",
+      "name": "Checkbox",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#4:5",
+          "TEXT",
+          "Sin seleccionar",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Off",
+          [
+            "Off",
+            "On"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:518",
+          "State=Off",
+          240,
+          44
+        ],
+        [
+          "4:521",
+          "State=On",
+          240,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-524",
+      "reactName": "Checkbox",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:584",
+      "name": "CheckoutReturnStatus",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Title#4:16",
+          "TEXT",
+          "Verificando el pago",
+          null
+        ],
+        [
+          "Body#4:17",
+          "TEXT",
+          "La vuelta del proveedor no confirma el pago. Estamos esperando la validación segura.",
+          null
+        ],
+        [
+          "Status",
+          "VARIANT",
+          "Verifying",
+          [
+            "Verifying",
+            "Pending",
+            "Confirmed",
+            "Failed",
+            "Cancelled"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:525",
+          "Status=Verifying",
+          688,
+          236
+        ],
+        [
+          "4:537",
+          "Status=Pending",
+          688,
+          236
+        ],
+        [
+          "4:549",
+          "Status=Confirmed",
+          688,
+          236
+        ],
+        [
+          "4:560",
+          "Status=Failed",
+          688,
+          236
+        ],
+        [
+          "4:572",
+          "Status=Cancelled",
+          688,
+          236
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-584",
+      "reactName": "CheckoutReturnStatus",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "4:585",
+      "name": "Toast",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Label#4:18",
+          "TEXT",
+          "Acción completada · simulación",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:585",
+          "Toast",
+          480,
+          76
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-585",
+      "reactName": "Toast",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Toast and ToastFeedback map to one Toast primitive with tone/content props."
+    },
+    {
+      "id": "4:590",
+      "name": "Tooltip",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Label#4:19",
+          "TEXT",
+          "Los créditos se consumen solo al completar.",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "4:590",
+          "Tooltip",
+          320,
+          64
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=4-590",
+      "reactName": "Tooltip",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:251",
+      "name": "Radio",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#16:2",
+          "TEXT",
+          "Opción de ejemplo",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Off",
+          [
+            "Off",
+            "On"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:245",
+          "State=Off",
+          320,
+          48
+        ],
+        [
+          "16:248",
+          "State=On",
+          320,
+          48
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-251",
+      "reactName": "RadioField",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:258",
+      "name": "Toggle",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#16:5",
+          "TEXT",
+          "Preferencia de ejemplo",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Off",
+          [
+            "Off",
+            "On"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:252",
+          "State=Off",
+          320,
+          48
+        ],
+        [
+          "16:255",
+          "State=On",
+          320,
+          48
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-258",
+      "reactName": "SwitchField",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:267",
+      "name": "Link",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#16:10",
+          "TEXT",
+          "Enlace accesible",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Hover",
+            "Focus",
+            "Disabled"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          8,
+          8,
+          8,
+          8
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:259",
+          "State=Default",
+          240,
+          44
+        ],
+        [
+          "16:261",
+          "State=Hover",
+          240,
+          44
+        ],
+        [
+          "16:263",
+          "State=Focus",
+          240,
+          44
+        ],
+        [
+          "16:265",
+          "State=Disabled",
+          240,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-267",
+      "reactName": "TextLink",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:277",
+      "name": "Select",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#16:17",
+          "TEXT",
+          "Selector de opción",
+          null
+        ],
+        [
+          "Value#16:18",
+          "TEXT",
+          "Perfil DEMO  ▾",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Focus",
+            "Error"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:268",
+          "State=Default",
+          350,
+          80
+        ],
+        [
+          "16:271",
+          "State=Focus",
+          350,
+          80
+        ],
+        [
+          "16:274",
+          "State=Error",
+          350,
+          80
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-277",
+      "reactName": "SelectField",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Share semantic control behavior across wrapper styles."
+    },
+    {
+      "id": "16:330",
+      "name": "Tabs",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Active",
+          "VARIANT",
+          "Todos",
+          [
+            "Todos",
+            "Críticos",
+            "Advertencias"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:278",
+          "Active=Todos",
+          688,
+          76
+        ],
+        [
+          "16:298",
+          "Active=Críticos",
+          688,
+          76
+        ],
+        [
+          "16:314",
+          "Active=Advertencias",
+          688,
+          76
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-330",
+      "reactName": "Tabs",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:331",
+      "name": "FileMetadata",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:331",
+          "FileMetadata",
+          350,
+          116
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-331",
+      "reactName": "FileMetadata",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:350",
+      "name": "SubscriptionStatus",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Status",
+          "VARIANT",
+          "Free",
+          [
+            "Free",
+            "Active",
+            "Pending",
+            "Cancelled",
+            "Failed"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:335",
+          "Status=Free",
+          480,
+          132
+        ],
+        [
+          "16:338",
+          "Status=Active",
+          480,
+          132
+        ],
+        [
+          "16:341",
+          "Status=Pending",
+          480,
+          132
+        ],
+        [
+          "16:344",
+          "Status=Cancelled",
+          480,
+          132
+        ],
+        [
+          "16:347",
+          "Status=Failed",
+          480,
+          132
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-350",
+      "reactName": "SubscriptionStatusCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:351",
+      "name": "TrialCard",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:351",
+          "TrialCard",
+          688,
+          232
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-351",
+      "reactName": "TrialQuotaCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:360",
+      "name": "BillingHistory",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:360",
+          "BillingHistory",
+          688,
+          112
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-360",
+      "reactName": "BillingHistory",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "16:380",
+      "name": "ToastFeedback",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#16:22",
+          "TEXT",
+          "Cambios guardados",
+          null
+        ],
+        [
+          "Tone",
+          "VARIANT",
+          "Success",
+          [
+            "Success",
+            "Warning",
+            "Error"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:363",
+          "Tone=Success",
+          480,
+          96
+        ],
+        [
+          "16:368",
+          "Tone=Warning",
+          480,
+          96
+        ],
+        [
+          "16:374",
+          "Tone=Error",
+          480,
+          96
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-380",
+      "reactName": "Toast",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Toast and ToastFeedback map to one Toast primitive with tone/content props."
+    },
+    {
+      "id": "16:387",
+      "name": "RetentionNotice",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Status",
+          "VARIANT",
+          "Expiring",
+          [
+            "Expiring",
+            "Expired"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "16:381",
+          "Status=Expiring",
+          688,
+          132
+        ],
+        [
+          "16:384",
+          "Status=Expired",
+          688,
+          132
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=16-387",
+      "reactName": "RetentionNotice",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "79:273",
+      "name": "Icon/data-flow",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "79:273",
+          "Icon/data-flow",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=79-273",
+      "reactName": "Icon_data-flow",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "79:279",
+      "name": "Icon/agent",
+      "type": "COMPONENT",
+      "properties": [],
+      "layout": {
+        "mode": "NONE",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 0,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "79:279",
+          "Icon/agent",
+          24,
+          24
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=79-279",
+      "reactName": "Icon_agent",
+      "classification": "icon",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "106:1464",
+      "name": "FilterField",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Label#106:76",
+          "TEXT",
+          "Buscar por nombre",
+          null
+        ],
+        [
+          "Value#106:77",
+          "TEXT",
+          "Nombre del workflow…",
+          null
+        ],
+        [
+          "Kind",
+          "VARIANT",
+          "Search",
+          [
+            "Search",
+            "Select"
+          ]
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Focus",
+            "Applied"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 8,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "106:712",
+          "Kind=Search, State=Default",
+          420,
+          70
+        ],
+        [
+          "106:807",
+          "Kind=Search, State=Focus",
+          420,
+          70
+        ],
+        [
+          "106:933",
+          "Kind=Search, State=Applied",
+          420,
+          70
+        ],
+        [
+          "106:1032",
+          "Kind=Select, State=Default",
+          184,
+          70
+        ],
+        [
+          "106:1159",
+          "Kind=Select, State=Focus",
+          184,
+          70
+        ],
+        [
+          "106:1289",
+          "Kind=Select, State=Applied",
+          184,
+          70
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=106-1464",
+      "reactName": "HistoryFilterField",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Share semantic control behavior across wrapper styles."
+    },
+    {
+      "id": "106:1631",
+      "name": "FullPageError",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Code",
+          "VARIANT",
+          "403",
+          [
+            "403",
+            "404",
+            "500",
+            "503"
+          ]
+        ],
+        [
+          "Device",
+          "VARIANT",
+          "D",
+          [
+            "D",
+            "M"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "gap": 16,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "106:1465",
+          "Code=403, Device=D",
+          640,
+          388
+        ],
+        [
+          "106:1487",
+          "Code=403, Device=M",
+          350,
+          436
+        ],
+        [
+          "106:1507",
+          "Code=404, Device=D",
+          640,
+          364
+        ],
+        [
+          "106:1527",
+          "Code=404, Device=M",
+          350,
+          412
+        ],
+        [
+          "106:1547",
+          "Code=500, Device=D",
+          640,
+          388
+        ],
+        [
+          "106:1567",
+          "Code=500, Device=M",
+          350,
+          468
+        ],
+        [
+          "106:1587",
+          "Code=503, Device=D",
+          640,
+          388
+        ],
+        [
+          "106:1609",
+          "Code=503, Device=M",
+          350,
+          436
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=106-1631",
+      "reactName": "FullPageError",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "120:726",
+      "name": "QAMotorCard",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Category#120:0",
+          "TEXT",
+          "Ciberseguridad e Integraciones",
+          null
+        ],
+        [
+          "Description#120:1",
+          "TEXT",
+          "Evidencias estáticas de riesgo.",
+          null
+        ],
+        [
+          "Icon#120:2",
+          "INSTANCE_SWAP",
+          "3:11",
+          null
+        ],
+        [
+          "Interaction",
+          "VARIANT",
+          "Rest",
+          [
+            "Rest",
+            "Hover"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 16,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "79:290",
+          "Interaction=Rest",
+          288,
+          224
+        ],
+        [
+          "120:719",
+          "Interaction=Hover",
+          288,
+          224
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=120-726",
+      "reactName": "QAMotorCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "120:736",
+      "name": "AuditTableRow",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Name#120:3",
+          "TEXT",
+          "Onboarding de clientes",
+          null
+        ],
+        [
+          "Date#120:4",
+          "TEXT",
+          "15 oct · 08:24",
+          null
+        ],
+        [
+          "Version#120:5",
+          "TEXT",
+          "Perfil DEMO",
+          null
+        ],
+        [
+          "Findings#120:6",
+          "TEXT",
+          "1 crítico · 2 alertas",
+          null
+        ],
+        [
+          "Status#120:7",
+          "TEXT",
+          "Completada",
+          null
+        ],
+        [
+          "Action#120:8",
+          "TEXT",
+          "Ver informe →",
+          null
+        ],
+        [
+          "Interaction",
+          "VARIANT",
+          "Rest",
+          [
+            "Rest",
+            "Hover"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "gap": 16,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:381",
+          "Interaction=Rest",
+          1056,
+          72
+        ],
+        [
+          "120:729",
+          "Interaction=Hover",
+          1056,
+          72
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=120-736",
+      "reactName": "AuditRow",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "120:753",
+      "name": "AuditCard",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Name#120:9",
+          "TEXT",
+          "Onboarding de clientes",
+          null
+        ],
+        [
+          "Meta#120:10",
+          "TEXT",
+          "15 oct · Perfil DEMO",
+          null
+        ],
+        [
+          "Interaction",
+          "VARIANT",
+          "Rest",
+          [
+            "Rest",
+            "Hover"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 12,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "3:388",
+          "Interaction=Rest",
+          350,
+          184
+        ],
+        [
+          "120:739",
+          "Interaction=Hover",
+          350,
+          184
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=120-753",
+      "reactName": "AuditListCard",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "120:851",
+      "name": "AuditLoader",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Phase",
+          "VARIANT",
+          "A",
+          [
+            "A",
+            "B",
+            "C",
+            "Reduced"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 12,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "120:827",
+          "Phase=A",
+          300,
+          44
+        ],
+        [
+          "120:833",
+          "Phase=B",
+          300,
+          44
+        ],
+        [
+          "120:839",
+          "Phase=C",
+          300,
+          44
+        ],
+        [
+          "120:845",
+          "Phase=Reduced",
+          300,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=120-851",
+      "reactName": "AuditLoader",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "120:911",
+      "name": "HeroReveal",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Phase",
+          "VARIANT",
+          "3",
+          [
+            "3",
+            "0",
+            "1",
+            "2",
+            "Reduced"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 8,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "120:861",
+          "Phase=3",
+          640,
+          286
+        ],
+        [
+          "120:871",
+          "Phase=0",
+          640,
+          286
+        ],
+        [
+          "120:881",
+          "Phase=1",
+          640,
+          286
+        ],
+        [
+          "120:891",
+          "Phase=2",
+          640,
+          286
+        ],
+        [
+          "120:901",
+          "Phase=Reduced",
+          640,
+          286
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=120-911",
+      "reactName": "HeroTitle",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "147:937",
+      "name": "MotionPreview",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Effect",
+          "VARIANT",
+          "Usage",
+          [
+            "Usage",
+            "Stats"
+          ]
+        ],
+        [
+          "Phase",
+          "VARIANT",
+          "Start",
+          [
+            "Start",
+            "End",
+            "Reduced"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap": 16,
+        "radius": 16,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "147:808",
+          "Effect=Usage, Phase=Start",
+          704,
+          344
+        ],
+        [
+          "147:830",
+          "Effect=Usage, Phase=End",
+          704,
+          374
+        ],
+        [
+          "147:852",
+          "Effect=Usage, Phase=Reduced",
+          704,
+          374
+        ],
+        [
+          "147:874",
+          "Effect=Stats, Phase=Start",
+          704,
+          338
+        ],
+        [
+          "147:895",
+          "Effect=Stats, Phase=End",
+          704,
+          338
+        ],
+        [
+          "147:916",
+          "Effect=Stats, Phase=Reduced",
+          704,
+          338
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=147-937",
+      "reactName": "MotionReferenceOnly",
+      "classification": "reference_only",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "199:1009",
+      "name": "FindingDetail / Content",
+      "type": "COMPONENT",
+      "properties": [
+        [
+          "Title#199:10",
+          "TEXT",
+          "Posible secreto incrustado",
+          null
+        ],
+        [
+          "Severity#199:11",
+          "TEXT",
+          "Crítico",
+          null
+        ],
+        [
+          "Engine#199:12",
+          "TEXT",
+          "Ciberseguridad e Integraciones",
+          null
+        ],
+        [
+          "Rule#199:13",
+          "TEXT",
+          "SEC-001",
+          null
+        ],
+        [
+          "Node#199:14",
+          "TEXT",
+          "HTTP Request",
+          null
+        ],
+        [
+          "Evidence#199:15",
+          "TEXT",
+          "Ruta: nodes[3].parameters.headerParameters\nAuthorization: Bearer [REDACTADO]",
+          null
+        ],
+        [
+          "Explanation#199:16",
+          "TEXT",
+          "Un literal con apariencia de secreto puede quedar expuesto al exportar el workflow. Esta señal estática requiere revisión manual.",
+          null
+        ],
+        [
+          "Recommendation#199:17",
+          "TEXT",
+          "Mueve el valor a credenciales, revisa el alcance del token y rótalo si hubo exposición. Vuelve a exportar y auditar.",
+          null
+        ]
+      ],
+      "layout": {
+        "mode": "VERTICAL",
+        "padding": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "gap": 24,
+        "radius": 0,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "199:1009",
+          "FindingDetail / Content",
+          412,
+          704
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=199-1009",
+      "reactName": "FindingDetail",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    },
+    {
+      "id": "199:1047",
+      "name": "ReportSelect",
+      "type": "COMPONENT_SET",
+      "properties": [
+        [
+          "Value#199:19",
+          "TEXT",
+          "Todos los motores",
+          null
+        ],
+        [
+          "State",
+          "VARIANT",
+          "Default",
+          [
+            "Default",
+            "Focus",
+            "Applied"
+          ]
+        ]
+      ],
+      "layout": {
+        "mode": "HORIZONTAL",
+        "padding": [
+          12,
+          12,
+          12,
+          12
+        ],
+        "gap": 8,
+        "radius": 12,
+        "stroke": 1,
+        "effects": []
+      },
+      "variants": [
+        [
+          "199:1032",
+          "State=Default",
+          328,
+          44
+        ],
+        [
+          "199:1037",
+          "State=Focus",
+          328,
+          44
+        ],
+        [
+          "199:1042",
+          "State=Applied",
+          328,
+          44
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=199-1047",
+      "reactName": "ReportFilterSelect",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Share semantic control behavior across wrapper styles."
+    },
+    {
+      "id": "393:752",
+      "name": "BrandLogo",
+      "type": "COMPONENT_SET",
+      "variants": [
+        [
+          "393:531",
+          "Composition=Horizontal, Surface=Dark",
+          380,
+          64.13390350341797
+        ],
+        [
+          "393:558",
+          "Composition=Horizontal, Surface=Light",
+          380,
+          64.13390350341797
+        ],
+        [
+          "393:574",
+          "Composition=Compact, Surface=Dark",
+          220,
+          123.03152465820312
+        ],
+        [
+          "393:600",
+          "Composition=Compact, Surface=Light",
+          220,
+          123.03152465820312
+        ],
+        [
+          "393:615",
+          "Composition=Wordmark, Surface=Dark",
+          300,
+          64.13390350341797
+        ],
+        [
+          "393:632",
+          "Composition=Wordmark, Surface=Light",
+          300,
+          64.13390350341797
+        ],
+        [
+          "393:642",
+          "Composition=Symbol, Surface=Dark",
+          64,
+          64
+        ],
+        [
+          "393:648",
+          "Composition=Symbol, Surface=Light",
+          64,
+          64
+        ],
+        [
+          "393:654",
+          "Composition=WithSignature, Surface=Dark",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:684",
+          "Composition=WithSignature, Surface=Light",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:703",
+          "Composition=WithDescriptor, Surface=Dark",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:733",
+          "Composition=WithDescriptor, Surface=Light",
+          380,
+          81.13390350341797
+        ]
+      ],
+      "layout": {
+        "note": "Official 3B component references 3A vector masters; preserve proportions."
+      },
+      "properties": [
+        [
+          "Composition",
+          "VARIANT",
+          "Horizontal",
+          [
+            "Horizontal",
+            "Compact",
+            "Wordmark",
+            "Symbol",
+            "WithSignature",
+            "WithDescriptor"
+          ]
+        ],
+        [
+          "Surface",
+          "VARIANT",
+          "Dark",
+          [
+            "Dark",
+            "Light"
+          ]
+        ]
+      ],
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-752",
+      "reactName": "BrandLogo",
+      "classification": "reusable",
+      "implementationStatus": "planned_not_implemented",
+      "reuseRule": "Use props/variants, not one React component per Figma frame."
+    }
+  ],
+  "motion": [
+    {
+      "id": "3:194",
+      "name": "Button",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "ON_PRESS"
+        },
+        {
+          "type": "MOUSE_LEAVE",
+          "delay": 0
+        },
+        {
+          "type": "MOUSE_UP",
+          "delay": 0
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        }
+      ],
+      "description": "Botones de 44 px. Focus visible 2 px. Disabled sin hotspot. Icon usa INSTANCE_SWAP. Reduced motion: navegación instantánea.\n\nEntrega 2 — movimiento\nComponente: Button y CTAs de navegación. Disparador: hover, pressed, clic, focus, disabled y loading. Duración: hover 180 ms, pressed 150 ms; contenido 280 ms EASE_OUT. Candidato: CSS/React, sin React Bits necesario. Desktop: hover con puntero fino; móvil: pressed/focus sin hover persistente. Movimiento reducido: transición instantánea al estado fina"
+    },
+    {
+      "id": "3:294",
+      "name": "UsageMeter",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "ON_PRESS"
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        }
+      ],
+      "description": "Cuota utilizada: verde 0–49%, naranja 50–79%, rojo 80–100%. Usage se enlaza a prototype/usageVariant o paidUsageVariant. Relleno con constraints SCALE; 0 oculta relleno. Disponible y periodo vinculados al banco correspondiente. Ver siete umbrales en la galería E2.\n\nEntrega 2 — movimiento\nComponente: UsageMeter Full/Compact. Disparador: cambio real de cuota utilizada. Duración candidata: 300 ms EASE_OUT; referencia nativa MotionPreview. Candidato: CSS para ancho/color; no es progreso del análisis"
+    },
+    {
+      "id": "3:336",
+      "name": "PlanCard",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "ON_PRESS"
+        },
+        {
+          "type": "MOUSE_LEAVE",
+          "delay": 0
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        },
+        {
+          "type": "DISSOLVE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        }
+      ],
+      "description": "Starter/Pro/Power sin cambios de cuota ni retención. Hover 180 ms, sin movimiento de layout; Pro conserva borde y recomendación. Reduced motion: estado instantáneo.\n\nEntrega 2 — movimiento\nComponente: tarjetas Starter, Pro y Power. Disparador: hover/focus y selección. Duración: 180 ms EASE_OUT para hover; navegación de contenido 280 ms donde el prototipo permite transición. Candidato: CSS; Spotlight Card solo como opción de landing. Desktop: borde/superficie sutil; móvil: pressed y foco, sin seg"
+    },
+    {
+      "id": "3:421",
+      "name": "Accordion",
+      "triggers": [
+        {
+          "type": "ON_CLICK"
+        }
+      ],
+      "transitions": [
+        {
+          "type": "DISSOLVE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "120:726",
+      "name": "QAMotorCard",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "MOUSE_LEAVE",
+          "delay": 0
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        }
+      ],
+      "description": "Hover representativo de 180 ms ease-out; conservar datos, altura y destinos. Con movimiento reducido, cambio instantáneo. Spotlight sutil en estado fijo; seguimiento continuo del puntero solo en implementación React Bits.\n\nEntrega 2 — movimiento\nComponente: QAMotorCard. Disparador: hover/focus. Duración: 180 ms EASE_OUT. Candidato: React Bits Spotlight Card. Desktop: iluminación violeta tenue; Figma representa reposo y hover fijos, sin seguimiento continuo del mouse. Móvil: estado estático y foc"
+    },
+    {
+      "id": "120:736",
+      "name": "AuditTableRow",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "MOUSE_LEAVE",
+          "delay": 0
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        }
+      ],
+      "description": "Hover representativo de 180 ms ease-out; conservar datos, altura y destinos. Con movimiento reducido, cambio instantáneo. Realce discreto para seguir la fila o tarjeta.\n\nEntrega 2 — movimiento\nComponente: AuditTableRow. Disparador: hover/focus. Duración: 180 ms EASE_OUT. Candidato: CSS, sin React Bits. Desktop: cambio leve de superficie. Móvil: pressed/focus equivalente en AuditCard. Movimiento reducido: instantáneo. Rendimiento potencial: bajo; no animar la tabla completa ni alterar filas duran"
+    },
+    {
+      "id": "120:753",
+      "name": "AuditCard",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "ON_PRESS"
+        },
+        {
+          "type": "MOUSE_LEAVE",
+          "delay": 0
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        },
+        {
+          "type": "DISSOLVE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        }
+      ],
+      "description": "Hover representativo de 180 ms ease-out; conservar datos, altura y destinos. Con movimiento reducido, cambio instantáneo. Realce discreto para seguir la fila o tarjeta.\n\nEntrega 2 — movimiento\nComponente: AuditCard. Disparador: hover/focus/pressed. Duración: 180 ms EASE_OUT. Candidato: CSS. Desktop: superficie leve; móvil: feedback al tocar y foco visible, sin elevación persistente. Movimiento reducido: instantáneo. Rendimiento potencial: bajo; conservar orden y acciones del informe."
+    },
+    {
+      "id": "120:851",
+      "name": "AuditLoader",
+      "triggers": [
+        {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.6000000238418579
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.30000001192092896
+        }
+      ],
+      "description": "Carga indeterminada: pulso de tres puntos, 600 ms entre estados, transición de opacidad 300 ms. Sin porcentaje de progreso. Estado Reduced fijo, sin bucle. Solo la acción de finalización del análisis cambia el consumo.\n\nEntrega 2 — movimiento\nComponente: AuditLoader y estado Procesando. Disparador: estado de análisis activo. Duración: pasos de 600 ms y fundido de 300 ms EASE_OUT. Candidato: indicador CSS sencillo, sin React Bits obligatorio. Desktop y móvil: indicador indeterminado; nunca simula"
+    },
+    {
+      "id": "120:911",
+      "name": "HeroReveal",
+      "triggers": [
+        {
+          "type": "ON_HOVER"
+        },
+        {
+          "type": "ON_PRESS"
+        },
+        {
+          "type": "ON_CLICK"
+        },
+        {
+          "type": "AFTER_TIMEOUT",
+          "timeout": 0.03999999910593033
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.18000000715255737
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.15000000596046448
+        },
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.1599999964237213
+        }
+      ],
+      "description": "Simulación Figma por tres grupos del título aprobado. Duración total aproximada 600 ms; opacidad y secuencia, sin efectos continuos. React Bits candidato: Split Text por palabras, easing cubic-bezier(.22,1,.36,1). Reduced: título completo instantáneo.\n\nEntrega 2 — movimiento\nComponente: HeroReveal, título de landing y referencia de entradas. Disparador: carga inicial o Reproducir en la revisión. Duración Figma: tres grupos, aproximadamente 600 ms; implementación candidata Split Text: 450 ms por "
+    },
+    {
+      "id": "147:937",
+      "name": "MotionPreview",
+      "triggers": [
+        {
+          "type": "ON_CLICK"
+        }
+      ],
+      "transitions": [
+        {
+          "type": "SMART_ANIMATE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.30000001192092896
+        },
+        {
+          "type": "DISSOLVE",
+          "easing": {
+            "type": "EASE_OUT"
+          },
+          "duration": 0.2800000011920929
+        }
+      ],
+      "description": "Referencia nativa de movimiento: Usage muestra Smart Animate 300 ms; Stats solo representa inicio y fin (interpolación Count Up en implementación futura). Movimiento reducido muestra el destino sin transición. Datos de ejemplo, sin consumir cuota.\n\nEntrega 2 — movimiento\nComponente: MotionPreview, referencias aisladas de consumo y KPIs. Disparador: Reproducir. Duración: Usage 300 ms Smart Animate EASE_OUT; Stats 280 ms Dissolve entre inicio y fin. React Bits candidato: Count Up 400 ms para cifra"
+    },
+    {
+      "id": "393:752",
+      "name": "BrandLogo",
+      "triggers": [],
+      "transitions": [],
+      "description": "Fuente de aplicación oficial KevoLint: R2/C3 + W3. Composition: Horizontal, Compact, Wordmark, Symbol, WithSignature, WithDescriptor. Surface: Dark/Light. Todas las composiciones referencian los vectores aprobados de la página 07. Las variantes ópticas de 16/24 px se reutilizan directamente del master óptico existente. No introducir W1/W2 en pantallas del SaaS.",
+      "variants": [
+        [
+          "393:531",
+          "Composition=Horizontal, Surface=Dark",
+          380,
+          64.13390350341797
+        ],
+        [
+          "393:558",
+          "Composition=Horizontal, Surface=Light",
+          380,
+          64.13390350341797
+        ],
+        [
+          "393:574",
+          "Composition=Compact, Surface=Dark",
+          220,
+          123.03152465820312
+        ],
+        [
+          "393:600",
+          "Composition=Compact, Surface=Light",
+          220,
+          123.03152465820312
+        ],
+        [
+          "393:615",
+          "Composition=Wordmark, Surface=Dark",
+          300,
+          64.13390350341797
+        ],
+        [
+          "393:632",
+          "Composition=Wordmark, Surface=Light",
+          300,
+          64.13390350341797
+        ],
+        [
+          "393:642",
+          "Composition=Symbol, Surface=Dark",
+          64,
+          64
+        ],
+        [
+          "393:648",
+          "Composition=Symbol, Surface=Light",
+          64,
+          64
+        ],
+        [
+          "393:654",
+          "Composition=WithSignature, Surface=Dark",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:684",
+          "Composition=WithSignature, Surface=Light",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:703",
+          "Composition=WithDescriptor, Surface=Dark",
+          380,
+          81.13390350341797
+        ],
+        [
+          "393:733",
+          "Composition=WithDescriptor, Surface=Light",
+          380,
+          81.13390350341797
+        ]
+      ]
+    }
+  ],
+  "compositionOnly": [
+    "PublicLayout",
+    "AppShell",
+    "MobileNavDrawer",
+    "AuditList",
+    "HistoryFilterBar",
+    "ReportFilters",
+    "PlanGrid",
+    "UsageProvider (read-only shared backend snapshot)"
+  ],
+  "rules": [
+    "No 363-page React duplication.",
+    "MotionPreview is a documentation example, not a product route.",
+    "Icons are editable Figma sources; no need to mandate a new icon library."
+  ]
+}

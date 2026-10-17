@@ -1,0 +1,84 @@
+{
+  "method": "sRGB relative luminance calculated from native solid tokens; not DOM or full WCAG audit.",
+  "pairs": [
+    {
+      "pair": "Texto / surface",
+      "foreground": "#EDEDF2",
+      "background": "#14161B",
+      "ratio": 15.51,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Muted / surface",
+      "foreground": "#9297A3",
+      "background": "#14161B",
+      "ratio": 6.19,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Accento / background",
+      "foreground": "#AB8DFA",
+      "background": "#0A0B0E",
+      "ratio": 7.42,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Texto oscuro sobre CTA violeta",
+      "foreground": "#0A0B0E",
+      "background": "#AB8DFA",
+      "ratio": 7.42,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Borde control / raised",
+      "foreground": "#686E7A",
+      "background": "#1C1F25",
+      "ratio": 3.22,
+      "threshold": 3,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Crítico / destructivo default dark",
+      "foreground": "#FF8F9A",
+      "background": "#272025",
+      "ratio": 7.31,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Crítico / destructivo pressed dark",
+      "foreground": "#FF8F9A",
+      "background": "#4C3339",
+      "ratio": 5.24,
+      "threshold": 4.5,
+      "result": "PASS_CALCULATION"
+    },
+    {
+      "pair": "Borde decorativo / surface",
+      "foreground": "#2A2D35",
+      "background": "#14161B",
+      "ratio": 1.31,
+      "threshold": null,
+      "result": "NON_TEXT_DECORATIVE_ONLY"
+    },
+    {
+      "pair": "Destructivo High contrast",
+      "foreground": "#FF8F9A",
+      "background": "#FFFFFF",
+      "ratio": 2.18,
+      "threshold": 4.5,
+      "result": "FAIL_PENDING_IMPLEMENTATION_FIX"
+    }
+  ],
+  "limitation": "No opacity/background compositing, focus ring placement or all disabled/hover states checked by this calculation.",
+  "issue": {
+    "id": "ISSUE-HC-01",
+    "source": "Button Style=Destructive Default3:163 label3:167 and semantic variables205:912/2:25 in mode38:0",
+    "finding": "High contrast mode resolves destructive background white and label critical pink; computed ratio below4.5:1 for14px text.",
+    "action": "Documented only in3C; no approved component changed. Resolve during implementation/accessibility PR or obtain design-fix authorization."
+  }
+}

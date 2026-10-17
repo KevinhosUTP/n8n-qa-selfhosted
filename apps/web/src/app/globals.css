@@ -1,6 +1,34 @@
-/* Technical baseline only. Approved typography, tokens and SVGs belong to PR02. */
 * { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; }
-main { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem; overflow-wrap: anywhere; }
-a { display: inline-block; padding-block: 0.75rem; }
-a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+html { color-scheme: dark; }
+body {
+  margin: 0;
+  background: var(--kl-color-background);
+  color: var(--kl-color-text);
+  font-family: var(--kl-font-inter), sans-serif;
+  font-size: var(--kl-type-body-size);
+  font-weight: var(--kl-type-body-weight);
+  line-height: var(--kl-type-body-line);
+  font-optical-sizing: none;
+  font-synthesis: none;
+}
+a { color: var(--kl-color-accent); }
+a:focus-visible { outline: var(--kl-button-focus) solid var(--kl-color-accent); outline-offset: var(--kl-button-focus); }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: var(--kl-type-h1-size); line-height: var(--kl-type-h1-line); font-weight: var(--kl-type-h1-weight); letter-spacing: var(--kl-type-h1-tracking); }
+h2 { font-size: var(--kl-type-h2-size); line-height: var(--kl-type-h2-line); font-weight: var(--kl-type-h2-weight); letter-spacing: var(--kl-type-h2-tracking); }
+h3 { font-size: var(--kl-type-h3-size); line-height: var(--kl-type-h3-line); font-weight: var(--kl-type-h3-weight); }
+strong { font-weight: var(--kl-type-body-strong-weight); }
+/* Technical foundation page only. Product layouts remain in later PRs. */
+.technical {
+  width: calc(100% - 2 * var(--kl-technical-gutter));
+  max-width: var(--kl-content-max);
+  margin-inline: auto;
+  padding-block: var(--kl-spacing-64);
+  display: grid;
+  gap: var(--kl-spacing-32);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.technical-copy { display: grid; gap: var(--kl-spacing-16); }
+.technical-secondary { color: var(--kl-color-muted); }
+.technical-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--kl-spacing-16); }

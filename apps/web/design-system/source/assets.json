@@ -1,0 +1,546 @@
+{
+  "assets": [
+    {
+      "id": "393:558",
+      "name": "Composition=Horizontal, Surface=Light",
+      "width": 380,
+      "height": 64.13390350341797,
+      "filename": "kevolint-horizontal-light.svg",
+      "bytes": 4007,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-558",
+      "format": "SVG",
+      "sha256": "681b2969c60372173769c16efaaaad77f9210a6d1636638316e544d5f2fd880a",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 65",
+      "exportedPixelBounds": [
+        "380",
+        "65"
+      ]
+    },
+    {
+      "id": "393:615",
+      "name": "Composition=Wordmark, Surface=Dark",
+      "width": 300,
+      "height": 64.13390350341797,
+      "filename": "kevolint-wordmark-dark.svg",
+      "bytes": 3799,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-615",
+      "format": "SVG",
+      "sha256": "e5946b2cdc5c143ed7f2050847b2d67c6ae33b298891257978965a56e8030179",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 300 65",
+      "exportedPixelBounds": [
+        "300",
+        "65"
+      ]
+    },
+    {
+      "id": "393:632",
+      "name": "Composition=Wordmark, Surface=Light",
+      "width": 300,
+      "height": 64.13390350341797,
+      "filename": "kevolint-wordmark-light.svg",
+      "bytes": 3799,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-632",
+      "format": "SVG",
+      "sha256": "98d5a23be046bddc6faa2ce7780746be66dc13969f86f71fd7f74df49cb73c6e",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 300 65",
+      "exportedPixelBounds": [
+        "300",
+        "65"
+      ]
+    },
+    {
+      "id": "393:574",
+      "name": "Composition=Compact, Surface=Dark",
+      "width": 220,
+      "height": 123.03152465820312,
+      "filename": "kevolint-compact-dark.svg",
+      "bytes": 3958,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-574",
+      "format": "SVG",
+      "sha256": "5f87f2a824c23dcc01b01449204d40eb15f9104647354b0b447d639a1a16031b",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 220 124",
+      "exportedPixelBounds": [
+        "220",
+        "124"
+      ]
+    },
+    {
+      "id": "393:600",
+      "name": "Composition=Compact, Surface=Light",
+      "width": 220,
+      "height": 123.03152465820312,
+      "filename": "kevolint-compact-light.svg",
+      "bytes": 3958,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-600",
+      "format": "SVG",
+      "sha256": "60d176ec567e516e62b995d29ed5f140f0c0d996d95296724dacfa8a0e636944",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 220 124",
+      "exportedPixelBounds": [
+        "220",
+        "124"
+      ]
+    },
+    {
+      "id": "393:642",
+      "name": "Composition=Symbol, Surface=Dark",
+      "width": 64,
+      "height": 64,
+      "filename": "kevolint-symbol-dark.svg",
+      "bytes": 254,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-642",
+      "format": "SVG",
+      "sha256": "66dc8c30a0a820c4a71e7e270bd2ee1e39b87bf5da60aa2bdee33fb80dc4f4fa",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 64 64",
+      "exportedPixelBounds": [
+        "64",
+        "64"
+      ]
+    },
+    {
+      "id": "393:648",
+      "name": "Composition=Symbol, Surface=Light",
+      "width": 64,
+      "height": 64,
+      "filename": "kevolint-symbol-light.svg",
+      "bytes": 254,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-648",
+      "format": "SVG",
+      "sha256": "e00ad52ce34c5abe550b5fa4013b026d477124da802bec0adc0313196c2476e2",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 64 64",
+      "exportedPixelBounds": [
+        "64",
+        "64"
+      ]
+    },
+    {
+      "id": "393:654",
+      "name": "Composition=WithSignature, Surface=Dark",
+      "width": 380,
+      "height": 81.13390350341797,
+      "filename": "kevolint-signature-dark.svg",
+      "bytes": 11203,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-654",
+      "format": "SVG",
+      "sha256": "2658fe35ce32edac9869959f47273b8a4e4f465468e412ad7446b8a36f81be4c",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 82",
+      "exportedPixelBounds": [
+        "380",
+        "82"
+      ]
+    },
+    {
+      "id": "393:684",
+      "name": "Composition=WithSignature, Surface=Light",
+      "width": 380,
+      "height": 81.13390350341797,
+      "filename": "kevolint-signature-light.svg",
+      "bytes": 11203,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-684",
+      "format": "SVG",
+      "sha256": "33b259a61005e3248a55a253ee06ab3ef45b4174a36e308888cdbc7993d85132",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 82",
+      "exportedPixelBounds": [
+        "380",
+        "82"
+      ]
+    },
+    {
+      "id": "368:6548",
+      "name": "Size=16, Ink=Brand",
+      "width": 16,
+      "height": 16,
+      "filename": "kevolint-symbol-16.svg",
+      "bytes": 257,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6548",
+      "format": "SVG",
+      "sha256": "a3fd7a3c98437c76ff3a580b9f6bc6edb7dc7f9450bf22adabb5b5a02837e020",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 16 16",
+      "exportedPixelBounds": [
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "368:6558",
+      "name": "Size=24, Ink=Brand",
+      "width": 24,
+      "height": 24,
+      "filename": "kevolint-symbol-24.svg",
+      "bytes": 264,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6558",
+      "format": "SVG",
+      "sha256": "c3670cfa274771a1c7c70f88c61404cededde234f12186b72bb4930a421ba9b4",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 24 24",
+      "exportedPixelBounds": [
+        "24",
+        "24"
+      ]
+    },
+    {
+      "id": "368:6568",
+      "name": "Size=32, Ink=Brand",
+      "width": 32,
+      "height": 32,
+      "filename": "kevolint-symbol-32.svg",
+      "bytes": 271,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6568",
+      "format": "SVG",
+      "sha256": "6ec915a002bfcfba7ba629373170b2deb67e60d261f0a23090fc4bd6feef085e",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 32 32",
+      "exportedPixelBounds": [
+        "32",
+        "32"
+      ]
+    },
+    {
+      "id": "368:6578",
+      "name": "Size=48, Ink=Brand",
+      "width": 48,
+      "height": 48,
+      "filename": "kevolint-symbol-48.svg",
+      "bytes": 289,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6578",
+      "format": "SVG",
+      "sha256": "6770e8113c384ec1a9842cf4d572ed6da60595cc6b4c8677b159e5205a5c9aa1",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 48 48",
+      "exportedPixelBounds": [
+        "48",
+        "48"
+      ]
+    },
+    {
+      "id": "368:6588",
+      "name": "Size=64, Ink=Brand",
+      "width": 64,
+      "height": 64,
+      "filename": "kevolint-symbol-64.svg",
+      "bytes": 254,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6588",
+      "format": "SVG",
+      "sha256": "66dc8c30a0a820c4a71e7e270bd2ee1e39b87bf5da60aa2bdee33fb80dc4f4fa",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 64 64",
+      "exportedPixelBounds": [
+        "64",
+        "64"
+      ]
+    },
+    {
+      "id": "368:6598",
+      "name": "Size=128, Ink=Brand",
+      "width": 128,
+      "height": 128,
+      "filename": "kevolint-symbol-128.svg",
+      "bytes": 269,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6598",
+      "format": "SVG",
+      "sha256": "c79a708c1a19fd683ea6312360d30e2f49c420b54004bf5f118b6a6890d5d7ec",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 128 128",
+      "exportedPixelBounds": [
+        "128",
+        "128"
+      ]
+    },
+    {
+      "id": "368:6553",
+      "name": "Size=16, Ink=Mono",
+      "width": 16,
+      "height": 16,
+      "filename": "kevolint-symbol-16-mono.svg",
+      "bytes": 257,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6553",
+      "format": "SVG",
+      "sha256": "936dcc4c5742d42019fcec615b98bcb498eb9080895aff55d1614bf30088585e",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 16 16",
+      "exportedPixelBounds": [
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "368:7152",
+      "name": "Composition=Wordmark, Ink=Mono",
+      "width": 300,
+      "height": 64.13390350341797,
+      "filename": "kevolint-wordmark-mono.svg",
+      "bytes": 3771,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-7152",
+      "format": "SVG",
+      "sha256": "3c454ee322ec0e31276b23b3b009f7ab1528092ed12591e5990e3c33f9c54f1e",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 300 65",
+      "exportedPixelBounds": [
+        "300",
+        "65"
+      ]
+    },
+    {
+      "id": "368:7176",
+      "name": "Composition=Horizontal, Ink=Mono",
+      "width": 380,
+      "height": 64.13390350341797,
+      "filename": "kevolint-horizontal-mono.svg",
+      "bytes": 3983,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-7176",
+      "format": "SVG",
+      "sha256": "a1d0f7d5eab94451fd9c46983dc617ac63f5f2efa4b6a1755b8fd71e98eca726",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 65",
+      "exportedPixelBounds": [
+        "380",
+        "65"
+      ]
+    },
+    {
+      "id": "369:7147",
+      "name": "Size=64, Shape=Square",
+      "width": 64,
+      "height": 64,
+      "filename": "kevolint-app-icon-64.svg",
+      "bytes": 516,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=369-7147",
+      "format": "SVG",
+      "sha256": "f0ac09cd2d62e6375dc9750b1125e62c14553a4a174385d4a724192cf4968860",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 64 64",
+      "exportedPixelBounds": [
+        "64",
+        "64"
+      ]
+    },
+    {
+      "id": "369:7159",
+      "name": "Size=128, Shape=Square",
+      "width": 128,
+      "height": 128,
+      "filename": "kevolint-app-icon-128.svg",
+      "bytes": 516,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=369-7159",
+      "format": "SVG",
+      "sha256": "1dc705c36a9b82a7c441506ae7e9266a89ef91dec9128167270004fe11955703",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 128 128",
+      "exportedPixelBounds": [
+        "128",
+        "128"
+      ]
+    },
+    {
+      "id": "368:6645",
+      "name": "3A / R2-C3 Final / W3 / Custom KevoLint vector master",
+      "width": 467.7713317871094,
+      "height": 100,
+      "filename": "kevolint-w3-core-master.svg",
+      "bytes": 3745,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6645",
+      "format": "SVG",
+      "sha256": "8038fb21b5d80a16e68d9e2e1a0d860402542915bfdbc3762e331b5ee98c27ca",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 468 100",
+      "exportedPixelBounds": [
+        "468",
+        "100"
+      ]
+    },
+    {
+      "id": "393:703",
+      "name": "Composition=WithDescriptor, Surface=Dark",
+      "width": 380,
+      "height": 81.13390350341797,
+      "filename": "kevolint-descriptor-dark.svg",
+      "bytes": 30965,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-703",
+      "format": "SVG",
+      "sha256": "069f040596a65c42677f64e31f762828207a08800a86b73fdf3a939b744814d8",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 82",
+      "exportedPixelBounds": [
+        "380",
+        "82"
+      ]
+    },
+    {
+      "id": "393:733",
+      "name": "Composition=WithDescriptor, Surface=Light",
+      "width": 380,
+      "height": 81.13390350341797,
+      "filename": "kevolint-descriptor-light.svg",
+      "bytes": 30965,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-733",
+      "format": "SVG",
+      "sha256": "ce2099809804fd7cf80046ebb73dbce693de56bca34ea122e2ee4d4a8933b88a",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 82",
+      "exportedPixelBounds": [
+        "380",
+        "82"
+      ]
+    },
+    {
+      "id": "393:531",
+      "filename": "kevolint-horizontal-dark.svg",
+      "width": 380,
+      "height": 64.1339035034,
+      "bytes": 4007,
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-531",
+      "format": "SVG",
+      "sha256": "9d0ede76df226769b8c417c0d216891d30dedbebb2f046b7a4f16b385768076b",
+      "export": "Original Figma node.exportAsync(format SVG, svgOutlineText true). No image conversion or redraw.",
+      "editablePaths": true,
+      "exportedViewBox": "0 0 380 65",
+      "exportedPixelBounds": [
+        "380",
+        "65"
+      ]
+    }
+  ],
+  "fontBinariesIncluded": false,
+  "officialLogo": "R2/C3 refined + W3 Core",
+  "socialMetadata": {
+    "status": "editable_handoff_resource_ready_for_review_not_deployed",
+    "title": "KevoLint",
+    "description": "Auditoría estática de workflows para n8n",
+    "canonicalOrigin": "https://qa.kevosilva.dev",
+    "imageSize": [
+      1200,
+      630
+    ],
+    "image": "assets/kevolint-social-preview.png",
+    "sourceNodeId": "423:329",
+    "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=423-329",
+    "notes": "Use production canonical for public pages only. Private audit pages must not expose report data in OG metadata; use generic brand metadata and noindex policy after approval."
+  },
+  "additionalFormatsPending": {},
+  "rasterAndContainers": [
+    {
+      "filename": "favicon-16.png",
+      "format": "PNG",
+      "size": [
+        16,
+        16
+      ],
+      "sourceNodeId": "368:6548",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6548",
+      "sha256": "ae6aaa3fa12e702bda610099dea91643dac3a5c54d7e34e739139df466e02995",
+      "method": "Native Figma PNG export from approved original vector, width constraint; no redraw."
+    },
+    {
+      "filename": "favicon-32.png",
+      "format": "PNG",
+      "size": [
+        32,
+        32
+      ],
+      "sourceNodeId": "368:6568",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=368-6568",
+      "sha256": "7cc83db256a42e863c75772c8344c5a40fef6d2f38a9fb221060fd1060ce806c",
+      "method": "Native Figma PNG export from approved original vector, width constraint; no redraw."
+    },
+    {
+      "filename": "apple-touch-icon.png",
+      "format": "PNG",
+      "size": [
+        180,
+        180
+      ],
+      "sourceNodeId": "369:7159",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=369-7159",
+      "sha256": "507e6b6f91dc58a0498f83ca6bd074c50b3ebdb466c8766e8cff2efc8c96b414",
+      "method": "Native Figma PNG export from approved original vector, width constraint; no redraw."
+    },
+    {
+      "filename": "app-icon-192.png",
+      "format": "PNG",
+      "size": [
+        192,
+        192
+      ],
+      "sourceNodeId": "369:7159",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=369-7159",
+      "sha256": "c87e4b3a5ba7a7cb0b7409d0722fbf6afdd1ebfbd85bf8387b51f4a45285a18c",
+      "method": "Native Figma PNG export from approved original vector, width constraint; no redraw."
+    },
+    {
+      "filename": "app-icon-512.png",
+      "format": "PNG",
+      "size": [
+        512,
+        512
+      ],
+      "sourceNodeId": "369:7159",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=369-7159",
+      "sha256": "f82d0fc49ce24c47a47aa0123e9a7305f7ec120f0fde2b857daa7e5fc96bccf7",
+      "method": "Native Figma PNG export from approved original vector, width constraint; no redraw."
+    },
+    {
+      "filename": "kevolint-social-preview.png",
+      "format": "PNG",
+      "size": [
+        1200,
+        630
+      ],
+      "sourceNodeId": "423:329",
+      "figmaUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=423-329",
+      "sha256": "ff876c7c2ff3d3c2bb0f8c4e1d02c488f614c86d14728bb143ccc65251a4ead1",
+      "method": "New editable handoff resource composed from original BrandLogo; native Figma render1200×630. Editorial preview for approval; no deployment."
+    },
+    {
+      "filename": "favicon.ico",
+      "format": "ICO",
+      "sizes": [
+        [
+          16,
+          16
+        ],
+        [
+          32,
+          32
+        ]
+      ],
+      "sources": [
+        "favicon-16.png",
+        "favicon-32.png"
+      ],
+      "sha256": "1c078b5136cd9dea76ffbde3515225bd7988ed153bc2d3b8547f6b6522a68f57",
+      "method": "Container packaging of exact native PNGs; decoded16/32 pixels checked equal to source PNGs."
+    }
+  ]
+}

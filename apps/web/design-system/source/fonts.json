@@ -1,0 +1,30 @@
+{
+  "fonts": [
+    {
+      "family": "Inter",
+      "role": "Current general UI: landing, titles, body, controls, KPI and report prose",
+      "status": "approved_existing_UI",
+      "license": "SIL Open Font License1.1",
+      "source": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+      "binariesIncluded": false
+    },
+    {
+      "family": "Space Grotesk",
+      "role": "Source of approved W3 contours; personalized K/L. Logo supplied as SVG paths, not a font.",
+      "status": "approved_logo_source_not_UI_migration",
+      "license": "SIL Open Font License1.1",
+      "source": "https://github.com/floriankarsten/space-grotesk/blob/master/OFL.txt",
+      "binariesIncluded": false
+    },
+    {
+      "family": "Geist Mono",
+      "role": "Proposed technical JSON/code role; verify font metrics in implementation",
+      "status": "technical_role_proposal",
+      "license": "SIL Open Font License1.1",
+      "source": "https://github.com/vercel/geist-font/blob/main/LICENSE.txt",
+      "binariesIncluded": false
+    }
+  ],
+  "noFontRedistribution": true,
+  "explorationFamilies": "Bricolage Grotesque, Plus Jakarta Sans, Sora and Geist Sans are historical exploration references, not active global UI choices in3B. Do not install all of them."
+}

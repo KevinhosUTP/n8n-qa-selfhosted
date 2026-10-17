@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-17",
+  "figma": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd",
+  "brief": "https://app.notion.com/p/3fa47126f90c812c8116c9aea51584cc",
+  "brandSystem": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=393-753",
+  "brandMotion": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd?node-id=401-68",
+  "acceptance3B": {
+    "status": "approved_by_user",
+    "method": "User personally tested Figma Present and confirmed branding and reviewed flows.",
+    "agentDidRunPresentThisDelivery": false
+  },
+  "nativeSpecsAvailable": false,
+  "documentationMode": "Independent Design reference/index page + external technical package; no native SPEC_BLOCK created.",
+  "baseline": {
+    "0:1": {
+      "rootCount": 4,
+      "nodeCount": 177,
+      "nativeCount": 149,
+      "hash": "897c2c",
+      "flow": []
+    },
+    "2:2": {
+      "rootCount": 69,
+      "nodeCount": 1989,
+      "nativeCount": 1255,
+      "hash": "5c541523",
+      "flow": []
+    },
+    "2:3": {
+      "rootCount": 20,
+      "nodeCount": 2278,
+      "nativeCount": 722,
+      "hash": "878e9854",
+      "flow": []
+    },
+    "2:4": {
+      "rootCount": 20,
+      "nodeCount": 2012,
+      "nativeCount": 578,
+      "hash": "3ba634eb",
+      "flow": []
+    },
+    "2:6": {
+      "rootCount": 295,
+      "nodeCount": 19304,
+      "nativeCount": 7592,
+      "hash": "5e179366",
+      "flow": [
+        {
+          "nodeId": "213:16018",
+          "name": "Validación final de Entrega 2"
+        },
+        {
+          "nodeId": "19:2",
+          "name": "01 · Prueba gratuita / desktop"
+        },
+        {
+          "nodeId": "19:99",
+          "name": "02 · Prueba gratuita / móvil"
+        },
+        {
+          "nodeId": "126:11440",
+          "name": "02 · Prueba gratuita / móvil"
+        },
+        {
+          "nodeId": "133:22214",
+          "name": "02 · Prueba gratuita / móvil"
+        },
+        {
+          "nodeId": "19:748",
+          "name": "03 · Aplicación / desktop"
+        },
+        {
+          "nodeId": "104:6514",
+          "name": "03 · Aplicación / desktop"
+        },
+        {
+          "nodeId": "148:15640",
+          "name": "03 · Aplicación / desktop"
+        },
+        {
+          "nodeId": "23:5569",
+          "name": "04 · Mapa y todos los estados"
+        },
+        {
+          "nodeId": "149:20564",
+          "name": "Entrega 2 · revisión UI/UX"
+        },
+        {
+          "nodeId": "19:1170",
+          "name": "Flow 1"
+        },
+        {
+          "nodeId": "125:10972",
+          "name": "Flow 2"
+        },
+        {
+          "nodeId": "130:20090",
+          "name": "Flow 3"
+        },
+        {
+          "nodeId": "203:21777",
+          "name": "Flow 3"
+        },
+        {
+          "nodeId": "20:4722",
+          "name": "Flow 4"
+        },
+        {
+          "nodeId": "130:19718",
+          "name": "Flow 5"
+        },
+        {
+          "nodeId": "130:20272",
+          "name": "Flow 6"
+        },
+        {
+          "nodeId": "249:11596",
+          "name": "Flow 7"
+        }
+      ]
+    },
+    "317:11610": {
+      "rootCount": 10,
+      "nodeCount": 14779,
+      "nativeCount": 6741,
+      "hash": "5516ea7d",
+      "flow": []
+    },
+    "2:5": {
+      "rootCount": 28,
+      "nodeCount": 2892,
+      "nativeCount": 570,
+      "hash": "1990a389",
+      "flow": []
+    }
+  },
+  "scope": "3C documentation and original-vector export only; no product implementation."
+}
