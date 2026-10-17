@@ -131,4 +131,6 @@ CORS, credential transport or authentication proxy is introduced as a substitute
 - https://nextjs.org/docs/app/api-reference/config/next-config-js/headers
 - https://nextjs.org/docs/app/guides/environment-variables
 - https://nextjs.org/docs/app/guides/testing/vitest
+- https://nextjs.org/docs/app/api-reference/config/eslint
+- https://github.com/advisories/GHSA-vfj7-8cjw-p6xm
 - https://docs.npmjs.com/cli/v10/commands/npm-ci/

@@ -26,7 +26,7 @@ Python 3.12.14 in an isolated ignored `.venv`; existing requirements unchanged.
 | Existing Streamlit smoke | PASS: initial-screen AppTest |
 | `npm audit --omit=dev --audit-level=low` | PASS at execution: zero production dependency vulnerabilities reported |
 | `npm run security:dependencies` (full audit) | **FAIL / MERGE BLOCKER**: four high findings through development dependency chain to braces@3.0.3, GHSA-vfj7-8cjw-p6xm |
-| Gitleaks 8.30.1 CLI | Preliminary PASS on 26 base-history commits. Final PR commit scan and CI evidence recorded below after publication |
+| Gitleaks 8.30.1 CLI | PASS: 27 local commits including source commit `1c40a53`; no leaks. Remote full-history job also passed |
 | Integrated browser visual check | NOT VERIFIED: localhost navigation from the in-app browser timed out. HTTP smoke passed; no visual/a11y/browser-console result claimed |
 
 The full dependency check is deliberately not waived or configured to succeed.
@@ -49,10 +49,21 @@ FastAPI, Clerk, Supabase, Sentry or Paddle call was made by this frontend.
 
 ## Published CI
 
-Pending initial Draft PR publication. Do not infer remote CI success from local
-execution. The frontend has independent foundation, dependency-audit and secret
-jobs. The original Python workflow remains byte-for-byte unchanged and runs on
-the pull request to `develop`.
+[Draft PR #4](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/4) targets
+`develop`. These completed remote results correspond to source commit
+`1c40a53ea3e44c51bc23f2c9c492295e9b7346a4`; this evidence update changes documentation only.
+
+| Remote job | Result and evidence |
+| --- | --- |
+| Foundation | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172892): clean npm install, lint, unit tests, negative compiler/config checks, generated types, production build and standalone HTTP smoke |
+| Secrets | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172798): official Gitleaks CLI over fetched Git history |
+| Dependencies | [FAIL](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009212/job/117374172866): full audit; known unpatched development-tool advisory, no waiver |
+| Existing Python workflow | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39025009182): compilation, regression tests and Streamlit initial-screen smoke |
+
+The original Python workflow remains byte-for-byte unchanged. The current checks
+on the PR are authoritative for subsequent documentation commits or future changes.
+PR01 remains a draft and does not satisfy the full acceptance gate until
+SEC-PR01-01 is resolved. It has not been merged or deployed.
 
 ## Scope review
 
