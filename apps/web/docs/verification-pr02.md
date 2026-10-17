@@ -1,7 +1,53 @@
 # PR02 · Design System & Brand Assets · Verification
 
 Base: `develop` at `d165fc4ee4f3f074de3f41b72654a59040aac941`.
-Branch: `codex/kevolint-pr02-design-system`. Review state: Draft, no merge or deployment.
+Implementation branch: `codex/kevolint-pr02-design-system`.
+Status: PR02 formally approved and closed; PR #5 squash-merged into `develop` on
+2026-10-17. Deployment and PR03 remain unauthorized.
+
+## Cierre de PR02 y verificación posterior al merge
+
+El usuario autorizó expresamente el squash de [PR #5](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/5).
+Antes de integrar se verificó el HEAD exacto
+`7424a00a7070e69906786ae757ff3d1429fbfee5`, destino `develop`, ausencia de conflictos
+y los cuatro checks aprobados: foundation, dependencies, secrets y unit. El PR
+se marcó Ready for Review y el merge utilizó una comprobación del HEAD esperado.
+
+Commit de integración: [`4ca17951466da4c489aeff6cf4f98073ad6d28be`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/4ca17951466da4c489aeff6cf4f98073ad6d28be).
+Su padre es la base aprobada `d165fc4ee4f3f074de3f41b72654a59040aac941` y su árbol
+coincide con la implementación aprobada de PR02.
+
+| GitHub Actions sobre el push a develop de ese SHA | Resultado comprobado |
+| --- | --- |
+| [Frontend](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39056442544) · foundation | Aprobado: instalación limpia, lint, 255 tests, navegador Linux, frontera cliente/servidor, TypeScript, exposición, build, smoke e inspección física del artefacto |
+| Frontend · dependencies | Aprobado: audit completo con dev, cuatro nodos de la única vulnerabilidad aprobada y aceptación temporal validada en contexto push/develop |
+| Frontend · secrets | Aprobado: escaneo del historial, sin exclusiones nuevas |
+| [Python/Streamlit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39056442622) · unit | Aprobado: compileall, las 15 regresiones Python y smoke Streamlit |
+
+Los logs confirman `event=push`, `ref=refs/heads/develop` y
+`GITHUB_WORKFLOW_REF=KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`.
+El audit y el inventario Linux corresponden al mismo commit de integración.
+El smoke comprueba por HTTP los hashes de los 24 SVG, Inter y su licencia, las
+cabeceras y la ausencia de la vista temporal y endpoints de negocio.
+
+SEC-PR01-01 permanece abierta como **riesgo aceptado temporalmente, no corregido**.
+Se verificaron bytes idénticos a la base aprobada para el lockfile, la política,
+el controlador de seguridad y el workflow Python. Se conservan responsable
+KevinhosUTP, cadena y hash exactos, contextos autorizados, revocación ante anomalías,
+revisiones del 24/31 de octubre y vencimiento **31/10/2026 23:59 America/Lima**
+(01/11/2026 04:59 UTC), sin renovación automática. No se añade aceptación para
+main, forks, producción ni despliegues.
+
+Siguen pendientes pruebas con lector de pantalla, zoom manual del menú del
+navegador, comparación exhaustiva entre navegadores/sistemas y validación integral
+del tema High Contrast. No se declara certificación WCAG integral. Los temas
+Light/HC completos continúan deshabilitados; la corrección aislada de ISSUE-HC-01
+no equivale a validarlos.
+
+Este registro de cierre modifica únicamente documentación. Sus checks sobre el
+HEAD documental se verificarán también y se enlazarán en la entrega de PR #5.
+Estado del proyecto: PR01 y PR02 integrados en develop; PR03 espera autorización.
+No hubo cambios de main, PR #3, backend, infraestructura, proveedores ni despliegue.
 
 ## Implemented and traceable
 
@@ -139,9 +185,10 @@ binding. The added design browser step uses the runner's preinstalled Chrome;
 if it cannot complete, foundation fails and no temporary security acceptance applies.
 The Python workflow is unchanged. No new GitHub Action or npm dependency is added.
 
-CI results must be checked on the final PR head; the Draft PR description is the
-delivery record for the exact run URLs and SHA. This document's local pending
-rows must not be read as successful Linux validation.
+The final implementation head and the post-merge develop revision were checked
+independently. The closure section records the push/develop runs; the PR delivery
+record also links the final documentation-head checks. Historical local results
+must not be substituted for the Linux evidence of a later revision.
 
 SEC-PR01-01 remains temporarily accepted, **not corrected**, until
 2026-10-31 23:59 America/Lima / 2026-11-01 04:59 UTC. Its policy, scripts, exact
