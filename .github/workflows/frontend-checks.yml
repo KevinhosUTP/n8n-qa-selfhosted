@@ -1,0 +1,100 @@
+name: Frontend Next.js checks
+on:
+  push:
+    # Working branches are checked through their PR; main retains strict scanning.
+    branches: [develop, main]
+    paths: ['apps/web/**', '.github/security/**', 'docs/security-backlog.md', 'docs/verification-pr01.md', 'docs/adr/0001-frontend-foundation.md', '.github/workflows/frontend-checks.yml', 'scripts/scan-secrets.mjs']
+  pull_request:
+    branches: [develop, main]
+    paths: ['apps/web/**', '.github/security/**', 'docs/security-backlog.md', 'docs/verification-pr01.md', 'docs/adr/0001-frontend-foundation.md', '.github/workflows/frontend-checks.yml', 'scripts/scan-secrets.mjs']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      artifact_revision: ${{ steps.artifact.outputs.revision }}
+      inventory_hash: ${{ steps.artifact.outputs.inventory_hash }}
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: apps/web/.nvmrc
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - name: Verify npm version
+        run: test "$(npm --version)" = "10.9.3"
+      - name: Clean reproducible install
+        run: npm ci --no-audit --no-fund
+      - name: Lint
+        run: npm run lint
+      - name: Unit tests
+        run: npm test
+      - name: Negative client/server compiler test
+        run: npm run test:boundary
+      - name: Typecheck generated route types
+        run: npm run typecheck
+      - name: Verify development-only chain and effective ESLint exposure
+        run: npm run security:exposure
+      - name: Production build without provider credentials
+        env:
+          KEVOLINT_SERVER_CANARY: synthetic-pr01-server-canary
+        run: npm run build
+      - name: Standalone HTTP smoke and disclosure checks
+        run: npm run smoke
+      - name: Inspect prepared Linux standalone, published assets and traces
+        id: artifact
+        run: npm run security:artifact
+
+  dependencies:
+    needs: foundation
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: apps/web/.nvmrc
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - name: Full audit with narrowly scoped temporary acceptance (not a fix)
+        env:
+          SEC_FOUNDATION_RESULT: ${{ needs.foundation.result }}
+          SEC_ARTIFACT_REVISION: ${{ needs.foundation.outputs.artifact_revision }}
+          SEC_ARTIFACT_INVENTORY_HASH: ${{ needs.foundation.outputs.inventory_hash }}
+        run: npm run security:dependencies
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: apps/web/.nvmrc
+      - name: Scan checked-out Git history (redacted, official CLI)
+        run: node scripts/scan-secrets.mjs

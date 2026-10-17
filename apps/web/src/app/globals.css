@@ -1,0 +1,6 @@
+/* Technical baseline only. Approved typography, tokens and SVGs belong to PR02. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; }
+main { max-width: 48rem; margin: 0 auto; padding: 2rem 1rem; overflow-wrap: anywhere; }
+a { display: inline-block; padding-block: 0.75rem; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
