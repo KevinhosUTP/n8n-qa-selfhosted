@@ -1,5 +1,10 @@
 # PR01 verification evidence
 
+**Current status: PR01 completed and integrated into `develop` through Squash and
+Merge of PR #4 on 2026-10-17. SEC-PR01-01 remains OPEN: temporarily accepted, not
+fixed. No deployment or PR02 is authorized.** Earlier sections retain historical
+pre-merge evidence; the closing integration record is at the end of this report.
+
 Date: 2026-10-17 (America/Lima). Foundation base: `develop` at
 `967efe63bb6e0581f75972e44fd891840be053b6`. SEC-PR01-01 implementation starts from
 `cc57d05b48194b8ab1bff2c2041fb8db0b3843bc` on `codex/kevolint-pr01-foundation`,
@@ -157,7 +162,8 @@ DNS, dependencies, lockfile and lint rules remain unchanged. PR #3 is untouched;
 no provider SDK, PR02, product UI, quotas, payments or real audits are introduced.
 ISSUE-HC-01 and integration/privacy/edge gates remain open. Prior integrated-browser
 localhost timeout leaves visual QA unverified; no new visual acceptance is claimed.
-**PR #4 remains Draft; merge and deployment are not authorized.**
+Historical pre-integration state: PR #4 remained Draft; merge/deployment had not
+yet been authorized at that stage. The later merge authorization and result follow.
 
 ## Current continuity adjustment — authorized from e30c006
 
@@ -237,3 +243,65 @@ latest published commit. Actual develop push execution can only be verified afte
 a separately authorized future merge; fixtures and a PR run are not claimed as a
 real develop push. Main/fork behavior is tested with synthetic contexts, not by
 pushing or opening unauthorized PRs. PR #3 retains `b9bc4ca`; no merge or deployment.
+
+## PR01 closure — authorized integration and real develop verification
+
+On 2026-10-17 the user explicitly approved merging only PR #4 into `develop`, with
+post-merge verification and this technical closing report. Before merging:
+
+- Source head was exactly `0c1ab06a6a8fd3b8ea039a111a130195da8a42f4`.
+- Target was `develop` at `967efe63bb6e0581f75972e44fd891840be053b6`; GitHub reported
+  mergeable, without conflicts. Foundation, dependencies, secrets and Python unit
+  checks were completed/success. No required branch-protection contexts were
+  configured; the four project checks were explicitly verified, without bypass.
+- The PR was marked Ready for Review, and GitHub's squash merge API was called
+  with the expected source SHA, preventing integration of an unapproved newer head.
+
+[PR #4](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/4) is merged/closed.
+Squash commit:
+[`7f5838655e6d9595d57b48f0de705cf0e164a614`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/7f5838655e6d9595d57b48f0de705cf0e164a614).
+Commit title: `feat(web): KevoLint PR01 foundation and controlled security acceptance (#4)`.
+The committed tree is identical to the approved source tree
+`0be6d07c549905234656e23fa7954eb37c7a3e5f`; no source changes were added during merge.
+The committed lockfile retains SHA-256
+`aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`.
+
+The following are actual **push runs on develop**, not simulations or PR merge-test
+runs. Both workflows evaluated squash commit `7f5838655e6d9595d57b48f0de705cf0e164a614`:
+
+| Post-merge check | Result and evidence |
+| --- | --- |
+| Foundation / Linux artifact | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39048276692/job/117441335783): clean install, lint, 169 tests, compiler boundary, typecheck, effective exposure, credential-free build, standalone HTTP smoke and physical artifact inspection |
+| Full dependencies | [PASS with explicit temporary acceptance](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39048276692/job/117441519921): raw npm exit 1, exactly four high nodes/one approved root, validated context and matching Linux foundation evidence |
+| Secrets | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39048276692/job/117441336004): official Gitleaks over fetched history |
+| Python / Streamlit | [PASS](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39048276735/job/117441335945): compilation, all 15 regressions and initial-screen smoke; original workflow unchanged |
+
+Observed SEC-PR01-01 context: `event=push`, `branch=develop`,
+`ref=refs/heads/develop`, and workflow ref
+`KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`.
+Payload ref/after, checkout SHA and audit revision all match the squash commit;
+the branch is not deleted. Linux artifact BUILD_ID `bEQPwBbpuS2wZe_PJuTwp`:
+1,251 inventory entries, five required traces, `linuxVerified: true`, inventory
+SHA-256 `d7513cf1a6e345e170806881ec1ab881cb0b8c28767d79e1a76ecf794c75c0cc`.
+Dependencies confirm foundation `success` and precisely that same revision/digest.
+No affected executable code, affected package or unsafe link was detected.
+
+**No actual CI failures occurred in this develop integration run.** The raw npm
+audit exit 1 is the disclosed, expected vulnerable result, not a corrected dependency.
+The evaluator only accepts the exact approved advisory/chain/hash; all additional
+findings and existing anomaly/expiry negatives remain tested and fail closed.
+
+SEC-PR01-01 stays **OPEN**, owner **KevinhosUTP**, temporarily accepted and not fixed.
+Expiry remains **2026-10-31 23:59:00 America/Lima = 2026-11-01 04:59:00 UTC**;
+reviews remain October 24 and 31. No extension to main, forks, production or
+deployments; no automatic renewal. The development dependency still poses the
+documented lint/CI availability risk. A future authorized deployment preparation
+still requires fresh Linux artifact verification and separate approval.
+
+This report-only closing update is committed separately after the verified squash
+merge, preserving the exact approved source head. It triggers the existing develop
+checks again; the delivery and merged PR record link the resulting final publication
+CI. No functional/security-policy/workflow/dependency change is made by the closure.
+Main remains untouched; PR #3 remains open/unmerged at
+`b9bc4ca5624a439b8f27dec45ecedb66562881e5`. No production/service/SDK/DNS change,
+Coolify deployment or PR02 work was performed.
