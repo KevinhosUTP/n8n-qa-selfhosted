@@ -1,6 +1,33 @@
 # PR05a · Campos y componentes compartidos
 
-Base remota y local reconfirmada antes de crear la rama: `70dd2f2a25ec6dd833154f59d647899b5894897e` de develop; árbol limpio. Rama: `codex/kevolint-pr05a-shared-fields`. Autorización exclusiva de PR05a y Draft PR hacia develop; sin merge ni despliegue. PR05b y PR06 no iniciados.
+Base remota y local reconfirmada antes de crear la rama: `70dd2f2a25ec6dd833154f59d647899b5894897e` de develop; árbol limpio. Rama: `codex/kevolint-pr05a-shared-fields`. La entrega inicial fue un Draft PR; PR #8 quedó integrado en develop por autorización formal posterior. Sin despliegue. PR05b y PR06 no iniciados.
+
+## Cierre autorizado de PR05a · 18/10/2026
+
+Antes del merge se reconfirmaron el HEAD exacto `aa40682d2e1273ff5f46db087acdf2fd3cba0b19`, destino develop, ausencia de conflictos y los cuatro jobs aprobados: foundation, dependencies, secrets y unit. Button (componente/estilos/clases), ModalSurface, dependencias, lockfile, política/script de seguridad, workflow Python, tokens y recursos previos conservaron los bytes versionados de la base autorizada.
+
+PR #8 se marcó Ready for Review y se integró mediante Squash and Merge protegido por el SHA esperado:
+
+- [PR #8 integrado](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/8).
+- [Squash `a302aba410cbc68ab2f94f61983fdf48d58785aa`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/a302aba410cbc68ab2f94f61983fdf48d58785aa), con referencia `(#8)` en el mensaje.
+- Padre `70dd2f2a25ec6dd833154f59d647899b5894897e`; árbol idéntico al HEAD aprobado.
+
+Los workflows siguientes se ejecutaron por push a develop sobre el squash `a302aba410cbc68ab2f94f61983fdf48d58785aa`, completados con success al primer intento:
+
+| Job / workflow | Resultado confirmado en logs |
+| --- | --- |
+| [Frontend · foundation](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39159856109/job/117770680434) | Success: instalación limpia, lint, **339 pruebas frontend**, TypeScript, frontera cliente/servidor, build sin credenciales y smoke |
+| Frontend · navegador Linux | Success: PR02 (14 muestras/32 estados), PR03 (siete anchos y ciclo completo del drawer), PR05a (siete anchos, formularios/teclado/reset/AX/contraste) y PR04 (56 muestras/32 frames, ocho páginas sin JavaScript, FAQ y búsqueda local/GET) |
+| Frontend · recursos y artefacto | Success: integridad de los 61 tokens, SVG originales/exportaciones y fuente; fixture PR05a devuelve 404 en standalone; exposición e inspección física de standalone/assets/trazas Linux aprobadas |
+| [Frontend · dependencies](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39159856109/job/117771539319) | Success: audit completo con desarrollo, solo cuatro nodos high del GHSA aprobado, aceptación temporal y no corrección; sin hallazgos adicionales |
+| [Frontend · secrets](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39159856109/job/117770680331) | Success: 62 commits escaneados, sin secretos |
+| [Python/Streamlit · unit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39159856126/job/117770680277) | Success: compileall, **15 regresiones Python** y smoke inicial Streamlit |
+
+Los controles reconocieron event push, refs/heads/develop y el workflow autorizado `KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`. Artefacto y audit coinciden en revisión del squash e inventario `fbd7b6bfa7c9d99b7e1c5e9318de75dcea0ebf090f96ab720d2805aba1d0dcb9`; BUILD_ID Linux `imt5QAEgrOwxqxD_OJHA7`, linuxVerified true. Hash del lockfile autorizado y vencimiento original conservados. La aceptación solo se concedió tras foundation/Linux satisfactorios.
+
+Este cierre añade únicamente documentación; los resultados del HEAD documental final se verificarán y enlazarán en el registro de PR #8 para evitar commits sucesivos que autorreferencien el informe.
+
+**PR05a completado; PR05 global abierto.** Se conserva el gate axe sin resolver y se añade el [registro de accesibilidad pendiente](accessibility-register.md), con revisiones específicas de diferenciación visual de Checkbox y Switch seleccionado/no seleccionado sin depender exclusivamente del color. Estas revisiones no se presentan como ejecutadas ni corregidas. No se cambian SVG, estilos o componentes; cualquier corrección visual necesitará aprobación separada. Se mantienen lectores de pantalla, zoom nativo, navegadores adicionales y dispositivos físicos pendientes.
 
 ## Matriz implementada y correspondencia
 
@@ -66,10 +93,10 @@ Incidencias reproducibles: el sandbox Windows no permitió las junctions de tres
 
 ## Seguridad, gates y riesgos pendientes
 
-SEC-PR01-01 permanece **temporalmente aceptada, no corregida**, responsable `KevinhosUTP`. La política, script de seguridad, dependencias, lockfile y workflow Python no cambian. Hash autorizado del lockfile versionado: `aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`. Vencimiento original: **31/10/2026, 23:59 America/Lima**, equivalente a `2026-11-01T04:59:00Z`; sin renovación o ampliación. No se simula contexto GitHub. Solo CI del PR interno hacia develop puede acreditar aceptación tras foundation e inspección Linux satisfactorios del mismo commit; hallazgos adicionales/anomalías bloquean.
+SEC-PR01-01 permanece **temporalmente aceptada, no corregida**, responsable `KevinhosUTP`. La política, script de seguridad, dependencias, lockfile y workflow Python no cambian. Hash autorizado del lockfile versionado: `aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`. Vencimiento original: **31/10/2026, 23:59 America/Lima**, equivalente a `2026-11-01T04:59:00Z`; sin renovación o ampliación. No se simula contexto GitHub. Solo CI en el contexto autorizado de PR interno hacia develop o push a develop puede acreditar aceptación tras foundation e inspección Linux satisfactorios del mismo commit; hallazgos adicionales/anomalías bloquean.
 
 **Axe sigue pendiente del backlog original**, no está instalado ni sustituido por CDP/AX, contraste o teclado. PR05 no queda cerrado. Su resolución necesita una decisión expresa antes del cierre global. PR05b no está autorizado en esta entrega.
 
 No se probaron lectores de pantalla, dispositivos físicos, Safari/Firefox, zoom nativo manual ni todas las combinaciones de sistema/navegador. CSS zoom no equivale a zoom nativo. Los anuncios del lector no quedan demostrados por el árbol AX. El popup nativo puede requerir verificaciones adicionales por plataforma; las capturas headless no son métricas de campo. Light y High Contrast completos continúan deshabilitados; ISSUE-HC-01 conserva su corrección aislada y regresiones previas.
 
-D05, D08, PR06 y el bloqueo de despliegue comercial continúan abiertos. No hay merge, despliegue ni modificaciones en main, PR #3 histórico, FastAPI, motor QA, infraestructura o proveedores. Los componentes son infraestructura de presentación y formularios, no funcionalidades comerciales.
+D05, D08, PR06 y el bloqueo de despliegue comercial continúan abiertos. El merge de PR05a se autorizó por separado y quedó registrado arriba. No hay despliegue ni modificaciones en main, PR #3 histórico, FastAPI, motor QA, infraestructura o proveedores. Los componentes son infraestructura de presentación y formularios, no funcionalidades comerciales.
