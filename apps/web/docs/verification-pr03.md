@@ -1,7 +1,59 @@
 # PR03 · Public layout and responsive navigation
 
 Authorized base: `06e9fc958d27dd1e7d227710566871ad2c79a0fa` (`develop`).
-Branch: `codex/kevolint-pr03-public-layout`. Delivery remains Draft; no merge or deployment.
+Implementation branch: `codex/kevolint-pr03-public-layout`. PR #6 is closed and merged into `develop` by separate formal authorization; no deployment.
+
+## Cierre autorizado de PR03 · 18/10/2026
+
+El usuario aprobó formalmente la integración de PR03 mediante Squash and Merge. Antes de ejecutarla se confirmó el HEAD exacto `78b95963a815aff477c8f0dda0b22e1de73a701d`, destino `develop`, ausencia de conflictos y los cuatro checks aprobados (foundation, dependencies, secrets y unit). PR #6 se marcó Ready for Review y el merge se protegió con el SHA esperado.
+
+- [PR #6 integrado](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/6).
+- [Commit squash `17ba36720feefa3a7b95c7c283b71a322a12f94a`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/17ba36720feefa3a7b95c7c283b71a322a12f94a), con referencia a `(#6)` en el mensaje.
+- Padre: `06e9fc958d27dd1e7d227710566871ad2c79a0fa`. El árbol del squash es idéntico al del HEAD aprobado.
+
+### Verificación real posterior al merge
+
+Los workflows siguientes se ejecutaron por `push` sobre `develop`, con head SHA `17ba36720feefa3a7b95c7c283b71a322a12f94a`:
+
+| Workflow/job | Resultado confirmado |
+| --- | --- |
+| [Frontend · foundation](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39100249421) | Success: instalación limpia, lint, **276 tests frontend**, TypeScript, frontera cliente/servidor y validación de entorno público |
+| Frontend · navegador Linux | Success: PR02 conserva 14 muestras/32 estados; PR03 verifica siete anchos, teclado/puntero, foco, fondo inerte, scroll, historial, modificadores, desmontaje y movimiento reducido |
+| Frontend · build y smoke | Success: build sin credenciales, runtime standalone, integridad de recursos originales y las nueve respuestas 404 pendientes |
+| Frontend · exposición y artefacto | Success: clasificación de desarrollo y configuración efectiva, inspección física Linux del standalone, assets y trazas; `linuxVerified: true` |
+| Frontend · dependencies | Success: audit completo con desarrollo, aceptación temporal exclusivamente del aviso y la cadena aprobados; sin hallazgos adicionales |
+| Frontend · secrets | Success: historial Git completo |
+| [Python/Streamlit · unit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39100249428) | Success: compileall, **15 regresiones Python** y smoke de pantalla inicial de Streamlit |
+
+Los logs de exposición/artefacto/audit reconocen `event: push`, `refs/heads/develop` y `KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`. Audit y artefacto registran el mismo commit y el inventario `ccccc6263797471eb4ebfb118b9e9f1eb9c85803cbfe043548a3f8ed0202729b`.
+
+### Seguridad conservada y pendientes
+
+SEC-PR01-01 permanece abierta como **riesgo aceptado temporalmente, no corregido**, responsable `KevinhosUTP`. Política, script de seguridad, lockfile y workflow Python conservan los mismos bytes de la base autorizada. El hash del lockfile sigue siendo `aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`.
+
+Se mantienen la cadena exacta de desarrollo, el único GHSA/CVE aprobado, los cuatro nodos high de la misma vulnerabilidad, el rechazo de cualquier anomalía o hallazgo adicional y la exclusión del ejecutable afectado del artefacto. Vencimiento original: **31/10/2026, 23:59 America/Lima**, equivalente a `2026-11-01T04:59:00Z`. Revisiones del 24 y 31 de octubre; sin renovación automática. No se amplía la aceptación a main, forks, producción o despliegues.
+
+Las nueve rutas pendientes se comprobaron como **404 reales** en el smoke posterior al merge:
+
+| URL pendiente | Etapa responsable |
+| --- | --- |
+| /como-funciona | PR04 |
+| /seguridad | PR04 |
+| /precios | PR04 |
+| /ayuda | PR04 |
+| /legal/terminos | PR04, con revisión legal antes de publicación |
+| /legal/privacidad | PR04, con revisión legal antes de publicación |
+| /legal/cookies | PR04, con revisión legal antes de publicación |
+| /sign-in | PR06 |
+| /sign-up | PR06 |
+
+`/` sigue siendo la página técnica: la landing completa también está pendiente. La navegación **no está lista para despliegue comercial** mientras falten destinos esenciales. No se crearon páginas ficticias ni formularios simulados.
+
+Se conservan expresamente las limitaciones de accesibilidad: sin lector de pantalla, zoom manual del menú del navegador, dispositivos físicos, Safari/Firefox, cobertura exhaustiva de sistemas/navegadores ni certificación WCAG integral. El reflow con CSS zoom 200% no se presenta como zoom nativo manual. Light y High Contrast completos siguen deshabilitados.
+
+PR01, PR02 y PR03 quedan integrados y documentados. PR04 y PR05 no se han iniciado y requieren nueva autorización. No hubo despliegue ni cambios en main, PR #3 histórico, backend, proveedores o infraestructura.
+
+Este cierre añade únicamente documentación después del squash. Los resultados de CI del HEAD documental final se verificarán antes de la entrega y se enlazarán en el registro de cierre de PR #6, evitando modificar el documento repetidamente para referenciar su propio commit.
 
 ## Implementation and traceability
 
@@ -52,7 +104,7 @@ These are genuine links and genuine missing responses. Unit tests verify catalog
 - Actual navigation to /precios reaches the real 404 and focuses its content; history back/forward and Ctrl+click new-tab behavior are checked. The fixture verifies same-route close, exact prior scroll styles/position restored on unmount, and successful remount/reopening.
 - Original PR02 browser suite: 14 route/viewport samples and 32 state observations; ISSUE-HC-01 remains isolated and passes 19.68:1 in its enabled QA states. Light/High Contrast complete themes remain disabled.
 - Python: compileall, **15 regression tests** and Streamlit initial-screen smoke pass using an ignored isolated environment with existing requirements. System Python initially lacked test dependencies; that failed setup attempt is not presented as a passing test. No backend/requirements changes.
-- Lint, TypeScript, negative boundary/environment compiler tests, credential-free build and standalone smoke pass locally. Exposure, artifact and complete audit controls were executed and correctly **denied** the unauthorized local diagnostic branch; none is represented as a local security acceptance. Audit ran completely and reported only the four known high transitively related nodes. No context, branch or GitHub variables were simulated to bypass the denial. Definitive Linux audit/artifact evidence and final commit/run URLs are recorded in the Draft PR description after CI finishes; this document alone does not assert Linux acceptance.
+- Lint, TypeScript, negative boundary/environment compiler tests, credential-free build and standalone smoke passed locally. Exposure, artifact and complete audit controls correctly **denied** the unauthorized local diagnostic branch; none is represented as a local security acceptance. Audit ran completely and reported only the four known high transitively related nodes. No context, branch or GitHub variables were simulated. Linux verification subsequently passed in PR #6 and again after the squash on develop, as recorded in the closure section above; final documentation-HEAD run URLs are recorded in the merged PR description.
 
 Production prebuild rejects either PR02 or PR03 temporary route. Smoke verifies those routes return 404, along with private/business endpoints. Fixtures are removed after the browser process ends, including generated dev route types. No runtime switch can publish them.
 
@@ -64,9 +116,9 @@ No dependency entries, lockfile, security policy/script, Python workflow, backen
 
 Not verified: screen readers, manual browser-menu zoom, physical mobile devices, Safari/Firefox, exhaustive OS/browser combinations or integral WCAG conformance. Existing CSS 200% reflow verification is not manual native zoom. Modal behavior is verified in installed Chrome and must not be generalized to untested platforms.
 
-No deployment or commercial readiness is asserted. PR04/PR05 remain unstarted; no merge is authorized by this delivery.
+No deployment or commercial readiness is asserted. PR03 was merged by the separate formal authorization recorded above. PR04/PR05 remain unstarted and require new authorization.
 
-## Changed-file inventory
+## Changed-file inventory · implementation PR #6
 
 - `.github/workflows/frontend-checks.yml`
 - `apps/web/.gitattributes`
