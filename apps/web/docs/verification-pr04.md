@@ -2,7 +2,49 @@
 
 Base remota reconfirmada: `855f49339d7ae4f8a14a506aa437c70b29d9cb54` de `develop`.
 Rama autorizada: `codex/kevolint-pr04-public-pages`.
-Alcance aprobado por el usuario: ocho vistas del handoff 3C, adaptaciones honestas de contenido e interacciones. Entrega exclusivamente como Draft PR hacia develop; sin merge ni despliegue.
+Alcance aprobado por el usuario: ocho vistas del handoff 3C, adaptaciones honestas de contenido e interacciones. La entrega inicial fue un Draft PR; PR #7 quedó integrado en develop mediante autorización formal posterior. Sin despliegue.
+
+## Cierre autorizado de PR04 · 18/10/2026
+
+El usuario autorizó formalmente Squash and Merge. Antes de ejecutarlo se reconfirmaron el HEAD exacto `7ffb852c76b7779379663fb70696e6050ff91e30`, destino `develop`, ausencia de conflictos y cuatro jobs con success: foundation, dependencies, secrets y unit. PR #7 se marcó Ready for Review y el merge se protegió con el SHA esperado.
+
+- [PR #7 integrado](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/7).
+- [Commit squash `1e29a7c3530eae3e8e0f8c67c9c9bb5ae503351f`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/1e29a7c3530eae3e8e0f8c67c9c9bb5ae503351f), con referencia `(#7)` en el mensaje; integración a las 07:41:51 UTC.
+- Padre: `855f49339d7ae4f8a14a506aa437c70b29d9cb54`. El árbol del squash es idéntico al del HEAD aprobado.
+
+### Incidencia real del CI posterior al merge
+
+La primera ejecución de [Frontend en develop](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39108637236/attempts/1) aprobó lint y las **301 pruebas frontend**, pero foundation falló al arrancar Chrome en PR02: `Browser debugging endpoint did not start`. No llegó a inspeccionar el artefacto ni a completar el resto de verificaciones Linux. Secrets aprobó. El audit completo se ejecutó aun con foundation fallido: solo los cuatro nodos high conocidos; denegó correctamente la aceptación con `Foundation/Linux verification did not succeed`. No hubo ampliación de la excepción ni hallazgos adicionales.
+
+Se reejecutaron los jobs fallidos sobre el mismo SHA, sin modificar código, dependencias, workflow ni controles. El segundo intento completó todos los jobs con success. El fallo de arranque no se presenta como una corrección implementada; se conserva como incidencia intermitente del entorno de pruebas.
+
+### Resultados reales sobre el squash en develop
+
+Ambos workflows se ejecutaron por `push`, con head SHA `1e29a7c3530eae3e8e0f8c67c9c9bb5ae503351f`:
+
+| Workflow/job | Resultado confirmado en logs |
+| --- | --- |
+| [Frontend · foundation, intento 2](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39108637236/job/117620182791) | Success: instalación limpia, lint, **301 tests frontend**, TypeScript, frontera cliente/servidor y validación del entorno público |
+| Frontend · navegador Linux PR02/PR03 | Success: 14 muestras/32 estados del Design System y siete anchos con ciclo completo del drawer |
+| Frontend · build/smoke y navegador PR04 | Success: build sin credenciales, standalone, **56 muestras / 32 frames**, ocho páginas sin JavaScript, FAQ por teclado/AX, búsqueda local y GET, CTA, movimiento reducido, consola y estabilidad |
+| Frontend · exposición y artefacto | Success: configuración efectiva sin next.rootDir, cadena exclusiva de desarrollo, inspección física del standalone/assets/trazas; `linuxVerified: true` |
+| [Frontend · dependencies](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39108637236/job/117620802952) | Success: audit completo con desarrollo; solo cuatro nodos high del GHSA aprobado, aceptación temporal, no corrección |
+| [Frontend · secrets](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39108637236/job/117620183874) | Success: escaneo de historial Git completo |
+| [Python/Streamlit · unit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39108637254/job/117619803576) | Success: compileall, **15 regresiones Python** y smoke de pantalla inicial de Streamlit |
+
+Exposición, artefacto y audit reconocieron `event: push`, `refs/heads/develop` y `KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`. Artefacto y audit comparten el squash y el inventario `935dc3425a807a4b8cfe7ddbf694ef3090ffc59e5be049e7e84f5a3844dfe568`. BUILD_ID Linux: `NRpLI3sV0riDNSCI-QyGs`. La aceptación solo se concedió después de foundation/Linux satisfactorios.
+
+El navegador Linux volvió a informar `pointer:fine=false` y `hover:hover=false`: se verificaron el fallback estático y puntero grueso emulado, sin atribuirle cobertura de hover fino. `/sign-in` y `/sign-up` conservaron sus 404 reales; las fixtures temporales también devolvieron 404 en el build.
+
+### Seguridad y pendientes conservados
+
+Política SEC-PR01-01, script de seguridad, lockfile y workflow Python conservan los mismos bytes versionados de la base autorizada. Las dependencias tampoco cambian. El lockfile mantiene SHA-256 `aa92474f1c300f4dd062af76381c793bef5f4e9440901d17f030b374df5054a5`.
+
+SEC-PR01-01 permanece abierta como **riesgo aceptado temporalmente, no corregido**, responsable `KevinhosUTP`. Vencimiento original: **31/10/2026, 23:59 America/Lima**, equivalente a `2026-11-01T04:59:00Z`; revisiones del 24 y 31 de octubre, sin renovación automática. La aceptación exige la cadena exacta, el único GHSA/CVE aprobado, ausencia de hallazgos adicionales y verificación completa Linux del mismo commit. Main, forks, producción y despliegues siguen excluidos.
+
+D05 (precios, cuotas finales, conservación y condiciones comerciales), D08 (revisión legal), PR06 (`/sign-in` y `/sign-up`, 404 reales) y las verificaciones manuales de accesibilidad siguen pendientes. No se verificaron lectores de pantalla, dispositivos físicos, Safari/Firefox, zoom nativo manual ni cobertura exhaustiva. No se declara certificación WCAG integral. Light y High Contrast completos siguen deshabilitados.
+
+**El despliegue comercial permanece bloqueado.** No se desplegó ni se inició PR05. No se modificaron main, el PR #3 histórico, backend, proveedores o infraestructura. Este cierre solo añade documentación tras el squash; el CI del HEAD documental final se verificará y enlazará en el registro de PR #7, evitando commits sucesivos para autorreferenciar este archivo.
 
 ## Fuentes e integridad
 
@@ -110,4 +152,4 @@ La aceptación técnica depende del CI final del PR interno hacia develop: found
 - Sin verificación con lectores de pantalla, dispositivos físicos, Safari/Firefox, zoom nativo manual o cobertura exhaustiva. No se declara certificación WCAG integral. Los tiempos headless no son métricas de campo ni de dispositivos móviles físicos.
 - El hover fino se comprueba en Chrome Windows con esa capacidad real. Cuando Chrome Linux informa que no tiene puntero fino/hover, CI comprueba el fallback estático y puntero grueso emulado; no se presenta ese resultado como una prueba de hover fino Linux.
 - Light y High Contrast completos permanecen deshabilitados; ISSUE-HC-01 conserva su corrección aislada.
-- No se autoriza despliegue comercial, merge, PR05, infraestructura ni proveedores. No se modifican main ni el PR #3 histórico.
+- El merge de PR04 se autorizó por separado y quedó registrado arriba. No se autoriza despliegue comercial, PR05, infraestructura ni proveedores. No se modifican main ni el PR #3 histórico.
