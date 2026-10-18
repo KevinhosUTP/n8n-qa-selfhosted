@@ -71,7 +71,10 @@ try {
     await evaluate('window.__kevolintTestDocument = true');
     await cmd("Page.navigate", { url: `${origin}${path}` });
     await until(`!window.__kevolintTestDocument && location.pathname === ${JSON.stringify(path)}`, `New document not committed: ${path}`);
-    await until('document.readyState === "complete" && !!document.querySelector("main") && document.fonts.status === "loaded" && [...document.images].filter(i=>i.getClientRects().length).every(i=>i.complete && i.naturalWidth>0)', `Page not ready: ${path}`);
+    await until('document.readyState === "complete" && !!document.querySelector("main") && document.fonts.status === "loaded"', `Page not ready: ${path}`);
+    // PR04 makes public pages long. Load original lazy resources and reveal
+    // sections before retaining the existing image and layout assertions.
+    await evaluate('(async()=>{for(const image of document.images){if(image.getClientRects().length){image.scrollIntoView({block:"center"});await image.decode();}}scrollTo(0,0);})()');
     await delay(300);
   }
   async function key(key, code, windowsVirtualKeyCode, modifiers = 0) {
@@ -171,7 +174,7 @@ try {
   await cmd("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: false });
   await navigate("/");
   // Skip link is reached through a real native Tab from the document body.
-  await evaluate('document.activeElement.blur()');
+  await evaluate('document.body.setAttribute("tabindex","-1");document.body.focus();document.body.removeAttribute("tabindex")');
   await key("Tab", "Tab", 9);
   assert.equal(await evaluate('document.activeElement.textContent'), "Saltar al contenido");
   await key("Enter", "Enter", 13);
@@ -220,6 +223,7 @@ try {
   await closed();
   report.keyboard = { skipLink: true, forwardCycle: true, reverseCycle: true, escape: true, enter: true, space: true, focusVisible: true, backgroundFocusBlocked: true, closePointer: true, scrimPointer: true };
   // Modified navigation opens its real destination in a separate tab, preserving this modal.
+  await evaluate("scrollTo(0,400)");
   await open(true);
   const beforeTargets = (await send("Target.getTargets")).targetInfos.map((target) => target.targetId);
   await click('dialog a[href="/precios"]', 2);
@@ -234,9 +238,10 @@ try {
   await send("Target.closeTarget", { targetId: added.targetId });
   report.modifiedClick = true;
   await click('dialog a[href="/precios"]');
-  await until('location.pathname === "/precios" && document.querySelector("main")?.textContent.includes("Página no encontrada")', "Pending route did not reach real 404");
+  await until('location.pathname === "/precios" && document.querySelector("h1")?.textContent.includes("La misma revisión")', "Implemented route did not reach pricing page");
   await until('document.activeElement === document.querySelector("main")', "Route focus was not placed in destination main");
   await closed();
+  assert.equal(await evaluate("scrollY"), 0, "New route retained the old page scroll");
   const history = await cmd("Page.getNavigationHistory");
   await cmd("Page.navigateToHistoryEntry", { entryId: history.entries[history.currentIndex - 1].id });
   await until('location.pathname === "/" && !!document.querySelector("header")', "Back navigation failed");
@@ -244,7 +249,7 @@ try {
   await until('location.pathname === "/precios"', "Forward navigation failed");
   report.historyNavigation = true;
   report.pendingRoutes = [];
-  for (const path of ["/como-funciona", "/seguridad", "/precios", "/ayuda", "/legal/terminos", "/legal/privacidad", "/legal/cookies", "/sign-in", "/sign-up"]) {
+  for (const path of ["/sign-in", "/sign-up"]) {
     const response = await fetch(`${origin}${path}`, { redirect: "manual" });
     assert.equal(response.status, 404, `Pending route must remain a real 404: ${path}`);
     assert.ok((await response.text()).includes("Página no encontrada"));

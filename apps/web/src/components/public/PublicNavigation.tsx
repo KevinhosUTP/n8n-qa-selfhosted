@@ -42,7 +42,12 @@ export function PublicNavigation() {
       <Image unoptimized loading="eager" src="/navigation/menu.svg" alt="" width={24} height={24} className={styles.menuIcon} />
     </Button>
     <ModalSurface id="public-navigation-drawer" open={open} onDismiss={() => setOpen(false)} returnFocus={() => {
-      if (navigated.current) return null;
+      if (navigated.current) {
+        // A real App Router destination may commit while the native dialog still
+        // makes it inert. Settle focus after close(), which can restore the trigger.
+        window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+        return document.querySelector<HTMLElement>("main");
+      }
       return trigger.current?.getClientRects().length ? trigger.current : document.querySelector<HTMLElement>("[data-public-home]");
     }}>
       <>

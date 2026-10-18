@@ -101,7 +101,7 @@ not just the expected command list.
 ## Conventions
 
 - `src/app/layout.tsx`: single root layout, Spanish language and development noindex metadata.
-- `src/app/(public)/page.tsx`: only implemented product URL, `/`, with technical placeholder content.
+- `src/app/(public)`: PR04 supplies the eight public review pages; authentication and business features remain unimplemented.
 - `src/app/not-found.tsx`: unknown paths return HTTP 404, without redirection to `/404`.
 - Server Components by default; add `use client` only for required interaction.
 - `@/*` maps to `src/*`; TypeScript remains strict.
@@ -109,7 +109,7 @@ not just the expected command list.
 - `public.ts`: explicit public lookup; `server.ts`: protected by `server-only`.
 - No barrel re-export combining server and client configuration. Never spread
   `process.env` into Next config, React props, HTML, error messages or browser storage.
-- No new UI libraries, font downloads, telemetry SDKs, API adapters or fake business data.
+- No new UI libraries, font downloads, telemetry SDKs or API adapters. PR04 labels its static example as DEMO and all provisional commercial values as proposals.
 
 Future route groups `(auth)` and `(private)/app` preserve the handoff's approved
 URLs. They are documented, not scaffolded as accessible or supposedly protected
@@ -124,10 +124,10 @@ See [ADR 0001](../../docs/adr/0001-frontend-foundation.md) and the
 
 ## PR03 public layout
 
-The public route group now composes the header, technical content and footer.
+PR03 supplied the header, technical content and footer; PR04 replaces the technical content with public review pages.
 Canonical destinations and their implementation stage are centralized in
-`src/lib/navigation/public-routes.ts`. Pending PR04/PR06 URLs remain real 404s;
-the shell is not commercially deployable while these destinations are missing.
+`src/lib/navigation/public-routes.ts`. PR06 URLs remain real 404s;
+commercial deployment remains blocked by missing authentication and unapproved D05/D08 content.
 
 Run `npm run public:verify` for installed-browser navigation, modal lifecycle,
 responsive and accessibility checks. Like PR02, it owns a temporary fixture,
@@ -135,3 +135,21 @@ removes it on exit and refuses a production build while it exists. No additional
 package or browser is installed. See `docs/verification-pr03.md` for scope,
 visual adaptations, evidence and limitations. The native modal boundary is
 internal and can be reused by PR05 without duplicating dialog mechanics.
+
+## PR04 public pages
+
+Landing, Cómo funciona, Precios, Seguridad, Ayuda and the three legal review
+templates reuse the existing design system and public layout. Plans are proposals,
+legal text is a development draft and the report is static DEMO content.
+There is no checkout, subscription, account recovery or fictitious backend action.
+
+`npm run pages:verify` checks the prepared production standalone in the installed
+browser, including 56 route/viewport samples, native FAQ, local help search and
+its GET fallback without JavaScript. It runs after build/smoke; PR02 and PR03
+browser suites remain mandatory. No package or browser is installed.
+
+See `docs/verification-pr04.md`, `design-system/public-pages.json` and
+`docs/pr04-evidence/` for frames, approved adaptations, captures and limitations.
+SEC-PR01-01 is unchanged, temporarily accepted, not fixed, until
+2026-10-31 23:59 America/Lima. Final acceptance requires the authorized Linux CI.
+No merge or deployment is authorized by this implementation.

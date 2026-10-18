@@ -105,6 +105,7 @@ try {
   for (const width of [320, 390, 767, 768, 1023, 1024, 1440]) {
     await cmd("Emulation.setDeviceMetricsOverride", { width, height: width >= 768 ? 1024 : 844, deviceScaleFactor: 1, mobile: false });
     await navigate("/");
+    await evaluate('(async()=>{for(const image of document.images){image.scrollIntoView({block:"center"});await image.decode();}scrollTo(0,0);})()');
     const page = await evaluate('({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,mainWidth:document.querySelector("main").getBoundingClientRect().width,logo:[...document.images].map(e=>({src:e.getAttribute("src"),loaded:e.complete&&e.naturalWidth>0,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height}))})');
     assert.ok(page.scrollWidth <= page.width, `Production page overflows at ${width}`);
     assert.ok(page.logo.every((x) => x.loaded));

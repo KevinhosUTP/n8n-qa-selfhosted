@@ -1,0 +1,572 @@
+{
+  "platform": "Windows",
+  "browser": "Chrome/155.0.8059.84",
+  "baseRevision": "855f49339d7ae4f8a14a506aa437c70b29d9cb54",
+  "sourceRevisionAtCapture": "15e6423d900a0311325414f189e6a42c11c1802e",
+  "workingPR04Tree": true,
+  "buildId": "C7QR_bZi39UZIBvxnpNwY",
+  "note": "Real standalone captures from the working PR04 tree before the final follow-up commit, based on sourceRevisionAtCapture. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.",
+  "frames": [
+    {
+      "route": "/",
+      "width": 320,
+      "height": 844,
+      "frame": "126:11440",
+      "capture": "landing-320.png"
+    },
+    {
+      "route": "/como-funciona",
+      "width": 320,
+      "height": 844,
+      "frame": "126:11747",
+      "capture": "como-funciona-320.png"
+    },
+    {
+      "route": "/precios",
+      "width": 320,
+      "height": 844,
+      "frame": "126:11908",
+      "capture": "precios-320.png"
+    },
+    {
+      "route": "/seguridad",
+      "width": 320,
+      "height": 844,
+      "frame": "126:12090",
+      "capture": "seguridad-320.png"
+    },
+    {
+      "route": "/ayuda",
+      "width": 320,
+      "height": 844,
+      "frame": "126:12212",
+      "capture": "ayuda-320.png"
+    },
+    {
+      "route": "/legal/terminos",
+      "width": 320,
+      "height": 844,
+      "frame": "126:12325",
+      "capture": "legal-terminos-320.png"
+    },
+    {
+      "route": "/legal/privacidad",
+      "width": 320,
+      "height": 844,
+      "frame": "126:12415",
+      "capture": "legal-privacidad-320.png"
+    },
+    {
+      "route": "/legal/cookies",
+      "width": 320,
+      "height": 844,
+      "frame": "126:12505",
+      "capture": "legal-cookies-320.png"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "frame": "19:99",
+      "capture": "landing-390.png"
+    },
+    {
+      "route": "/como-funciona",
+      "width": 390,
+      "height": 844,
+      "frame": "19:257",
+      "capture": "como-funciona-390.png"
+    },
+    {
+      "route": "/precios",
+      "width": 390,
+      "height": 844,
+      "frame": "19:347",
+      "capture": "precios-390.png"
+    },
+    {
+      "route": "/seguridad",
+      "width": 390,
+      "height": 844,
+      "frame": "19:409",
+      "capture": "seguridad-390.png"
+    },
+    {
+      "route": "/ayuda",
+      "width": 390,
+      "height": 844,
+      "frame": "19:476",
+      "capture": "ayuda-390.png"
+    },
+    {
+      "route": "/legal/terminos",
+      "width": 390,
+      "height": 844,
+      "frame": "19:535",
+      "capture": "legal-terminos-390.png"
+    },
+    {
+      "route": "/legal/privacidad",
+      "width": 390,
+      "height": 844,
+      "frame": "19:585",
+      "capture": "legal-privacidad-390.png"
+    },
+    {
+      "route": "/legal/cookies",
+      "width": 390,
+      "height": 844,
+      "frame": "19:633",
+      "capture": "legal-cookies-390.png"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "frame": "133:22214",
+      "capture": "landing-768.png"
+    },
+    {
+      "route": "/como-funciona",
+      "width": 768,
+      "height": 1024,
+      "frame": "133:22538",
+      "capture": "como-funciona-768.png"
+    },
+    {
+      "route": "/precios",
+      "width": 768,
+      "height": 1024,
+      "frame": "133:22704",
+      "capture": "precios-768.png"
+    },
+    {
+      "route": "/seguridad",
+      "width": 768,
+      "height": 1024,
+      "frame": "133:22898",
+      "capture": "seguridad-768.png"
+    },
+    {
+      "route": "/ayuda",
+      "width": 768,
+      "height": 1024,
+      "frame": "125:9829",
+      "capture": "ayuda-768.png"
+    },
+    {
+      "route": "/legal/terminos",
+      "width": 768,
+      "height": 1024,
+      "frame": "125:9942",
+      "capture": "legal-terminos-768.png"
+    },
+    {
+      "route": "/legal/privacidad",
+      "width": 768,
+      "height": 1024,
+      "frame": "125:10032",
+      "capture": "legal-privacidad-768.png"
+    },
+    {
+      "route": "/legal/cookies",
+      "width": 768,
+      "height": 1024,
+      "frame": "125:10122",
+      "capture": "legal-cookies-768.png"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:2",
+      "capture": "landing-1440.png"
+    },
+    {
+      "route": "/como-funciona",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:196",
+      "capture": "como-funciona-1440.png"
+    },
+    {
+      "route": "/precios",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:318",
+      "capture": "precios-1440.png"
+    },
+    {
+      "route": "/seguridad",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:376",
+      "capture": "seguridad-1440.png"
+    },
+    {
+      "route": "/ayuda",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:442",
+      "capture": "ayuda-1440.png"
+    },
+    {
+      "route": "/legal/terminos",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:510",
+      "capture": "legal-terminos-1440.png"
+    },
+    {
+      "route": "/legal/privacidad",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:560",
+      "capture": "legal-privacidad-1440.png"
+    },
+    {
+      "route": "/legal/cookies",
+      "width": 1440,
+      "height": 900,
+      "frame": "19:610",
+      "capture": "legal-cookies-1440.png"
+    }
+  ],
+  "captures": [
+    {
+      "filename": "ayuda-1440-viewport.png",
+      "bytes": 65658,
+      "sha256": "3a0c452d9248253aeebf53ac16be70e091bc965b3c93c2164db19748215537ea"
+    },
+    {
+      "filename": "ayuda-1440.png",
+      "bytes": 216671,
+      "sha256": "087ad87bbe3f8b42131e8cc4565657cd6540fe8055d9b6ca7b99cd2bce4733f2"
+    },
+    {
+      "filename": "ayuda-320-viewport.png",
+      "bytes": 46573,
+      "sha256": "821d907cac899dca3663386014ec151545e7bd77877ca883adc665c503492c0f"
+    },
+    {
+      "filename": "ayuda-320.png",
+      "bytes": 213349,
+      "sha256": "1a702e52720c8b11db7ecaa9688016e0e64188b1bf29f9a2fa99b7d2f1d91427"
+    },
+    {
+      "filename": "ayuda-390.png",
+      "bytes": 203120,
+      "sha256": "421a130711b98f0d8fae9162e40366e434eeacf973e608bd798dd23542ab1056"
+    },
+    {
+      "filename": "ayuda-768.png",
+      "bytes": 215558,
+      "sha256": "86cb41f81dd70f010a590c28a6a18a47f6d78dc5a658dc51e610faf3a3830081"
+    },
+    {
+      "filename": "como-funciona-1440-viewport.png",
+      "bytes": 120301,
+      "sha256": "d43bbc28285013fecfbdec0bcfc752fc3ae33a31c5f6d64a3bfd091209a33374"
+    },
+    {
+      "filename": "como-funciona-1440.png",
+      "bytes": 213304,
+      "sha256": "d808fa93b63a32c31a3c71b8bc9a6ec7629ea1c80d533732d14ef1ca42e378bb"
+    },
+    {
+      "filename": "como-funciona-320-viewport.png",
+      "bytes": 50905,
+      "sha256": "f5262b9f544eec475c1bc59fe167c5f9e709207bc8b90bce2558e6230733ce97"
+    },
+    {
+      "filename": "como-funciona-320.png",
+      "bytes": 204693,
+      "sha256": "4f429348a0271596678be95e1ab0c894f22020eb2732895120cb35eaf494cee7"
+    },
+    {
+      "filename": "como-funciona-390.png",
+      "bytes": 200551,
+      "sha256": "114974a3393d09eade418966cd1525147358d2836c063002a7cf201f22565422"
+    },
+    {
+      "filename": "como-funciona-768.png",
+      "bytes": 208994,
+      "sha256": "0eec5a0ce362e405ac076fc20b43bbcc2f87bccabe4e5ee9cc9d8ed08f84393f"
+    },
+    {
+      "filename": "faq-keyboard-focus.png",
+      "bytes": 14222,
+      "sha256": "d30b555037c0fb308fe6fd6d5db09a3d0bc464933451b9b2d222f9d2583ce104"
+    },
+    {
+      "filename": "help-empty-result.png",
+      "bytes": 65852,
+      "sha256": "ccb3046babfb50735bab21307fc1353e17889982b0e1bf1eb64d5ec142994cf4"
+    },
+    {
+      "filename": "landing-1440-viewport.png",
+      "bytes": 135704,
+      "sha256": "af7c9a715facc232f3047b84633e493b4895ac6f393372d04882df0cd066256a"
+    },
+    {
+      "filename": "landing-1440.png",
+      "bytes": 411471,
+      "sha256": "01e1fd78cf47b9460e3fd341cc19db02cb53052e6105cb5dffc3cb62581045a0"
+    },
+    {
+      "filename": "landing-320-viewport.png",
+      "bytes": 59764,
+      "sha256": "ddaab8c2e682aa97c5f87834b4ac8d676f20f9956b29b8fd076ae968bc88359f"
+    },
+    {
+      "filename": "landing-320.png",
+      "bytes": 439021,
+      "sha256": "b677fa258e9dccfd5344eaf4116f34de2901be4bc697a0cfcb6e7f300a06bfc2"
+    },
+    {
+      "filename": "landing-390.png",
+      "bytes": 429603,
+      "sha256": "fbb80ca3491b308a14689b120428f0c016243396be17634a9b0162fcfe00be7c"
+    },
+    {
+      "filename": "landing-768.png",
+      "bytes": 431508,
+      "sha256": "a0d8a15042e99dfae2aaf1c33abb3040b15749febd9d708e8685a1029269d47a"
+    },
+    {
+      "filename": "legal-cookies-1440-viewport.png",
+      "bytes": 88802,
+      "sha256": "f6646095164d57fab3e3f31272b025f4edb4356194e42376d5ee34f9a5f2d10b"
+    },
+    {
+      "filename": "legal-cookies-1440.png",
+      "bytes": 146509,
+      "sha256": "6e85f2d9d8f954a299f3c3775e871b4d8896c29ecd3779d6d21a8cebde1d8afd"
+    },
+    {
+      "filename": "legal-cookies-320-viewport.png",
+      "bytes": 58265,
+      "sha256": "210f584b26a679bf40508dd9774ef681e16ea6a2c2e22d2aa2a24ba1b7a04191"
+    },
+    {
+      "filename": "legal-cookies-320.png",
+      "bytes": 130903,
+      "sha256": "27ae1dc7dcfafd0c0c1869b931671763741361e7e86e4d16443884ee753ca9c3"
+    },
+    {
+      "filename": "legal-cookies-390.png",
+      "bytes": 127099,
+      "sha256": "b846752d0c7311742ab288f7c679c6d1d1930fb0bf75235e30c1e598a3e41f85"
+    },
+    {
+      "filename": "legal-cookies-768.png",
+      "bytes": 137105,
+      "sha256": "c5ed11262844d19cb79bd405b40f3b2e2cc870d722b0c8d92c2480cd71e396a7"
+    },
+    {
+      "filename": "legal-privacidad-1440-viewport.png",
+      "bytes": 92588,
+      "sha256": "932b578671c0c8db0b51203395fdfd1fd02017a92fc324a4fac363e4a61b4ba0"
+    },
+    {
+      "filename": "legal-privacidad-1440.png",
+      "bytes": 188581,
+      "sha256": "948bd70c2a1b33c2c53a3364e7d59b6ad5dbc969ebeebdb0d1ba0c5ebe66bc5c"
+    },
+    {
+      "filename": "legal-privacidad-320-viewport.png",
+      "bytes": 57558,
+      "sha256": "9c5dcb26e0686bd08527518e0310f02fa002972d11494290ab06b5d270e4214d"
+    },
+    {
+      "filename": "legal-privacidad-320.png",
+      "bytes": 181016,
+      "sha256": "81d4fa5b5d850357d69ad334dfbcde0de714efad3573825b2f025feb105fd716"
+    },
+    {
+      "filename": "legal-privacidad-390.png",
+      "bytes": 169184,
+      "sha256": "a35d88988e49adba62e5ed1fc5d94b938ea817f92d108e43d282091e356f4bf9"
+    },
+    {
+      "filename": "legal-privacidad-768.png",
+      "bytes": 187249,
+      "sha256": "aa5d8ba2f5b35f010aa04e9cad4bd87d5a207fe429dde4f322e1596c72a4836f"
+    },
+    {
+      "filename": "legal-terminos-1440-viewport.png",
+      "bytes": 95016,
+      "sha256": "71198726cb9c56802f5bdc5fb1437fc41d178d019569168a9449b8115c2ce378"
+    },
+    {
+      "filename": "legal-terminos-1440.png",
+      "bytes": 191076,
+      "sha256": "38f7233bb3cc8906794505e552b73e79ef555c9b1471335152db0640f43c9b44"
+    },
+    {
+      "filename": "legal-terminos-320-viewport.png",
+      "bytes": 56199,
+      "sha256": "a92108e2ba2c0b86789d7d8067cf3f5d1d2faad5553fd1fec79e3c5c16369104"
+    },
+    {
+      "filename": "legal-terminos-320.png",
+      "bytes": 181006,
+      "sha256": "e50cdab8ac9baab788f92d121adab3f67701a41901617b7f14ca0c98e4dddef6"
+    },
+    {
+      "filename": "legal-terminos-390.png",
+      "bytes": 171605,
+      "sha256": "13f9147a6fb3bed145eca392574b6a6e127fd401098f9ebc94594d113c84c0aa"
+    },
+    {
+      "filename": "legal-terminos-768.png",
+      "bytes": 183901,
+      "sha256": "1fc4ad32dfc0b3a89e39933b2675e0ab773f94df9d0c39397515c61675d45d98"
+    },
+    {
+      "filename": "precios-1440-viewport.png",
+      "bytes": 83952,
+      "sha256": "43a92f8953b3ba143074abdf637013cc58f0cabae64bccdd24f644d5eb1ef63d"
+    },
+    {
+      "filename": "precios-1440.png",
+      "bytes": 231208,
+      "sha256": "bc1087be45e508d7bc34e3eec6e5956ca5cd552d1d395bc2cd2cbb78e7ae28f4"
+    },
+    {
+      "filename": "precios-320-viewport.png",
+      "bytes": 58120,
+      "sha256": "51d0ed0a97bf3e5bd06e766a7848016183260cefd679b8ff5c5b69ff2bdad452"
+    },
+    {
+      "filename": "precios-320.png",
+      "bytes": 258200,
+      "sha256": "db1c52a353d66bac0dfa8d6ed228e0aba743b632f60d0c0c1b0f3e3e02d041f0"
+    },
+    {
+      "filename": "precios-390.png",
+      "bytes": 251909,
+      "sha256": "ca673e6244aa44df205b81a4b0de3f3cbb2d12c95218d25f375c7d3a59bbf12d"
+    },
+    {
+      "filename": "precios-768.png",
+      "bytes": 250447,
+      "sha256": "0eb4043e6c65a6eec84ea77272bc441bac51cfd98027f42b792e804d689ada98"
+    },
+    {
+      "filename": "seguridad-1440-viewport.png",
+      "bytes": 103312,
+      "sha256": "2a60ecf6d78cb68b90d851eb4acbf8cc68c12ac891db510da8e167c0501a06d2"
+    },
+    {
+      "filename": "seguridad-1440.png",
+      "bytes": 163736,
+      "sha256": "bd03ed2ea361cd1d43aeec8bb8ca73cc58b4f7cc3dc6779140ab400e7c584c52"
+    },
+    {
+      "filename": "seguridad-320-viewport.png",
+      "bytes": 50711,
+      "sha256": "c4cb793c838f10c6c20e78d90f004eea981b71ff7801a5d4f2838c63cd19f8a4"
+    },
+    {
+      "filename": "seguridad-320.png",
+      "bytes": 168895,
+      "sha256": "7e421a67507d859b4ce10d755591aeb140f43e38c92d15fa3e98f881fde3bd00"
+    },
+    {
+      "filename": "seguridad-390.png",
+      "bytes": 163931,
+      "sha256": "56d22b1e40d6edd2a2c3bc0ce9b01a54f8e215c940f76af7593fe7b9829e7ade"
+    },
+    {
+      "filename": "seguridad-768.png",
+      "bytes": 168540,
+      "sha256": "baafdb5c710c3d6680dd98669d806a4a4e00db4e846867b820cdecdf39817f7a"
+    }
+  ],
+  "sourceFilesSha256": {
+    "apps/web/public/public-content/agent.svg": "8ec103bb46f213bf967f0210aa4d80b6bbc210da032492c4db984e871264fc29",
+    "apps/web/public/public-content/alert.svg": "878a93a7158419e532daaced1975637ba553be895eef3217c836aca388c9e243",
+    "apps/web/public/public-content/check.svg": "1838d6b2ffa922be965cb2bef744fe286f31a586c8a1f9db4c4c16e7601a501c",
+    "apps/web/public/public-content/clock.svg": "d9e8ef46562c0985d4389b750049856099be6dc5889e5a81ad65578ab820d1a0",
+    "apps/web/public/public-content/data-flow.svg": "a6585c49de057a57d6bc836065cf97bf55bc85937304bedcc06a29f94cc1df12",
+    "apps/web/public/public-content/file.svg": "fbfc80680c4cbeb955a52066b047f291370bcec23a697a06451671a20bfb159f",
+    "apps/web/public/public-content/lock.svg": "0ac7133068951731495abcd7de309467d01d5479d8498c1d89fd23dce110b31e",
+    "apps/web/public/public-content/search.svg": "667e481119396abc30f68e31122b5c1f9634ffd6b8ffa137fa856e185e7dab9a",
+    "apps/web/public/public-content/settings.svg": "0df4ff52dc47fb89ee53e8a992c2d2ebe78b498cc0acf61a35a1b6d5d918ba0a",
+    "apps/web/public/public-content/shield.svg": "d6442e76b8d6ddd69c65d6ce1d7a1e0a4ada04516f7fb9d278e0984fec2b8805",
+    "apps/web/public/public-content/upload.svg": "2e1b2dbb27d62dfd4c256ea9b521fda92449ef11fcbface6abad0512f0414b0f",
+    "apps/web/public/public-content/workflow.svg": "7cd2cb7b3b850d925593970da6555e45cd8c1df5ab513d66ea04d5d1a4c0c684",
+    "apps/web/src/app/(public)/ayuda/page.tsx": "31bf5b0e270248c9a80d6fd11fde7ab37999ae64d35a8e05cab1c42e4e44ea68",
+    "apps/web/src/app/(public)/como-funciona/page.tsx": "a5521ed445b9fce23a86a03bb8079a89cda86e02b9163563d693ccf39869c84e",
+    "apps/web/src/app/(public)/legal/cookies/page.tsx": "198af880da4d7602ea3d3fea0a0d6ed0011c6e23063d1ccef6a05aaebe1d5cd5",
+    "apps/web/src/app/(public)/legal/privacidad/page.tsx": "b8ce86e33207ada5d027365c2774b85fdbc5707885fbea93d2634853375d33de",
+    "apps/web/src/app/(public)/legal/terminos/page.tsx": "513b73a4c286fed4548a78d8ad55ef59c630bd3347b75dfc04f026e49b47d905",
+    "apps/web/src/app/(public)/page.tsx": "06a3b2623162244b5b48e15e8ec6dcf4108da296cfa7b2ad2555b40e4090c573",
+    "apps/web/src/app/(public)/precios/page.tsx": "9910398153689f850ad365724894b0a12305287278f82925c162a96fa75e9a4b",
+    "apps/web/src/app/(public)/seguridad/page.tsx": "eb31bc71c4567aea7ddc0b2e0e9548b0bc4b7bd0c84619c1ce30d2069c5b46e4",
+    "apps/web/src/components/public/PublicNavigation.tsx": "2f18470f8e1adbe5313714f467a73b9ac9ce94b356d4a8b038c239a568fcfa8d",
+    "apps/web/src/components/public/content/DemoReportPreview.tsx": "fc518c70b91328bc21fd8e98f540859da6386c88b5361b7ce755c146a7baa3b0",
+    "apps/web/src/components/public/content/HelpSearch.tsx": "54d5f4b08d8624f9f8e9523a43328b8196dd22badc1110347501c79111921dbb",
+    "apps/web/src/components/public/content/LegalPage.tsx": "92cc5b3745eb8068326b02cf1af3785b49ca4f13b10127bbe2e52982e4669859",
+    "apps/web/src/components/public/content/ProcessSteps.tsx": "336443fa71b7bc086cf15eab88ccac6017ed48547e68c9b57547f9ae65d8cf3c",
+    "apps/web/src/components/public/content/PublicFaq.tsx": "d60d45a178c84326e390548e015fa32fc2ca5a2ced029e11e5156dc0a7ccbbe7",
+    "apps/web/src/components/public/content/PublicIcon.tsx": "06bbda91b1c2d375df6cf506da061a89c72fde7de25321aee97b635da25db768",
+    "apps/web/src/components/public/content/PublicPage.tsx": "5fe720bb2180d93e08ad98dfe45295b66c246a9f6c828558356a9174c2e6e009",
+    "apps/web/src/components/public/content/PublicPlanCard.tsx": "7c9d79e794fed246abd6c5f396ada1e7215e45a93cba659784d24ef91830c7e5",
+    "apps/web/src/components/public/content/QAMotorCard.tsx": "1337f1ea7ced2fd3bb3cb29a887ec2150a547a1617d06e225ad8c7223fe8ae30",
+    "apps/web/src/components/public/content/RevealOnEntry.tsx": "f974f32e4c344cba44c3df5247dd3fdaa0a7df16c20d5d31212024d707bb0f0b",
+    "apps/web/src/components/public/content/public-content.module.css": "be1809a34b1b14be21b48c9bc7207affc06f8d13be6477ca9d6f23282398e671",
+    "apps/web/src/lib/content/public/content.ts": "6e8271f65621c68d9a3c29afdbdcd5e1aaffb2b542455ff4f33198732e0c0c12",
+    "apps/web/src/lib/content/public/legal-drafts.ts": "22fab31af8e82a2d059d62983cacdf41951d5cd969dd5a1db4f32d955b7fbc25",
+    "apps/web/src/lib/navigation/public-routes.ts": "a403d346375d6ae5c0b09090a26e55c7a619baf594502d955a1aa3bd596bb3b6"
+  },
+  "verification": {
+    "samples": 56,
+    "noJavaScript": [
+      "/",
+      "/como-funciona",
+      "/precios",
+      "/seguridad",
+      "/ayuda",
+      "/legal/terminos",
+      "/legal/privacidad",
+      "/legal/cookies"
+    ],
+    "faq": {
+      "enter": true,
+      "space": true,
+      "tab": true,
+      "reverseTab": true,
+      "focusVisible": true,
+      "nativeExpandedState": true
+    },
+    "search": {
+      "local": true,
+      "accentInsensitive": true,
+      "empty": true,
+      "reset": true,
+      "resetFocus": true,
+      "liveStatus": true,
+      "serverGetWithoutJavaScript": true,
+      "resetWithoutJavaScript": true
+    },
+    "motion": {
+      "heroCss": true,
+      "observerFirstEntry": true,
+      "qaHover": true,
+      "qaStaticFallback": false,
+      "pointerCapabilities": {
+        "fine": true,
+        "hover": true
+      },
+      "noninteractiveCards": true,
+      "emulatedCoarseStatic": true,
+      "planHover": true,
+      "planStaticFallback": false,
+      "proRecommendationPersistent": true
+    },
+    "textContrastMinimum": 5.642480877698,
+    "clsMaximum": 0
+  }
+}

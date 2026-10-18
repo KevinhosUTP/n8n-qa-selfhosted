@@ -52,12 +52,15 @@ try {
   }
   assert.ok(ready, "Standalone server did not become ready.");
 
-  const pendingPublic = ["/como-funciona", "/seguridad", "/precios", "/ayuda", "/legal/terminos", "/legal/privacidad", "/legal/cookies", "/sign-in", "/sign-up"];
-  for (const [path, status] of [["/", 200], ["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404], ["/pr03-public-preview", 404], ...pendingPublic.map((path) => [path, 404])]) {
+  const pendingPublic = ["/sign-in", "/sign-up"];
+  const publicTitles = new Map([["/", "Entrega"], ["/como-funciona", "Tu workflow, revisado"], ["/seguridad", "Transparencia desde"], ["/precios", "La misma revisión"], ["/ayuda", "Resuelve tu siguiente"], ["/legal/terminos", "Términos del servicio"], ["/legal/privacidad", "Política de privacidad"], ["/legal/cookies", "Preferencias de cookies"]]);
+  for (const [path, status] of [...publicTitles.keys()].map((path) => [path, 200]).concat([["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404], ["/pr03-public-preview", 404], ...pendingPublic.map((path) => [path, 404])])) {
     const response = await fetch(`${origin}${path}`, { redirect: "manual", signal: AbortSignal.timeout(5000) });
     assert.equal(response.status, status, `Unexpected HTTP status for ${path}`);
     const body = await response.text();
-    assert.ok(body.includes(path === "/" ? "Base técnica de desarrollo" : "Página no encontrada"));
+    assert.ok(body.includes(status === 200 ? publicTitles.get(path) : "Página no encontrada"));
+    if (path.startsWith("/legal/")) assert.ok(body.includes("Pendiente de revisión legal"));
+    if (path === "/precios") assert.ok(body.includes("D05 pendiente"));
     assert.ok(!body.includes(marker), "Server-only configuration leaked into HTML.");
     assert.equal(response.headers.get("x-content-type-options"), "nosniff");
     assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");

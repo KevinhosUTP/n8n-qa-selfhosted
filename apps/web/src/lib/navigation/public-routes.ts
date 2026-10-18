@@ -1,15 +1,15 @@
 /** Canonical URLs from Entrega 3C routes.json; approval does not mean implemented. */
 export const publicRoutes = [
-  { href: "/", label: "Inicio", stage: "PR03", implemented: true },
-  { href: "/como-funciona", label: "Cómo funciona", stage: "PR04", implemented: false },
-  { href: "/seguridad", label: "Seguridad", stage: "PR04", implemented: false },
-  { href: "/precios", label: "Precios", stage: "PR04", implemented: false },
+  { href: "/", label: "Inicio", stage: "PR04", implemented: true },
+  { href: "/como-funciona", label: "Cómo funciona", stage: "PR04", implemented: true },
+  { href: "/seguridad", label: "Seguridad", stage: "PR04", implemented: true },
+  { href: "/precios", label: "Precios", stage: "PR04", implemented: true },
   { href: "/sign-in", label: "Entrar", stage: "PR06", implemented: false },
   { href: "/sign-up", label: "Probar gratis", stage: "PR06", implemented: false },
-  { href: "/ayuda", label: "Ayuda", stage: "PR04", implemented: false },
-  { href: "/legal/terminos", label: "Términos", stage: "PR04", implemented: false },
-  { href: "/legal/privacidad", label: "Privacidad", stage: "PR04", implemented: false },
-  { href: "/legal/cookies", label: "Cookies", stage: "PR04", implemented: false },
+  { href: "/ayuda", label: "Ayuda", stage: "PR04", implemented: true },
+  { href: "/legal/terminos", label: "Términos", stage: "PR04", implemented: true },
+  { href: "/legal/privacidad", label: "Privacidad", stage: "PR04", implemented: true },
+  { href: "/legal/cookies", label: "Cookies", stage: "PR04", implemented: true },
 ] as const;
 export type PublicHref = (typeof publicRoutes)[number]["href"];
 export const headerRoutes = publicRoutes.slice(1, 6);
