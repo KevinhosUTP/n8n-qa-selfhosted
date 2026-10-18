@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getServerConfig } from "@/lib/config/server";
 import { inter } from "@/lib/design-system/fonts";
+import { RouteFocus } from "@/components/public/RouteFocus";
 import "@/styles/tokens.generated.css";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   getServerConfig();
   return (
     <html lang="es" className={inter.variable}>
-      <body>{children}</body>
+      <body>{children}<RouteFocus /></body>
     </html>
   );
 }

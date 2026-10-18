@@ -15,3 +15,14 @@ it("refuses a production build containing the temporary browser route", async ()
     await rm(root, { recursive: true, force: true });
   }
 });
+
+it("also rejects the PR03 lifecycle fixture from production", async () => {
+  const root = await mkdtemp(resolve(tmpdir(), "kevolint-pr03-build-"));
+  try {
+    await mkdir(resolve(root, "src/app/pr03-public-preview"), { recursive: true });
+    await expect(assertNoDesignPreview(root)).rejects.toThrow(/Temporary PR03 preview/);
+  } finally {
+    expect(dirname(resolve(root))).toBe(resolve(tmpdir()));
+    await rm(root, { recursive: true, force: true });
+  }
+});

@@ -1,0 +1,89 @@
+{
+  "browser": "Chrome/155.0.8059.84",
+  "platform": "Windows",
+  "baseRevision": "06e9fc958d27dd1e7d227710566871ad2c79a0fa",
+  "workingPR03Tree": true,
+  "note": "Real browser captures before first PR03 commit; browser DOM clipping only, Next dev tooling excluded, application/native scrollbars preserved. Final Linux CI is linked separately in the Draft PR.",
+  "captures": [
+    {
+      "filename": "public-drawer-320.png",
+      "sha256": "9ec7e76f2b19f26f0e641ffdeed6dd10db3349b6e0474e0816e9818174f94756",
+      "bytes": 21458
+    },
+    {
+      "filename": "public-drawer-390.png",
+      "sha256": "13b38b6afb1070742773c62b78a9087b92466d7014ac4c6c18dedafa2169c571",
+      "bytes": 21759
+    },
+    {
+      "filename": "public-drawer-768.png",
+      "sha256": "357fb5fb22ca17a8bc9f1da5e7f551c2e3d7fc223d40b9547871a8c2c65c4a2e",
+      "bytes": 32316
+    },
+    {
+      "filename": "public-drawer-keyboard-focus.png",
+      "sha256": "56e15ec8f44190c427c7e4c3f76ca14316e68c303774f78fc5eedaf578342836",
+      "bytes": 21779
+    },
+    {
+      "filename": "public-footer-1440.png",
+      "sha256": "68f10ff89d2b896611e6a38e03c9527b9f476b33ed9b6e0dc4a7cfda8dc54aec",
+      "bytes": 19819
+    },
+    {
+      "filename": "public-footer-320.png",
+      "sha256": "346bd278577e241edc95ee7652cd46b4dba3e3c1f4a79a6df2398a85917b742d",
+      "bytes": 18669
+    },
+    {
+      "filename": "public-footer-390.png",
+      "sha256": "34e7479bb3dcb6ec44f62c3d4ad7770fa7feb15d40cfeb1c9770b5c1fe89c67e",
+      "bytes": 18614
+    },
+    {
+      "filename": "public-footer-768.png",
+      "sha256": "333871cc9eb1e5f06e6d98ec8cc696a92b965b88f2a78443f955cf0fd79824d7",
+      "bytes": 20635
+    },
+    {
+      "filename": "public-header-1440.png",
+      "sha256": "ae7ac9702d632fb08a161633a7b36c66474175b81146f3401e3e85d7b70b5c3b",
+      "bytes": 11616
+    },
+    {
+      "filename": "public-header-320.png",
+      "sha256": "4941b981320777944f323a0f07d798728772c4a0acc4f7d043699dc0d58d6b09",
+      "bytes": 4703
+    },
+    {
+      "filename": "public-header-390.png",
+      "sha256": "b9e8c1967970cffd9d05bc71abb788b24151e362e706a5c3a7e5f639609e3cfb",
+      "bytes": 4775
+    },
+    {
+      "filename": "public-header-768.png",
+      "sha256": "a400c3fe08e16bd11a7c1355a349a2247bef826b0934180762ac2584e1ba742e",
+      "bytes": 5079
+    },
+    {
+      "filename": "public-layout-1440.png",
+      "sha256": "d66c47d5fca96760f19e9fa8e89761abe7c79a1bb07f872f08f62a2598b54dab",
+      "bytes": 65105
+    },
+    {
+      "filename": "public-layout-320.png",
+      "sha256": "00e4587b30d15b179cd37f7de12ab22cf221d4e2ed07a20d13785608294e3f76",
+      "bytes": 52973
+    },
+    {
+      "filename": "public-layout-390.png",
+      "sha256": "212e1e183afdea0ee1a7808a7f6269c81680640231f0bfb7ad46dbf3b1aaed03",
+      "bytes": 52456
+    },
+    {
+      "filename": "public-layout-768.png",
+      "sha256": "cb7485578a4614fa80551530575db4df4c790f8239beb8af67397950a00ee672",
+      "bytes": 56536
+    }
+  ]
+}

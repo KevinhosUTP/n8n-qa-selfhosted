@@ -4,9 +4,11 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export async function assertNoDesignPreview(root) {
-  try { await access(resolve(root, "src/app/pr02-design-preview")); }
-  catch (error) { if (error.code === "ENOENT") return; throw error; }
-  assert.fail("Temporary PR02 preview route exists. Stop design:preview and remove its owned fixture before a production build.");
+  for (const [stage, path] of [["PR02", "src/app/pr02-design-preview"], ["PR03", "src/app/pr03-public-preview"]]) {
+    try { await access(resolve(root, path)); }
+    catch (error) { if (error.code === "ENOENT") continue; throw error; }
+    assert.fail(`Temporary ${stage} preview route exists. Stop its preview and remove its owned fixture before a production build.`);
+  }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
