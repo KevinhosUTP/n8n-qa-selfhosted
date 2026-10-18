@@ -46,6 +46,8 @@ jobs:
         run: npm test
       - name: Real browser design checks (preinstalled Chrome, no package install)
         run: npm run design:verify
+      - name: Public navigation and modal lifecycle in real Linux browser
+        run: npm run public:verify
       - name: Negative client/server compiler test
         run: npm run test:boundary
       - name: Typecheck generated route types

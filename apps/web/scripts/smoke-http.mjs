@@ -52,7 +52,8 @@ try {
   }
   assert.ok(ready, "Standalone server did not become ready.");
 
-  for (const [path, status] of [["/", 200], ["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404]]) {
+  const pendingPublic = ["/como-funciona", "/seguridad", "/precios", "/ayuda", "/legal/terminos", "/legal/privacidad", "/legal/cookies", "/sign-in", "/sign-up"];
+  for (const [path, status] of [["/", 200], ["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404], ["/pr03-public-preview", 404], ...pendingPublic.map((path) => [path, 404])]) {
     const response = await fetch(`${origin}${path}`, { redirect: "manual", signal: AbortSignal.timeout(5000) });
     assert.equal(response.status, status, `Unexpected HTTP status for ${path}`);
     const body = await response.text();

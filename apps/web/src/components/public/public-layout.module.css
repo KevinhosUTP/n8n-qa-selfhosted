@@ -1,0 +1,19 @@
+.container { width: calc(100% - 2 * var(--kl-technical-gutter)); max-width: var(--kl-content-max); margin-inline: auto; min-width: 0; }
+.header { background: var(--kl-color-background); border: 1px solid var(--kl-color-border); border-radius: var(--kl-radius-8); }
+.headerInner { min-height: 66px; margin-inline: 19px; display: flex; align-items: center; justify-content: space-between; gap: var(--kl-spacing-24); }
+.home { display: inline-flex; align-items: center; min-height: 44px; flex-shrink: 0; text-decoration: none; }
+.footer { background: var(--kl-color-surface); border: 1px solid var(--kl-color-border); border-radius: var(--kl-radius-12); }
+.footerInner { margin-inline: 19px; padding-block: var(--kl-spacing-24); display: flex; flex-direction: column; gap: var(--kl-spacing-24); min-width: 0; min-height: 418px; }
+.footerBrand { display: grid; gap: var(--kl-spacing-8); min-width: 0; }
+.footerBrand p { font-size: var(--kl-type-small-size); line-height: var(--kl-type-small-line); color: var(--kl-color-muted); overflow-wrap: anywhere; }
+.footerLinks { display: flex; flex-direction: column; align-items: flex-start; gap: var(--kl-spacing-8); }
+.footerLinks > a { width: 100px; }
+.footerLinks > a:nth-child(3) { width: 120px; }
+@media (min-width: 1024px) {
+  .headerInner, .footerInner { width: calc(100% - 2 * var(--kl-technical-gutter)); max-width: var(--kl-content-max); margin-inline: auto; }
+  /* 766px is the sum of the six original Figma item widths. Distribute their five gaps equally. */
+  .headerInner { min-height: 78px; gap: max(24px, calc((100% - 766px) / 5)); }
+  .footerInner { min-height: 226px; flex-direction: row; justify-content: space-between; padding-block: var(--kl-spacing-48); }
+  .footerBrand { flex: 1; max-width: 440px; }
+  .footerLinks { flex-direction: row; flex-wrap: wrap; width: 520px; flex-shrink: 0; }
+}

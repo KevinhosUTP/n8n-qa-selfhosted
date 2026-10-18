@@ -32,3 +32,7 @@ strong { font-weight: var(--kl-type-body-strong-weight); }
 .technical-copy { display: grid; gap: var(--kl-spacing-16); }
 .technical-secondary { color: var(--kl-color-muted); }
 .technical-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--kl-spacing-16); }
+.public-technical { padding-block: var(--kl-spacing-64); display: grid; gap: var(--kl-spacing-32); overflow-wrap: anywhere; }
+.skip-navigation { position: absolute; left: 16px; top: 8px; padding: 12px; background: var(--kl-color-surface); color: var(--kl-color-text); transform: translateY(-160%); }
+.skip-navigation:focus { transform: none; z-index: 60; }
+main:focus-visible { outline: 2px solid var(--kl-color-accent); outline-offset: -2px; }

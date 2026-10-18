@@ -1,7 +1,8 @@
-# KevoLint — frontend foundation (PR01)
+# KevoLint — frontend baseline and public shell (PR01–PR03)
 
-Minimal development baseline. The product interface, brand assets and integrations
-are scheduled in later handoff stages. This app has no audit endpoint or provider SDK.
+Development baseline with PR02 design foundations and the PR03 public shell.
+The landing, informational pages and provider integrations remain in later
+handoff stages. This app has no audit endpoint or provider SDK.
 
 ## Local development
 
@@ -115,8 +116,22 @@ URLs. They are documented, not scaffolded as accessible or supposedly protected
 pages in PR01. Clerk catch-all routing is a PR06 decision. The future report is
 `/app/auditorias/[id]`; overlays and contextual errors do not create new routes.
 
-The system font and minimal CSS are temporary technical scaffolding. PR02 will
-integrate approved Inter typography, tokens and original R2/C3 + W3 SVGs.
+PR02 supplies local Inter typography, deterministic tokens and the original
+R2/C3 + W3 SVGs. PR03 reuses those foundations for the public shell.
 
 See [ADR 0001](../../docs/adr/0001-frontend-foundation.md) and the
 [security backlog](../../docs/security-backlog.md).
+
+## PR03 public layout
+
+The public route group now composes the header, technical content and footer.
+Canonical destinations and their implementation stage are centralized in
+`src/lib/navigation/public-routes.ts`. Pending PR04/PR06 URLs remain real 404s;
+the shell is not commercially deployable while these destinations are missing.
+
+Run `npm run public:verify` for installed-browser navigation, modal lifecycle,
+responsive and accessibility checks. Like PR02, it owns a temporary fixture,
+removes it on exit and refuses a production build while it exists. No additional
+package or browser is installed. See `docs/verification-pr03.md` for scope,
+visual adaptations, evidence and limitations. The native modal boundary is
+internal and can be reused by PR05 without duplicating dialog mechanics.

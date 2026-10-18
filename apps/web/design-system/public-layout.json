@@ -1,0 +1,22 @@
+{
+  "stage": "PR03",
+  "handoffArchiveSha256": "6b5270ed7db44693650f79b64ed2f26d7cad31f0cfc62192974cc904378716aa",
+  "figmaFile": "TtOBuTKdNPw6dYXVUP2nmd",
+  "header": ["4:173", "4:125", "4:159", "126:11441", "133:22215"],
+  "footer": ["4:352", "4:286", "4:319"],
+  "publicCompositions": ["19:2", "133:22214", "19:99", "126:11440"],
+  "mixedDrawerReferences": ["145:14747", "19:1871", "132:14145"],
+  "adaptation": "Reuse approved drawer geometry with public destinations only. No private links, usage data or commercial actions. Header compact inset 20px differs from content gutters. Footer height grows with content.",
+  "assets": [
+    {
+      "filename": "menu.svg",
+      "path": "public/navigation/menu.svg",
+      "figmaNode": "3:30",
+      "sha256": "86e560c94185ba6459e4e86ea833ce9e08a6d08967577f2a789df63adad9d0ca",
+      "bytes": 327,
+      "export": "Original Figma MCP get_design_context SVG asset, downloaded without transformation on 2026-10-17",
+      "rootSize": [24, 24],
+      "displaySize": [18, 18]
+    }
+  ]
+}
