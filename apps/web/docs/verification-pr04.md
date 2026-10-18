@@ -28,6 +28,7 @@ No se alteran los 61 tokens originales, su generador, los 24 SVG de marca, Inter
 - Composiciones específicas: introducción editorial, pasos, motores QA, informe DEMO estático, planes propuestos, FAQ y plantilla legal.
 - Páginas principalmente en servidor. Código cliente limitado al hero/observer, búsqueda y navegación ya existente. Sin endpoints de negocio nuevos ni llamadas al motor desde el navegador.
 - Ayuda filtra preguntas reales localmente, sin servicios externos; normaliza mayúsculas/acentos, combina palabras y anuncia resultados y ausencia de coincidencias. El formulario GET usa renderizado de servidor como alternativa real sin JavaScript.
+- “Mostrar todas” conserva un enlace nativo para funcionar también sin JavaScript. Con JavaScript restablece las guías y devuelve el foco al campo de búsqueda, sin perderlo al retirar el control.
 - FAQ nativo details/summary, inicialmente abierto como la referencia, accionable mediante puntero, Enter y Espacio incluso sin JavaScript.
 - La activación de destinos ahora reales reveló una carrera de foco en el drawer de PR03: el main seguía inerte cuando RouteFocus intentaba enfocarlo. El retorno tras close() ahora enfoca el main del destino y reinicia su scroll. Cancelar, misma ruta, cambio de viewport y desmontaje conservan sus comprobaciones previas.
 
@@ -91,7 +92,7 @@ Los logs locales completos son salidas ignoradas bajo `.tools/pr04`. La evidenci
 - Un arranque de desarrollo quedó esperando tras cambios de caché/instalación; se terminó solo su árbol de procesos y se eliminó únicamente su fixture verificada y caché ignorada. La repetición completa pasó.
 - Una ejecución elevada no se inició por el límite temporal del revisor automático de aprobaciones. Se reintentó después del restablecimiento; no se eludió el control.
 - El escaneo previo clasificó el identificador público del archivo Figma bajo la propiedad fileKey como posible clave genérica. Se registró mediante su URL completa de procedencia, sin cambiar el recurso. No era una credencial; no se añadió ninguna exclusión ni se modificó el escáner.
-- El primer CI Linux falló en la comprobación de hover QA. El audit se ejecutó y denegó correctamente la aceptación al fallar foundation, sin hallazgos adicionales. El verificador ahora espera que termine la entrada, mide de nuevo la tarjeta, comprueba el hit-test :hover y espera el color final, conservando las mismas aserciones de pintura; el resultado definitivo se registra en el Draft PR.
+- Los dos primeros CI Linux fallaron en la comprobación de hover QA. El diagnóstico del segundo confirmó pointer:fine=false y hover:hover=false: el CSS excluye correctamente el hover decorativo en ese modo. El audit se ejecutó y denegó la aceptación al fallar foundation, sin hallazgos adicionales. El verificador registra capacidades reales y exige el color correspondiente: hover fino cuando aplica, superficie estática cuando no, más el caso negativo de puntero grueso emulado. Mantiene hit-testing y espera de pintura, sin forzar estilos ni simular contexto GitHub.
 
 ## Seguridad y bloqueos conservados
 
@@ -107,5 +108,6 @@ La aceptación técnica depende del CI final del PR interno hacia develop: found
 - D08 sigue abierto: responsable, jurisdicción, contacto, proveedores, conservación, eliminación, respaldos e inventario de cookies necesitan revisión.
 - /sign-in y /sign-up siguen siendo 404 de PR06. No hay autenticación, backend integrado, pagos o dashboard.
 - Sin verificación con lectores de pantalla, dispositivos físicos, Safari/Firefox, zoom nativo manual o cobertura exhaustiva. No se declara certificación WCAG integral. Los tiempos headless no son métricas de campo ni de dispositivos móviles físicos.
+- El hover fino se comprueba en Chrome Windows con esa capacidad real. Cuando Chrome Linux informa que no tiene puntero fino/hover, CI comprueba el fallback estático y puntero grueso emulado; no se presenta ese resultado como una prueba de hover fino Linux.
 - Light y High Contrast completos permanecen deshabilitados; ISSUE-HC-01 conserva su corrección aislada.
 - No se autoriza despliegue comercial, merge, PR05, infraestructura ni proveedores. No se modifican main ni el PR #3 histórico.

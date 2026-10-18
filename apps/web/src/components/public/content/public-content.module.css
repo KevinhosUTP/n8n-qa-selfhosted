@@ -70,7 +70,7 @@
 .search input { appearance: none; min-height: 44px; width: 100%; min-width: 0; padding: 11px 12px; background: var(--kl-color-surface); color: var(--kl-color-text); border: 1px solid var(--kl-color-control-border); border-radius: var(--kl-radius-8); font: inherit; font-size: 14px; line-height: 20px; }
 .search input::placeholder { color: var(--kl-color-muted); opacity: 1; }
 .searchActions { display: flex; flex-wrap: wrap; gap: var(--kl-spacing-12); margin-top: 56px; }
-.searchActions > button { width: 100%; }
+.searchActions > button, .searchActions > a { width: 100%; }
 .helpResults { display: grid; gap: 40px; }
 .helpCard { display: grid; gap: var(--kl-spacing-12); background: var(--kl-color-surface); padding: var(--kl-spacing-24); border: 1px solid var(--kl-color-border); border-radius: var(--kl-radius-12); min-width: 0; }
 .reviewControl { display: flex; align-items: flex-start; gap: var(--kl-spacing-8); }
@@ -98,7 +98,7 @@
   .fourSteps, .motors { grid-template-columns: repeat(4,minmax(0,1fr)); }
   .motors { gap: var(--kl-spacing-16); }
   .split { grid-template-columns: minmax(0,1.06fr) minmax(0,1fr); }
-  .searchActions > button { width: 330px; }
+  .searchActions > button, .searchActions > a { width: 330px; }
   .help, .helpResults { gap: var(--kl-spacing-64); }
 }
 @media (hover: hover) and (pointer: fine) {

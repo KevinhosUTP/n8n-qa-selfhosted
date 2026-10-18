@@ -215,9 +215,11 @@ try {
   await key("Enter","Enter",13);
   await until('document.querySelector("[role=status]")?.textContent.includes("0 guías encontradas")',"Empty result missing");
   await shotElement("main","help-empty-result");
-  await click('form button[type="button"]');
+  await evaluate('document.querySelector(\'form a[href="/ayuda"]\').focus()');
+  await key("Enter","Enter",13);
   await until('document.querySelectorAll("main article").length===7',"Reset did not restore guides");
-  report.search={local:true,accentInsensitive:true,empty:true,reset:true,liveStatus:true};
+  assert.equal(await evaluate("document.activeElement.id"),"help-query","Clearing search lost keyboard focus");
+  report.search={local:true,accentInsensitive:true,empty:true,reset:true,resetFocus:true,liveStatus:true};
   await navigate("/");
   const pendingReveals=await evaluate('document.querySelectorAll(\'[data-enter="pending"]\').length');
   assert.ok(pendingReveals>0,"Observer reveal was not prepared");
@@ -225,6 +227,8 @@ try {
   await delay(600);
   assert.ok(await evaluate('document.querySelector(\'[data-enter="visible"]\')!==null'),"Observer did not reveal");
   const motor='main li img[src="/public-content/shield.svg"]';
+  const pointerCapabilities=await evaluate('({fine:matchMedia("(pointer:fine)").matches,hover:matchMedia("(hover:hover)").matches})');
+  const fineHover=pointerCapabilities.fine&&pointerCapabilities.hover;
   await evaluate(`document.querySelector('${motor}').scrollIntoView({block:"center"})`);
   await until(`document.querySelector('${motor}').closest("[data-enter]")?.dataset.enter!=="pending"`,"QA reveal did not start");
   // Settle the 480ms entry before measuring pointer coordinates. A fixed delay
@@ -233,20 +237,28 @@ try {
   const point=await evaluate(`(()=>{const r=document.querySelector('${motor}').closest("li").getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);
   await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...point});
   await until(`document.querySelector('${motor}').closest("li").matches(":hover")`,"QA pointer missed card");
-  await until(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor==="rgb(171, 141, 250)"`,"QA hover paint did not settle");
-  assert.equal(await evaluate(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor`),"rgb(171, 141, 250)");
+  const expectedMotorBorder=fineHover?"rgb(171, 141, 250)":"rgb(42, 45, 53)";
+  await until(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor===${JSON.stringify(expectedMotorBorder)}`,"QA pointer-appropriate paint did not settle");
+  assert.equal(await evaluate(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor`),expectedMotorBorder);
   assert.ok(await evaluate('!document.querySelector(\'main li img[src="/public-content/shield.svg"]\').closest("li").hasAttribute("tabindex")'),"Informational card gained an artificial tab stop");
-  report.motion={heroCss:true,observerFirstEntry:true,qaHover:true,noninteractiveCards:true};
+  report.motion={heroCss:true,observerFirstEntry:true,qaHover:fineHover,qaStaticFallback:!fineHover,pointerCapabilities,noninteractiveCards:true};
+  await cmd("Emulation.setTouchEmulationEnabled",{enabled:true,maxTouchPoints:1});
+  assert.ok(await evaluate('matchMedia("(pointer:coarse)").matches&&!matchMedia("(hover:hover)").matches'),"Touch mode not established");
+  await until(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor==="rgb(42, 45, 53)"`,"Coarse pointer retained decorative QA hover");
+  report.motion.emulatedCoarseStatic=true;
+  await cmd("Emulation.setTouchEmulationEnabled",{enabled:false});
   await navigate("/precios");
   const planPoint=await evaluate('(()=>{const e=document.querySelector(\'article[aria-label="Plan Starter propuesto"]\');e.scrollIntoView({block:"center"});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+40}})()');
   await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...planPoint});
   await until('document.querySelector(\'article[aria-label="Plan Starter propuesto"]\').matches(":hover")',"Plan pointer missed card");
-  await until('getComputedStyle(document.querySelector(\'article[aria-label="Plan Starter propuesto"]\')).backgroundColor==="rgb(28, 31, 37)"',"Plan hover paint did not settle");
-  assert.equal(await evaluate('getComputedStyle(document.querySelector(\'article[aria-label="Plan Starter propuesto"]\')).backgroundColor'),"rgb(28, 31, 37)");
+  const expectedPlanBackground=fineHover?"rgb(28, 31, 37)":"rgb(20, 22, 27)";
+  await until(`getComputedStyle(document.querySelector('article[aria-label="Plan Starter propuesto"]')).backgroundColor===${JSON.stringify(expectedPlanBackground)}`,"Plan pointer-appropriate paint did not settle");
+  assert.equal(await evaluate('getComputedStyle(document.querySelector(\'article[aria-label="Plan Starter propuesto"]\')).backgroundColor'),expectedPlanBackground);
   await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",x:1,y:1});await delay(200);
   assert.equal(await evaluate('getComputedStyle(document.querySelector(\'article[aria-label="Plan Pro propuesto"]\')).borderColor'),"rgb(171, 141, 250)");
   assert.ok(await evaluate('[...document.querySelectorAll("main article button")].every(b=>b.disabled)'),"Plan CTA became operational");
-  report.motion.planHover=true;report.motion.proRecommendationPersistent=true;
+  report.motion.planHover=fineHover;report.motion.planStaticFallback=!fineHover;report.motion.proRecommendationPersistent=true;
+  console.log("PR04 pointer coverage:",JSON.stringify(report.motion));
   await cmd("Emulation.setEmulatedMedia",{features:[{name:"prefers-reduced-motion",value:"reduce"}]});
   await navigate("/");
   assert.ok(await evaluate('[...document.querySelectorAll("h1 span,main details p")].every(e=>getComputedStyle(e).animationName==="none")'));
@@ -272,6 +284,9 @@ try {
   await key("Enter","Enter",13);
   await until('location.search.includes("q=") && document.querySelector("[role=status]")?.textContent.includes("1 guía encontrada")',"GET search fallback without JavaScript failed");
   report.search.serverGetWithoutJavaScript=true;
+  await click('form a[href="/ayuda"]');
+  await until('location.search==="" && document.querySelectorAll("main article").length===7',"Clear link without JavaScript failed");
+  report.search.resetWithoutJavaScript=true;
   await cmd("Emulation.setScriptExecutionDisabled",{value:false});
   for(const asset of manifest.assets) {
     const response=await fetch(origin+"/"+asset.path.replace(/^public\//,""));

@@ -2,9 +2,9 @@
   "platform": "Windows",
   "browser": "Chrome/155.0.8059.84",
   "baseRevision": "855f49339d7ae4f8a14a506aa437c70b29d9cb54",
-  "sourceRevisionAtCapture": "b051922861ea143c5e2da7a964fe2903898a9b50",
+  "sourceRevisionAtCapture": "15e6423d900a0311325414f189e6a42c11c1802e",
   "workingPR04Tree": true,
-  "buildId": "eyh50NZLSyOPfjuS4ZkKQ",
+  "buildId": "C7QR_bZi39UZIBvxnpNwY",
   "note": "Real standalone captures from the working PR04 tree before the final follow-up commit, based on sourceRevisionAtCapture. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.",
   "frames": [
     {
@@ -507,7 +507,7 @@
     "apps/web/src/app/(public)/seguridad/page.tsx": "eb31bc71c4567aea7ddc0b2e0e9548b0bc4b7bd0c84619c1ce30d2069c5b46e4",
     "apps/web/src/components/public/PublicNavigation.tsx": "2f18470f8e1adbe5313714f467a73b9ac9ce94b356d4a8b038c239a568fcfa8d",
     "apps/web/src/components/public/content/DemoReportPreview.tsx": "fc518c70b91328bc21fd8e98f540859da6386c88b5361b7ce755c146a7baa3b0",
-    "apps/web/src/components/public/content/HelpSearch.tsx": "8316f990e1019220447682e0d8500c34680daa4a40895f19c87262e602b66ff2",
+    "apps/web/src/components/public/content/HelpSearch.tsx": "54d5f4b08d8624f9f8e9523a43328b8196dd22badc1110347501c79111921dbb",
     "apps/web/src/components/public/content/LegalPage.tsx": "92cc5b3745eb8068326b02cf1af3785b49ca4f13b10127bbe2e52982e4669859",
     "apps/web/src/components/public/content/ProcessSteps.tsx": "336443fa71b7bc086cf15eab88ccac6017ed48547e68c9b57547f9ae65d8cf3c",
     "apps/web/src/components/public/content/PublicFaq.tsx": "d60d45a178c84326e390548e015fa32fc2ca5a2ced029e11e5156dc0a7ccbbe7",
@@ -516,7 +516,7 @@
     "apps/web/src/components/public/content/PublicPlanCard.tsx": "7c9d79e794fed246abd6c5f396ada1e7215e45a93cba659784d24ef91830c7e5",
     "apps/web/src/components/public/content/QAMotorCard.tsx": "1337f1ea7ced2fd3bb3cb29a887ec2150a547a1617d06e225ad8c7223fe8ae30",
     "apps/web/src/components/public/content/RevealOnEntry.tsx": "f974f32e4c344cba44c3df5247dd3fdaa0a7df16c20d5d31212024d707bb0f0b",
-    "apps/web/src/components/public/content/public-content.module.css": "e3089a4eca825a9001edf49d0e2fb67cf06358d19a2251bdbf3bd916a9dc85a9",
+    "apps/web/src/components/public/content/public-content.module.css": "be1809a34b1b14be21b48c9bc7207affc06f8d13be6477ca9d6f23282398e671",
     "apps/web/src/lib/content/public/content.ts": "6e8271f65621c68d9a3c29afdbdcd5e1aaffb2b542455ff4f33198732e0c0c12",
     "apps/web/src/lib/content/public/legal-drafts.ts": "22fab31af8e82a2d059d62983cacdf41951d5cd969dd5a1db4f32d955b7fbc25",
     "apps/web/src/lib/navigation/public-routes.ts": "a403d346375d6ae5c0b09090a26e55c7a619baf594502d955a1aa3bd596bb3b6"
@@ -546,15 +546,24 @@
       "accentInsensitive": true,
       "empty": true,
       "reset": true,
+      "resetFocus": true,
       "liveStatus": true,
-      "serverGetWithoutJavaScript": true
+      "serverGetWithoutJavaScript": true,
+      "resetWithoutJavaScript": true
     },
     "motion": {
       "heroCss": true,
       "observerFirstEntry": true,
       "qaHover": true,
+      "qaStaticFallback": false,
+      "pointerCapabilities": {
+        "fine": true,
+        "hover": true
+      },
       "noninteractiveCards": true,
+      "emulatedCoarseStatic": true,
       "planHover": true,
+      "planStaticFallback": false,
       "proRecommendationPersistent": true
     },
     "textContrastMinimum": 5.642480877698,

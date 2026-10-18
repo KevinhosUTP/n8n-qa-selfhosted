@@ -76,6 +76,8 @@ describe("PR04 truthful public content", () => {
     expect(result).toContain('method="get"');
     expect(result).toContain('role="status"');
     expect(result).toContain("1 guía encontrada");
+    expect(result).toContain('href="/ayuda"');
+    expect(result).toContain("Mostrar todas");
   });
   it("escapes query content and produces an honest empty result", async () => {
     const result=html(await HelpPage({searchParams:Promise.resolve({q:'<script>alert(1)</script>'})}));
