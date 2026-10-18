@@ -1,0 +1,3687 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/155.0.8059.84",
+    "revision": "@5869fe313571d75152b77813cf0a4ee26a4e6df0",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "jsVersion": "15.5.35.25"
+  },
+  "sourceRevision": "70dd2f2a25ec6dd833154f59d647899b5894897e",
+  "note": "PR05a browser fixture evidence; this does not certify the Linux security artifact or integral WCAG conformance.",
+  "responsive": [
+    {
+      "width": 320,
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 272.984375,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 272.984375,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 272.984375,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 272.984375,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 272.984375,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 272.984375,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 272.984375,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "12px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 335,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 335,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 335,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 335,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 335,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 335,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 767,
+      "clientWidth": 752,
+      "scrollWidth": 752,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 1023,
+      "clientWidth": 1008,
+      "scrollWidth": 1008,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "clientWidth": 1009,
+      "scrollWidth": 1009,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "controls": [
+        {
+          "id": "default-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "error-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "disabled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "success-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "readonly-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "long-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "default-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "error-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "disabled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "native-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "native-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "native-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "native-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "disabled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "submit",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-input",
+          "width": 350,
+          "height": 44
+        },
+        {
+          "id": "controlled-select",
+          "width": 350,
+          "height": 80
+        },
+        {
+          "id": "controlled-check",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "controlled-switch",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-a",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-radio-b",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "id": "controlled-reset",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "history-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-applied-search",
+          "width": 420,
+          "height": 44
+        },
+        {
+          "id": "history-select",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "history-applied",
+          "width": 184,
+          "height": 44
+        },
+        {
+          "id": "report-select",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "report-applied",
+          "width": 328,
+          "height": 44
+        },
+        {
+          "id": "announce",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "Nueva auditorÃ­a Â· pendiente",
+          "width": 240,
+          "height": 44
+        },
+        {
+          "id": "text-link",
+          "width": 240,
+          "height": 44
+        }
+      ],
+      "reportFont": "14px",
+      "images": [
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/search-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-20.svg",
+          "w": 20,
+          "h": 20,
+          "naturalWidth": 20,
+          "naturalHeight": 20,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/chevron-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-warning-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/workflow-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/clock-16.svg",
+          "w": 16,
+          "h": 16,
+          "naturalWidth": 16,
+          "naturalHeight": 16,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/check-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/shared-ui/alert-22.svg",
+          "w": 22,
+          "h": 22,
+          "naturalWidth": 22,
+          "naturalHeight": 22,
+          "complete": true
+        },
+        {
+          "src": "/public-content/file.svg",
+          "w": 24,
+          "h": 24,
+          "naturalWidth": 24,
+          "naturalHeight": 24,
+          "complete": true
+        }
+      ],
+      "feedbackContrast": [
+        {
+          "text": "Feedback original",
+          "ratio": 16.864839156466893
+        },
+        {
+          "text": "CrÃ­tico",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Advertencia",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "OK",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Demo",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "En progreso",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Contenedor estructural",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Sin mÃ©tricas ni datos comerciales.",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 10.087773788750278
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 7.584091693964652
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "InformaciÃ³n importante",
+          "ratio": 9.666672868749437
+        },
+        {
+          "text": "Revisa el detalle antes de continuar.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "ActualizaciÃ³n de prueba",
+          "ratio": 6.227544998214287
+        },
+        {
+          "text": "Mensaje persistente de ejemplo.",
+          "ratio": 5.642480877698
+        },
+        {
+          "text": "Tu primera auditorÃ­a empieza aquÃ­",
+          "ratio": 15.509957623400139
+        },
+        {
+          "text": "Muestra de composiciÃ³n. Sin operaciÃ³n de auditorÃ­a.",
+          "ratio": 6.185897228094986
+        },
+        {
+          "text": "Estado de carga de ejemplo.",
+          "ratio": 16.864839156466893
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#success-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#readonly-input",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-applied",
+      "state": "default",
+      "text": 15.509957623400139,
+      "focus": 16.864839156466893,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-input",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#default-select",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 80,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-search",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#history-select",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#report-select",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#text-link",
+      "state": "focus",
+      "text": 7.423711245537268,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    },
+    {
+      "selector": "#error-input",
+      "state": "focus",
+      "text": 15.509957623400139,
+      "focus": 7.423711245537268,
+      "height": 44,
+      "opacity": "1"
+    }
+  ],
+  "keyboard": {
+    "tab": true,
+    "disabledSkipped": true,
+    "focusVisible": true,
+    "readonly": true,
+    "choiceSpace": true,
+    "labelClick": true,
+    "radioArrows": true,
+    "selectKeyboard": true,
+    "required": true,
+    "nativeSubmit": true,
+    "nativeReset": true,
+    "controlled": true,
+    "consumerOwnedReset": true,
+    "events": true,
+    "textLink": true,
+    "alertDidNotStealFocus": true,
+    "axRolesAndNames": true
+  },
+  "resources": [
+    "http://127.0.0.1:3105/pr05a-shared-ui-preview",
+    "http://127.0.0.1:3105/_next/static/media/InterVariable-s.p.2c0y96ae70xfx.woff2",
+    "http://127.0.0.1:3105/_next/static/chunks/src_0tujcqjj95_yn._.css",
+    "http://127.0.0.1:3105/_next/static/chunks/src_components_ui_0n0rz5ez4cbn6._.css",
+    "http://127.0.0.1:3105/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_0qva5cupmdgep._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/1daa_next_dist_compiled_react-dom_cjs_react-dom-client_development_0mp0cp_t-ezj9.js",
+    "http://127.0.0.1:3105/_next/static/chunks/1q96_modules_next_dist_compiled_react-dom_cjs_react-dom_development_1sqry0_53krp4.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_compiled_react-dom_0grqycjrj6mju._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_164kp-67asdr9._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_090k2jmam7qwg.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_compiled_1amofcmz--cdp._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_client_1wygxxh5rwq0t._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_05y3oi5z9mc_3._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_%40swc_helpers_cjs_1r9vbqwj2323d._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/_1anvha4rlo79g._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/turbopack-_06rkbud3pyrlm._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/_0dgv3ocmguilz._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/_04a155z9eq__l._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_0g9334r_v7-d9._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/node_modules_next_dist_1vlj9dmcq_-p-._.js",
+    "http://127.0.0.1:3105/_next/static/chunks/src_0n6p3gzz8btj0._.js",
+    "http://127.0.0.1:3105/shared-ui/switch-on.svg",
+    "http://127.0.0.1:3105/shared-ui/radio-on.svg",
+    "http://127.0.0.1:3105/shared-ui/radio-off.svg",
+    "http://127.0.0.1:3105/shared-ui/switch-off.svg",
+    "http://127.0.0.1:3105/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_1mojsayzyj2p6._.js",
+    "http://127.0.0.1:3105/favicon.ico",
+    "http://127.0.0.1:3105/shared-ui/search-20.svg",
+    "http://127.0.0.1:3105/shared-ui/chevron-20.svg",
+    "http://127.0.0.1:3105/shared-ui/chevron-16.svg",
+    "http://127.0.0.1:3105/shared-ui/alert-16.svg",
+    "http://127.0.0.1:3105/shared-ui/alert-warning-16.svg",
+    "http://127.0.0.1:3105/shared-ui/check-16.svg",
+    "http://127.0.0.1:3105/shared-ui/workflow-16.svg",
+    "http://127.0.0.1:3105/shared-ui/clock-16.svg",
+    "http://127.0.0.1:3105/shared-ui/alert-22.svg",
+    "http://127.0.0.1:3105/shared-ui/check-22.svg",
+    "http://127.0.0.1:3105/public-content/file.svg",
+    "http://127.0.0.1:3105/__nextjs_font/geist-latin.woff2",
+    "http://127.0.0.1:3105/pr05a-shared-ui-preview?_rsc=sp0EXn4yCqSW-ET5"
+  ],
+  "images": [],
+  "typography": [],
+  "reducedMotion": true,
+  "shortViewport": true,
+  "cssZoom200Reflow": true,
+  "ssrContentPresentWithoutJavaScript": true,
+  "axe": "pending-not-installed",
+  "manualPending": [
+    "screen readers",
+    "physical devices",
+    "Safari/Firefox",
+    "native browser-menu zoom",
+    "exhaustive WCAG audit"
+  ],
+  "passed": true,
+  "captureProvenance": {
+    "baseRevision": "70dd2f2a25ec6dd833154f59d647899b5894897e",
+    "uncommittedImplementation": true,
+    "note": "Windows captures of the PR05a working tree before its delivery commit; not Linux screenshots or images produced by the final commit. CI independently repeats browser and Linux security checks.",
+    "capturedAtUtc": "2026-10-18T18:08:45.614599+00:00",
+    "sourceHashes": {
+      "apps/web/src/components/ui/Alert.tsx": "c6c95692775ec7bf8d3ffaeefceac8c5902da6b5634e5d92aca9df9776d7d067",
+      "apps/web/src/components/ui/Badge.tsx": "16aaf97d2a4ebdb9d9dc14fddcaec3c5ebda28da24bb3c6e50c2c8fad43e64e5",
+      "apps/web/src/components/ui/button-classes.ts": "818f9e225940588f5b5058e68afdf56ea09235e78dedd8ab42d91e32c75c5936",
+      "apps/web/src/components/ui/Button.module.css": "b63df8213930c00105bda25c71f2f7eebc2308a0e1aca8ef8a7f5fe129daaf21",
+      "apps/web/src/components/ui/Button.tsx": "0e28b1c84ed8816d401415933584c144b4a712c6365d4af80ab189c56b373d3e",
+      "apps/web/src/components/ui/Card.tsx": "866fed8eb8dab55aa4bcbf2f0d49bf318407f8a2023ce39493970c06b3bf5a65",
+      "apps/web/src/components/ui/Checkbox.tsx": "cd7a4461e4e79d682216211fde32e16a4d84d2e819c37f944c5946d740e514ec",
+      "apps/web/src/components/ui/Choice.tsx": "684b2bbe97cfb5440fd6967c8f61dc86d61ba94f58b0870151da3a2c5bea0c1a",
+      "apps/web/src/components/ui/EmptyState.tsx": "45fd81b8945ccac3cf2aff62acbaa62bcf9d88993adb00dae5df874b7febfd6e",
+      "apps/web/src/components/ui/Field.tsx": "8de5b6cccbcfcabc4c6abb8f492af0cd1792a08659d208a573669267d4511e79",
+      "apps/web/src/components/ui/fields.module.css": "ccf37b472fee8006cf6e5c2bdfcb5bd43d849f51c58fc1d803e8070e522dcc0c",
+      "apps/web/src/components/ui/filters/HistoryFilterField.tsx": "fd62110c727cae121454b9da04316dd26f2c59361842b3f8d048bd54cde83e4b",
+      "apps/web/src/components/ui/filters/ReportSelect.tsx": "bdd0aaaaa054776f438460464eff619497780e805f60587d78ee5cd864d0b3e2",
+      "apps/web/src/components/ui/Input.tsx": "702f7e767d9cb25ea7f5e6adb08790062b200643c15c67563cb10004836437cb",
+      "apps/web/src/components/ui/Radio.tsx": "89009497eace3d249efb2b59c1d07a5a767285d893af909aa68e16bd65920d40",
+      "apps/web/src/components/ui/SelectField.tsx": "2e43f7bf7bfcbe75a4e3b6e332c8db1f53002f6ae97f0f276e5faa33f017bf76",
+      "apps/web/src/components/ui/shared-ui.module.css": "0f6d8261bfd47df7bfdcf8db15d3d5b537547546ebb42920d50e3b3288ebb7db",
+      "apps/web/src/components/ui/Skeleton.tsx": "85692ca2a04c7468ebfb0e81bf4d58ff101bef6bc4b8418843ea84ecf8299b47",
+      "apps/web/src/components/ui/Switch.tsx": "50fcda7f44a1d8ce3ca060b2eac7634c54d61e13bd45fe8c554439802393c913",
+      "apps/web/src/components/ui/TextLink.tsx": "dbe557bb523992e38cf94a9daeed6f8377c1657d4c9b0cfbd670c64787f4f6b2"
+    },
+    "screenshots": [
+      {
+        "file": "feedback-1440.png",
+        "sha256": "3c44ec8989ec54f16616f8a446830727e1e54ec022beb48319ac669a7d00a66e"
+      },
+      {
+        "file": "feedback-320.png",
+        "sha256": "19ff7afa0477e9fe980f1d17655eaf339936738fe441e9d5b425f1b0e38cfbae"
+      },
+      {
+        "file": "feedback-390.png",
+        "sha256": "a6766fba1b1c0fa97795f5c7c8ef61d30644a872b099f86853f51e2b3dc03fef"
+      },
+      {
+        "file": "feedback-768.png",
+        "sha256": "819f16bdce167827b80103ff659ad538522244e8acd7babaf934cd3d4e7ed823"
+      },
+      {
+        "file": "fields-1440.png",
+        "sha256": "73675343ff8ae1b7707cffae5123db6c49533812b26772cb7641f0384cac3e6e"
+      },
+      {
+        "file": "fields-320.png",
+        "sha256": "301cb0b12d81ad483a4fcfba462ae92830cf603d3840c1122e69e2467f6612b5"
+      },
+      {
+        "file": "fields-390.png",
+        "sha256": "f8659e862a377bf9e5c44e108ccee573a24d21fb2feffe847813bfd9f6b4acf0"
+      },
+      {
+        "file": "fields-768.png",
+        "sha256": "7c74dfec7323312a769eedada62ff71eab103e7a3aacea61dc5ffa3062caccde"
+      },
+      {
+        "file": "filters-1440.png",
+        "sha256": "d2a709aa361a4eeed92fe085ce5bca9a4493fd07d0c9fa7dc73fe97134736fab"
+      },
+      {
+        "file": "filters-320.png",
+        "sha256": "b90d314d21d6fb22542e23d24ff8fa7b695a7f47c49e6d5e4a10559148c722e5"
+      },
+      {
+        "file": "filters-390.png",
+        "sha256": "e6b7e4360c567ffed8f5f946dd51efd878a5df4ba2e3d0353098e2918070310e"
+      },
+      {
+        "file": "filters-768.png",
+        "sha256": "2e5cf5231e98b07fa5925897346e6c8d15f5a33b13bf3f5ac16f1d39c3aa6d8c"
+      },
+      {
+        "file": "native-form-1440.png",
+        "sha256": "dbdd02f5c1edae6a0fa41db46cea5423d88dcef13fbd57d18cb0efc5867c3877"
+      },
+      {
+        "file": "native-form-320.png",
+        "sha256": "f32f6a934c8d58f11a311b94e8a72b15127db80b0aa09e0b878ca9f9b1152377"
+      },
+      {
+        "file": "native-form-390.png",
+        "sha256": "c7051cabaa6f369f088cdc1f853e6e0986b6ca187623686cc33f90d54ba29f7f"
+      },
+      {
+        "file": "native-form-768.png",
+        "sha256": "ac28b012397d1e1aaffd95a6e0c90919d7fbc35b43f6ecd11b0528fb1eb10cb3"
+      },
+      {
+        "file": "shared-ui-1440.png",
+        "sha256": "87790d8675fbafd8e1e6ef151f793c280d25d664c1eb6ece20c0c54c99f5dc1c"
+      },
+      {
+        "file": "shared-ui-320.png",
+        "sha256": "1581dfed2d4b5030efb057631227bbc112390095c5f232b0df330acebd347ea2"
+      },
+      {
+        "file": "shared-ui-390.png",
+        "sha256": "cfe50272259896f657f039b252945c50286cd361532deb5dca64d2a0f7e5c21e"
+      },
+      {
+        "file": "shared-ui-768.png",
+        "sha256": "ce99d2042aa476f5e4be2990bf87620a6dac3ea60ac047c7b2223da28ea60257"
+      }
+    ]
+  }
+}

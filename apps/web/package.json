@@ -26,7 +26,8 @@
     "smoke": "node scripts/smoke-http.mjs",
     "security:dependencies": "node scripts/security-control.mjs dependencies",
     "security:exposure": "node scripts/security-control.mjs exposure",
-    "security:artifact": "node scripts/security-control.mjs artifact"
+    "security:artifact": "node scripts/security-control.mjs artifact",
+    "ui:verify": "node scripts/verify-shared-ui.mjs"
   },
   "dependencies": {
     "next": "16.4.2",

@@ -48,6 +48,8 @@ jobs:
         run: npm run design:verify
       - name: Public navigation and modal lifecycle in real Linux browser
         run: npm run public:verify
+      - name: PR05a native fields and shared UI in real Linux browser
+        run: npm run ui:verify
       - name: Negative client/server compiler test
         run: npm run test:boundary
       - name: Typecheck generated route types
