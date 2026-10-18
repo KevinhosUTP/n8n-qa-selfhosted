@@ -2,9 +2,36 @@
 
 ## Alcance y autorización
 
-Base remota y local reconfirmada: `cac070e25b1b24823df84e17c6aca1987c3a9d29` de develop, árbol limpio antes de crear `codex/kevolint-pr05b-modal-feedback`. Implementación autorizada de primitivas compartidas, adaptador del drawer público y revisión visual Checkbox/Switch. Entrega como Draft PR hacia develop; sin merge, despliegue ni PR06.
+Base remota y local reconfirmada: `cac070e25b1b24823df84e17c6aca1987c3a9d29` de develop, árbol limpio antes de crear `codex/kevolint-pr05b-modal-feedback`. Implementación autorizada de primitivas compartidas, adaptador del drawer público y revisión visual Checkbox/Switch. Entrega inicial como Draft PR hacia develop; PR #9 integrado después de aprobación formal de merge. Sin despliegue ni PR06.
 
 Axe-core: alternativa A seleccionada por el usuario, **instalación expresamente no autorizada en PR05b**. AXE-PR05-01 y PR05 global permanecen abiertos. Incorporarlo requiere investigación/remediación de SEC-PR01-01 y aprobación independiente de dependencias/lockfile. CDP y el árbol AX no sustituyen axe ni lectores de pantalla.
+
+## Cierre autorizado de PR05b · 18/10/2026
+
+Se reconfirmó el HEAD exacto `ab9f7b2d0a4324a1521426905293fafbdd3068fe`, destino develop, ausencia de conflictos y los cuatro jobs aprobados (foundation, dependencies, secrets, unit). Dependencias, lockfile, política/script SEC, Button y Alert conservaron los bytes versionados de la base. PR #9 pasó de Draft a Ready for Review y se integró mediante Squash and Merge protegido por el SHA esperado.
+
+- [PR #9 integrado](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/9).
+- [Squash `0898ae4338d9747250fbdaaefae07ff8b5cbad39`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/0898ae4338d9747250fbdaaefae07ff8b5cbad39), con referencia `(#9)`.
+- Padre `cac070e25b1b24823df84e17c6aca1987c3a9d29`; árbol idéntico al HEAD aprobado del PR.
+
+Los workflows se ejecutaron por push a develop sobre el squash `0898ae4338d9747250fbdaaefae07ff8b5cbad39`. Los cuatro jobs terminaron con success al primer intento:
+
+| Job / workflow | Resultado comprobado en logs |
+| --- | --- |
+| [Frontend · foundation](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39177183084/job/117822153620) | Success: instalación limpia, lint, **356 pruebas frontend**, TypeScript, frontera cliente/servidor, build sin credenciales y smoke |
+| Frontend · navegador Linux | Success: PR02 14 muestras/32 estados; PR03 siete anchos y ciclo del drawer; PR05a controles/formularios; PR05b siete anchos con ModalCore/foco/scroll/formularios/Toast; PR04 56 muestras/32 frames y ocho páginas sin JS |
+| Frontend · recursos y artefacto | Success: tokens, SVG/fuente originales, exclusión de fixtures, exposición y standalone/assets/trazas Linux; linuxVerified true |
+| [Frontend · dependencies](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39177183084/job/117823051129) | Success: audit completo; solo los cuatro nodos high del GHSA aprobado, sin hallazgos adicionales; aceptación temporal, no corrección |
+| [Frontend · secrets](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39177183084/job/117822153457) | Success: 65 commits escaneados, sin secretos |
+| [Python/Streamlit · unit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39177183124/job/117822153340) | Success: compileall, **15 regresiones Python** y smoke inicial Streamlit |
+
+Artefacto y audit coinciden en la revisión del squash y en el inventario `96d8835dc90696df6059a57366b0a6492dab84caeb4a173797e7379142578fcb`. BUILD_ID Linux `-kC1V_2nAam2Xa9OYRKSa`. El control reconoce event push, refs/heads/develop y el workflow autorizado frontend-checks.yml@refs/heads/develop; acceptanceGate verified-linux-foundation. Conserva hash del lockfile, cadena, severidad permitida, vencimiento y rechazo ante anomalías, sin modificar la política.
+
+No hubo fallos reales ni reintentos en CI postmerge. El registro de PR #9 identificará por separado los resultados del HEAD documental final.
+
+Este cierre cambia únicamente el informe técnico y el registro de accesibilidad. El SHA exacto y CI del HEAD documental final se registran en PR #9 después de publicar, evitando commits que intenten autorreferenciar su propio SHA. No se modifican funcionalidades, recursos, dependencias, controles o políticas.
+
+**PR05b completado; PR05 global permanece abierto.** AXE-PR05-01 requiere aprobación independiente para axe-core; A11Y-PR05-CHECKBOX-01 y A11Y-PR05-SWITCH-01 mantienen la corrección visual pendiente. Lectores de pantalla, zoom nativo y plataformas adicionales siguen sin verificarse de forma integral. No se declara conformidad WCAG integral ni se inicia PR06. SEC-PR01-01 continúa aceptada temporalmente, no corregida, hasta el 31/10/2026 23:59 America/Lima, sin ampliación. No hay despliegue ni autorización comercial.
 
 ## Componentes y contratos
 
@@ -74,7 +101,7 @@ SEC-PR01-01 sigue **aceptada temporalmente, no corregida**, hasta 31/10/2026 23:
 
 Un escaneo adicional indiscriminado del directorio incluyó metadatos ignorados de .next y señaló claves internas generadas por Next (preview/RSC/server references); no se introducen credenciales ni se añaden exclusiones al escáner. El escaneo Git del contenido propuesto y el job secrets del último commit son las comprobaciones de entrega del código versionado.
 
-La aceptación final exige foundation, dependencies, secrets y unit satisfactorios en el PR interno hacia develop y sobre su último commit. Los enlaces/resultados reales se registran en la descripción del Draft PR después de publicar, evitando atribuir evidencia local a Linux o crear commits autorreferenciados del informe.
+La entrega inicial se validó con foundation, dependencies, secrets y unit satisfactorios en el PR interno hacia develop sobre su último commit. Los resultados posteriores al merge se registran en la sección de cierre y en PR #9, distinguiendo captura local, CI del squash y CI del HEAD documental final.
 
 ## Pendientes y límites
 
@@ -83,4 +110,4 @@ La aceptación final exige foundation, dependencies, secrets y unit satisfactori
 - Lectores de pantalla reales, zoom nativo, Safari/Firefox y táctil físico siguen pendientes. Árbol AX y CSS zoom no sustituyen esas verificaciones. No se declara conformidad WCAG integral.
 - D05, D08, PR06 y bloqueo de despliegue comercial siguen vigentes. No se habilitan Light ni High Contrast completos.
 
-PR05b se entrega para revisión formal, sin merge ni despliegue.
+PR05b está integrado por autorización formal; PR05 global continúa abierto. Sin despliegue ni inicio de PR06.
