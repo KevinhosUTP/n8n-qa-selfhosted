@@ -21,6 +21,7 @@
     "design:browser": "node scripts/check-design-browser.mjs",
     "design:verify": "node scripts/verify-design-browser.mjs",
     "public:verify": "node scripts/verify-public-navigation.mjs",
+    "pages:verify": "node scripts/verify-public-pages.mjs",
     "test:boundary": "node scripts/check-client-boundary.mjs",
     "smoke": "node scripts/smoke-http.mjs",
     "security:dependencies": "node scripts/security-control.mjs dependencies",

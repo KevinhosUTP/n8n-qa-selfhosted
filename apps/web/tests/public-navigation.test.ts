@@ -15,7 +15,8 @@ const html = (element: ReactElement) => renderToStaticMarkup(element);
 describe("approved public navigation", () => {
   it("preserves canonical destinations and implementation boundaries", () => {
     expect(publicRoutes.map((route) => route.href)).toEqual(["/", "/como-funciona", "/seguridad", "/precios", "/sign-in", "/sign-up", "/ayuda", "/legal/terminos", "/legal/privacidad", "/legal/cookies"]);
-    expect(publicRoutes.filter((route) => route.implemented).map((route) => route.href)).toEqual(["/"]);
+    expect(publicRoutes.filter((route) => route.implemented).map((route) => route.href)).toEqual(["/", "/como-funciona", "/seguridad", "/precios", "/ayuda", "/legal/terminos", "/legal/privacidad", "/legal/cookies"]);
+    expect(publicRoutes.filter((route) => !route.implemented).map((route) => route.href)).toEqual(["/sign-in", "/sign-up"]);
     expect(publicRoutes.filter((route) => route.stage === "PR06").map((route) => route.href)).toEqual(["/sign-in", "/sign-up"]);
     expect(new Set(publicRoutes.map((route) => route.href)).size).toBe(publicRoutes.length);
   });

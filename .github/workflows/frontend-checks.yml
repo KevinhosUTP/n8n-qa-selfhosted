@@ -60,6 +60,8 @@ jobs:
         run: npm run build
       - name: Standalone HTTP smoke and disclosure checks
         run: npm run smoke
+      - name: PR04 public pages in real Linux standalone browser
+        run: npm run pages:verify
       - name: Inspect prepared Linux standalone, published assets and traces
         id: artifact
         run: npm run security:artifact
