@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "baseRevision": "cac070e25b1b24823df84e17c6aca1987c3a9d29",
+  "figmaFileUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd",
+  "originalsUnchanged": true,
+  "axe": "alternative-A-selected-installation-not-authorized",
+  "components": {
+    "Dialog": ["4:517", "4:411", "4:426", "4:439", "4:452", "4:465", "4:478", "4:491", "4:504"],
+    "Drawer": ["114:14466", "114:14518"],
+    "PublicDrawerAdapter": ["145:14747", "19:1871", "132:14145"],
+    "Toast": ["4:585", "16:380", "16:363", "16:368", "16:374"]
+  },
+  "reusedAssets": [
+    { "path": "public/public-content/check.svg", "sourceComponent": "3:15", "width": 24, "height": 24, "sha256": "1838d6b2ffa922be965cb2bef744fe286f31a586c8a1f9db4c4c16e7601a501c" },
+    { "path": "public/public-content/alert.svg", "sourceComponent": "3:18", "width": 24, "height": 24, "sha256": "878a93a7158419e532daaced1975637ba553be895eef3217c836aca388c9e243" }
+  ],
+  "adaptations": [
+    "Native dialog semantics, title associations and controlled requests replace prototype hotspots without business effects.",
+    "Reference heights are minimums; long text and limited viewport height use internal scrolling.",
+    "Filter panel is centered using the native modal surface; no unapproved side/placement API or transition is exposed.",
+    "ToastRegion is a stable polite status surface. Message removal is caller-controlled, without timers, queue or persistence.",
+    "Public M10 keeps its existing CSS, geometry and 240ms transition. Shared Dialog/Drawer/Toast add no motion."
+  ]
+}

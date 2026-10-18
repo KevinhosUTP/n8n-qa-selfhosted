@@ -54,7 +54,7 @@ try {
 
   const pendingPublic = ["/sign-in", "/sign-up"];
   const publicTitles = new Map([["/", "Entrega"], ["/como-funciona", "Tu workflow, revisado"], ["/seguridad", "Transparencia desde"], ["/precios", "La misma revisión"], ["/ayuda", "Resuelve tu siguiente"], ["/legal/terminos", "Términos del servicio"], ["/legal/privacidad", "Política de privacidad"], ["/legal/cookies", "Preferencias de cookies"]]);
-  for (const [path, status] of [...publicTitles.keys()].map((path) => [path, 200]).concat([["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404], ["/pr03-public-preview", 404], ["/pr05a-shared-ui-preview", 404], ...pendingPublic.map((path) => [path, 404])])) {
+  for (const [path, status] of [...publicTitles.keys()].map((path) => [path, 200]).concat([["/pr01-missing-page", 404], ["/app", 404], ["/api/audits", 404], ["/pr02-design-preview", 404], ["/pr03-public-preview", 404], ["/pr05a-shared-ui-preview", 404], ["/pr05b-modal-feedback-preview", 404], ...pendingPublic.map((path) => [path, 404])])) {
     const response = await fetch(`${origin}${path}`, { redirect: "manual", signal: AbortSignal.timeout(5000) });
     assert.equal(response.status, status, `Unexpected HTTP status for ${path}`);
     const body = await response.text();
