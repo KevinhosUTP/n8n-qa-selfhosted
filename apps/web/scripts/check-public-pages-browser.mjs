@@ -66,7 +66,7 @@ try {
       if (await evaluate(expression)) return;
       await delay(60);
     }
-    console.error(JSON.stringify({ message, runtimeErrors, state: await evaluate('({active:document.activeElement?.tagName,path:location.pathname,trigger:document.querySelector(\'[aria-label="Abrir menú"]\')?.getAttribute("aria-expanded"),open:!!document.querySelector("dialog[open]")})') }));
+    console.error(JSON.stringify({ message, runtimeErrors, state: await evaluate('({active:document.activeElement?.tagName,path:location.pathname,trigger:document.querySelector(\'[aria-label="Abrir menú"]\')?.getAttribute("aria-expanded"),open:!!document.querySelector("dialog[open]"),finePointer:matchMedia("(pointer:fine)").matches,canHover:matchMedia("(hover:hover)").matches,hoveredCards:[...document.querySelectorAll("main li:hover,main article:hover")].map(e=>({text:e.textContent.slice(0,80),border:getComputedStyle(e).borderColor,background:getComputedStyle(e).backgroundColor}))})') }));
     assert.fail(message);
   }
   async function navigate(path) {
@@ -225,14 +225,23 @@ try {
   await delay(600);
   assert.ok(await evaluate('document.querySelector(\'[data-enter="visible"]\')!==null'),"Observer did not reveal");
   const motor='main li img[src="/public-content/shield.svg"]';
-  const point=await evaluate(`(()=>{const e=document.querySelector('${motor}').closest("li");e.scrollIntoView({block:"center"});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);
-  await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...point});await delay(200);
+  await evaluate(`document.querySelector('${motor}').scrollIntoView({block:"center"})`);
+  await until(`document.querySelector('${motor}').closest("[data-enter]")?.dataset.enter!=="pending"`,"QA reveal did not start");
+  // Settle the 480ms entry before measuring pointer coordinates. A fixed delay
+  // after dispatch alone can race the browser's hit-testing/paint on Linux CI.
+  await delay(500);
+  const point=await evaluate(`(()=>{const r=document.querySelector('${motor}').closest("li").getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);
+  await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...point});
+  await until(`document.querySelector('${motor}').closest("li").matches(":hover")`,"QA pointer missed card");
+  await until(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor==="rgb(171, 141, 250)"`,"QA hover paint did not settle");
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('${motor}').closest("li")).borderColor`),"rgb(171, 141, 250)");
   assert.ok(await evaluate('!document.querySelector(\'main li img[src="/public-content/shield.svg"]\').closest("li").hasAttribute("tabindex")'),"Informational card gained an artificial tab stop");
   report.motion={heroCss:true,observerFirstEntry:true,qaHover:true,noninteractiveCards:true};
   await navigate("/precios");
   const planPoint=await evaluate('(()=>{const e=document.querySelector(\'article[aria-label="Plan Starter propuesto"]\');e.scrollIntoView({block:"center"});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+40}})()');
-  await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...planPoint});await delay(200);
+  await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",...planPoint});
+  await until('document.querySelector(\'article[aria-label="Plan Starter propuesto"]\').matches(":hover")',"Plan pointer missed card");
+  await until('getComputedStyle(document.querySelector(\'article[aria-label="Plan Starter propuesto"]\')).backgroundColor==="rgb(28, 31, 37)"',"Plan hover paint did not settle");
   assert.equal(await evaluate('getComputedStyle(document.querySelector(\'article[aria-label="Plan Starter propuesto"]\')).backgroundColor'),"rgb(28, 31, 37)");
   await cmd("Input.dispatchMouseEvent",{type:"mouseMoved",x:1,y:1});await delay(200);
   assert.equal(await evaluate('getComputedStyle(document.querySelector(\'article[aria-label="Plan Pro propuesto"]\')).borderColor'),"rgb(171, 141, 250)");

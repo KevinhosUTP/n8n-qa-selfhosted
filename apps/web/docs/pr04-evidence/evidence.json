@@ -2,9 +2,10 @@
   "platform": "Windows",
   "browser": "Chrome/155.0.8059.84",
   "baseRevision": "855f49339d7ae4f8a14a506aa437c70b29d9cb54",
+  "sourceRevisionAtCapture": "b051922861ea143c5e2da7a964fe2903898a9b50",
   "workingPR04Tree": true,
-  "buildId": "tJB5SlH-s9a5OScClTqUm",
-  "note": "Real standalone captures from the authorized working tree before the first PR04 commit. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.",
+  "buildId": "eyh50NZLSyOPfjuS4ZkKQ",
+  "note": "Real standalone captures from the working PR04 tree before the final follow-up commit, based on sourceRevisionAtCapture. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.",
   "frames": [
     {
       "route": "/",
@@ -239,8 +240,8 @@
     },
     {
       "filename": "ayuda-1440.png",
-      "bytes": 212547,
-      "sha256": "4e59f41fa090d7a522e29bef51641c7e091b33eac2b92b2ea041e48da402f325"
+      "bytes": 216671,
+      "sha256": "087ad87bbe3f8b42131e8cc4565657cd6540fe8055d9b6ca7b99cd2bce4733f2"
     },
     {
       "filename": "ayuda-320-viewport.png",
@@ -249,18 +250,18 @@
     },
     {
       "filename": "ayuda-320.png",
-      "bytes": 209812,
-      "sha256": "c5d4b0ead69fded377d252422498f1482393d1e8bbbe33baf4ef107352e88c43"
+      "bytes": 213349,
+      "sha256": "1a702e52720c8b11db7ecaa9688016e0e64188b1bf29f9a2fa99b7d2f1d91427"
     },
     {
       "filename": "ayuda-390.png",
-      "bytes": 199428,
-      "sha256": "153488c3b173e0c907dbcf30aba188221136734a0f518e64f111e2bb8635859d"
+      "bytes": 203120,
+      "sha256": "421a130711b98f0d8fae9162e40366e434eeacf973e608bd798dd23542ab1056"
     },
     {
       "filename": "ayuda-768.png",
-      "bytes": 211650,
-      "sha256": "604f9924c5901bac39ee3d6eb926086407009d8b069c4ffa968d125d6e64344f"
+      "bytes": 215558,
+      "sha256": "86cb41f81dd70f010a590c28a6a18a47f6d78dc5a658dc51e610faf3a3830081"
     },
     {
       "filename": "como-funciona-1440-viewport.png",
@@ -269,8 +270,8 @@
     },
     {
       "filename": "como-funciona-1440.png",
-      "bytes": 208390,
-      "sha256": "b416fbbe402e073f5411db25ea705e49c212b265e77d310ecb1a8095d0134749"
+      "bytes": 213304,
+      "sha256": "d808fa93b63a32c31a3c71b8bc9a6ec7629ea1c80d533732d14ef1ca42e378bb"
     },
     {
       "filename": "como-funciona-320-viewport.png",
@@ -279,38 +280,38 @@
     },
     {
       "filename": "como-funciona-320.png",
-      "bytes": 199736,
-      "sha256": "385d4c4196eb4c7c064c07f0b6a82fdc8bbb61e5cb4ef34aa48758aaa865d663"
+      "bytes": 204693,
+      "sha256": "4f429348a0271596678be95e1ab0c894f22020eb2732895120cb35eaf494cee7"
     },
     {
       "filename": "como-funciona-390.png",
-      "bytes": 196070,
-      "sha256": "b2502dea95dfe50f2d3c98da8ae96141bf235e6a7afb64981d16dd3814da202b"
+      "bytes": 200551,
+      "sha256": "114974a3393d09eade418966cd1525147358d2836c063002a7cf201f22565422"
     },
     {
       "filename": "como-funciona-768.png",
-      "bytes": 204473,
-      "sha256": "6f08b86f558e5152411bca071a1f15c92b845f6c99b428d4f3f4ec17e41ba1e5"
+      "bytes": 208994,
+      "sha256": "0eec5a0ce362e405ac076fc20b43bbcc2f87bccabe4e5ee9cc9d8ed08f84393f"
     },
     {
       "filename": "faq-keyboard-focus.png",
-      "bytes": 15279,
-      "sha256": "0ed1f3117b313cf546ef6c2e51c7c588f06b1f947ae2d0c7f9bdab9a08348d57"
+      "bytes": 14222,
+      "sha256": "d30b555037c0fb308fe6fd6d5db09a3d0bc464933451b9b2d222f9d2583ce104"
     },
     {
       "filename": "help-empty-result.png",
-      "bytes": 62365,
-      "sha256": "1b39793a8a25da66f37f7002b1f13f8daaad0f582f51b65275f7e95bf69b1bd8"
+      "bytes": 65852,
+      "sha256": "ccb3046babfb50735bab21307fc1353e17889982b0e1bf1eb64d5ec142994cf4"
     },
     {
       "filename": "landing-1440-viewport.png",
-      "bytes": 140945,
-      "sha256": "06e10c65207b16ca79560c274ca06cfe324ccd4e103666939b4910b192ea6060"
+      "bytes": 135704,
+      "sha256": "af7c9a715facc232f3047b84633e493b4895ac6f393372d04882df0cd066256a"
     },
     {
       "filename": "landing-1440.png",
-      "bytes": 406822,
-      "sha256": "f526bd6c3e00d75559d576e54aae38493004ffdd9062a4cbd386ae04d3eca69c"
+      "bytes": 411471,
+      "sha256": "01e1fd78cf47b9460e3fd341cc19db02cb53052e6105cb5dffc3cb62581045a0"
     },
     {
       "filename": "landing-320-viewport.png",
@@ -319,18 +320,18 @@
     },
     {
       "filename": "landing-320.png",
-      "bytes": 434030,
-      "sha256": "d1eab4fff8af004c7682e64d49e26f9b740ecc127e8a9b75b22e800b6d92bf6f"
+      "bytes": 439021,
+      "sha256": "b677fa258e9dccfd5344eaf4116f34de2901be4bc697a0cfcb6e7f300a06bfc2"
     },
     {
       "filename": "landing-390.png",
-      "bytes": 425100,
-      "sha256": "0119e2fb1e803d7690323f86c32f0b5acbce55008ca2dd464e44d51602e25fed"
+      "bytes": 429603,
+      "sha256": "fbb80ca3491b308a14689b120428f0c016243396be17634a9b0162fcfe00be7c"
     },
     {
       "filename": "landing-768.png",
-      "bytes": 427160,
-      "sha256": "4a89b91e348fc659b3e44895fc9cc88d5449d5ac4fa3f932f7b86445c6ecf617"
+      "bytes": 431508,
+      "sha256": "a0d8a15042e99dfae2aaf1c33abb3040b15749febd9d708e8685a1029269d47a"
     },
     {
       "filename": "legal-cookies-1440-viewport.png",
@@ -496,7 +497,7 @@
     "apps/web/public/public-content/shield.svg": "d6442e76b8d6ddd69c65d6ce1d7a1e0a4ada04516f7fb9d278e0984fec2b8805",
     "apps/web/public/public-content/upload.svg": "2e1b2dbb27d62dfd4c256ea9b521fda92449ef11fcbface6abad0512f0414b0f",
     "apps/web/public/public-content/workflow.svg": "7cd2cb7b3b850d925593970da6555e45cd8c1df5ab513d66ea04d5d1a4c0c684",
-    "apps/web/src/app/(public)/ayuda/page.tsx": "5d43d6e364eabe08c98c1365b80ad3e1ab61492c1df145874785af3642389a08",
+    "apps/web/src/app/(public)/ayuda/page.tsx": "31bf5b0e270248c9a80d6fd11fde7ab37999ae64d35a8e05cab1c42e4e44ea68",
     "apps/web/src/app/(public)/como-funciona/page.tsx": "a5521ed445b9fce23a86a03bb8079a89cda86e02b9163563d693ccf39869c84e",
     "apps/web/src/app/(public)/legal/cookies/page.tsx": "198af880da4d7602ea3d3fea0a0d6ed0011c6e23063d1ccef6a05aaebe1d5cd5",
     "apps/web/src/app/(public)/legal/privacidad/page.tsx": "b8ce86e33207ada5d027365c2774b85fdbc5707885fbea93d2634853375d33de",
@@ -505,7 +506,7 @@
     "apps/web/src/app/(public)/precios/page.tsx": "9910398153689f850ad365724894b0a12305287278f82925c162a96fa75e9a4b",
     "apps/web/src/app/(public)/seguridad/page.tsx": "eb31bc71c4567aea7ddc0b2e0e9548b0bc4b7bd0c84619c1ce30d2069c5b46e4",
     "apps/web/src/components/public/PublicNavigation.tsx": "2f18470f8e1adbe5313714f467a73b9ac9ce94b356d4a8b038c239a568fcfa8d",
-    "apps/web/src/components/public/content/DemoReportPreview.tsx": "9665b7d59012992761fb89c389604b247e19cc7e7a13e37cd1eb76dd5f209283",
+    "apps/web/src/components/public/content/DemoReportPreview.tsx": "fc518c70b91328bc21fd8e98f540859da6386c88b5361b7ce755c146a7baa3b0",
     "apps/web/src/components/public/content/HelpSearch.tsx": "8316f990e1019220447682e0d8500c34680daa4a40895f19c87262e602b66ff2",
     "apps/web/src/components/public/content/LegalPage.tsx": "92cc5b3745eb8068326b02cf1af3785b49ca4f13b10127bbe2e52982e4669859",
     "apps/web/src/components/public/content/ProcessSteps.tsx": "336443fa71b7bc086cf15eab88ccac6017ed48547e68c9b57547f9ae65d8cf3c",
@@ -515,7 +516,7 @@
     "apps/web/src/components/public/content/PublicPlanCard.tsx": "7c9d79e794fed246abd6c5f396ada1e7215e45a93cba659784d24ef91830c7e5",
     "apps/web/src/components/public/content/QAMotorCard.tsx": "1337f1ea7ced2fd3bb3cb29a887ec2150a547a1617d06e225ad8c7223fe8ae30",
     "apps/web/src/components/public/content/RevealOnEntry.tsx": "f974f32e4c344cba44c3df5247dd3fdaa0a7df16c20d5d31212024d707bb0f0b",
-    "apps/web/src/components/public/content/public-content.module.css": "b5216de6b9b5a067316b2147304e6edab051b0c4aa22b30381bde9b7d2e577d5",
+    "apps/web/src/components/public/content/public-content.module.css": "e3089a4eca825a9001edf49d0e2fb67cf06358d19a2251bdbf3bd916a9dc85a9",
     "apps/web/src/lib/content/public/content.ts": "6e8271f65621c68d9a3c29afdbdcd5e1aaffb2b542455ff4f33198732e0c0c12",
     "apps/web/src/lib/content/public/legal-drafts.ts": "22fab31af8e82a2d059d62983cacdf41951d5cd969dd5a1db4f32d955b7fbc25",
     "apps/web/src/lib/navigation/public-routes.ts": "a403d346375d6ae5c0b09090a26e55c7a619baf594502d955a1aa3bd596bb3b6"

@@ -31,6 +31,7 @@
 .planAction > button { width: 100%; }
 .proposal { padding: var(--kl-spacing-16); border: 1px solid var(--kl-color-border); border-radius: var(--kl-radius-12); background: var(--kl-color-raised); color: var(--kl-color-warning); font-size: 14px; line-height: 20px; }
 .report { gap: var(--kl-spacing-16); }
+.reportAction { width: 100%; }
 .trial { background: var(--kl-color-raised); }
 .trial h2 { font-size: 24px; line-height: 32px; letter-spacing: 0; }
 .trial .actions { width: 100%; }

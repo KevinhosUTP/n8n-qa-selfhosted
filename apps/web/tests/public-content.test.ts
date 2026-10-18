@@ -43,6 +43,8 @@ describe("PR04 truthful public content", () => {
     expect(result).toContain("[REDACTADO]");
     expect(result).not.toContain("href=");
     expect(result).not.toContain("/app/");
+    expect(result).toContain('disabled=""');
+    expect(result).toContain("Explorar informe de ejemplo · pendiente");
   });
   it("renders a usable native FAQ in SSR with no JavaScript dependency", () => {
     const result = html(createElement(PublicFaq,{entries:landingFaq}));

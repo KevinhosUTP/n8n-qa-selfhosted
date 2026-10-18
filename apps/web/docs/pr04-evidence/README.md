@@ -1,6 +1,6 @@
 # PR04 · Capturas reales
 
-Real standalone captures from the authorized working tree before the first PR04 commit. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.
+Real standalone captures from the working PR04 tree before the final follow-up commit, based on sourceRevisionAtCapture. No image editing; only browser capture/clipping. Native scrollbars preserved. Final Linux CI verifies its own checked-out commit separately.
 
 Capturas de página completa por ruta. Las variantes y enlaces Figma originales están en [public-pages.json](../../design-system/public-pages.json).
 
