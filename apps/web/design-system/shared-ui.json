@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "figmaFileUrl": "https://www.figma.com/design/TtOBuTKdNPw6dYXVUP2nmd",
+  "baseRevision": "70dd2f2a25ec6dd833154f59d647899b5894897e",
+  "originalsUnchanged": true,
+  "axe": "pending-not-installed",
+  "assets": [
+    {
+      "name": "alert-16",
+      "nodeId": "3:196",
+      "path": "public/shared-ui/alert-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "feef7d8448d2a0c978bc9ffd2d0530eaea4a3d60d66bdd446450e94afee4a2bb"
+    },
+    {
+      "name": "alert-warning-16",
+      "nodeId": "3:202",
+      "path": "public/shared-ui/alert-warning-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "a3e3992b785171104170eaf292663f737282f39a915253ea8837128d984cd63d"
+    },
+    {
+      "name": "check-16",
+      "nodeId": "3:208",
+      "path": "public/shared-ui/check-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "4b6e6719f39645fbeb687ad3959471e262f728b8918c7cdb4f16b65ac3986d2e"
+    },
+    {
+      "name": "workflow-16",
+      "nodeId": "3:213",
+      "path": "public/shared-ui/workflow-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "f716f08f47f948273c17c86e686d2b0f68df2a5b06732040adf7a68f7741a6b6"
+    },
+    {
+      "name": "clock-16",
+      "nodeId": "3:221",
+      "path": "public/shared-ui/clock-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "1446e7bf83fa5a57ee64b58f36e684374fae1825a118dd11fc4cfed799d6d75a"
+    },
+    {
+      "name": "alert-22",
+      "nodeId": "3:338",
+      "path": "public/shared-ui/alert-22.svg",
+      "width": 22,
+      "height": 22,
+      "sha256": "311d66a616dac53634f5e08b0bd164db2f2a81e85b6bd5858db07d8b6cf53039"
+    },
+    {
+      "name": "check-22",
+      "nodeId": "3:362",
+      "path": "public/shared-ui/check-22.svg",
+      "width": 22,
+      "height": 22,
+      "sha256": "7c2f26333250802e3ab71c9ec710eeee0e800b7865b9d29a2e57b818639fe677"
+    },
+    {
+      "name": "search-20",
+      "nodeId": "106:715",
+      "path": "public/shared-ui/search-20.svg",
+      "width": 20,
+      "height": 20,
+      "sha256": "b366983ababf7273261646f5e09d41c131168b2ae474864dbe9f3f3fed0c98c4"
+    },
+    {
+      "name": "chevron-20",
+      "nodeId": "106:1035",
+      "path": "public/shared-ui/chevron-20.svg",
+      "width": 20,
+      "height": 20,
+      "sha256": "85b8dd14478648be19e0b1f043a323d4f9b6df158e8292c4fbca96880d709060"
+    },
+    {
+      "name": "chevron-16",
+      "nodeId": "199:1034",
+      "path": "public/shared-ui/chevron-16.svg",
+      "width": 16,
+      "height": 16,
+      "sha256": "d3eccf0be9ea195428e029f1e9ca386415d01cf37a0dae5bd46ffe529312780d"
+    },
+    {
+      "name": "radio-off",
+      "nodeId": "16:246",
+      "path": "public/shared-ui/radio-off.svg",
+      "width": 20,
+      "height": 20,
+      "sha256": "14c9f20df9068be99b3697f82c48e6db51e94bd2204f8775fd7ac29c39a7ae74"
+    },
+    {
+      "name": "radio-on",
+      "nodeId": "16:249",
+      "path": "public/shared-ui/radio-on.svg",
+      "width": 20,
+      "height": 20,
+      "sha256": "92dbadb9f11d607dbea441eb759c2900905eb3f021f307998fe123ea5643d3cd"
+    },
+    {
+      "name": "switch-off",
+      "nodeId": "16:253",
+      "path": "public/shared-ui/switch-off.svg",
+      "width": 40,
+      "height": 20,
+      "sha256": "4d2e49b8850dd43f9be669e2c8ab115634970299a08fb28dd7e5e6ec1be4166b"
+    },
+    {
+      "name": "switch-on",
+      "nodeId": "16:256",
+      "path": "public/shared-ui/switch-on.svg",
+      "width": 40,
+      "height": 20,
+      "sha256": "1ed0ceaddc572165e2be3dbd251a1a0fc04850b19dc787a7816bac22d76cdf63"
+    }
+  ],
+  "components": {
+    "Input": "3:257",
+    "SelectField": "16:277",
+    "Radio": "16:251",
+    "Checkbox": "4:524",
+    "Switch": "16:258",
+    "TextLink": "16:267",
+    "Badge": "3:226",
+    "Card": [
+      "3:275",
+      "120:726"
+    ],
+    "Alert": "3:368",
+    "EmptyState": "3:422",
+    "Skeleton": "3:436",
+    "HistoryFilterField": "106:1464",
+    "ReportSelect": "199:1047"
+  }
+}

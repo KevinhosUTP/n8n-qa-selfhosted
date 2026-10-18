@@ -153,3 +153,18 @@ See `docs/verification-pr04.md`, `design-system/public-pages.json` and
 SEC-PR01-01 is unchanged, temporarily accepted, not fixed, until
 2026-10-31 23:59 America/Lima. Final acceptance requires the authorized Linux CI.
 No merge or deployment is authorized by this implementation.
+
+## PR05a shared UI
+
+Native Input/Field, SelectField, Radio/Checkbox/Switch, TextLink, Badge/Card,
+Alert, EmptyState and Skeleton live under `src/components/ui/`.
+HistoryFilterField and ReportSelect reuse the same native Input/Select controls.
+Consumers own values, validation rules, form reset for controlled values and actions.
+The public drawer, Button and editorial compositions retain their existing contracts.
+
+Run `npm run ui:verify` for the temporary installed-browser fixture. Its route
+is rejected by prebuild and must return 404 in the standalone smoke. No package
+is installed. Axe remains a separate pending backlog gate; keyboard/CDP/AX tests
+are not an axe audit. PR05b and PR06 are not included, and PR05 is not closed.
+See `docs/verification-pr05a.md`, `design-system/shared-ui.json` and
+`docs/pr05a-evidence/` for contracts, original exports, comparison and limitations.

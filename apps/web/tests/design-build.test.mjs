@@ -26,3 +26,14 @@ it("also rejects the PR03 lifecycle fixture from production", async () => {
     await rm(root, { recursive: true, force: true });
   }
 });
+
+it("also rejects the PR05a shared UI fixture from production", async () => {
+  const root = await mkdtemp(resolve(tmpdir(), "kevolint-pr05a-build-"));
+  try {
+    await mkdir(resolve(root, "src/app/pr05a-shared-ui-preview"), { recursive: true });
+    await expect(assertNoDesignPreview(root)).rejects.toThrow(/Temporary PR05a preview/);
+  } finally {
+    expect(dirname(resolve(root))).toBe(resolve(tmpdir()));
+    await rm(root, { recursive: true, force: true });
+  }
+});
