@@ -14,3 +14,9 @@ El esquema v2 expresa cada integridad mediante campos separados `path` y `sha256
 [Fallback forced-colors](choice-forced-colors.png). Capturas mantienen el ancho del viewport para evitar reflow al capturar un elemento estrecho; no se retoca el contenido de los controles. Solo se excluye la herramienta de desarrollo de Next. Los estados de foco se capturan tras teclado, no dibujando un anillo ficticio.
 
 Los SVG originales y su geometría se conservan. Las diferencias respecto de Figma son las adaptaciones aprobadas del 19/10: máscara oscura, thumb posicional y contorno perceptible. No se habilitan temas completos. Estas capturas no certifican WCAG, axe ni anuncios de lectores de pantalla.
+
+## Estado interactivo de la captura forced-colors
+
+`choice-forced-colors.png` conserva el viewport de 1440 px y se tomó **después** de enfocar `#review-checkbox-off` y activarlo con Espacio. Los títulos Off/On indican los grupos iniciales de la fixture, no estados inmutables: el primer Checkbox aparece **checked y con foco**, su Switch sigue Off y ambos controles del grupo On siguen activados. La captura muestra el fallback nativo del navegador bajo forced-colors; el Switch puede adoptar un glifo de casilla del sistema. No representa un tema High Contrast completo del producto.
+
+El contador visible 2 procede de la secuencia interactiva previa y no cuenta exclusivamente esa pulsación. Debe interpretarse junto a `CHOICE-REACT-RESET-01`: el reset nativo no reinicia el contador React y la secuencia posterior al reset conserva la diferencia de callbacks observada también en la referencia nativa sin decoración. No se retoca ni se reetiqueta esta captura histórica como una matriz Off/On sin interacción o como una captura posterior al merge.

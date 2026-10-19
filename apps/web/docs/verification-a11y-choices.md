@@ -1,6 +1,6 @@
 # KevoLint · Corrección visual A11Y Checkbox y Switch
 
-Autorización formal de «Marca y posición», 19/10/2026. Base local y remota reconfirmada en `c9164a39306bbaa9e8f4a5c8b0d94331e54068f7`, árbol limpio; rama independiente `codex/kevolint-a11y-checkbox-switch`. Entrega como Draft PR hacia develop, sin merge, despliegue ni PR06. El SHA final y los resultados Linux del último commit se registran en el Draft PR, evitando un commit que pretenda referenciarse a sí mismo.
+Autorización formal de «Marca y posición», 19/10/2026. Base local y remota reconfirmada en `c9164a39306bbaa9e8f4a5c8b0d94331e54068f7`, árbol limpio; rama independiente `codex/kevolint-a11y-checkbox-switch`. La entrega inicial fue el Draft PR #10; su integración y verificación posterior, autorizadas por separado, se registran al final. No se despliega ni se inicia PR06. El HEAD documental final y sus resultados se enlazan en PR #10, evitando un commit que pretenda referenciarse a sí mismo.
 
 ## Implementación y fidelidad
 
@@ -51,18 +51,39 @@ Audit completo local ejecutado con dev: cuatro hallazgos high del advisory autor
 
 SEC-PR01-01 sigue **aceptada temporalmente, no corregida**, hasta **31/10/2026 23:59:00 America/Lima = 01/11/2026 04:59:00 UTC**. Grafo, hash del lock y contextos originales intactos; cualquier hallazgo nuevo, anomalía o vencimiento bloquea la aceptación. La revisión del 24/10 existente continúa programada, sin crear duplicados.
 
-La descripción del Draft PR registra los enlaces y resultado final de foundation/dependencies/secrets/unit. Este informe local no declara Linux verificado por ejecutar Windows; CI fallido o ausente sigue siendo bloqueo. No se altera ningún gate para obtener un resultado favorable.
+La descripción de PR #10 conserva los enlaces y resultados de foundation/dependencies/secrets/unit del HEAD aprobado. La evidencia Linux posterior al merge se registra en el cierre; las capturas Windows no se presentan como ejecuciones Linux. CI fallido o ausente sigue siendo bloqueo. No se altera ningún gate para obtener un resultado favorable.
 
 El [primer job de secretos](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39206627241/job/117910773372) bloqueó correctamente dos coincidencias generic-api-key en evidence.json. Eran valores SHA-256 del archivo tokens.generated.css usados junto a su ruta como clave JSON, no credenciales: ambos se recalcularon desde la fuente y coincidieron. Se pasó a registros explícitos `{ path, sha256 }`, conservando todos los hashes, como en la evidencia histórica de PR05b. El escáner original verificó el directorio sin hallazgos; no se introdujo ninguna exclusión ni modificación de scripts/política. Como el job inspecciona historial, se reemplazó el único commit nuevo de esta rama mediante force-with-lease del SHA remoto esperado; el resultado inicial no se presenta como aprobado ni se altera develop/main. La nueva ejecución completa debe validar el commit definitivo.
 
 ## Estado de los hallazgos y pendientes
 
-A11Y-PR05-CHECKBOX-01 y A11Y-PR05-SWITCH-01: **correcciones implementadas con evidencia efectiva de navegador; cierre formal pendiente de revisión del Draft PR y su CI final**. No se cerraron durante el diagnóstico ni antes de obtener evidencia.
+A11Y-PR05-CHECKBOX-01 y A11Y-PR05-SWITCH-01: **cerrados formalmente tras la aprobación del PR #10 y la verificación Linux satisfactoria del squash en develop**. Véase el cierre posterior al merge. No se cerraron durante el diagnóstico ni antes de obtener evidencia.
 
-PR05 global permanece abierto. Axe-core no instalado; AXE-PR05-01, lectores de pantalla reales, zoom nativo, Safari/Firefox y dispositivos físicos siguen pendientes. Las pruebas AX/CDP, captura y cálculos no equivalen a axe ni a conformidad WCAG integral. D05, D08, PR06 y el bloqueo comercial siguen abiertos. Sin merge, despliegue o integraciones externas.
+PR05 global permanece abierto. Axe-core no instalado; AXE-PR05-01, lectores de pantalla reales, zoom nativo, Safari/Firefox y dispositivos físicos siguen pendientes. Las pruebas AX/CDP, captura y cálculos no equivalen a axe ni a conformidad WCAG integral. D05, D08, PR06 y el bloqueo comercial siguen abiertos. Sin despliegue o integraciones externas.
 
 ## Inventario del cambio
 
 Choice.tsx, fields.module.css; manifiesto separado choice-accessibility.json; tests/shared-ui.test.ts y fixture modal-feedback-preview.tsx; nuevo verificador check-choice-accessibility.mjs y conexión/resumen en los dos verificadores PR05b existentes; este informe, registro de accesibilidad y evidencia nueva. Los manifiestos fuente y los SVG anteriores se conservan byte a byte.
 
 Reproducción: npm test, npm run lint, npm run typecheck, npm run design:verify, npm run public:verify, npm run ui:verify, node scripts/verify-modal-feedback.mjs, npm run test:boundary, build/smoke/pages:verify y los controles de CI existentes. Las fixtures se eliminan al terminar y están prohibidas en producción por prebuild/smoke. No ejecutar verificadores Next simultáneamente porque comparten .next.
+
+## Cierre autorizado · PR #10
+
+El 19/10/2026 se reconfirmaron HEAD `d9ac1185838ca68f2c6b3203c7532e3dc21a7782`, destino develop, ausencia de conflictos y cuatro jobs satisfactorios. Se verificó mediante diff que dependencias, lockfile, tokens, SVG, fuentes, Button, Alert, ModalCore, workflows y controles SEC seguían intactos. Tras marcar Ready for Review se ejecutó Squash and Merge con referencia a [PR #10](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/10).
+
+**Squash y HEAD de integración de develop: [`933612d31acd17edd9befa5c89ef8291cdfe323b`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/commit/933612d31acd17edd9befa5c89ef8291cdfe323b).** Su árbol coincide exactamente con el HEAD aprobado del PR. La ejecución push real sobre ese SHA terminó satisfactoriamente:
+
+| Job posterior al merge | Evidencia comprobada |
+| --- | --- |
+| [foundation](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39209160476/job/117918463218) | success: instalación limpia, lint, **363 tests**, navegador Linux PR02–PR05b y Checkbox/Switch a siete anchos, frontera cliente/servidor negativa, TypeScript, exposición, build sin credenciales, smoke y páginas PR04 en standalone, inspección Linux |
+| [dependencies](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39209160476/job/117919762082) | success: audit completo con dev, **cuatro high conocidos, ninguno adicional**; aceptación temporal tras foundation/Linux, sin exclusiones ni relajación |
+| [secrets](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39209160476/job/117918463515) | success: **68 commits** escaneados, sin fugas |
+| [unit Python/Streamlit](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39209160528/job/117918463931) | success: compileall, **15 regresiones Python** y smoke inicial Streamlit |
+
+Artefacto Linux: BUILD_ID `-BPAcWpUuZCh9eLk_JwRB`; inventario `e54d8610ef98cef65cca874046376e486391ccf49c5f982d6e1f1379e6e4c075`; `linuxVerified: true`. Auditoría y artefacto coinciden en ese inventario y en la revisión del squash. Se inspeccionan standalone, assets y trazas, incluidos enlaces e imports; las declaraciones devDependencies conservadas como metadatos no equivalen a código ejecutable incluido. La integridad de los recursos originales continúa cubierta por las suites.
+
+SEC reconoce `event: push`, `refs/heads/develop` y `KevinhosUTP/n8n-qa-selfhosted/.github/workflows/frontend-checks.yml@refs/heads/develop`, sin simular variables. `acceptanceGate: verified-linux-foundation`; lockHash y política originales conservados. SEC-PR01-01 permanece temporalmente aceptada, **no corregida**, con vencimiento **31/10/2026 23:59:00 America/Lima (01/11/2026 04:59:00 UTC)**. Cualquier hallazgo nuevo, anomalía o vencimiento bloquea CI.
+
+La prueba Linux reprodujo `CHOICE-REACT-RESET-01`: dos callbacks React frente a cuatro change nativos tanto en Choice como en la referencia sin decoración. Sigue documentado y no se declara corregido. La [captura forced-colors](a11y-choices-evidence/README.md#estado-interactivo-de-la-captura-forced-colors) muestra una interacción real: el Checkbox del grupo inicialmente Off está activado y enfocado tras Espacio; el Switch de ese grupo sigue Off. Los títulos describen los grupos iniciales. No se presenta como estado inicial, tema High Contrast ni captura posterior al merge.
+
+Con la aprobación formal y esta evidencia posterior al merge, **A11Y-PR05-CHECKBOX-01 y A11Y-PR05-SWITCH-01 quedan cerrados**. PR05 global, AXE-PR05-01, lectores de pantalla, zoom nativo y plataformas adicionales siguen abiertos. Axe-core no está instalado; no se declara conformidad WCAG integral. Este cierre modifica exclusivamente documentación. El SHA documental final y su CI completo se registran en PR #10 al terminar, sin atribuir a esa ejecución futura un resultado aún no obtenido. No se modifica main, PR #3, backend, infraestructura o proveedores; sin despliegue ni PR06.
