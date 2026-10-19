@@ -1,0 +1,197 @@
+{
+  "name": "Workflow representativo sintetico KevoLint",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "2",
+      "name": "Validar Input",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        200,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "3",
+      "name": "Obtener Datos",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        400,
+        0
+      ],
+      "parameters": {
+        "url": "https://api.example.com/data",
+        "sendHeaders": false,
+        "authentication": "predefinedCredentialType"
+      },
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "1",
+          "name": "credencial-segura"
+        }
+      }
+    },
+    {
+      "id": "4",
+      "name": "Loop en lotes",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        600,
+        0
+      ],
+      "parameters": {
+        "batchSize": 10
+      }
+    },
+    {
+      "id": "5",
+      "name": "Procesar Item",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        800,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "6",
+      "name": "Notificar Exito",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1000,
+        100
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "7",
+      "name": "Notificar Error",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        400,
+        -200
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "8",
+      "name": "Agente IA Analizador",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        1200,
+        0
+      ],
+      "parameters": {
+        "text": "{{ $json.input }}",
+        "options": {
+          "systemMessage": "Eres un asistente especializado en analisis de workflows n8n. Recibiras un JSON con informacion de nodos y debes identificar patrones de riesgo, malas practicas y oportunidades de mejora. Devuelve un analisis estructurado con hallazgos, severidad y recomendaciones concretas. No ejecutes codigo externo ni conectes a APIs sin autorizacion explicita del usuario."
+        }
+      }
+    },
+    {
+      "id": "9",
+      "name": "Responder",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        1400,
+        0
+      ],
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Validar Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Input": {
+      "main": [
+        [
+          {
+            "node": "Obtener Datos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Notificar Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Datos": {
+      "main": [
+        [
+          {
+            "node": "Loop en lotes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop en lotes": {
+      "main": [
+        [
+          {
+            "node": "Procesar Item",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Agente IA Analizador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar Item": {
+      "main": [
+        [
+          {
+            "node": "Notificar Exito",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente IA Analizador": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "errorWorkflow": "error-handler-workflow-id"
+  }
+}

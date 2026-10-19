@@ -1,0 +1,13 @@
+{
+  "name": "Trigger solo sin conexiones",
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "position": [0, 0],
+      "parameters": {}
+    }
+  ],
+  "connections": {}
+}
