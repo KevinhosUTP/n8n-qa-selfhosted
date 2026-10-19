@@ -31,6 +31,13 @@
 .choice { display: flex; align-items: center; gap: var(--kl-spacing-12); padding: var(--kl-spacing-8); border-radius: var(--kl-radius-12); min-height: 48px; max-width: 100%; width: 320px; color: var(--kl-color-text); font: 500 14px / 20px var(--kl-font-inter), sans-serif; cursor: pointer; }
 .choice span { min-width: 0; overflow-wrap: anywhere; }
 .choice input { appearance: none; flex: 0 0 auto; margin: 0; width: 20px; height: 20px; border: 0; background: transparent center / contain no-repeat; cursor: inherit; }
+.choiceControl { position: relative; display: inline-flex; flex: 0 0 auto; }
+.choiceIndicator { position: absolute; inset: 0; pointer-events: none; }
+.checkbox .choiceIndicator::before { content: ""; display: none; position: absolute; left: 2px; top: 2px; width: 16px; height: 16px; background: var(--kl-color-surface); mask: url('/shared-ui/check-16.svg') center / 16px 16px no-repeat; }
+.checkbox input:checked + .choiceIndicator::before { display: block; }
+.switch .choiceIndicator::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--kl-color-muted); border-radius: 50%; }
+.switch .choiceIndicator::before { content: ""; position: absolute; left: 4px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: var(--kl-color-text); }
+.switch input:checked + .choiceIndicator::before { left: 24px; background: var(--kl-color-surface); }
 .radio input { background-image: url('/shared-ui/radio-off.svg'); }
 .radio input:checked { background-image: url('/shared-ui/radio-on.svg'); }
 .switch input { width: 40px; background-image: url('/shared-ui/switch-off.svg'); }
@@ -41,5 +48,6 @@
 .choice:has(input:disabled) { cursor: default; }
 @media (max-width: 320px) { .report .control { font-size: 12px; } }
 @media (forced-colors: active) {
-  .choice input { appearance: auto; background: none; border-color: ButtonText; }
+  .choice input, .choice .choiceControl input { appearance: auto; background: none; border-color: ButtonText; }
+  .choiceIndicator { display: none; }
 }

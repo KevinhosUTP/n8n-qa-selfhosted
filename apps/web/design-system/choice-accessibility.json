@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "scope": "Approved visual accessibility adaptations; original Figma manifests and assets remain unchanged",
+  "authorization": "Formal approval of Marca y posición, 2026-10-19",
+  "baselineRevision": "c9164a39306bbaa9e8f4a5c8b0d94331e54068f7",
+  "findings": ["A11Y-PR05-CHECKBOX-01", "A11Y-PR05-SWITCH-01"],
+  "checkbox": {
+    "figmaComponent": "4:524",
+    "off": "Original empty 20x20 box, border, radius and surface",
+    "on": {
+      "marker": "public/shared-ui/check-16.svg",
+      "sourceNode": "3:208",
+      "sha256": "4b6e6719f39645fbeb687ad3959471e262f728b8918c7cdb4f16b65ac3986d2e",
+      "rendering": "Decorative CSS mask using unchanged source bytes",
+      "sizePx": [16, 16],
+      "insetPx": [2, 2],
+      "foregroundToken": "color/surface",
+      "backgroundToken": "color/accent"
+    }
+  },
+  "switch": {
+    "figmaComponent": "16:258",
+    "originalNodes": ["16:253", "16:256"],
+    "originalAssets": ["public/shared-ui/switch-off.svg", "public/shared-ui/switch-on.svg"],
+    "baseSizePx": [40, 20],
+    "thumb": {"diameterPx": 12, "offXPx": 4, "onXPx": 24, "yPx": 4, "offToken": "color/text", "onToken": "color/surface"},
+    "outline": {"widthPx": 1, "token": "color/muted", "shape": "Ellipse overlay inside original 40x20 bounds"}
+  },
+  "contracts": {
+    "stateSource": "Native input :checked only; no additional React state or event handlers",
+    "decoration": "aria-hidden, pointer-events none, no tabindex or accessible name",
+    "forcedColors": "Hide decoration and retain existing native appearance fallback",
+    "motion": "No animation or transition added",
+    "themes": "No Light or High Contrast theme enabled",
+    "minimumEffectiveTargetPx": 44,
+    "minimumGraphicContrast": 3
+  },
+  "verification": "Effective rendered browser results and screenshots are recorded in verification-a11y-choices.md; this manifest is not a WCAG certification",
+  "axe": "AXE-PR05-01 remains open; not installed"
+}

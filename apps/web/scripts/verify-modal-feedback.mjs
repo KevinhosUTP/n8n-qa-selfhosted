@@ -38,6 +38,8 @@ Revision: ${report.sourceRevision}; browser: ${report.browser.product}.
 
 PASS: ${report.responsive.length} viewport samples, native modals, controlled close reasons, focus/scroll lifecycle, Toast region and Off/On review.
 
+Checkbox/Switch: ${report.choiceAccessibility.responsive.length} viewports, effective graphic/text/focus contrast, approved mark/thumb geometry, disabled/error/surface states, native keyboard/pointer/reset/FormData, forced-colors and reduced motion. Post-reset React event counts are compared with an undecorated native reference: ${JSON.stringify(report.choiceAccessibility.nativeResetEventComparison)}.
+
 Axe pending: not installed or substituted. Screen reader, native zoom, physical devices and exhaustive WCAG verification not claimed.`;
   console.log(summary);
   if (process.env.GITHUB_ACTIONS === "true" && process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
