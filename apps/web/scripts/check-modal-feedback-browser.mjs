@@ -7,6 +7,7 @@ import { access, mkdtemp, readFile, writeFile, mkdir, rm } from "node:fs/promise
 import { tmpdir } from "node:os";
 import { resolve, join, dirname } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
+import { verifyChoiceAccessibility } from "./check-choice-accessibility.mjs";
 
 const origin = "http://127.0.0.1:3106";
 assert.equal(new URL(origin).hostname, "127.0.0.1", "Only the owned local standalone server may be tested");
@@ -24,7 +25,7 @@ let socket;
 const report = { browser: {}, sourceRevision: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(), note: "PR05b browser fixture evidence; this does not certify the Linux security artifact or integral WCAG conformance.", responsive: [], states: [], keyboard: {}, resources: [], images: [], typography: [] };
 report.workingTreeDirty = Boolean(execFileSync("git", ["status", "--porcelain"], { encoding: "utf8" }).trim());
 report.renderedSourceHashes = {};
-for (const path of execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "src/components", "src/styles", "tests/fixtures/modal-feedback-preview.tsx"], { encoding: "utf8" }).split("\0").filter(Boolean)) {
+for (const path of execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "src/components", "src/styles", "tests/fixtures/modal-feedback-preview.tsx", "scripts/check-choice-accessibility.mjs", "scripts/check-modal-feedback-browser.mjs", "design-system/choice-accessibility.json"], { encoding: "utf8" }).split("\0").filter(Boolean)) {
   report.renderedSourceHashes[path] = createHash("sha256").update(await readFile(path)).digest("hex");
 }
 try {
@@ -101,9 +102,19 @@ try {
     await writeFile(join(evidence, `${name}.png`), Buffer.from(data, "base64"));
   }
   async function shotElement(selector, name) {
+    if (name.startsWith("choice-") && name.includes("-focus-")) {
+      // Preserve the native focused viewport: resizing it to a short clip can
+      // scroll the focused input again and cut off the measured section title.
+      await evaluate(`(async()=>{document.querySelector('nextjs-portal')?.remove();document.querySelector(${JSON.stringify(selector)}).scrollIntoView({block:'start',behavior:'instant'});await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));})()`);
+      const { data } = await cmd("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
+      await writeFile(join(evidence, `${name}.png`), Buffer.from(data, "base64"));
+      return;
+    }
     // Remove only Next development tooling from evidence, never application UI.
-    await evaluate('document.querySelector("nextjs-portal")?.remove()');
-    const rect = await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();return {x:r.x+scrollX,y:r.y+scrollY,width:r.width,height:r.height}})()`);
+    await evaluate('document.querySelector("nextjs-portal")?.remove();scrollTo({top:0,left:0,behavior:"instant"})');
+    const rect = await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect();return {x:0,y:r.y+scrollY,width:innerWidth,height:r.height}})()`);
+    // Keep the viewport width during capture so wrapping cannot shift the
+    // document relative to a previously measured, narrower element clip.
     const { data } = await cmd("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { ...rect, scale: 1 } });
     await writeFile(join(evidence, `${name}.png`), Buffer.from(data, "base64"));
   }
@@ -180,6 +191,7 @@ try {
     }
     report.responsive.push(sample);
   }
+  await verifyChoiceAccessibility({ cmd, evaluate, navigate, route, key, click, focus, until, shotElement, report });
   await cmd("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: false });
   await navigate(route);
   await focus('#open-concurrent'); await key("Enter","Enter",13);

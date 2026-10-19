@@ -113,3 +113,32 @@ describe("original PR05a exports", () => {
     expect(svg).not.toMatch(/<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   });
 });
+
+describe("approved choice accessibility decorations", () => {
+  it.each([Checkbox, Switch])("keeps exactly one native input and an unnamed, inert visual layer", (Component) => {
+    const s = html(createElement(Component, { id: "decorated-choice", label: "Opción", defaultChecked: true, name: "choice", value: "yes" }));
+    expect(s.match(/<input\b/g)).toHaveLength(1);
+    expect(s.match(/aria-hidden="true"/g)).toHaveLength(1);
+    expect(s).not.toMatch(/tabindex|<button|role="img"|aria-label=/);
+    expect(s).toContain('for="decorated-choice"');
+    expect(s).toContain('name="choice"');
+    expect(s).toContain('value="yes"');
+  });
+  it.each([Checkbox, Switch])("preserves unchecked, disabled and described invalid states", (Component) => {
+    const s = html(createElement(Component, { id: "decorated", label: "Opción", hint: "Ayuda", error: "Error", disabled: true, defaultChecked: false, required: true }));
+    expect(s).not.toContain('checked=""');
+    for (const value of ['disabled=""', 'required=""', 'aria-invalid="true"', 'aria-describedby="decorated-hint decorated-error"']) expect(s).toContain(value);
+    expect(s.match(/aria-hidden="true"/g)).toHaveLength(1);
+  });
+  it.each([Checkbox, Switch])("retains controlled checked without a second visual state attribute", (Component) => {
+    const s = html(createElement(Component, { label: "Controlado", checked: true, onChange: () => {} }));
+    expect(s).toContain('checked=""');
+    expect(s).not.toMatch(/data-checked|aria-checked|role="button"/);
+  });
+  it("leaves Radio without new decoration or extra semantics", () => {
+    const s = html(createElement(Radio, { id: "radio", label: "Radio", defaultChecked: true }));
+    expect(s.match(/<input\b/g)).toHaveLength(1);
+    expect(s).not.toContain('aria-hidden');
+    expect(s).toContain('type="radio"');
+  });
+});

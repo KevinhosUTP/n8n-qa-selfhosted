@@ -28,6 +28,8 @@ export default function ModalFeedbackPreview() {
   const [requests, setRequests] = useState<ModalCloseRequest[]>([]);
   const [submitted, setSubmitted] = useState("");
   const [message, setMessage] = useState<ToastMessage | null>(null);
+  const [choiceChanges, setChoiceChanges] = useState(0);
+  const [referenceChanges, setReferenceChanges] = useState(0);
   const trigger = useRef<HTMLButtonElement | null>(null);
   const name = useRef<HTMLInputElement>(null);
   const count = useRef(0);
@@ -95,11 +97,37 @@ export default function ModalFeedbackPreview() {
       <ToastRegion message={message} />
     </section>
     <section id="boolean-review" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 16, minWidth: 0 }}>
-      <h2>Revisión Off/On · sin corrección visual</h2>
-      <p>Los encabezados identifican las muestras; no se añade una señal nueva a los controles.</p>
-      <h3>Off</h3><Checkbox id="review-checkbox-off" label="Checkbox de muestra" /><Switch id="review-switch-off" label="Switch de muestra" />
-      <h3>On</h3><Checkbox id="review-checkbox-on" label="Checkbox de muestra" defaultChecked /><Switch id="review-switch-on" label="Switch de muestra" defaultChecked />
+      <h2>Revisión Off/On · marca y posición</h2>
+      <p>Adaptaciones A11Y aprobadas. Los inputs nativos determinan el estado; las señales añadidas son decorativas.</p>
+      <form id="choice-review-form" onSubmit={(event) => event.preventDefault()} onChange={() => setChoiceChanges((value) => value + 1)}>
+        <h3>Off</h3><Checkbox id="review-checkbox-off" name="checkbox-off" value="yes" label="Checkbox de muestra" /><Switch id="review-switch-off" name="switch-off" value="yes" label="Switch de muestra" />
+        <h3>On</h3><Checkbox id="review-checkbox-on" name="checkbox-on" value="yes" label="Checkbox de muestra" defaultChecked /><Switch id="review-switch-on" name="switch-on" value="yes" label="Switch de muestra" defaultChecked />
+        <Button id="choice-review-reset" type="reset" variant="secondary">Restablecer muestras</Button>
+        <output id="choice-review-changes">{choiceChanges}</output>
+      </form>
       <Alert tone="warning" title="Gate pendiente">Axe no instalado. Esta fixture no certifica conformidad WCAG integral.</Alert>
     </section>
+    <section id="choice-state-review" style={{ display: "grid", gap: 16, minWidth: 0 }}>
+      <h2>Señales sobre superficies · muestras A11Y</h2>
+      {(["background", "surface", "raised"] as const).map((surface) => <section key={surface} data-choice-surface={surface} style={{ background: `var(--kl-color-${surface})`, padding: 8, minWidth: 0 }}>
+        <h3>{surface}</h3>
+        <Checkbox id={`choice-${surface}-checkbox-error`} label="Checkbox con descripción y error de muestra" hint="Descripción asociada" error="Error de muestra" defaultChecked />
+        <Switch id={`choice-${surface}-switch-error`} label="Switch con descripción y error de muestra" hint="Descripción asociada" error="Error de muestra" defaultChecked />
+        <fieldset disabled style={{ minWidth: 0, margin: 0, padding: 0, border: 0 }}>
+          <legend>Deshabilitados por fieldset</legend>
+          <Checkbox id={`choice-${surface}-checkbox-disabled-off`} label="Checkbox deshabilitado Off" />
+          <Checkbox id={`choice-${surface}-checkbox-disabled-on`} label="Checkbox deshabilitado On" defaultChecked />
+          <Switch id={`choice-${surface}-switch-disabled-off`} label="Switch deshabilitado Off" />
+          <Switch id={`choice-${surface}-switch-disabled-on`} label="Switch deshabilitado On" defaultChecked />
+        </fieldset>
+      </section>)}
+    </section>
+    <form id="native-choice-reference" onSubmit={(event) => event.preventDefault()} onChange={() => setReferenceChanges((value) => value + 1)}>
+      <h2>Referencia React nativa · sin decoración</h2>
+      <label htmlFor="reference-checkbox">Checkbox de referencia <input id="reference-checkbox" name="reference-checkbox" type="checkbox" /></label>
+      <label htmlFor="reference-switch">Switch de referencia <input id="reference-switch" name="reference-switch" type="checkbox" role="switch" /></label>
+      <Button id="reference-reset" type="reset">Restablecer referencia</Button>
+      <output id="reference-changes">{referenceChanges}</output>
+    </form>
   </main>;
 }
