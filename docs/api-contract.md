@@ -1,7 +1,7 @@
 # Contrato de API: `POST /api/v1/audits`
 
 **Versión del API:** `0.1.0`  
-**Estado:** Verificado localmente; CI Linux pendiente.  
+**Estado:** Verificado localmente (56 pruebas aprobadas). Evidencia CI Linux previa confirmada en commit `58e0eddc989d2ac464d9a4e611f940eba717d53b` (INC-01-R1, check `unit`: success). Nueva validación CI Linux para INC-01-R3 pendiente tras publicación de commit.\
 **Implementación:** `apps/api/main.py` y `packages/qa_engine/core.py`.  
 **Nivel de servicio:** Síncrono, en memoria, stateless (sin sesiones ni persistencia en disco o base de datos).
 
@@ -75,7 +75,7 @@ Cache-Control: no-store
 X-Content-Type-Options: nosniff
 Content-Type: application/json
 ```
-*(Nota: Las respuestas de error 4xx o 5xx son generadas a través de `HTTPException` de Starlette/FastAPI y no garantizan necesariamente estas cabeceras específicas).*
+*(Nota: Las respuestas de error no garantizan necesariamente estas cabeceras específicas. En la implementación actual, se distinguen tres categorías: (a) errores de validación de entrada controlados mediante `HTTPException` de FastAPI [códigos 400, 413, 415 y 422]; (b) errores no controlados capturados durante la ejecución del motor `_audit_workflow`, convertidos a `HTTPException(500, detail="Error interno de auditoría.")`; y (c) excepciones no controladas originadas fuera de dicho bloque [como los defectos DEF-01 y DEF-02 en `_validate_workflow`], las cuales derivan en un `HTTP 500` emitido por el manejador por defecto de Starlette con cuerpo de texto plano `"Internal Server Error"` y sin cabeceras de seguridad garantizadas).*
 
 ### Esquema del Cuerpo JSON
 ```json
@@ -176,4 +176,4 @@ Content-Type: application/json
 
 ---
 
-*Documento mantenido por el equipo KevoLint. Última actualización: INC-01-R1 (2026-10-19).*
+*Documento mantenido por el equipo KevoLint. Última actualización: INC-01-R3 (2026-10-19).*

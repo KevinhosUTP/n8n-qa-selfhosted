@@ -731,6 +731,66 @@ class ApiAud11Tests(unittest.TestCase):
             findings = data["findings"]
             rule_names = {f["rule_name"] for f in findings}
 
+            # -----------------------------------------------------------------
+            # INVARIANTES UNIVERSALES (AUD11-R2-01 y AUD11-R2-02)
+            # Evaluados en cada una de las 10 respuestas concurrentes
+            # -----------------------------------------------------------------
+
+            # A. AUD11-R2-01: Total de conexiones esperado según tipo de workflow
+            expected_connections = [1, 0, 0, 1][wf_type]
+            self.assertEqual(
+                data["metrics"]["total_connections"],
+                expected_connections,
+                f"total_connections inconsistente en request {idx} (tipo {wf_type}): "
+                f"esperado {expected_connections}, obtenido {data['metrics']['total_connections']}"
+            )
+
+            # B. AUD11-R2-01: Coherencia de severidades recalculada independientemente desde findings
+            actual_critical = sum(1 for f in findings if f["severity"] == Severity.CRITICAL.value)
+            actual_warning = sum(1 for f in findings if f["severity"] == Severity.WARNING.value)
+            actual_pass = sum(1 for f in findings if f["severity"] == Severity.PASS.value)
+
+            self.assertEqual(
+                data["metrics"]["critical_count"],
+                actual_critical,
+                f"critical_count inconsistente en request {idx} (tipo {wf_type}): "
+                f"esperado {actual_critical}, obtenido {data['metrics']['critical_count']}"
+            )
+            self.assertEqual(
+                data["metrics"]["warning_count"],
+                actual_warning,
+                f"warning_count inconsistente en request {idx} (tipo {wf_type}): "
+                f"esperado {actual_warning}, obtenido {data['metrics']['warning_count']}"
+            )
+            self.assertEqual(
+                data["metrics"]["pass_count"],
+                actual_pass,
+                f"pass_count inconsistente en request {idx} (tipo {wf_type}): "
+                f"esperado {actual_pass}, obtenido {data['metrics']['pass_count']}"
+            )
+            self.assertEqual(
+                actual_critical + actual_warning + actual_pass,
+                len(findings),
+                f"Suma de severidades inconsistente con total de hallazgos en request {idx} (tipo {wf_type}): "
+                f"{actual_critical} + {actual_warning} + {actual_pass} != {len(findings)}"
+            )
+
+            # C. AUD11-R2-02: Confidencialidad universal del token sintético en la respuesta completa
+            all_text = json.dumps(data)
+            self.assertNotIn(
+                "SYNTHETIC_FAKE_TOKEN_INC01R1_NOT_REAL_AAABBB",
+                all_text,
+                f"Filtración del token sintético detectada en request {idx} (tipo {wf_type}): "
+                f"el marcador confidencial no debe figurar en ningún campo de la respuesta."
+            )
+
+            # D. Invariante universal: workflow_name no debe contaminarse
+            self.assertEqual(
+                data["metrics"]["workflow_name"],
+                f"{['Concurrent-A', 'Concurrent-B', 'Concurrent-C', 'Concurrent-D'][wf_type]}-{idx}",
+                f"Contaminación de estado detectada en request {idx} (tipo {wf_type})"
+            )
+
             if wf_type == 0:  # Tipo A: clean (2 nodos)
                 self.assertEqual(
                     data["metrics"]["total_nodes"], 2,
@@ -764,13 +824,6 @@ class ApiAud11Tests(unittest.TestCase):
                 self.assertNotIn("Higiene de Credenciales y Secretos", rule_names)
                 self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
                 self.assertNotIn("Regla de Integridad (Ruta Muerta en Nodo If)", rule_names)
-                # Verificación estricta de no filtración del token sintético en toda la respuesta
-                all_text = json.dumps(data)
-                self.assertNotIn(
-                    "SYNTHETIC_FAKE_TOKEN_INC01R1_NOT_REAL_AAABBB",
-                    all_text,
-                    f"El token sintético NO debe aparecer en ningún campo de la respuesta (request {idx})"
-                )
 
             elif wf_type == 2:  # Tipo C: 25 nodos (complejidad monolítica)
                 self.assertEqual(
@@ -823,13 +876,6 @@ class ApiAud11Tests(unittest.TestCase):
                 # Ausencia de hallazgos exclusivos de los otros tipos
                 self.assertNotIn("Credenciales Hardcodeadas en Parámetros", rule_names)
                 self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
-
-            # Invariante universal: workflow_name no debe contaminarse
-            self.assertEqual(
-                data["metrics"]["workflow_name"],
-                f"{['Concurrent-A', 'Concurrent-B', 'Concurrent-C', 'Concurrent-D'][wf_type]}-{idx}",
-                f"Contaminación de estado detectada en request {idx} (tipo {wf_type})"
-            )
 
 
 if __name__ == "__main__":
