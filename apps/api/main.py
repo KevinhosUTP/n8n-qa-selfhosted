@@ -97,7 +97,7 @@ def _validate_workflow(workflow: Any) -> dict[str, Any]:
         pos = node.get("position", [0, 0])
         if (not isinstance(pos, list) or len(pos) != 2 or
             any(isinstance(v, bool) or not isinstance(v, (int, float)) or
-                not math.isfinite(v) or abs(v) > 1e9 for v in pos)):
+                abs(v) > 1e9 or not math.isfinite(v) for v in pos)):
             _invalid(f"nodes[{index}].position debe tener dos números finitos.")
 
     connections = workflow.get("connections", {})
@@ -118,7 +118,8 @@ def _validate_workflow(workflow: Any) -> dict[str, Any]:
                 if edges > MAX_EDGES:
                     _invalid(f"El workflow supera {MAX_EDGES} conexiones.")
                 for edge in branch_edges:
-                    if not isinstance(edge, dict) or edge.get("node") not in known_names:
+                    if (not isinstance(edge, dict) or not isinstance(edge.get("node"), str) or
+                        edge["node"] not in known_names):
                         _invalid("connections contiene una conexión con destino inválido.")
 
     return workflow

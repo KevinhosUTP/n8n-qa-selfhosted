@@ -13,8 +13,10 @@ import unittest
 from unittest.mock import patch
 
 import httpx
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
+from apps.api import main as api
 from apps.api.main import (
     MAX_DEPTH,
     MAX_EDGES,
@@ -876,6 +878,148 @@ class ApiAud11Tests(unittest.TestCase):
                 # Ausencia de hallazgos exclusivos de los otros tipos
                 self.assertNotIn("Credenciales Hardcodeadas en Parámetros", rule_names)
                 self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
+
+
+class Inc02InputValidationTests(unittest.TestCase):
+    """Real HTTP regressions and separate Python-level validation checks."""
+
+    PRIVATE_MARKER = "INC02-private-workflow-marker"
+    DESTINATION_ERROR = "connections contiene una conexión con destino inválido."
+    POSITION_ERROR = "nodes[0].position debe tener dos números finitos."
+
+    def setUp(self):
+        # Observe actual HTTP 500 responses rather than TestClient re-raising bugs.
+        self.http = TestClient(app, raise_server_exceptions=False)
+        self.addCleanup(self.http.close)
+
+    def _workflow(self):
+        workflow = copy.deepcopy(WORKFLOW)
+        workflow["name"] = self.PRIVATE_MARKER
+        workflow["nodes"][0]["parameters"]["private_note"] = self.PRIVATE_MARKER
+        return workflow
+
+    def _assert_rejected(self, workflow, detail, body=None):
+        if body is None:
+            body = json.dumps({"workflow": workflow}, allow_nan=False).encode("utf-8")
+        with patch("apps.api.main._audit_workflow") as engine:
+            response = self.http.post(
+                "/api/v1/audits", content=body,
+                headers={"Content-Type": "application/json"},
+            )
+            engine.assert_not_called()
+        self.assertEqual(response.status_code, 422, response.text)
+        self.assertEqual(response.headers["content-type"].split(";", 1)[0], "application/json")
+        self.assertEqual(response.json(), {"detail": detail})
+        self.assertNotIn(self.PRIVATE_MARKER, response.text)
+
+    def _assert_accepted(self, workflow):
+        original = copy.deepcopy(workflow)
+        expected = api._audit_workflow(copy.deepcopy(workflow))
+        with patch("apps.api.main._audit_workflow", wraps=api._audit_workflow) as engine:
+            response = self.http.post("/api/v1/audits", json={"workflow": workflow})
+            self.assertEqual(response.status_code, 200, response.text)
+            engine.assert_called_once()
+            received = engine.call_args.args[0]
+            self.assertEqual(received, original)
+            self.assertEqual(
+                [type(value) for value in received["nodes"][0]["position"]],
+                [type(value) for value in original["nodes"][0]["position"]],
+            )
+        self.assertEqual(response.json(), expected)
+        self.assertEqual(response.headers["cache-control"], "no-store")
+        self.assertEqual(response.headers["x-content-type-options"], "nosniff")
+        self.assertEqual(workflow, original)
+
+    def test_def01_rejects_invalid_destinations_over_http(self):
+        destinations = [[], {}, None, 7, 0.5, True, False, "", self.PRIVATE_MARKER]
+        for destination in destinations:
+            with self.subTest(destination=destination):
+                workflow = self._workflow()
+                workflow["connections"]["Trigger"]["main"][0][0]["node"] = destination
+                self._assert_rejected(workflow, self.DESTINATION_ERROR)
+
+    def test_def01_accepts_existing_destination_without_changing_result(self):
+        self._assert_accepted(copy.deepcopy(WORKFLOW))
+
+    def test_def02_rejects_extreme_integers_over_http(self):
+        for axis in (0, 1):
+            for value in (10**400, -(10**400)):
+                with self.subTest(axis=axis, sign=1 if value > 0 else -1):
+                    workflow = self._workflow()
+                    workflow["nodes"][0]["position"][axis] = value
+                    self._assert_rejected(workflow, self.POSITION_ERROR)
+
+    def test_def02_rejects_non_numeric_and_boolean_coordinates_over_http(self):
+        for axis in (0, 1):
+            for value in (True, False, None, "10", [], {}):
+                with self.subTest(axis=axis, value=value):
+                    workflow = self._workflow()
+                    workflow["nodes"][0]["position"][axis] = value
+                    self._assert_rejected(workflow, self.POSITION_ERROR)
+
+    def test_def02_rejects_invalid_position_shapes_over_http(self):
+        for position in (None, {}, "0,0", 0, [], [0], [0, 0, 0]):
+            with self.subTest(position=position):
+                workflow = self._workflow()
+                workflow["nodes"][0]["position"] = position
+                self._assert_rejected(workflow, self.POSITION_ERROR)
+
+    def test_def02_rejects_coordinates_outside_bounds_over_http(self):
+        for axis in (0, 1):
+            for value in (10**9 + 1, -(10**9) - 1, 1e9 + 0.5, -1e9 - 0.5):
+                with self.subTest(axis=axis, value=value):
+                    workflow = self._workflow()
+                    workflow["nodes"][0]["position"][axis] = value
+                    self._assert_rejected(workflow, self.POSITION_ERROR)
+
+    def test_def02_accepts_boundaries_and_finite_coordinates_unchanged(self):
+        positions = [
+            [10**9, -(10**9)], [-(10**9), 10**9],
+            [1e9, -1e9], [-1e9, 1e9], [0, 0], [0.5, -0.5],
+        ]
+        for position in positions:
+            with self.subTest(position=position):
+                workflow = copy.deepcopy(WORKFLOW)
+                workflow["nodes"][0]["position"] = position
+                self._assert_accepted(workflow)
+
+    def test_def02_rejects_non_finite_python_json_extensions_over_http(self):
+        # NaN/Infinity are Python JSON extensions, not RFC 8259 JSON numbers.
+        # Explicit bytes reach the API parser; HTTPX's json= would reject them.
+        for axis in (0, 1):
+            for value in (float("nan"), float("inf"), -float("inf")):
+                with self.subTest(axis=axis, value=value):
+                    workflow = self._workflow()
+                    workflow["nodes"][0]["position"][axis] = value
+                    body = json.dumps({"workflow": workflow}, allow_nan=True).encode("utf-8")
+                    self._assert_rejected(workflow, self.POSITION_ERROR, body=body)
+
+    def test_def02_rejects_scientific_overflow_over_http(self):
+        # These are valid JSON number lexemes that Python parses as +/-infinity.
+        for axis in (0, 1):
+            for lexeme in ("1e400", "-1e400"):
+                with self.subTest(axis=axis, lexeme=lexeme):
+                    workflow = self._workflow()
+                    workflow["nodes"][0]["position"][axis] = "INC02_COORDINATE"
+                    body = json.dumps({"workflow": workflow}).replace('"INC02_COORDINATE"', lexeme)
+                    self._assert_rejected(workflow, self.POSITION_ERROR, body=body.encode("utf-8"))
+
+    def test_invalid_python_structures_raise_controlled_422(self):
+        # Direct Python structures are separate from the HTTP tests above.
+        for destination in ([], {}):
+            with self.subTest(destination=destination):
+                workflow = self._workflow()
+                workflow["connections"]["Trigger"]["main"][0][0]["node"] = destination
+                with self.assertRaises(HTTPException) as caught:
+                    api._validate_workflow(workflow)
+                self.assertEqual((caught.exception.status_code, caught.exception.detail), (422, self.DESTINATION_ERROR))
+        for value in (10**400, -(10**400), float("nan"), float("inf"), -float("inf")):
+            with self.subTest(coordinate=type(value).__name__, finite=abs(value) <= 1e9):
+                workflow = self._workflow()
+                workflow["nodes"][0]["position"] = [value, 0]
+                with self.assertRaises(HTTPException) as caught:
+                    api._validate_workflow(workflow)
+                self.assertEqual((caught.exception.status_code, caught.exception.detail), (422, self.POSITION_ERROR))
 
 
 if __name__ == "__main__":
