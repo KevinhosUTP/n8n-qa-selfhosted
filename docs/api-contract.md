@@ -1,7 +1,7 @@
 # Contrato de API: `POST /api/v1/audits`
 
 **Versión del API:** `0.1.0`  
-**Estado:** Verificado localmente (56 pruebas aprobadas). Evidencia CI Linux previa confirmada en commit `58e0eddc989d2ac464d9a4e611f940eba717d53b` (INC-01-R1, check `unit`: success). Nueva validación CI Linux para INC-01-R3 pendiente tras publicación de commit.\
+**Estado:** INC-02 implementado y verificado localmente: 66 pruebas aprobadas (56 originales y 10 nuevas). Cambios sin commit ni publicación; CI Linux de INC-02 pendiente de autorización posterior. Baseline integrada: `1e9328813002098abf7b4ce5268d76e5f50b45ac`, con 56 pruebas y smoke Streamlit satisfactorios en [CI de INC-01](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39381690115). Esa ejecución no verifica los cambios locales de INC-02.
 **Implementación:** `apps/api/main.py` y `packages/qa_engine/core.py`.  
 **Nivel de servicio:** Síncrono, en memoria, stateless (sin sesiones ni persistencia en disco o base de datos).
 
@@ -75,7 +75,7 @@ Cache-Control: no-store
 X-Content-Type-Options: nosniff
 Content-Type: application/json
 ```
-*(Nota: Las respuestas de error no garantizan necesariamente estas cabeceras específicas. En la implementación actual, se distinguen tres categorías: (a) errores de validación de entrada controlados mediante `HTTPException` de FastAPI [códigos 400, 413, 415 y 422]; (b) errores no controlados capturados durante la ejecución del motor `_audit_workflow`, convertidos a `HTTPException(500, detail="Error interno de auditoría.")`; y (c) excepciones no controladas originadas fuera de dicho bloque [como los defectos DEF-01 y DEF-02 en `_validate_workflow`], las cuales derivan en un `HTTP 500` emitido por el manejador por defecto de Starlette con cuerpo de texto plano `"Internal Server Error"` y sin cabeceras de seguridad garantizadas).*
+*(Nota: Las respuestas de error no garantizan necesariamente estas cabeceras específicas. Se distinguen tres categorías: (a) errores de validación controlados mediante `HTTPException` de FastAPI [400, 413, 415 y 422], incluidos DEF-01 y DEF-02 tras la corrección local INC-02; (b) excepciones durante `_audit_workflow`, convertidas a `HTTPException(500, detail="Error interno de auditoría.")`; y (c) otras excepciones no controladas fuera de ese bloque, que pueden derivar en HTTP 500 con texto plano `"Internal Server Error"` y sin dichas cabeceras garantizadas. INC-02 no añade un manejador universal de errores).*
 
 ### Esquema del Cuerpo JSON
 ```json
@@ -122,16 +122,16 @@ Content-Type: application/json
 | **`422 Unprocessable Entity`** | Violación de restricciones de negocio, tipos o límites de esquema | `{"detail": "string"}` |
 | **`500 Internal Server Error`** | Error no controlado capturado durante la ejecución de `_audit_workflow` | `{"detail": "Error interno de auditoría."}` |
 
-*Nota de seguridad y alcance de HTTP 500:* El cuerpo JSON con detalle ofuscado (`{"detail": "Error interno de auditoría."}`) corresponde exclusivamente a excepciones capturadas internamente durante la ejecución del motor de auditoría (`_audit_workflow`), con el objetivo de evitar la exposición accidental de estructuras o parámetros confidenciales del workflow. No debe interpretarse como una garantía de formato JSON universal para cualquier excepción no controlada que ocurra fuera de dicho bloque (por ejemplo, excepciones durante `_validate_workflow` o middlewares), donde una configuración FastAPI/Starlette predeterminada puede responder con un error `500 Internal Server Error` en texto plano sin estructura JSON garantizada.
+*Nota de seguridad y alcance de HTTP 500:* El cuerpo JSON con detalle ofuscado (`{"detail": "Error interno de auditoría."}`) corresponde exclusivamente a excepciones capturadas internamente durante `_audit_workflow`. No garantiza formato JSON universal para cualquier excepción fuera de ese bloque, por ejemplo en middleware o código de validación no cubierto. Esas excepciones todavía pueden producir HTTP 500 en texto plano. Los casos concretos DEF-01 y DEF-02 ahora se rechazan localmente con HTTP 422 controlado; no se declaran publicados ni integrados hasta completar las autorizaciones y CI correspondientes.
 
 ---
 
-## 6. Defectos Productivos Conocidos (Pendientes de Corrección)
+## 6. DEF-01 y DEF-02 — Corrección local INC-02, pendiente de publicación
 
 > [!CAUTION]
-> Los siguientes defectos preexistentes en `apps/api/main.py` fueron identificados durante la auditoría independiente externa (Codex, octubre 2026). Provocan excepciones no controladas en tiempo de ejecución que derivan en respuestas `HTTP 500` para entradas que deberían ser validadas y rechazadas con `HTTP 422` en `_validate_workflow`.
-> **No forman parte del contrato formal de la API y no deben introducirse pruebas que acepten HTTP 500 como comportamiento contractual válido.**
-> La subsanación de ambos defectos queda registrada como pendiente de un incremento correctivo independiente, todavía sin numeración.
+> Los defectos preexistentes causaban HTTP 500 para entradas que debían rechazarse con HTTP 422. INC-02 incorpora dos guardas mínimas, verificadas mediante 66 pruebas locales, sin modificar el contrato de entradas válidas.
+> **HTTP 500 no es un resultado contractual válido para estos casos.** Las regresiones nuevas exigen HTTP 422, JSON controlado, ausencia de reflejo del payload y que el motor no se ejecute.
+> El cambio sigue sin commit, push, PR o merge. CI Linux y publicación requieren autorización posterior. Véase [informe pre-commit](verification-inc02.md).
 
 ### DEF-01 — Destino de conexión no hashable (`{"node": []}`)
 
@@ -148,9 +148,10 @@ Content-Type: application/json
     }
   }
   ```
-- **Mecanismo del fallo:** En `_validate_workflow`, la variable `known_names` está definida como un conjunto (`set[str]`). La comprobación `edge.get("node") not in known_names` evalúa la pertenencia de un objeto de tipo `list` dentro de un `set`. Dado que las listas en Python no son hashables, el intérprete genera inmediatamente `TypeError: unhashable type: 'list'`. La excepción se produce en `_validate_workflow`, fuera del bloque `try/except` que captura errores durante `_audit_workflow`. En una configuración FastAPI/Starlette predeterminada, esto deriva en una respuesta `HTTP 500` con cuerpo plano `"Internal Server Error"`, sin estructura JSON garantizada. Este comportamiento actual es un defecto no controlado y no debe considerarse contractual.
-- **Comportamiento esperado según contrato:** Debe retornar `HTTP 422 Unprocessable Entity` indicando destino de conexión inválido.
-- **Resolución prevista:** Pendiente de un incremento correctivo independiente, todavía sin numeración.
+- **Causa histórica:** La pertenencia de una lista u objeto a `known_names` (`set[str]`) se evaluaba sin comprobar primero el tipo del destino. Producía `TypeError` fuera del bloque que captura errores del motor y HTTP 500 en texto plano. Se reprodujeron ambos tipos antes del arreglo.
+- **Corrección INC-02:** Comprobar que la arista sea un objeto y su destino un string antes de consultar el conjunto. Los destinos conocidos siguen admitidos.
+- **Resultado local verificado:** HTTP 422 con `{"detail": "connections contiene una conexión con destino inválido."}` para lista, objeto, null, entero, decimal, booleanos, string vacío y nombre desconocido. No se ejecuta el motor ni se refleja el contenido privado de prueba.
+- **Estado:** Corregido y probado localmente; pendiente de autorización de commit/publicación y validación CI Linux.
 
 ### DEF-02 — Entero de magnitud extrema en `position` (`10**400`)
 
@@ -170,10 +171,12 @@ Content-Type: application/json
   }
   body = json.dumps(payload).encode("utf-8")
   ```
-- **Mecanismo del fallo:** En Python, los enteros poseen precisión arbitraria y no tienen límite de tamaño por desbordamiento. Sin embargo, la función `math.isfinite(v)` requiere un argumento numérico de punto flotante de 64 bits (`float` IEEE 754, cuyo valor máximo representable es aproximadamente `1.79e308`). Al evaluar `math.isfinite(10**400)`, Python intenta convertir implícitamente el entero a float y genera `OverflowError: int too large to convert to float`. Este fallo ocurre en `_validate_workflow`, antes de evaluar la comprobación de magnitud `abs(v) > 1e9` y fuera del bloque `try/except` de `_audit_workflow`. La excepción no controlada deriva en `HTTP 500` (con cuerpo plano en FastAPI/Starlette estándar, sin estructura JSON garantizada). Este comportamiento actual no debe considerarse contractual.
-- **Comportamiento esperado según contrato:** Debe retornar `HTTP 422 Unprocessable Entity` indicando que `position` debe tener números finitos dentro del rango permitido.
-- **Resolución prevista:** Pendiente de un incremento correctivo independiente, todavía sin numeración.
+- **Causa histórica:** `math.isfinite(10**400)` intentaba convertir el entero a float antes de comprobar su magnitud. Esa conversión producía `OverflowError` fuera del bloque de errores del motor. Se reprodujeron enteros extremos positivos y negativos en ambos ejes mediante cuerpos JSON HTTP reales.
+- **Corrección INC-02:** Conservar las guardas de arreglo, longitud, tipo numérico y exclusión de booleanos; evaluar `abs(v) > 1e9` antes de `math.isfinite(v)`. Los enteros extremos se descartan por cortocircuito antes de la conversión insegura. NaN sigue rechazándose por finitud.
+- **Resultado local verificado:** HTTP 422 con `{"detail": "nodes[0].position debe tener dos números finitos."}` para los casos inválidos del primer nodo. Las fronteras ±1e9, enteros admitidos y decimales finitos conservan HTTP 200 y su resultado completo.
+- **Transporte probado:** Los enteros de 401 dígitos se enviaron como números JSON, no como `1e400`. También se rechazaron los lexemas JSON válidos `1e400`/`-1e400` y los tokens NaN/Infinity/-Infinity mediante bytes explícitos; estos últimos son extensiones aceptadas por `json.loads`, no JSON estándar. Las comprobaciones directas de estructuras Python se registran separadamente.
+- **Estado:** Corregido y probado localmente; pendiente de autorización de commit/publicación y validación CI Linux.
 
 ---
 
-*Documento mantenido por el equipo KevoLint. Última actualización: INC-01-R3 (2026-10-19).*
+*Documento mantenido por el equipo KevoLint. Última actualización local: INC-02 (2026-10-20), sin publicación.*
