@@ -1,7 +1,7 @@
 # Contrato de API: `POST /api/v1/audits`
 
 **Versión del API:** `0.1.0`  
-**Estado:** INC-02 implementado y verificado localmente: 66 pruebas aprobadas (56 originales y 10 nuevas). Cambios sin commit ni publicación; CI Linux de INC-02 pendiente de autorización posterior. Baseline integrada: `1e9328813002098abf7b4ce5268d76e5f50b45ac`, con 56 pruebas y smoke Streamlit satisfactorios en [CI de INC-01](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39381690115). Esa ejecución no verifica los cambios locales de INC-02.
+**Estado:** INC-02 implementado y probado localmente (66/66) y publicado en el [Draft PR #12](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/12). [CI Linux del commit funcional `201185ab`](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39439691006): `unit` SUCCESS (66 pruebas y smoke Streamlit). La integración a `develop` depende de aprobación separada. La evidencia de este CI corresponde al commit funcional, no a commits documentales posteriores. Baseline de INC-01 integrada: `1e9328813002098abf7b4ce5268d76e5f50b45ac`.
 **Implementación:** `apps/api/main.py` y `packages/qa_engine/core.py`.  
 **Nivel de servicio:** Síncrono, en memoria, stateless (sin sesiones ni persistencia en disco o base de datos).
 
@@ -126,12 +126,12 @@ Content-Type: application/json
 
 ---
 
-## 6. DEF-01 y DEF-02 — Corrección local INC-02, pendiente de publicación
+## 6. DEF-01 y DEF-02 — Corrección INC-02 y evidencia de CI
 
 > [!CAUTION]
 > Los defectos preexistentes causaban HTTP 500 para entradas que debían rechazarse con HTTP 422. INC-02 incorpora dos guardas mínimas, verificadas mediante 66 pruebas locales, sin modificar el contrato de entradas válidas.
 > **HTTP 500 no es un resultado contractual válido para estos casos.** Las regresiones nuevas exigen HTTP 422, JSON controlado, ausencia de reflejo del payload y que el motor no se ejecute.
-> El cambio sigue sin commit, push, PR o merge. CI Linux y publicación requieren autorización posterior. Véase [informe pre-commit](verification-inc02.md).
+> La corrección se publicó en el Draft PR #12 y pasó CI Linux sobre el commit funcional `201185ab` (66 pruebas y smoke Streamlit). Esto no implica merge a `develop` ni despliegue. Véase el [informe histórico pre-commit](verification-inc02.md) y la [ejecución CI](https://github.com/KevinhosUTP/n8n-qa-selfhosted/actions/runs/39439691006).
 
 ### DEF-01 — Destino de conexión no hashable (`{"node": []}`)
 
@@ -151,7 +151,7 @@ Content-Type: application/json
 - **Causa histórica:** La pertenencia de una lista u objeto a `known_names` (`set[str]`) se evaluaba sin comprobar primero el tipo del destino. Producía `TypeError` fuera del bloque que captura errores del motor y HTTP 500 en texto plano. Se reprodujeron ambos tipos antes del arreglo.
 - **Corrección INC-02:** Comprobar que la arista sea un objeto y su destino un string antes de consultar el conjunto. Los destinos conocidos siguen admitidos.
 - **Resultado local verificado:** HTTP 422 con `{"detail": "connections contiene una conexión con destino inválido."}` para lista, objeto, null, entero, decimal, booleanos, string vacío y nombre desconocido. No se ejecuta el motor ni se refleja el contenido privado de prueba.
-- **Estado:** Corregido y probado localmente; pendiente de autorización de commit/publicación y validación CI Linux.
+- **Evidencia:** Corregido en INC-02, validado en pruebas locales y en el CI Linux del commit funcional del Draft PR #12; integración a `develop` sujeta a decisión independiente.
 
 ### DEF-02 — Entero de magnitud extrema en `position` (`10**400`)
 
@@ -175,8 +175,8 @@ Content-Type: application/json
 - **Corrección INC-02:** Conservar las guardas de arreglo, longitud, tipo numérico y exclusión de booleanos; evaluar `abs(v) > 1e9` antes de `math.isfinite(v)`. Los enteros extremos se descartan por cortocircuito antes de la conversión insegura. NaN sigue rechazándose por finitud.
 - **Resultado local verificado:** HTTP 422 con `{"detail": "nodes[0].position debe tener dos números finitos."}` para los casos inválidos del primer nodo. Las fronteras ±1e9, enteros admitidos y decimales finitos conservan HTTP 200 y su resultado completo.
 - **Transporte probado:** Los enteros de 401 dígitos se enviaron como números JSON, no como `1e400`. También se rechazaron los lexemas JSON válidos `1e400`/`-1e400` y los tokens NaN/Infinity/-Infinity mediante bytes explícitos; estos últimos son extensiones aceptadas por `json.loads`, no JSON estándar. Las comprobaciones directas de estructuras Python se registran separadamente.
-- **Estado:** Corregido y probado localmente; pendiente de autorización de commit/publicación y validación CI Linux.
+- **Evidencia:** Corregido en INC-02, validado en pruebas locales y en el CI Linux del commit funcional del Draft PR #12; integración a `develop` sujeta a decisión independiente.
 
 ---
 
-*Documento mantenido por el equipo KevoLint. Última actualización local: INC-02 (2026-10-20), sin publicación.*
+*Documento mantenido por el equipo KevoLint. Actualización documental de publicación y CI de INC-02 (2026-10-20); [Draft PR #12](https://github.com/KevinhosUTP/n8n-qa-selfhosted/pull/12).*
