@@ -32,7 +32,8 @@ Todos los archivos aquí incluidos son **100% sintéticos, deterministas y libre
 
 ### 4. `workflow_representative_synthetic.json`
 - **Escenario asociado:** CL-19 (Prioridad P0), COV-03, COV-04, COV-07.
-- **Propósito:** Workflow compuesto de 9 nodos representativos (Webhook, If con ambas ramas conectadas, HTTP Request seguro con credenciales n8n, SplitInBatches, Set, NoOp de éxito/error, Agente IA con prompt estructurado y RespondToWebhook).
+- **Propósito:** Workflow compuesto de 9 nodos representativos (Webhook, If con ambas ramas conectadas, HTTP Request seguro con credenciales n8n, SplitInBatches, Set, NoOp de éxito/error, Agente IA con prompt estructurado y un nodo `n8n-nodes-base.noOp` como nodo final "Responder").
+- **Nota (INC-01-R1):** El nodo "Responder" usa `n8n-nodes-base.noOp` (no `respondToWebhook`). Esto es intencional: `is_trigger_node()` coincide con el substring `"webhook"`, por lo que usar `respondToWebhook` generaría falsos positivos de "Trigger Sin Salida". El cambio a `noOp` es definitivo.
 - **Estado de datos reales:** Sustituye provisionalmente a `workflow_real_sanitized.json` (cuya inclusión requiere aprobación formal AP-06).
 - **Validación esperada:**
   - Contrato HTTP: `200 OK`.

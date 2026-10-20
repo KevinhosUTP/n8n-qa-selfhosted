@@ -1,8 +1,10 @@
 """HTTP contract and adversarial input tests for the FastAPI MVP.
 
 Preserva íntegras las 15 pruebas base originales e incorpora los escenarios
-de contrato CL-01 a CL-16, CL-19 y CL-20 alineados con los criterios COV-01 a COV-10.
+de contrato CL-01 a CL-16, CL-19, CL-20 alineados con los criterios COV-01 a COV-10,
+más las correcciones AUD11-01 a AUD11-07 del incremento INC-01-R1.
 """
+import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import copy
 import json
@@ -10,6 +12,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+import httpx
 from fastapi.testclient import TestClient
 
 from apps.api.main import (
@@ -20,6 +23,7 @@ from apps.api.main import (
     MAX_REQUEST_BYTES,
     app,
 )
+from packages.qa_engine import EngineCategory, Severity
 
 client = TestClient(app)
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
@@ -374,6 +378,458 @@ class ApiTests(unittest.TestCase):
         res_over = client.post("/api/v1/audits", json={"workflow": wf_over})
         self.assertEqual(res_over.status_code, 422)
         self.assertIn("El JSON contiene demasiados elementos.", res_over.json()["detail"])
+
+
+
+# ---------------------------------------------------------------------------
+# HELPERS ASGI (INC-01-R1): harness de pruebas ASGI con inspección de scope y chunks
+# ---------------------------------------------------------------------------
+
+def _asgi_request_tracked(
+    body_or_stream,
+    headers: dict | None = None,
+    omit_content_length: bool = False,
+):
+    """Envía una petición POST sobre ASGI inspeccionando el scope y los chunks recibidos.
+
+    Retorna:
+    - response: httpx.Response
+    - headers_received: dict de cabeceras en el scope ASGI (keys en minúsculas)
+    - chunks_received: lista de tamaños (en bytes) de los chunks recibidos en 'http.request'
+    """
+    headers_received: dict[str, str] = {}
+    chunks_received: list[int] = []
+
+    async def tracking_app(scope, receive, send):
+        if scope["type"] == "http":
+            for raw_k, raw_v in scope.get("headers", []):
+                headers_received[raw_k.decode("latin1").lower()] = raw_v.decode("latin1")
+
+            async def wrapped_receive():
+                msg = await receive()
+                if msg.get("type") == "http.request":
+                    chunks_received.append(len(msg.get("body", b"")))
+                return msg
+
+            await app(scope, wrapped_receive, send)
+        else:
+            await app(scope, receive, send)
+
+    transport = httpx.ASGITransport(app=tracking_app)
+
+    async def _send():
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as ac:
+            req_headers = {"content-type": "application/json"}
+            if headers:
+                req_headers.update(headers)
+            content = body_or_stream() if callable(body_or_stream) else body_or_stream
+            req = ac.build_request("POST", "/api/v1/audits", content=content, headers=req_headers)
+            if omit_content_length and "content-length" in req.headers:
+                del req.headers["content-length"]
+            return await ac.send(req)
+
+    response = asyncio.run(_send())
+    return response, headers_received, chunks_received
+
+
+class ApiAud11Tests(unittest.TestCase):
+    """INC-01-R1: correcciones AUD11-01 a AUD11-07 de la auditoría Codex."""
+
+    # -----------------------------------------------------------------------
+    # AUD11-01: CL-02 — Comportamiento ASGI real sin Content-Length automático
+    # -----------------------------------------------------------------------
+
+    def test_aud11_01a_valid_json_without_content_length_returns_200(self):
+        """CL-02 sub-A: JSON válido enviado sin Content-Length → HTTP 200.
+
+        Verifica que el servidor acepta transferencias donde el cliente no
+        declara Content-Length (streaming sin longitud preconocida).
+        Demuestra mediante inspección del scope ASGI que Content-Length está efectivamente ausente.
+        """
+        body = json.dumps({"workflow": WORKFLOW}).encode("utf-8")
+        response, scope_headers, _ = _asgi_request_tracked(body, omit_content_length=True)
+        self.assertNotIn(
+            "content-length", scope_headers,
+            "Verificación de harness: Content-Length debe estar ausente del scope ASGI."
+        )
+        self.assertEqual(
+            response.status_code, 200,
+            f"Se esperaba 200 con JSON válido sin Content-Length. Body: {response.text}"
+        )
+        data = response.json()
+        self.assertEqual(data["engine_version"], "static-v1")
+        self.assertIn("metrics", data)
+        self.assertIn("findings", data)
+
+    def test_aud11_01b_invalid_content_length_header_returns_400(self):
+        """CL-02 sub-B: Content-Length no numérico → HTTP 400.
+
+        Demuestra que el valor erróneo llega al scope ASGI y el servidor lo rechaza con 400.
+        """
+        body = json.dumps({"workflow": WORKFLOW}).encode("utf-8")
+        response, scope_headers, _ = _asgi_request_tracked(body, headers={"content-length": "invalido"})
+        self.assertEqual(
+            scope_headers.get("content-length"), "invalido",
+            "Verificación de harness: la cabecera enviada debe coincidir con la recibida en el scope."
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["detail"], "Content-Length inválido.")
+
+    def test_aud11_01c_empty_body_without_content_length_returns_400(self):
+        """CL-02 sub-C: Cuerpo vacío sin Content-Length → HTTP 400 (JSON parse error).
+
+        Demuestra que en ausencia de Content-Length, un cuerpo vacío se procesa
+        por streaming y falla al parsear JSON sin arrojar excepciones no controladas.
+        """
+        response, scope_headers, _ = _asgi_request_tracked(b"", omit_content_length=True)
+        self.assertNotIn(
+            "content-length", scope_headers,
+            "Verificación de harness: Content-Length debe estar ausente del scope ASGI."
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["detail"], "El cuerpo no es JSON válido.")
+
+    # -----------------------------------------------------------------------
+    # AUD11-02: Límite 1 MiB verificado por streaming (sin Content-Length y chunks)
+    # -----------------------------------------------------------------------
+
+    def test_aud11_02a_body_over_1mib_without_content_length_returns_413(self):
+        """AUD11-02 caso 3: body > 1 MiB sin Content-Length → HTTP 413.
+
+        El check de tamaño debe activarse en la lectura por streaming
+        incluso cuando el cliente no declara Content-Length.
+        Demuestra mediante inspección del scope que Content-Length está ausente.
+        """
+        oversized_body = b"x" * (MAX_REQUEST_BYTES + 1)
+        response, scope_headers, _ = _asgi_request_tracked(oversized_body, omit_content_length=True)
+        self.assertNotIn(
+            "content-length", scope_headers,
+            "Verificación de harness: Content-Length debe estar ausente del scope ASGI."
+        )
+        self.assertEqual(
+            response.status_code, 413,
+            "El servidor debe rechazar con 413 un cuerpo > 1 MiB aunque no haya Content-Length."
+        )
+        self.assertEqual(response.json()["detail"], "El JSON excede 1 MiB.")
+
+    def test_aud11_02b_body_over_1mib_with_subdeclared_content_length_returns_413(self):
+        """AUD11-02 caso 4: body > 1 MiB con Content-Length subdeclarado → HTTP 413.
+
+        El servidor debe rechazar por streaming cuando el header
+        Content-Length declara un valor pequeño (100) pero el cuerpo real supera 1 MiB.
+        Demuestra que la cabecera recibida en el scope fue '100'.
+        """
+        oversized_body = b"x" * (MAX_REQUEST_BYTES + 100)
+        response, scope_headers, _ = _asgi_request_tracked(
+            oversized_body, headers={"content-length": "100"}
+        )
+        self.assertEqual(
+            scope_headers.get("content-length"), "100",
+            "Verificación de harness: el scope ASGI debe registrar Content-Length: 100."
+        )
+        self.assertEqual(
+            response.status_code, 413,
+            "El servidor debe rechazar con 413 por streaming aunque Content-Length esté subdeclarado."
+        )
+        self.assertEqual(response.json()["detail"], "El JSON excede 1 MiB.")
+
+    def test_aud11_02c_body_over_1mib_via_multiple_asgi_chunks_returns_413(self):
+        """AUD11-02 caso 5: streaming en múltiples chunks ASGI sin Content-Length → HTTP 413.
+
+        Envía un stream asíncrono real de 2 chunks de 600.000 bytes (total 1.200.000 bytes > 1 MiB).
+        Demuestra que:
+        - Content-Length está ausente en el scope ASGI.
+        - Se recibieron múltiples chunks ASGI en el servidor.
+        - El límite acumulado interrumpe la lectura con HTTP 413.
+        """
+        async def multi_chunks():
+            yield b"x" * 600_000
+            yield b"x" * 600_000
+
+        response, scope_headers, chunks_received = _asgi_request_tracked(
+            multi_chunks, omit_content_length=True
+        )
+        self.assertNotIn(
+            "content-length", scope_headers,
+            "Verificación de harness: Content-Length debe estar ausente en streaming por chunks."
+        )
+        self.assertGreaterEqual(
+            len(chunks_received), 2,
+            f"Se esperaba recibir al menos 2 chunks ASGI, pero se recibieron {len(chunks_received)}."
+        )
+        self.assertGreater(
+            sum(chunks_received), MAX_REQUEST_BYTES,
+            "El total de bytes acumulados en los chunks debe superar el límite de 1 MiB."
+        )
+        self.assertEqual(
+            response.status_code, 413,
+            "El servidor debe cortar la lectura con 413 al exceder el límite acumulado."
+        )
+        self.assertEqual(response.json()["detail"], "El JSON excede 1 MiB.")
+
+    # -----------------------------------------------------------------------
+    # AUD11-06: CL-19 — Aserciones concretas de findings y métricas
+    # -----------------------------------------------------------------------
+
+    def test_aud11_06_cl19_concrete_findings_and_metrics(self):
+        """AUD11-06: CL-19 reformado con aserciones concretas de contrato.
+
+        Verifica que el fixture representativo produce métricas coherentes,
+        hallazgos de los 4 motores y encabezados de seguridad garantizados.
+        """
+        fixture_path = FIXTURES_DIR / "workflow_representative_synthetic.json"
+        with open(fixture_path, "r", encoding="utf-8") as f:
+            workflow = json.load(f)
+
+        response = client.post("/api/v1/audits", json={"workflow": workflow})
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+
+        # Encabezados de seguridad garantizados en respuesta exitosa
+        self.assertEqual(response.headers["Cache-Control"], "no-store")
+        self.assertEqual(response.headers["X-Content-Type-Options"], "nosniff")
+
+        # Metadatos de versión
+        self.assertEqual(data["engine_version"], "static-v1")
+
+        # Métricas del fixture: 9 nodos, 8 conexiones (verificado empíricamente)
+        metrics = data["metrics"]
+        self.assertEqual(metrics["total_nodes"], 9)
+        self.assertEqual(metrics["total_connections"], 8)
+        self.assertEqual(metrics["workflow_name"], "Workflow representativo sintetico KevoLint")
+
+        # Los contadores de severidad deben ser coherentes con los findings reales
+        findings = data["findings"]
+        self.assertIsInstance(findings, list)
+        self.assertGreater(len(findings), 0)
+
+        actual_critical = sum(1 for f in findings if f["severity"] == Severity.CRITICAL.value)
+        actual_warning = sum(1 for f in findings if f["severity"] == Severity.WARNING.value)
+        actual_pass = sum(1 for f in findings if f["severity"] == Severity.PASS.value)
+        self.assertEqual(metrics["critical_count"], actual_critical)
+        self.assertEqual(metrics["warning_count"], actual_warning)
+        self.assertEqual(metrics["pass_count"], actual_pass)
+
+        # Los 4 motores deben estar representados en los hallazgos
+        engines_present = {f["engine"] for f in findings}
+        self.assertIn("1. Ciberseguridad e Integraciones", engines_present)
+        self.assertIn("2. Arquitectura y Escalabilidad", engines_present)
+        self.assertIn("3. Lógica y Flujo de Datos", engines_present)
+        self.assertIn("4. Prompt Engineering (Agentes IA)", engines_present)
+
+        # Todos los hallazgos tienen los campos obligatorios del contrato
+        required_fields = (
+            "engine", "severity", "rule_name",
+            "node_name", "node_type", "message", "recommendation"
+        )
+        for finding in findings:
+            for field in required_fields:
+                self.assertIn(
+                    field, finding,
+                    f"Campo obligatorio '{field}' ausente en finding: {finding}"
+                )
+
+        # AUD11-06: Verificación explícita de identidad de reglas y severidad esperadas
+        finding_tuples = {
+            (f["engine"], f["rule_name"], f["severity"])
+            for f in findings
+        }
+        expected_findings = [
+            (EngineCategory.SECURITY.value, "Higiene de Credenciales y Secretos", Severity.PASS.value),
+            (EngineCategory.ARCHITECTURE.value, "Regla de Modularidad", Severity.PASS.value),
+            (EngineCategory.ARCHITECTURE.value, "Regla de Resiliencia", Severity.PASS.value),
+            (EngineCategory.DATA_LOGIC.value, "Integridad de Grafo y Control de Lotes", Severity.PASS.value),
+            (EngineCategory.PROMPT_ENG.value, "Estructura y Contexto del Prompt", Severity.PASS.value),
+        ]
+        for engine, rule_name, severity in expected_findings:
+            self.assertIn(
+                (engine, rule_name, severity),
+                finding_tuples,
+                f"Regla esperada no encontrada o con atributos incorrectos: {(engine, rule_name, severity)}"
+            )
+
+        # El fixture es limpio: no debe haber ningún CRÍTICO
+        self.assertEqual(actual_critical, 0, "El fixture representativo no debe generar hallazgos CRÍTICOS.")
+
+    # -----------------------------------------------------------------------
+    # AUD11-07: Concurrencia con payloads variados sin contaminación cruzada
+    # -----------------------------------------------------------------------
+
+    def test_aud11_07_concurrent_varied_payloads_no_cross_contamination(self):
+        """AUD11-07: 10 peticiones concurrentes con 4 tipos de workflow distintos.
+
+        Verifica aislamiento de estado entre peticiones concurrentes:
+        - Tipo A (clean): sin hallazgos CRÍTICOS de seguridad.
+        - Tipo B (secret): hallazgo CRÍTICO de credenciales hardcodeadas.
+        - Tipo C (large): WARNING de modularidad (> 20 nodos).
+        - Tipo D (dead branch): WARNING de ruta muerta en If.
+        """
+        # Tipo A: webhook → noOp, sin secretos
+        wf_a = {
+            "name": "Concurrent-A",
+            "nodes": [
+                {"name": "T", "type": "n8n-nodes-base.webhook", "position": [0, 0], "parameters": {}},
+                {"name": "E", "type": "n8n-nodes-base.noOp", "position": [100, 0], "parameters": {}},
+            ],
+            "connections": {"T": {"main": [[{"node": "E", "type": "main", "index": 0}]]}},
+        }
+
+        # Tipo B: HTTP con Bearer hardcodeado → CRÍTICO de seguridad
+        wf_b = {
+            "name": "Concurrent-B",
+            "nodes": [
+                {
+                    "name": "HTTP",
+                    "type": "n8n-nodes-base.httpRequest",
+                    "position": [0, 0],
+                    "parameters": {
+                        "headers": {
+                            "Authorization": "Bearer SYNTHETIC_FAKE_TOKEN_INC01R1_NOT_REAL_AAABBB"
+                        }
+                    },
+                }
+            ],
+            "connections": {},
+        }
+
+        # Tipo C: 25 nodos → WARNING de modularidad (> 20)
+        wf_c = {
+            "name": "Concurrent-C",
+            "nodes": [
+                {"name": f"N{i}", "type": "n8n-nodes-base.noOp", "position": [i * 50, 0], "parameters": {}}
+                for i in range(25)
+            ],
+            "connections": {},
+        }
+
+        # Tipo D: If con rama False desconectada → WARNING ruta muerta
+        wf_d = {
+            "name": "Concurrent-D",
+            "nodes": [
+                {"name": "Check", "type": "n8n-nodes-base.if", "position": [0, 0], "parameters": {}},
+                {"name": "Done", "type": "n8n-nodes-base.noOp", "position": [200, 0], "parameters": {}},
+            ],
+            "connections": {
+                "Check": {"main": [[{"node": "Done", "type": "main", "index": 0}], []]}
+            },
+        }
+
+        types = [wf_a, wf_b, wf_c, wf_d]
+
+        def _send(idx: int):
+            wf = copy.deepcopy(types[idx % 4])
+            wf["name"] = f"{wf['name']}-{idx}"
+            resp = client.post("/api/v1/audits", json={"workflow": wf})
+            return idx, resp.status_code, resp.json(), idx % 4
+
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = [executor.submit(_send, i) for i in range(10)]
+            results = [f.result() for f in futures]
+
+        for idx, status, data, wf_type in results:
+            self.assertEqual(status, 200, f"Request {idx} (type {wf_type}) falló con {status}")
+            findings = data["findings"]
+            rule_names = {f["rule_name"] for f in findings}
+
+            if wf_type == 0:  # Tipo A: clean (2 nodos)
+                self.assertEqual(
+                    data["metrics"]["total_nodes"], 2,
+                    f"Request {idx} (Tipo A) debe tener exactamente 2 nodos."
+                )
+                # Presencia de hallazgos específicos esperados en flujo limpio
+                self.assertIn("Higiene de Credenciales y Secretos", rule_names)
+                self.assertIn("Integridad de Grafo y Control de Lotes", rule_names)
+                # Ausencia de hallazgos exclusivos de los otros tipos
+                self.assertNotIn("Credenciales Hardcodeadas en Parámetros", rule_names)
+                self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
+                self.assertNotIn("Regla de Integridad (Ruta Muerta en Nodo If)", rule_names)
+
+            elif wf_type == 1:  # Tipo B: secret (1 nodo)
+                self.assertEqual(
+                    data["metrics"]["total_nodes"], 1,
+                    f"Request {idx} (Tipo B) debe tener exactamente 1 nodo."
+                )
+                # Presencia de hallazgos específicos de credenciales expuestas
+                self.assertIn("Credenciales Hardcodeadas en Parámetros", rule_names)
+                security_critical = [
+                    f for f in findings
+                    if f["engine"] == "1. Ciberseguridad e Integraciones"
+                    and f["severity"] == Severity.CRITICAL.value
+                ]
+                self.assertGreater(
+                    len(security_critical), 0,
+                    f"Tipo B debe tener al menos un hallazgo CRÍTICO de seguridad en request {idx}"
+                )
+                # Ausencia de hallazgos exclusivos de los otros tipos
+                self.assertNotIn("Higiene de Credenciales y Secretos", rule_names)
+                self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
+                self.assertNotIn("Regla de Integridad (Ruta Muerta en Nodo If)", rule_names)
+                # Verificación estricta de no filtración del token sintético en toda la respuesta
+                all_text = json.dumps(data)
+                self.assertNotIn(
+                    "SYNTHETIC_FAKE_TOKEN_INC01R1_NOT_REAL_AAABBB",
+                    all_text,
+                    f"El token sintético NO debe aparecer en ningún campo de la respuesta (request {idx})"
+                )
+
+            elif wf_type == 2:  # Tipo C: 25 nodos (complejidad monolítica)
+                self.assertEqual(
+                    data["metrics"]["total_nodes"], 25,
+                    f"Request {idx} (Tipo C) debe tener exactamente 25 nodos."
+                )
+                # Presencia de hallazgo específico de modularidad
+                self.assertIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
+                arch_warnings = [
+                    f for f in findings
+                    if f["engine"] == "2. Arquitectura y Escalabilidad"
+                    and f["severity"] == Severity.WARNING.value
+                    and "Modularidad" in f["rule_name"]
+                ]
+                self.assertGreater(
+                    len(arch_warnings), 0,
+                    f"Tipo C (25 nodos) debe tener WARNING de Modularidad en request {idx}"
+                )
+                # Ausencia de hallazgos exclusivos de los otros tipos
+                self.assertNotIn("Regla de Modularidad", rule_names)  # PASS no debe figurar
+                self.assertNotIn("Credenciales Hardcodeadas en Parámetros", rule_names)
+                self.assertNotIn("Regla de Integridad (Ruta Muerta en Nodo If)", rule_names)
+
+            elif wf_type == 3:  # Tipo D: If con ruta muerta (2 nodos)
+                self.assertEqual(
+                    data["metrics"]["total_nodes"], 2,
+                    f"Request {idx} (Tipo D) debe tener exactamente 2 nodos."
+                )
+                # Presencia de hallazgo específico de ruta muerta en If con motor y severidad explícitos
+                self.assertIn("Regla de Integridad (Ruta Muerta en Nodo If)", rule_names)
+                dead_route_findings = [
+                    f for f in findings
+                    if f["rule_name"] == "Regla de Integridad (Ruta Muerta en Nodo If)"
+                ]
+                self.assertEqual(
+                    len(dead_route_findings), 1,
+                    f"Tipo D debe tener exactamente 1 hallazgo de 'Regla de Integridad (Ruta Muerta en Nodo If)' en request {idx}"
+                )
+                dr_finding = dead_route_findings[0]
+                self.assertEqual(
+                    dr_finding["engine"],
+                    EngineCategory.DATA_LOGIC.value,
+                    f"Motor incorrecto en hallazgo de ruta muerta (request {idx}): {dr_finding['engine']}"
+                )
+                self.assertEqual(
+                    dr_finding["severity"],
+                    Severity.WARNING.value,
+                    f"Severidad incorrecta en hallazgo de ruta muerta (request {idx}): {dr_finding['severity']}"
+                )
+                # Ausencia de hallazgos exclusivos de los otros tipos
+                self.assertNotIn("Credenciales Hardcodeadas en Parámetros", rule_names)
+                self.assertNotIn("Regla de Modularidad (Complejidad Monolítica)", rule_names)
+
+            # Invariante universal: workflow_name no debe contaminarse
+            self.assertEqual(
+                data["metrics"]["workflow_name"],
+                f"{['Concurrent-A', 'Concurrent-B', 'Concurrent-C', 'Concurrent-D'][wf_type]}-{idx}",
+                f"Contaminación de estado detectada en request {idx} (tipo {wf_type})"
+            )
 
 
 if __name__ == "__main__":

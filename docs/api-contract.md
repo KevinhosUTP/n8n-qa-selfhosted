@@ -120,6 +120,60 @@ Content-Type: application/json
 | **`413 Payload Too Large`** | Cuerpo serializado o cabecera declarada mayor a 1 MiB (`1_048_576` bytes) | `{"detail": "El JSON excede 1 MiB."}` |
 | **`415 Unsupported Media Type`** | `Content-Type` diferente a `application/json` | `{"detail": "Content-Type debe ser application/json."}` |
 | **`422 Unprocessable Entity`** | Violación de restricciones de negocio, tipos o límites de esquema | `{"detail": "string"}` |
-| **`500 Internal Server Error`** | Error no controlado durante el procesamiento en el motor | `{"detail": "Error interno de auditoría."}` |
+| **`500 Internal Server Error`** | Error no controlado capturado durante la ejecución de `_audit_workflow` | `{"detail": "Error interno de auditoría."}` |
 
-*Nota de seguridad:* Ante un fallo `500`, el detalle devuelto se encuentra ofuscado intencionalmente (`"Error interno de auditoría."`) para evitar la exposición accidental de estructuras o parámetros confidenciales del workflow.
+*Nota de seguridad y alcance de HTTP 500:* El cuerpo JSON con detalle ofuscado (`{"detail": "Error interno de auditoría."}`) corresponde exclusivamente a excepciones capturadas internamente durante la ejecución del motor de auditoría (`_audit_workflow`), con el objetivo de evitar la exposición accidental de estructuras o parámetros confidenciales del workflow. No debe interpretarse como una garantía de formato JSON universal para cualquier excepción no controlada que ocurra fuera de dicho bloque (por ejemplo, excepciones durante `_validate_workflow` o middlewares), donde una configuración FastAPI/Starlette predeterminada puede responder con un error `500 Internal Server Error` en texto plano sin estructura JSON garantizada.
+
+---
+
+## 6. Defectos Productivos Conocidos (Pendientes de Corrección)
+
+> [!CAUTION]
+> Los siguientes defectos preexistentes en `apps/api/main.py` fueron identificados durante la auditoría independiente externa (Codex, octubre 2026). Provocan excepciones no controladas en tiempo de ejecución que derivan en respuestas `HTTP 500` para entradas que deberían ser validadas y rechazadas con `HTTP 422` en `_validate_workflow`.
+> **No forman parte del contrato formal de la API y no deben introducirse pruebas que acepten HTTP 500 como comportamiento contractual válido.**
+> La subsanación de ambos defectos queda registrada como pendiente de un incremento correctivo independiente, todavía sin numeración.
+
+### DEF-01 — Destino de conexión no hashable (`{"node": []}`)
+
+- **Ubicación:** `_validate_workflow` en `apps/api/main.py` (validación de aristas en `connections`).
+- **Reproducción mínima:**
+  ```json
+  {
+    "workflow": {
+      "name": "Bug",
+      "nodes": [{"name": "A", "type": "n8n-nodes-base.noOp", "position": [0, 0]}],
+      "connections": {
+        "A": {"main": [[{"node": [], "type": "main", "index": 0}]]}
+      }
+    }
+  }
+  ```
+- **Mecanismo del fallo:** En `_validate_workflow`, la variable `known_names` está definida como un conjunto (`set[str]`). La comprobación `edge.get("node") not in known_names` evalúa la pertenencia de un objeto de tipo `list` dentro de un `set`. Dado que las listas en Python no son hashables, el intérprete genera inmediatamente `TypeError: unhashable type: 'list'`. La excepción se produce en `_validate_workflow`, fuera del bloque `try/except` que captura errores durante `_audit_workflow`. En una configuración FastAPI/Starlette predeterminada, esto deriva en una respuesta `HTTP 500` con cuerpo plano `"Internal Server Error"`, sin estructura JSON garantizada. Este comportamiento actual es un defecto no controlado y no debe considerarse contractual.
+- **Comportamiento esperado según contrato:** Debe retornar `HTTP 422 Unprocessable Entity` indicando destino de conexión inválido.
+- **Resolución prevista:** Pendiente de un incremento correctivo independiente, todavía sin numeración.
+
+### DEF-02 — Entero de magnitud extrema en `position` (`10**400`)
+
+- **Ubicación:** `_validate_workflow` en `apps/api/main.py` (validación de coordenadas en `position`).
+- **Descripción:** El caso corresponde a `10**400`, un entero de 401 dígitos serializado como valor numérico en JSON. El estándar JSON define números sin distinguir subtipos como enteros o punto flotante; sin embargo, `json.loads()` de Python puede interpretar la notación científica `1e400` como un valor de punto flotante (`inf`). Por tanto, la reproducción debe construir el cuerpo programáticamente mediante `10**400` como entero, sin emplear la notación científica `1e400`.
+- **Reproducción programática mínima:**
+  ```python
+  import json
+
+  huge_int = 10**400  # Entero de 401 dígitos
+  payload = {
+      "workflow": {
+          "name": "Bug",
+          "nodes": [{"name": "A", "type": "n8n-nodes-base.noOp", "position": [huge_int, 0]}],
+          "connections": {},
+      }
+  }
+  body = json.dumps(payload).encode("utf-8")
+  ```
+- **Mecanismo del fallo:** En Python, los enteros poseen precisión arbitraria y no tienen límite de tamaño por desbordamiento. Sin embargo, la función `math.isfinite(v)` requiere un argumento numérico de punto flotante de 64 bits (`float` IEEE 754, cuyo valor máximo representable es aproximadamente `1.79e308`). Al evaluar `math.isfinite(10**400)`, Python intenta convertir implícitamente el entero a float y genera `OverflowError: int too large to convert to float`. Este fallo ocurre en `_validate_workflow`, antes de evaluar la comprobación de magnitud `abs(v) > 1e9` y fuera del bloque `try/except` de `_audit_workflow`. La excepción no controlada deriva en `HTTP 500` (con cuerpo plano en FastAPI/Starlette estándar, sin estructura JSON garantizada). Este comportamiento actual no debe considerarse contractual.
+- **Comportamiento esperado según contrato:** Debe retornar `HTTP 422 Unprocessable Entity` indicando que `position` debe tener números finitos dentro del rango permitido.
+- **Resolución prevista:** Pendiente de un incremento correctivo independiente, todavía sin numeración.
+
+---
+
+*Documento mantenido por el equipo KevoLint. Última actualización: INC-01-R1 (2026-10-19).*
