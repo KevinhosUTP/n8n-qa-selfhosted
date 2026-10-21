@@ -1,0 +1,138 @@
+{
+  "name": "SEC-GATE-05 isolated diagnostic evidence",
+  "on": {
+    "pull_request": {
+      "types": [
+        "opened",
+        "synchronize",
+        "reopened"
+      ],
+      "branches": [
+        "codex/kevolint-sec-gate-04-linux"
+      ]
+    }
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "sec-gate-05-${{ github.event.pull_request.number }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "diagnostic": {
+      "if": "github.repository == 'KevinhosUTP/n8n-qa-selfhosted' && github.event.pull_request.draft == true && github.event.pull_request.head.repo.full_name == 'KevinhosUTP/n8n-qa-selfhosted' && github.event.pull_request.base.repo.full_name == 'KevinhosUTP/n8n-qa-selfhosted' && github.event.pull_request.head.repo.fork == false && github.head_ref == 'codex/kevolint-sec-gate-05-diagnostics' && github.base_ref == 'codex/kevolint-sec-gate-04-linux' && github.event.pull_request.base.sha == 'd559c4215ee8297baaf9f8a991c6a0e15a4fdb6f'",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 15,
+      "env": {
+        "NEXT_TELEMETRY_DISABLED": "1"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09",
+          "with": {
+            "ref": "${{ github.event.pull_request.head.sha }}",
+            "fetch-depth": 0,
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38",
+          "with": {
+            "node-version-file": "apps/web/.nvmrc"
+          }
+        },
+        {
+          "name": "Verify exact event, HEAD, parent, baseline and protected files",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs preflight"
+        },
+        {
+          "name": "Reproducible Linux installation",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run npm-ci npm ci --no-audit --no-fund"
+        },
+        {
+          "name": "Diagnostic negative fixtures",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs self-test"
+        },
+        {
+          "name": "Installed tree, signatures and effective lint exposure",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs installed"
+        },
+        {
+          "name": "Complete audit retained, including known vulnerable dev chain",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs audit"
+        },
+        {
+          "name": "Lint",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run lint npm run lint"
+        },
+        {
+          "name": "Existing 363 frontend tests",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run unit npm test"
+        },
+        {
+          "name": "Existing PR02 design browser suite",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run design-browser npm run design:verify"
+        },
+        {
+          "name": "Existing public navigation browser suite",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run public-browser npm run public:verify"
+        },
+        {
+          "name": "Existing PR05a browser suite",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run ui-browser npm run ui:verify"
+        },
+        {
+          "name": "Existing PR05b browser suite",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run modal-browser node scripts/verify-modal-feedback.mjs"
+        },
+        {
+          "name": "Original secret scanner, no policy changes",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run secrets node scripts/scan-secrets.mjs"
+        },
+        {
+          "name": "TypeScript",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run typecheck npm run typecheck"
+        },
+        {
+          "name": "Client and server boundary",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run boundary npm run test:boundary"
+        },
+        {
+          "name": "Credential-free production diagnostic build",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run build npm run build"
+        },
+        {
+          "name": "Prepared standalone HTTP smoke",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run smoke npm run smoke"
+        },
+        {
+          "name": "Public pages on the same standalone in real Linux browser",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs run pages npm run pages:verify"
+        },
+        {
+          "name": "Physical Linux artifact inspection, no risk acceptance",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs inspect"
+        },
+        {
+          "name": "Finalize bounded reports and SHA-256 manifest, including omissions",
+          "if": "${{ always() }}",
+          "run": "node scripts/sec-gate-05/inspect-linux-artifact.mjs finalize"
+        },
+        {
+          "name": "Retain only diagnostic reports for seven days",
+          "if": "${{ always() }}",
+          "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "with": {
+            "name": "sec-gate-05-${{ github.run_id }}-${{ github.run_attempt }}",
+            "path": ".tools/sec-gate-05-evidence/",
+            "include-hidden-files": true,
+            "if-no-files-found": "error",
+            "retention-days": 7,
+            "compression-level": 6
+          }
+        }
+      ]
+    }
+  }
+}
